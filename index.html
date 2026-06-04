@@ -10,46 +10,30 @@
       --bg-color: #F4F7F9;
       --card-bg: #FFFFFF;
       --text-main: #333333;
-      --correct: #2ECC71; /* 緑 */
-      --wrong: #E74C3C;   /* 赤 */
+      --correct: #2ECC71;
+      --wrong: #E74C3C;
       --heart: #FF4757;
-      --combo: #FFA502;   /* オレンジ */
+      --combo: #FFA502;
     }
 
     * { box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
     
     body {
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: var(--text-main);
-      overflow: hidden;
+      margin: 0; padding: 0; background-color: var(--bg-color);
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; color: var(--text-main); overflow: hidden;
     }
 
     #app {
-      width: 100%;
-      max-width: 600px;
-      height: 100vh;
-      max-height: 900px;
-      background-color: var(--card-bg);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%; max-width: 600px; height: 100vh; max-height: 900px;
+      background-color: var(--card-bg); display: flex; flex-direction: column;
+      position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     /* ヘッダー */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      font-size: 1.2rem;
-      font-weight: bold;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 20px; font-size: 1.2rem; font-weight: bold;
     }
     .hp-hearts { color: var(--heart); letter-spacing: 2px; }
     .combo-streak { color: var(--combo); transition: transform 0.2s; }
@@ -58,11 +42,8 @@
     /* 制限時間バー */
     .timer-container { width: 100%; height: 10px; background-color: #E0E0E0; }
     .timer-bar {
-      height: 100%;
-      width: 100%;
-      background-color: var(--correct);
-      transform-origin: left;
-      transition: background-color 0.3s;
+      height: 100%; width: 100%; background-color: var(--correct);
+      transform-origin: left; transition: background-color 0.3s;
     }
 
     /* メインエリア */
@@ -99,11 +80,31 @@
     }
     .choice-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
 
+    /* 正解時のオートアドバンス画面 */
+    #correct-toast {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.95); display: flex; flex-direction: column;
+      justify-content: center; align-items: center; z-index: 20;
+    }
+    .toast-title { color: var(--correct); font-size: 2.5rem; margin-bottom: 10px; font-weight: bold; }
+    .toast-subtitle { color: #666; font-weight: bold; margin-bottom: 20px; }
+    .toast-progress-bg {
+      width: 200px; height: 6px; background: #eee; border-radius: 3px;
+      overflow: hidden; margin-bottom: 30px;
+    }
+    .toast-progress-bar {
+      height: 100%; background: var(--correct); width: 100%; transition: width 2.5s linear;
+    }
+    .pause-btn {
+      background: #FFF; color: var(--primary); border: 2px solid var(--primary);
+      padding: 12px 24px; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+    }
+
     /* 解説モーダル（リザルト画面） */
     #result-modal {
       display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.8); flex-direction: column; justify-content: center;
-      align-items: center; padding: 20px; z-index: 10;
+      align-items: center; padding: 20px; z-index: 30;
     }
     .modal-content {
       background: #FFF; width: 100%; max-width: 400px; padding: 30px 20px;
@@ -151,6 +152,15 @@
         <div class="choice-grid" id="choice-grid"></div>
       </div>
     </main>
+
+    <div id="correct-toast" class="hidden">
+      <div class="toast-title">正解！🎉</div>
+      <div class="toast-subtitle">次の問題へ進みます...</div>
+      <div class="toast-progress-bg">
+        <div class="toast-progress-bar" id="toast-progress-bar"></div>
+      </div>
+      <button class="pause-btn" onclick="cancelAutoAdvance()">ちょっと待って！解説を見る</button>
+    </div>
 
     <div id="result-modal">
       <div class="modal-content">
@@ -201,7 +211,6 @@
     let hp = 3;
     let combo = 0;
     
-    // 現在の問題のステータス
     let currentQuestion = null;
     let selectedWords = [];
     let remainingWords = [];
@@ -209,8 +218,12 @@
 
     // タイマー管理
     let timerInterval;
-    const TIME_LIMIT = 15000; // 15秒
-    let timeLeft = TIME_LIMIT;
+    let autoAdvanceTimer;
+    let timeLimit = 15000;
+    let timeLeft = 15000;
+    
+    // 現在の評価スコア一時保存用
+    let currentSm2Score = 3; 
 
     // ----------------------------------------------------
     // 3. ゲーム初期化・進行ロジック
@@ -223,7 +236,15 @@
     function loadQuestion() {
       currentQuestion = quizData[currentQuestionIndex];
       mistakeCount = 0;
-      timeLeft = TIME_LIMIT;
+      
+      // 動的タイムリミットの設定
+      if (currentQuestion.type === "sort") {
+        // 単語数 × 2秒 + 基本時間3秒
+        timeLimit = 3000 + (currentQuestion.words.length * 2000);
+      } else {
+        timeLimit = 15000; // 4択は15秒固定
+      }
+      timeLeft = timeLimit;
       
       document.getElementById('question-text').innerText = currentQuestion.questionJa;
 
@@ -231,15 +252,12 @@
         document.getElementById('mode-sort').style.display = 'flex';
         document.getElementById('mode-choice').style.display = 'none';
         
-        // 単語をシャッフルしてセット
         remainingWords = [...currentQuestion.words].sort(() => Math.random() - 0.5);
         selectedWords = [];
         renderSortBoard();
-
       } else if (currentQuestion.type === "choice") {
         document.getElementById('mode-sort').style.display = 'none';
         document.getElementById('mode-choice').style.display = 'flex';
-        
         renderChoiceBoard();
       }
 
@@ -254,7 +272,7 @@
       const timerBar = document.getElementById('timer-bar');
       
       timerInterval = setInterval(() => {
-        timeLeft -= 50; // 50msごとに更新
+        timeLeft -= 50; 
         
         if (timeLeft <= 0) {
           clearInterval(timerInterval);
@@ -264,10 +282,9 @@
           return;
         }
 
-        const percentage = (timeLeft / TIME_LIMIT) * 100;
+        const percentage = (timeLeft / timeLimit) * 100;
         timerBar.style.width = percentage + "%";
 
-        // 色の動的変化
         if (percentage > 50) {
           timerBar.style.backgroundColor = "var(--correct)";
         } else if (percentage > 20) {
@@ -287,7 +304,6 @@
       answerSlots.innerHTML = '';
       wordBank.innerHTML = '';
 
-      // 上のスロット（選択済み）
       selectedWords.forEach((word, index) => {
         const slot = document.createElement('div');
         slot.className = 'slot';
@@ -299,7 +315,6 @@
         answerSlots.appendChild(slot);
       });
 
-      // 下のバンク（未選択）
       remainingWords.forEach((word, index) => {
         const btn = document.createElement('button');
         btn.className = 'word-block';
@@ -311,7 +326,6 @@
         wordBank.appendChild(btn);
       });
 
-      // 全て選択されたら判定
       if (remainingWords.length === 0 && selectedWords.length > 0) {
         checkSortAnswer();
       }
@@ -324,7 +338,6 @@
       } else {
         mistakeCount++;
         handleMistake();
-        // 1秒後にブロックを元に戻す
         setTimeout(() => {
           remainingWords = [...currentQuestion.words].sort(() => Math.random() - 0.5);
           selectedWords = [];
@@ -340,7 +353,6 @@
       const sentenceDiv = document.getElementById('choice-sentence');
       const grid = document.getElementById('choice-grid');
       
-      // [   ] の部分を空欄デザインに置換
       sentenceDiv.innerHTML = currentQuestion.questionEn.replace('[   ]', '<span class="blank"></span>');
       grid.innerHTML = '';
 
@@ -373,8 +385,6 @@
       if (hp <= 0) {
         clearInterval(timerInterval);
         showModal(false, 1, "ゲームオーバー... 最初からやり直しましょう。");
-      } else {
-        // 画面を少し揺らすなどの視覚効果を入れるとより良くなります
       }
     }
 
@@ -390,88 +400,59 @@
       combo++;
       updateHeader();
 
-      // SM-2 自動評価アルゴリズム (1:忘れた, 2:難しい, 3:普通, 4:簡単)
-      let sm2Score = 0;
-      const timeRatio = timeLeft / TIME_LIMIT;
+      const timeRatio = timeLeft / timeLimit;
 
       if (mistakeCount > 0) {
-        sm2Score = 2; // お手つき後の正解 = 難しい
+        currentSm2Score = 2; // お手つき
       } else if (timeRatio > 0.6) {
-        sm2Score = 4; // 60%以上の時間を残して即答 = 簡単
+        currentSm2Score = 4; // 瞬殺
       } else {
-        sm2Score = 3; // ギリギリで正解 = 普通
+        currentSm2Score = 3; // 普通
       }
 
-      showModal(true, sm2Score, currentQuestion.explanation);
+      // 正解時はオートアドバンス画面を表示
+      const toast = document.getElementById('correct-toast');
+      const progressBar = document.getElementById('toast-progress-bar');
+      
+      toast.classList.remove('hidden');
+      
+      // CSSアニメーションをリセットして再トリガー
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '100%';
+      
+      // 少し遅延させてからトランジションを開始
+      setTimeout(() => {
+        progressBar.style.transition = 'width 2.5s linear';
+        progressBar.style.width = '0%';
+      }, 50);
+
+      // 2.5秒後に自動遷移
+      autoAdvanceTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+        nextQuestion();
+      }, 2500);
     }
 
     // ----------------------------------------------------
-    // 8. UI更新・モーダル表示
+    // 8. UI更新・モーダル・遷移制御
     // ----------------------------------------------------
+    function cancelAutoAdvance() {
+      // 自動遷移をキャンセルして解説モーダルを表示
+      clearTimeout(autoAdvanceTimer);
+      document.getElementById('correct-toast').classList.add('hidden');
+      showModal(true, currentSm2Score, currentQuestion.explanation);
+    }
+
     function updateHeader() {
       document.getElementById('hp-display').innerText = '❤️'.repeat(Math.max(0, hp));
-      
       const comboEl = document.getElementById('combo-display');
       comboEl.innerText = combo > 1 ? `🔥 ${combo} COMBO!` : '';
-      
-      // ポップアニメーション
       comboEl.classList.remove('pop');
-      void comboEl.offsetWidth; // reflow
+      void comboEl.offsetWidth;
       comboEl.classList.add('pop');
     }
 
     function showModal(isCorrect, sm2Score, explanation) {
       const modal = document.getElementById('result-modal');
       const title = document.getElementById('result-title');
-      const badge = document.getElementById('sm2-badge');
-      const text = document.getElementById('explanation-text');
-      
-      modal.style.display = 'flex';
-      text.innerText = explanation;
-
-      if (hp <= 0) {
-        title.innerText = "Game Over 💀";
-        title.className = "result-title result-wrong";
-        badge.style.display = 'none';
-        document.querySelector('.next-btn').innerText = "リトライする";
-        return;
-      }
-
-      if (isCorrect) {
-        title.innerText = "正解！🎉";
-        title.className = "result-title result-correct";
-      } else {
-        title.innerText = "タイムアップ ⏱️";
-        title.className = "result-title result-wrong";
-      }
-
-      badge.style.display = 'inline-block';
-      const scoreLabels = { 1: "1 (再出題)", 2: "2 (難しい)", 3: "3 (普通)", 4: "4 (簡単/瞬殺)" };
-      badge.innerText = `内部評価: ${scoreLabels[sm2Score]}`;
-    }
-
-    function nextQuestion() {
-      document.getElementById('result-modal').style.display = 'none';
-      
-      if (hp <= 0) {
-        // ゲームオーバー時はリセット
-        currentQuestionIndex = 0;
-        hp = 3;
-        combo = 0;
-      } else {
-        currentQuestionIndex++;
-        if (currentQuestionIndex >= quizData.length) {
-          alert("全問クリアです！素晴らしい！🎉");
-          currentQuestionIndex = 0;
-          hp = 3;
-          combo = 0;
-        }
-      }
-      initGame();
-    }
-
-    // 起動
-    initGame();
-  </script>
-</body>
-</html>
+      const badge = document.getElementById('sm2
