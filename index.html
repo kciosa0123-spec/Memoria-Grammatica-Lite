@@ -51,7 +51,7 @@
     .question-ja { font-size: 1.3rem; font-weight: bold; margin-bottom: 25px; text-align: center; }
 
     /* Sort (並び替え) モード */
-    .sort-area { display: flex; flex-direction: column; gap: 30px; }
+    .sort-area { display: flex; flex-direction: column; gap: 20px; }
     .answer-slots {
       display: flex; flex-wrap: wrap; gap: 10px; min-height: 60px;
       padding: 10px; border-bottom: 2px dashed #CCC; justify-content: center;
@@ -59,7 +59,17 @@
     .slot {
       padding: 10px 15px; background-color: #E8F0FE; color: var(--primary);
       border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+    
+    /* 戻す・リセットボタンのエリア */
+    .sort-controls { display: flex; justify-content: flex-end; gap: 10px; }
+    .ctrl-btn {
+      background: #f0f0f0; border: none; padding: 8px 15px; border-radius: 20px;
+      font-size: 0.9rem; font-weight: bold; color: #555; cursor: pointer;
+    }
+    .ctrl-btn:active { background: #e0e0e0; }
+
     .word-bank { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .word-block {
       background-color: #FFF; border: 2px solid #DDD; border-bottom-width: 4px;
@@ -67,6 +77,15 @@
       cursor: pointer; user-select: none; transition: transform 0.1s;
     }
     .word-block:active { transform: translateY(2px); border-bottom-width: 2px; margin-top: 2px; }
+
+    /* Sort判定ボタン */
+    .check-btn {
+      background-color: var(--primary); color: white; border: none;
+      padding: 15px 30px; font-size: 1.3rem; font-weight: bold; border-radius: 30px;
+      cursor: pointer; width: 100%; margin-top: 10px; box-shadow: 0 4px 0 #3A78C4;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .check-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #3A78C4; }
 
     /* Choice (4択) モード */
     .choice-area { display: none; flex-direction: column; gap: 30px; justify-content: center; flex: 1;}
@@ -95,9 +114,15 @@
     .toast-progress-bar {
       height: 100%; background: var(--correct); width: 100%; transition: width 2.5s linear;
     }
+    
+    .toast-actions { display: flex; flex-direction: column; gap: 15px; width: 80%; max-width: 300px; }
+    .skip-btn {
+      background: var(--primary); color: #FFF; border: none;
+      padding: 15px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer;
+    }
     .pause-btn {
       background: #FFF; color: var(--primary); border: 2px solid var(--primary);
-      padding: 12px 24px; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+      padding: 12px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer;
     }
 
     /* 解説モーダル（リザルト画面） */
@@ -144,7 +169,14 @@
 
       <div class="sort-area" id="mode-sort">
         <div class="answer-slots" id="answer-slots"></div>
+        
+        <div class="sort-controls">
+          <button class="ctrl-btn" onclick="undoLastWord()">↶ 1つ戻す</button>
+          <button class="ctrl-btn" onclick="resetSort()">🗑️ リセット</button>
+        </div>
+
         <div class="word-bank" id="word-bank"></div>
+        <button id="check-sort-btn" class="check-btn hidden" onclick="checkSortAnswer()">判定する</button>
       </div>
 
       <div class="choice-area" id="mode-choice">
@@ -159,7 +191,10 @@
       <div class="toast-progress-bg">
         <div class="toast-progress-bar" id="toast-progress-bar"></div>
       </div>
-      <button class="pause-btn" onclick="cancelAutoAdvance()">ちょっと待って！解説を見る</button>
+      <div class="toast-actions">
+        <button class="skip-btn" onclick="skipToNext()">⏩ すぐに次の問題へ</button>
+        <button class="pause-btn" onclick="cancelAutoAdvance()">ちょっと待って！解説を見る</button>
+      </div>
     </div>
 
     <div id="result-modal">
@@ -216,13 +251,11 @@
     let remainingWords = [];
     let mistakeCount = 0;
 
-    // タイマー管理
     let timerInterval;
     let autoAdvanceTimer;
     let timeLimit = 15000;
     let timeLeft = 15000;
     
-    // 現在の評価スコア一時保存用
     let currentSm2Score = 3; 
 
     // ----------------------------------------------------
@@ -237,12 +270,11 @@
       currentQuestion = quizData[currentQuestionIndex];
       mistakeCount = 0;
       
-      // 動的タイムリミットの設定
+      // 動的タイムリミット
       if (currentQuestion.type === "sort") {
-        // 単語数 × 2秒 + 基本時間3秒
         timeLimit = 3000 + (currentQuestion.words.length * 2000);
       } else {
-        timeLimit = 15000; // 4択は15秒固定
+        timeLimit = 15000;
       }
       timeLeft = timeLimit;
       
@@ -301,9 +333,12 @@
     function renderSortBoard() {
       const answerSlots = document.getElementById('answer-slots');
       const wordBank = document.getElementById('word-bank');
+      const checkBtn = document.getElementById('check-sort-btn');
+      
       answerSlots.innerHTML = '';
       wordBank.innerHTML = '';
 
+      // 選んだ単語の配置（タップで戻せる）
       selectedWords.forEach((word, index) => {
         const slot = document.createElement('div');
         slot.className = 'slot';
@@ -315,6 +350,7 @@
         answerSlots.appendChild(slot);
       });
 
+      // 未選択の単語の配置
       remainingWords.forEach((word, index) => {
         const btn = document.createElement('button');
         btn.className = 'word-block';
@@ -326,11 +362,34 @@
         wordBank.appendChild(btn);
       });
 
+      // 全て配置されたら「判定する」ボタンを表示
       if (remainingWords.length === 0 && selectedWords.length > 0) {
-        checkSortAnswer();
+        wordBank.classList.add('hidden');
+        checkBtn.classList.remove('hidden');
+      } else {
+        wordBank.classList.remove('hidden');
+        checkBtn.classList.add('hidden');
       }
     }
 
+    // 追加: 1つ戻す機能
+    function undoLastWord() {
+      if (selectedWords.length > 0) {
+        remainingWords.push(selectedWords.pop());
+        renderSortBoard();
+      }
+    }
+
+    // 追加: リセット機能
+    function resetSort() {
+      if (selectedWords.length > 0) {
+        remainingWords = remainingWords.concat(selectedWords);
+        selectedWords = [];
+        renderSortBoard();
+      }
+    }
+
+    // 手動判定ロジックに変更
     function checkSortAnswer() {
       const isCorrect = selectedWords.join(' ') === currentQuestion.correctOrder.join(' ');
       if (isCorrect) {
@@ -338,6 +397,8 @@
       } else {
         mistakeCount++;
         handleMistake();
+        
+        // 間違えたら単語をリセットして再挑戦させる
         setTimeout(() => {
           remainingWords = [...currentQuestion.words].sort(() => Math.random() - 0.5);
           selectedWords = [];
@@ -416,28 +477,31 @@
       
       toast.classList.remove('hidden');
       
-      // CSSアニメーションをリセットして再トリガー
       progressBar.style.transition = 'none';
       progressBar.style.width = '100%';
       
-      // 少し遅延させてからトランジションを開始
       setTimeout(() => {
         progressBar.style.transition = 'width 2.5s linear';
         progressBar.style.width = '0%';
       }, 50);
 
-      // 2.5秒後に自動遷移
       autoAdvanceTimer = setTimeout(() => {
-        toast.classList.add('hidden');
-        nextQuestion();
+        skipToNext();
       }, 2500);
     }
 
     // ----------------------------------------------------
     // 8. UI更新・モーダル・遷移制御
     // ----------------------------------------------------
+    // 追加：すぐに次の問題へ進む機能
+    function skipToNext() {
+      clearTimeout(autoAdvanceTimer);
+      document.getElementById('correct-toast').classList.add('hidden');
+      nextQuestion();
+    }
+
+    // 解説を見るために自動遷移をキャンセル
     function cancelAutoAdvance() {
-      // 自動遷移をキャンセルして解説モーダルを表示
       clearTimeout(autoAdvanceTimer);
       document.getElementById('correct-toast').classList.add('hidden');
       showModal(true, currentSm2Score, currentQuestion.explanation);
