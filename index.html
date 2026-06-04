@@ -10,10 +10,10 @@
       --bg-color: #F4F7F9;
       --card-bg: #FFFFFF;
       --text-main: #333333;
-      --correct: #2ECC71;
-      --wrong: #E74C3C;
+      --correct: #2ECC71; /* 緑 */
+      --wrong: #E74C3C;   /* 赤 */
       --heart: #FF4757;
-      --combo: #FFA502;
+      --combo: #FFA502;   /* オレンジ */
     }
 
     * { box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
@@ -61,7 +61,7 @@
       100% { transform: scale(1); }
     }
 
-    /* 制限時間バー */
+    /* 制限時間バー（色と幅の動的変化） */
     .timer-container {
       width: 100%;
       height: 10px;
@@ -69,15 +69,24 @@
     }
     .timer-bar {
       height: 100%;
-      background: linear-gradient(90deg, var(--correct) 0%, var(--combo) 50%, var(--wrong) 100%);
       width: 100%;
-      /* モックアップ用のダミーアニメーション */
-      animation: shrink 10s linear infinite;
       transform-origin: left;
+      /* モックアップ用のダミーアニメーション（10秒で減少） */
+      animation: timeGlow 10s linear infinite;
     }
-    @keyframes shrink {
-      0% { transform: scaleX(1); }
-      100% { transform: scaleX(0); }
+    
+    @keyframes timeGlow {
+      0% {
+        transform: scaleX(1);
+        background-color: var(--correct); /* 開始時は緑 */
+      }
+      50% {
+        background-color: var(--combo); /* 残り半分でオレンジ */
+      }
+      100% {
+        transform: scaleX(0);
+        background-color: var(--wrong); /* ゼロで赤 */
+      }
     }
 
     /* 出題エリア */
@@ -219,7 +228,7 @@
           <div class="slot">If</div>
           <div class="slot">it</div>
           <div class="slot">is</div>
-          </div>
+        </div>
         <div class="word-bank">
           <button class="word-block">sunny</button>
           <button class="word-block">tomorrow,</button>
