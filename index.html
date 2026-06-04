@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>文法マスター - ゲーム型学習アプリ</title>
   <style>
     /* =========================================
@@ -51,6 +51,21 @@
     .dash-header { margin-bottom: 30px; }
     .dash-header h1 { font-size: 1.8rem; color: var(--primary); margin: 0 0 5px 0; font-weight: 700; letter-spacing: 0.5px; }
     .dash-header p { font-size: 1rem; color: var(--text-muted); margin: 0; }
+
+    .data-report {
+      background: #F1F5F9; border: 1px solid #E2E8F0; color: var(--primary);
+      border-radius: 10px; padding: 12px 14px; margin: -12px 0 24px 0;
+      font-size: 0.9rem; line-height: 1.5;
+    }
+    .data-report.loading { background: #EAF4FE; border-color: #AED6F1; color: #1B4F72; }
+    .data-report.warn { background: #FFF7E6; border-color: #FAD7A0; color: #8A5A00; }
+    .data-report.error { background: #FDEDEC; border-color: #F5B7B1; color: #922B21; }
+    .data-report details { margin-top: 6px; }
+    .data-report summary { cursor: pointer; font-weight: 600; }
+    .data-report pre {
+      white-space: pre-wrap; word-break: break-word; margin: 8px 0 0;
+      font-size: 0.82rem; color: inherit;
+    }
 
     /* スタッツカード */
     .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
@@ -160,6 +175,7 @@
     .toast-progress-bar { height: 100%; background: var(--correct); width: 100%; transition: width 2.5s linear; }
     .toast-actions { display: flex; flex-direction: column; gap: 12px; width: 80%; max-width: 300px; }
     .skip-btn { background: var(--primary); color: #FFF; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+    .hard-btn { background: transparent; color: var(--combo); border: 1px solid var(--combo); padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
     .pause-btn { background: transparent; color: var(--primary); border: 1px solid var(--primary); padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
 
     #result-modal {
@@ -174,6 +190,12 @@
     .explanation-text { font-size: 1rem; line-height: 1.6; margin: 20px 0; text-align: left; color: var(--text-main); }
     .sm2-badge { display: inline-block; background: #F1F5F9; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; font-weight: 600;}
     .next-review-badge { display: inline-block; background: #E0F2FE; color: var(--accent); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight:600; margin-bottom: 20px; }
+    .correct-reveal {
+      display: none; background: #E8F8F0; color: var(--correct);
+      border: 1px solid #BFE9D2; border-radius: 8px; padding: 12px 14px;
+      font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; text-align: left;
+      line-height: 1.5; word-break: break-word;
+    }
     .next-btn { background: var(--accent); color: #FFF; border: none; padding: 15px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; }
 
     /* 学習完了画面 */
@@ -186,6 +208,34 @@
     .clear-text { font-size: 1.4rem; font-weight: bold; color: var(--primary); margin-bottom: 10px; }
     .clear-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.5; }
     .reset-debug-btn { background: transparent; color: #A0AEC0; border: 1px solid #CBD5E0; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+
+
+
+    .deck-tools {
+      background: #F7FAFC; border: 1px solid #E2E8F0; border-radius: 12px;
+      padding: 16px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .deck-tools h3 { font-size: 1rem; color: var(--primary); margin: 0 0 10px 0; }
+    .deck-help { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 12px 0; }
+    .deck-file-input { width: 100%; font-size: 0.9rem; margin-bottom: 12px; }
+    .deck-text-input {
+      width: 100%; font-size: 0.9rem; padding: 10px 12px; border: 1px solid #CBD5E0;
+      border-radius: 8px; margin-bottom: 12px; color: var(--primary); background: #FFF;
+    }
+    .deck-textarea {
+      width: 100%; min-height: 86px; resize: vertical; font-size: 0.9rem; padding: 10px 12px;
+      border: 1px solid #CBD5E0; border-radius: 8px; margin-bottom: 12px;
+      color: var(--primary); background: #FFF; line-height: 1.5;
+    }
+    .deck-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .deck-action-btn {
+      background: #FFF; border: 1px solid #CBD5E0; color: var(--primary);
+      padding: 10px 8px; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer;
+    }
+    .deck-action-btn:disabled { color: #A0AEC0; background: #F1F5F9; cursor: not-allowed; }
+    .deck-action-btn.danger { color: var(--wrong); border-color: #F5B7B1; }
+    .deck-status { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 10px 0 0 0; }
 
     .hidden { display: none !important; }
   </style>
@@ -203,10 +253,33 @@
         <p>あなたのペースで、確実な定着を。</p>
       </div>
 
+      <div id="data-report" class="data-report hidden"></div>
+
+
+      <div class="deck-tools" id="deck-tools">
+        <h3>デッキ管理</h3>
+        <p class="deck-help">JSONファイル・URL・サーバ側AI生成エンドポイントから読み込むと、形式検証後に現在のデッキとして保存されます。前回使ったデッキは次回起動時に自動復帰します。</p>
+        <input class="deck-file-input" id="deck-file-input" type="file" accept=".json,application/json" onchange="handleDeckFileSelected(event)">
+        <input class="deck-text-input" id="deck-url-input" type="url" inputmode="url" placeholder="JSONデッキのURL（Firebase Storage等も可）">
+        <input class="deck-text-input" id="ai-endpoint-input" type="url" inputmode="url" placeholder="AI生成サーバURL（Cloud Functions等・任意）">
+        <textarea class="deck-textarea" id="ai-prompt-input" placeholder="AI生成サーバに送る指示（例：現在完了 since/for のchoice問題を10問。※APIキーはブラウザに置かず、サーバ側で処理する想定）"></textarea>
+        <div class="deck-actions">
+          <button class="deck-action-btn" onclick="loadUrlDeck()">URLから読み込む</button>
+          <button class="deck-action-btn" onclick="loadServerGeneratedDeck()">AI生成サーバから取得</button>
+          <button class="deck-action-btn" id="load-saved-deck-btn" onclick="loadSavedDeck()">保存済みデッキを開く</button>
+          <button class="deck-action-btn" onclick="useDefaultDeck()">既定デッキへ戻す</button>
+          <button class="deck-action-btn danger" id="delete-saved-deck-btn" onclick="deleteSavedDeck()">保存済みを削除</button>
+          <button class="deck-action-btn" onclick="exportBackup()">バックアップを書き出す</button>
+          <button class="deck-action-btn" onclick="document.getElementById('backup-file-input').click()">バックアップから復元</button>
+        </div>
+        <input class="hidden" id="backup-file-input" type="file" accept=".json,application/json" onchange="handleBackupFileSelected(event)">
+        <p class="deck-status" id="deck-status">現在のデッキ: -</p>
+      </div>
+
       <div class="stats-grid">
         <div class="stat-card">
           <span class="stat-icon">🔥</span>
-          <span class="stat-value" id="dash-streak">3</span>
+          <span class="stat-value" id="dash-streak">-</span>
           <span class="stat-label">日連続学習</span>
         </div>
         <div class="stat-card">
@@ -262,6 +335,7 @@
       <div class="toast-progress-bg"><div class="toast-progress-bar" id="toast-progress-bar"></div></div>
       <div class="toast-actions">
         <button class="skip-btn" onclick="skipToNext()">次へ進む</button>
+        <button class="hard-btn" onclick="markHard()">難しかった（短めに復習）</button>
         <button class="pause-btn" onclick="cancelAutoAdvance()">解説を確認する</button>
       </div>
     </div>
@@ -271,6 +345,7 @@
         <div class="result-title" id="result-title"></div>
         <div class="sm2-badge" id="sm2-badge"></div>
         <div class="next-review-badge" id="next-review-badge"></div>
+        <div class="correct-reveal" id="correct-reveal"></div>
         <div class="explanation-text" id="explanation-text"></div>
         <button class="next-btn" onclick="nextQuestion()">次へ進む</button>
       </div>
@@ -288,60 +363,1067 @@
   <script src="questions.js"></script>
 
   <script>
-    const STORAGE_KEY = 'grammarMaster_progress';
-    let todaysDeck = [];
-    let currentQuestionIndex = 0;
+    const STORAGE_KEY = 'grammarMaster_progress_v2';
+    const ACTIVITY_KEY = 'grammarMaster_activity';   // 学習日ごとのレビュー回数（ストリーク・ヒートマップ用）
+    const CURRENT_DECK_KEY = 'grammarMaster_current_deck_v1'; // JSONインポートした現在のデッキ
+    const ACTIVE_SOURCE_KEY = 'grammarMaster_active_source_v1'; // 前回正常に使用したデータソース
+    const BACKUP_SCHEMA_VERSION = 1;
+    const MAX_IMPORT_FILE_SIZE = 2 * 1024 * 1024;  // JSONインポートの上限（2MB）
+    const MAX_BACKUP_FILE_SIZE = 5 * 1024 * 1024;  // バックアップ復元の上限（5MB）
+    const URL_FETCH_TIMEOUT_MS = 10000;            // URL読込のタイムアウト（10秒）
+    const AI_GENERATION_TIMEOUT_MS = 60000;        // サーバ側AI生成のタイムアウト（60秒）
+    const MAX_AI_PROMPT_CHARS = 8000;              // ブラウザからサーバへ送る生成指示の上限
+
+    // ====================================================
+    // セッション内再出題のためのチューニング定数
+    // ====================================================
+    const REINSERT_GAP = 3;        // 失敗カードを再投入するまでに挟む他カード数（スペーシング）
+    const MAX_SESSION_LAPSES = 3;  // 1セッションで同一カードを再投入する上限（無限ループ防止）
+    const HARD_FACTOR = 1.2;       // Hard 時の間隔倍率（Good の EF 倍率より大幅に小さく、短めに復習するための係数）
+    const AUTO_ADVANCE_MS = 4000;  // 正解トーストが自動で次へ進むまでの猶予（ms）
+    const CHOICE_TIME_LIMIT = 15000;
+    const SORT_BASE_TIME = 3000;
+    const SORT_TIME_PER_WORD = 2000;
+    const SORT_MAX_TIME = 30000;      // 外部デッキで長い並べ替え問題が来ても、ゲームテンポを保つための上限
+
+    // ----------------------------------------------------
+    // 問題データ：questions.js があればそれを使用。
+    // 無い場合は下記サンプルで単体動作（再出題ロジックの検証用）。
+    // 実運用では questions.js 側の quizData が自動的に優先されます。
+    // ----------------------------------------------------
+    const SAMPLE_QUIZ = [
+      {
+        id: "s1", type: "sort",
+        questionJa: "彼女は毎朝コーヒーを飲む。",
+        words: ["She", "drinks", "coffee", "every", "morning"],
+        correctOrder: ["She", "drinks", "coffee", "every", "morning"],
+        explanation: "三人称単数現在の文。主語 She に対し動詞は drinks（-s が付く）。頻度を表す every morning は文末に置きます。"
+      },
+      {
+        id: "c1", type: "choice",
+        questionJa: "次の文の空所に最も適切な語を選びなさい。",
+        questionEn: "He has lived in Osaka [   ] 2010.",
+        choices: ["since", "for", "from", "in"],
+        correctAnswer: "since",
+        explanation: "現在完了（継続）。起点となる「時の一点」(2010) を示すには since を使います。期間の長さなら for（for ten years など）。"
+      },
+      {
+        id: "s2", type: "sort",
+        questionJa: "私はその知らせを聞いて驚いた。",
+        words: ["I", "was", "surprised", "to", "hear", "the", "news"],
+        correctOrder: ["I", "was", "surprised", "to", "hear", "the", "news"],
+        explanation: "感情の原因を表す不定詞（副詞的用法）。be surprised to do で「〜して驚く」。"
+      },
+      {
+        id: "c2", type: "choice",
+        questionJa: "次の文の空所に最も適切な語を選びなさい。",
+        questionEn: "If it [   ] tomorrow, we will stay home.",
+        choices: ["rains", "will rain", "rained", "is raining"],
+        correctAnswer: "rains",
+        explanation: "時・条件を表す副詞節（if節）の中では、未来のことでも現在形で表します。主節は will + 原形。"
+      },
+      {
+        id: "c3", type: "choice",
+        questionJa: "次の文の空所に最も適切な語を選びなさい。",
+        questionEn: "This is the book [   ] I told you about.",
+        choices: ["which", "who", "whose", "what"],
+        correctAnswer: "which",
+        explanation: "先行詞 the book（もの）を受け、関係詞節内で前置詞 about の目的語になっています。物を指す目的格の関係代名詞は which（that も可）。"
+      },
+      {
+        id: "s3", type: "sort",
+        questionJa: "この本は読む価値がある。",
+        words: ["This", "book", "is", "worth", "reading"],
+        correctOrder: ["This", "book", "is", "worth", "reading"],
+        explanation: "be worth doing で「〜する価値がある」。worth の後ろは動名詞（reading）になります。"
+      }
+    ];
+    const DEFAULT_DECK_ID = 'default';
+    const DEFAULT_SOURCE = {
+      type: 'inline',
+      deckId: DEFAULT_DECK_ID,
+      data: (typeof quizData !== 'undefined') ? quizData : SAMPLE_QUIZ
+    };
+    let currentSource = DEFAULT_SOURCE;
+    let QUIZ = [];
+    let quizValidationReport = {
+      valid: [], errors: [], warnings: [], messages: [],
+      excludedCount: 0, totalCount: 0, deckId: DEFAULT_DECK_ID, deckTitle: ''
+    };
+
+    // ----------------------------------------------------
+    // localStorage 安全ラッパー
+    // ----------------------------------------------------
+    function safeLoadJSON(key, fallback = {}) {
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return fallback;
+        const parsed = JSON.parse(raw);
+        return (parsed && typeof parsed === 'object') ? parsed : fallback;
+      } catch (e) {
+        console.warn(`${key} の保存データが壊れていたため初期化しました。`, e);
+        localStorage.removeItem(key);
+        return fallback;
+      }
+    }
+
+    function safeSaveJSON(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+      } catch (e) {
+        console.warn(`${key} の保存に失敗しました。`, e);
+        alert('学習データの保存に失敗しました。端末の空き容量やブラウザ設定を確認してください。');
+        return false;
+      }
+    }
+
+
+    function loadStoredJSONOrNull(key) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        console.warn(`${key} の保存データを読み込めませんでした。`, e);
+        return null;
+      }
+    }
+
+    function normalizeSourceForStorage(source) {
+      if (!source || typeof source !== 'object') return null;
+      if (source.type === 'inline') return { type: 'inline', deckId: DEFAULT_DECK_ID };
+      if (source.type === 'localStorage') {
+        return {
+          type: 'localStorage',
+          key: source.key || CURRENT_DECK_KEY,
+          deckId: source.deckId || DEFAULT_DECK_ID
+        };
+      }
+      if (source.type === 'url') {
+        // URL source は「取得元」としてのみ保存可能。ただし通常運用では、URL読込後に
+        // 検証済みデッキを CURRENT_DECK_KEY へ保存し、localStorage source として使う方針。
+        return {
+          type: 'url',
+          url: source.url,
+          deckId: source.deckId || DEFAULT_DECK_ID
+        };
+      }
+      return null; // File オブジェクトやAI生成リクエスト本文など、永続化に向かない source は保存しない
+    }
+
+    function hydrateStoredSource(stored) {
+      if (!stored || typeof stored !== 'object') return DEFAULT_SOURCE;
+      if (stored.type === 'inline') return DEFAULT_SOURCE;
+      if (stored.type === 'localStorage') {
+        if (!localStorage.getItem(stored.key || CURRENT_DECK_KEY)) return DEFAULT_SOURCE;
+        return { type: 'localStorage', key: stored.key || CURRENT_DECK_KEY, deckId: stored.deckId || DEFAULT_DECK_ID };
+      }
+      if (stored.type === 'url' && typeof stored.url === 'string' && stored.url.trim()) {
+        // 将来 persistAsCurrentDeck:false のURL運用をする場合のみ、起動時に再fetchされる。
+        // 標準UIではURL/AI生成デッキをlocalStorage化してから使う。
+        return { type: 'url', url: stored.url.trim(), deckId: stored.deckId || DEFAULT_DECK_ID };
+      }
+      return DEFAULT_SOURCE;
+    }
+
+    function getInitialSource() {
+      return hydrateStoredSource(loadStoredJSONOrNull(ACTIVE_SOURCE_KEY));
+    }
+
+    function saveActiveSource(source) {
+      const stored = normalizeSourceForStorage(source);
+      if (!stored) return false;
+      return safeSaveJSON(ACTIVE_SOURCE_KEY, stored);
+    }
+
+    // ----------------------------------------------------
+    // 配列シャッフル（Fisher-Yates）
+    // ----------------------------------------------------
+    function shuffleArray(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // 並べ替え問題で、初期表示が正解順そのものになるのをできるだけ避ける
+    function shuffleWordsForSort(question) {
+      const original = question.correctOrder.join(' ');
+      for (let i = 0; i < 10; i++) {
+        const shuffled = shuffleArray(question.words);
+        if (shuffled.join(' ') !== original) return shuffled;
+      }
+      const fallback = [...question.words];
+      if (fallback.length > 1) [fallback[0], fallback[1]] = [fallback[1], fallback[0]];
+      return fallback;
+    }
+
+    // choice 問題の英文を安全に描画する（innerHTML に生データを入れない）
+    // questionEn に [   ] が無い場合は、データ不備として警告しつつ末尾にブランクを補う。
+    function renderSentenceWithBlank(container, sentence) {
+      container.innerHTML = '';
+      const placeholder = '[   ]';
+      const safeSentence = String(sentence || '');
+
+      if (!safeSentence.includes(placeholder)) {
+        console.warn('choice問題の questionEn に [   ] がありません:', currentQuestion?.id);
+        if (safeSentence) container.appendChild(document.createTextNode(safeSentence + ' '));
+        const blank = document.createElement('span');
+        blank.className = 'blank';
+        container.appendChild(blank);
+        return;
+      }
+
+      const parts = safeSentence.split(placeholder);
+      parts.forEach((part, index) => {
+        container.appendChild(document.createTextNode(part));
+        if (index < parts.length - 1) {
+          const blank = document.createElement('span');
+          blank.className = 'blank';
+          container.appendChild(blank);
+        }
+      });
+    }
+
+
+    // ----------------------------------------------------
+    // データ正規化・バリデーション層（外部データ対応の第一段階）
+    // ----------------------------------------------------
+    function sanitizeId(value) {
+      return String(value || '')
+        .normalize('NFKC')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^a-zA-Z0-9_:\-.]/g, '_')
+        .slice(0, 120);
+    }
+
+    // 同じ内容から常に同じIDを作るための軽量ハッシュ。
+    // セキュリティ目的ではなく、学習進捗の安定識別用。
+    function hashStringFNV1a(str) {
+      let hash = 0x811c9dc5;
+      for (let i = 0; i < str.length; i++) {
+        hash ^= str.charCodeAt(i);
+        hash = Math.imul(hash, 0x01000193);
+      }
+      return (hash >>> 0).toString(36);
+    }
+
+    function canonicalQuestionPayload(q) {
+      if (!q || typeof q !== 'object') return '';
+      if (q.type === 'sort') {
+        return JSON.stringify({
+          type: 'sort',
+          questionJa: q.questionJa || '',
+          correctOrder: Array.isArray(q.correctOrder) ? q.correctOrder : [],
+          explanation: q.explanation || ''
+        });
+      }
+      if (q.type === 'choice') {
+        return JSON.stringify({
+          type: 'choice',
+          questionJa: q.questionJa || '',
+          questionEn: q.questionEn || '',
+          correctAnswer: q.correctAnswer || '',
+          explanation: q.explanation || ''
+        });
+      }
+      return JSON.stringify(q);
+    }
+
+    function makeStableCardId(q) {
+      return 'card_' + hashStringFNV1a(canonicalQuestionPayload(q));
+    }
+
+    function getProgressKey(q) {
+      return `${q.deckId || DEFAULT_DECK_ID}::${q.id}`;
+    }
+
+    function toTrimmedStringArray(value) {
+      if (!Array.isArray(value)) return value;
+      return value.map(v => (typeof v === 'string') ? v.normalize('NFKC').trim() : v);
+    }
+
+    function normalizeQuestion(rawQuestion, index, deckId) {
+      if (!rawQuestion || typeof rawQuestion !== 'object' || Array.isArray(rawQuestion)) return rawQuestion;
+      const q = { ...rawQuestion };
+      q.deckId = deckId;
+      q.type = (typeof q.type === 'string') ? q.type.trim() : q.type;
+      if (typeof q.questionJa === 'string') q.questionJa = q.questionJa.normalize('NFKC').trim();
+      if (typeof q.explanation === 'string') q.explanation = q.explanation.trim();
+
+      if (q.type === 'sort') {
+        q.words = toTrimmedStringArray(q.words);
+        q.correctOrder = toTrimmedStringArray(q.correctOrder);
+      } else if (q.type === 'choice') {
+        if (typeof q.questionEn === 'string') q.questionEn = q.questionEn.normalize('NFKC').trim();
+        q.choices = toTrimmedStringArray(q.choices);
+        if (typeof q.correctAnswer === 'string') q.correctAnswer = q.correctAnswer.normalize('NFKC').trim();
+      }
+
+      const rawId = (typeof q.id === 'string') ? sanitizeId(q.id) : '';
+      if (rawId) {
+        q.id = rawId;
+        q._idGenerated = false;
+      } else {
+        q.id = makeStableCardId(q);
+        q._idGenerated = true;
+      }
+      q._sourceIndex = index;
+      return q;
+    }
+
+    function countMap(values) {
+      const map = new Map();
+      values.forEach(value => map.set(value, (map.get(value) || 0) + 1));
+      return map;
+    }
+
+    function sameMultiset(a, b) {
+      if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
+      const ma = countMap(a); const mb = countMap(b);
+      if (ma.size !== mb.size) return false;
+      for (const [key, count] of ma.entries()) {
+        if (mb.get(key) !== count) return false;
+      }
+      return true;
+    }
+
+    function hasDuplicateStrings(values) {
+      if (!Array.isArray(values)) return false;
+      return new Set(values).size !== values.length;
+    }
+
+    function validateQuestion(q, index) {
+      const errors = [];
+      const warnings = [];
+      const label = `#${index + 1}`;
+
+      if (!q || typeof q !== 'object' || Array.isArray(q)) {
+        return { ok: false, errors: [`${label}: オブジェクトでない`], warnings };
+      }
+
+      if (q._idGenerated) warnings.push(`${label}: id がないため安定IDを自動生成しました (${q.id})`);
+      if (typeof q.id !== 'string' || !q.id.trim()) errors.push(`${label}: id 不正`);
+      if (q.type !== 'sort' && q.type !== 'choice') errors.push(`${label}: type 不正`);
+      if (typeof q.questionJa !== 'string' || !q.questionJa.trim()) errors.push(`${label}: questionJa 欠落`);
+      if (typeof q.explanation !== 'string' || !q.explanation.trim()) errors.push(`${label}: explanation 欠落`);
+
+      if (q.type === 'sort') {
+        if (!Array.isArray(q.words) || q.words.length < 2) errors.push(`${label}: words 不正`);
+        else if (!q.words.every(w => typeof w === 'string' && w.trim())) errors.push(`${label}: words に空または文字列でない要素があります`);
+
+        if (!Array.isArray(q.correctOrder) || q.correctOrder.length < 2) errors.push(`${label}: correctOrder 不正`);
+        else if (!q.correctOrder.every(w => typeof w === 'string' && w.trim())) errors.push(`${label}: correctOrder に空または文字列でない要素があります`);
+
+        if (Array.isArray(q.words) && Array.isArray(q.correctOrder) && !sameMultiset(q.words, q.correctOrder)) {
+          errors.push(`${label}: words と correctOrder の集合が不一致`);
+        }
+      }
+
+      if (q.type === 'choice') {
+        if (typeof q.questionEn !== 'string' || !q.questionEn.trim()) {
+          errors.push(`${label}: questionEn 欠落`);
+        } else if (!q.questionEn.includes('[   ]')) {
+          warnings.push(`${label}: questionEn に [   ] がないため、表示時に末尾へブランクを補います`);
+        }
+
+        if (!Array.isArray(q.choices) || q.choices.length < 2) errors.push(`${label}: choices 不正`);
+        else {
+          if (!q.choices.every(c => typeof c === 'string' && c.trim())) errors.push(`${label}: choices に空または文字列でない要素があります`);
+          if (hasDuplicateStrings(q.choices)) errors.push(`${label}: choices に重複があります`);
+        }
+
+        if (typeof q.correctAnswer !== 'string' || !q.correctAnswer.trim()) {
+          errors.push(`${label}: correctAnswer 欠落`);
+        } else if (Array.isArray(q.choices) && !q.choices.includes(q.correctAnswer)) {
+          errors.push(`${label}: correctAnswer が choices に含まれない`);
+        }
+      }
+
+      return { ok: errors.length === 0, errors, warnings };
+    }
+
+    function unpackQuizSource(raw, fallbackDeckId = DEFAULT_DECK_ID) {
+      if (Array.isArray(raw)) {
+        return { deckId: fallbackDeckId, deckTitle: '', items: raw, sourceErrors: [] };
+      }
+
+      if (raw && typeof raw === 'object' && Array.isArray(raw.items)) {
+        const deckId = (typeof raw.deckId === 'string' && sanitizeId(raw.deckId)) ? sanitizeId(raw.deckId) : fallbackDeckId;
+        const deckTitle = (typeof raw.deckTitle === 'string') ? raw.deckTitle.trim() : '';
+        return { deckId, deckTitle, items: raw.items, sourceErrors: [] };
+      }
+
+      return { deckId: fallbackDeckId, deckTitle: '', items: [], sourceErrors: ['データ全体が配列でも { items: [...] } 形式でもありません'] };
+    }
+
+    function validateFileSource(file) {
+      if (!file || typeof file.text !== 'function') {
+        throw new Error('file source には File オブジェクトが必要です');
+      }
+      if (file.size > MAX_IMPORT_FILE_SIZE) {
+        throw new Error(`JSONファイルが大きすぎます。上限は ${Math.round(MAX_IMPORT_FILE_SIZE / 1024 / 1024)}MB です`);
+      }
+
+      const name = String(file.name || '').toLowerCase();
+      const type = String(file.type || '').toLowerCase();
+      const looksLikeJson = name.endsWith('.json') || type.includes('json');
+      if (!looksLikeJson) {
+        throw new Error('JSONファイル（.json）を選択してください');
+      }
+    }
+
+    async function parseJSONText(text, label) {
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        throw new Error(`${label}をJSONとして読み込めません。形式を確認してください`);
+      }
+    }
+
+    function normalizeFetchUrl(url, label = 'URL') {
+      const raw = String(url || '').trim();
+      if (!raw) throw new Error(`${label}を入力してください`);
+
+      let parsed;
+      try {
+        parsed = new URL(raw, window.location.href);
+      } catch (e) {
+        throw new Error(`${label}の形式が不正です`);
+      }
+
+      if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+        throw new Error(`${label}は http:// または https:// のURLを指定してください`);
+      }
+      if (window.location.protocol === 'https:' && parsed.protocol === 'http:') {
+        throw new Error('HTTPSで開いているページからHTTPのURLは読み込めない場合があります。https:// のURLを使用してください。');
+      }
+      return parsed.href;
+    }
+
+    async function fetchJSONWithTimeout(url, options = {}) {
+      const normalizedUrl = normalizeFetchUrl(url, options.label || 'URL');
+      const timeoutMs = options.timeoutMs || URL_FETCH_TIMEOUT_MS;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+      const headers = {
+        'Accept': 'application/json',
+        ...(options.headers || {})
+      };
+
+      let response;
+      try {
+        response = await fetch(normalizedUrl, {
+          method: options.method || 'GET',
+          headers,
+          body: options.body,
+          signal: controller.signal
+        });
+      } catch (e) {
+        if (e && e.name === 'AbortError') {
+          throw new Error(`URL読込がタイムアウトしました（${Math.round(timeoutMs / 1000)}秒）`);
+        }
+        throw e;
+      } finally {
+        clearTimeout(timeoutId);
+      }
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText || 'fetch failed'}`);
+
+      const contentType = response.headers.get('content-type') || '';
+      const normalizedType = contentType.toLowerCase();
+      const isJsonLike = !normalizedType || normalizedType.includes('application/json') || normalizedType.includes('+json') || normalizedType.includes('text/json');
+      if (!isJsonLike) {
+        throw new Error(`JSONではない可能性があるレスポンスです (Content-Type: ${contentType})`);
+      }
+
+      try {
+        return await response.json();
+      } catch (e) {
+        throw new Error('URLの内容をJSONとして読み込めません。形式を確認してください');
+      }
+    }
+
+    function buildServerAIRequest(source) {
+      const prompt = String(source.prompt || '').trim();
+      if (!prompt) throw new Error('AI生成サーバに送る指示を入力してください');
+      if (prompt.length > MAX_AI_PROMPT_CHARS) {
+        throw new Error(`AI生成指示が長すぎます。上限は ${MAX_AI_PROMPT_CHARS} 文字です`);
+      }
+      return {
+        app: 'grammarMaster',
+        requestSchemaVersion: 1,
+        deckId: source.deckId || 'ai-generated',
+        prompt,
+        expectedOutput: {
+          schemaVersion: 1,
+          deckId: 'string',
+          deckTitle: 'string',
+          items: [
+            {
+              type: 'sort | choice',
+              questionJa: 'string',
+              questionEn: 'choiceのみ。空所は [   ]',
+              words: 'sortのみ。string[]',
+              correctOrder: 'sortのみ。string[]',
+              choices: 'choiceのみ。string[]',
+              correctAnswer: 'choiceのみ。string',
+              explanation: 'string'
+            }
+          ]
+        }
+      };
+    }
+
+    async function fetchServerGeneratedQuiz(source) {
+      if (typeof source.endpoint !== 'string' || !source.endpoint.trim()) {
+        throw new Error('AI生成サーバURLを入力してください');
+      }
+      const payload = buildServerAIRequest(source);
+      return await fetchJSONWithTimeout(source.endpoint.trim(), {
+        label: 'AI生成サーバURL',
+        method: 'POST',
+        timeoutMs: AI_GENERATION_TIMEOUT_MS,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    async function loadQuizFromSource(source) {
+      if (!source || typeof source !== 'object') {
+        throw new Error('source が指定されていません');
+      }
+
+      let raw;
+      switch (source.type) {
+        case 'inline':
+          raw = source.data;
+          break;
+
+        case 'file':
+          validateFileSource(source.file);
+          raw = await parseJSONText(await source.file.text(), '選択されたファイル');
+          break;
+
+        case 'url': {
+          if (typeof source.url !== 'string' || !source.url.trim()) {
+            throw new Error('url source には URL が必要です');
+          }
+          raw = await fetchJSONWithTimeout(source.url.trim());
+          break;
+        }
+
+        case 'serverAi': {
+          // ブラウザからAI APIを直接叩かない。Cloud Functions等の自前サーバが
+          // AI生成・APIキー管理を行い、クライアントは返ってきたJSONだけを検証する。
+          raw = await fetchServerGeneratedQuiz(source);
+          break;
+        }
+
+        case 'localStorage': {
+          if (typeof source.key !== 'string' || !source.key.trim()) {
+            throw new Error('localStorage source には key が必要です');
+          }
+          raw = safeLoadJSON(source.key, []);
+          break;
+        }
+
+        default:
+          throw new Error(`未対応のデータソースです: ${source.type}`);
+      }
+
+      const report = validateQuiz(raw, { deckId: source.deckId || DEFAULT_DECK_ID });
+      report.rawData = raw;
+      report.sourceType = source.type;
+      return report;
+    }
+
+    function validateQuiz(raw, options = {}) {
+      const fallbackDeckId = sanitizeId(options.deckId || DEFAULT_DECK_ID) || DEFAULT_DECK_ID;
+      const source = unpackQuizSource(raw, fallbackDeckId);
+      const valid = [];
+      const errors = [...source.sourceErrors];
+      const warnings = [];
+      const messages = source.sourceErrors.map(text => ({ level: 'error', index: -1, text }));
+      const seenProgressKeys = new Set();
+
+      source.items.forEach((item, index) => {
+        const q = normalizeQuestion(item, index, source.deckId);
+        const result = validateQuestion(q, index);
+
+        result.warnings.forEach(text => {
+          warnings.push(text);
+          messages.push({ level: 'warning', index, text });
+        });
+
+        if (!result.ok) {
+          result.errors.forEach(text => {
+            errors.push(text);
+            messages.push({ level: 'error', index, text });
+          });
+          return;
+        }
+
+        const progressKey = getProgressKey(q);
+        if (seenProgressKeys.has(progressKey)) {
+          const duplicateText = q._idGenerated
+            ? `#${index + 1}: 同一内容から生成されたIDがすでに存在するため除外しました (${progressKey})`
+            : `#${index + 1}: 同一IDの問題がすでに存在するため除外しました (${progressKey})`;
+          errors.push(duplicateText);
+          messages.push({ level: 'error', index, text: duplicateText });
+          return;
+        }
+        seenProgressKeys.add(progressKey);
+
+        delete q._idGenerated;
+        delete q._sourceIndex;
+        valid.push(q);
+      });
+
+      return {
+        valid,
+        errors,
+        warnings,
+        messages,
+        excludedCount: source.items.length - valid.length,
+        totalCount: source.items.length,
+        deckId: source.deckId,
+        deckTitle: source.deckTitle
+      };
+    }
+
+    function renderSimpleReport(kind, message, details = []) {
+      const box = document.getElementById('data-report');
+      if (!box) return;
+      box.innerHTML = '';
+      box.className = 'data-report';
+      if (kind) box.classList.add(kind);
+
+      const main = document.createElement('div');
+      main.textContent = message;
+      box.appendChild(main);
+
+      if (details.length > 0) {
+        const detailBox = document.createElement('details');
+        const summary = document.createElement('summary');
+        summary.textContent = `詳細（${details.length}件）`;
+        const pre = document.createElement('pre');
+        const shown = details.slice(0, 50);
+        pre.textContent = shown.join('\n') + (details.length > shown.length ? `\n...ほか ${details.length - shown.length} 件` : '');
+        detailBox.appendChild(summary);
+        detailBox.appendChild(pre);
+        box.appendChild(detailBox);
+      }
+
+      box.classList.remove('hidden');
+    }
+
+    function renderDataReport(report) {
+      const title = report.deckTitle ? `${report.deckTitle}：` : '';
+      let kind = '';
+      let message;
+
+      if (report.valid.length === 0) {
+        kind = 'error';
+        if (report.sourceType === 'serverAi') {
+          message = `${title}有効な問題が生成されませんでした。指示を具体的にして再試行してください。`;
+        } else {
+          message = `${title}有効な問題がありません。データ形式を確認してください。`;
+        }
+      } else if (report.excludedCount > 0 || report.warnings.length > 0) {
+        kind = 'warn';
+        message = `${title}${report.valid.length}問を読み込みました。${report.excludedCount}問は形式不備のため除外されました。`;
+      } else {
+        message = `${title}${report.valid.length}問を読み込みました。`;
+      }
+
+      const detailItems = (Array.isArray(report.messages) && report.messages.length > 0)
+        ? report.messages.map(item => item.text)
+        : [...report.errors, ...report.warnings];
+      renderSimpleReport(kind, message, detailItems);
+    }
+
+    function setStartButton(text, disabled) {
+      const btn = document.getElementById('dash-start-btn');
+      if (!btn) return;
+      btn.innerText = text;
+      btn.disabled = !!disabled;
+    }
+
+    function showLoadingState(message = '問題データを読み込み中です。') {
+      renderSimpleReport('loading', message);
+      document.getElementById('dash-todays-count').innerText = '-';
+      document.getElementById('dash-streak').innerText = '-';
+      setStartButton('読み込み中...', true);
+    }
+
+    function showErrorState(message, details = []) {
+      QUIZ = [];
+      sessionMasterList = [];
+      document.getElementById('dash-todays-count').innerText = 0;
+      document.getElementById('dash-streak').innerText = computeStreak(getActivity());
+      renderHeatmap();
+      renderSimpleReport('error', message, details);
+      setStartButton('読み込みに失敗しました', true);
+      updateDeckControls();
+    }
+
+    // ----------------------------------------------------
+    // デッキ管理（JSONインポート・保存済みデッキ）
+    // ----------------------------------------------------
+    function normalizeDeckForStorage(raw, report) {
+      if (raw && typeof raw === 'object' && !Array.isArray(raw) && Array.isArray(raw.items)) {
+        return raw;
+      }
+      return {
+        schemaVersion: 1,
+        deckId: report.deckId || DEFAULT_DECK_ID,
+        deckTitle: report.deckTitle || 'Imported Deck',
+        items: Array.isArray(raw) ? raw : []
+      };
+    }
+
+    function saveCurrentDeck(raw, report) {
+      const deck = normalizeDeckForStorage(raw, report);
+      return safeSaveJSON(CURRENT_DECK_KEY, deck);
+    }
+
+    function makeReusableSource(source, report) {
+      if ((source.type === 'file' || source.type === 'url' || source.type === 'serverAi') && source.persistAsCurrentDeck) {
+        return { type: 'localStorage', key: CURRENT_DECK_KEY, deckId: report.deckId || DEFAULT_DECK_ID };
+      }
+      if (source.type === 'file') {
+        return currentSource; // Fileオブジェクトは永続的な再読込元にしない
+      }
+      if (source.type === 'localStorage') {
+        return { type: 'localStorage', key: source.key || CURRENT_DECK_KEY, deckId: report.deckId || source.deckId || DEFAULT_DECK_ID };
+      }
+      if (source.type === 'url') {
+        return { type: 'url', url: source.url, deckId: report.deckId || source.deckId || DEFAULT_DECK_ID };
+      }
+      if (source.type === 'inline') return DEFAULT_SOURCE;
+      return { ...source };
+    }
+
+    function hasSavedDeck() {
+      return !!localStorage.getItem(CURRENT_DECK_KEY);
+    }
+
+    function getSourceLabel(source) {
+      if (!source) return '不明';
+      if (source.type === 'inline') return '既定デッキ';
+      if (source.type === 'localStorage') return '保存済みデッキ';
+      if (source.type === 'file') return 'JSONファイル';
+      if (source.type === 'url') return `URL: ${source.url || ''}`;
+      if (source.type === 'serverAi') return 'AI生成サーバ';
+      return source.type || '不明';
+    }
+
+    function updateDeckControls() {
+      const loadBtn = document.getElementById('load-saved-deck-btn');
+      const deleteBtn = document.getElementById('delete-saved-deck-btn');
+      const status = document.getElementById('deck-status');
+      const saved = hasSavedDeck();
+      if (loadBtn) loadBtn.disabled = !saved;
+      if (deleteBtn) deleteBtn.disabled = !saved;
+      if (status) {
+        const deckName = quizValidationReport.deckTitle || quizValidationReport.deckId || DEFAULT_DECK_ID;
+        status.textContent = `現在のデッキ: ${deckName} / ソース: ${getSourceLabel(currentSource)} / 有効問題: ${QUIZ.length}問`;
+      }
+    }
+
+    async function handleDeckFileSelected(event) {
+      const input = event.target;
+      const file = input && input.files && input.files[0];
+      if (!file) return;
+
+      await initApp({
+        type: 'file',
+        file,
+        deckId: 'imported',
+        persistAsCurrentDeck: true
+      });
+
+      // 同じファイルを続けて選んでも change が発火するようにリセット
+      input.value = '';
+    }
+
+
+    async function loadUrlDeck() {
+      const input = document.getElementById('deck-url-input');
+      const url = input ? input.value.trim() : '';
+      if (!url) {
+        renderSimpleReport('error', 'JSONデッキのURLを入力してください。');
+        return;
+      }
+
+      await initApp({
+        type: 'url',
+        url,
+        deckId: 'url-import',
+        persistAsCurrentDeck: true
+      });
+    }
+
+    async function loadServerGeneratedDeck() {
+      const endpointInput = document.getElementById('ai-endpoint-input');
+      const promptInput = document.getElementById('ai-prompt-input');
+      const endpoint = endpointInput ? endpointInput.value.trim() : '';
+      const prompt = promptInput ? promptInput.value.trim() : '';
+
+      if (!endpoint) {
+        renderSimpleReport('error', 'AI生成サーバURLを入力してください。');
+        return;
+      }
+      if (!prompt) {
+        renderSimpleReport('error', 'AI生成サーバに送る指示を入力してください。');
+        return;
+      }
+
+      await initApp({
+        type: 'serverAi',
+        endpoint,
+        prompt,
+        deckId: 'ai-generated',
+        persistAsCurrentDeck: true
+      });
+    }
+
+    function makeBackupPayload() {
+      return {
+        schemaVersion: BACKUP_SCHEMA_VERSION,
+        app: 'grammarMaster',
+        exportedAt: new Date().toISOString(),
+        data: {
+          progress: loadStoredJSONOrNull(STORAGE_KEY) || {},
+          activity: loadStoredJSONOrNull(ACTIVITY_KEY) || {},
+          currentDeck: loadStoredJSONOrNull(CURRENT_DECK_KEY),
+          activeSource: loadStoredJSONOrNull(ACTIVE_SOURCE_KEY)
+        }
+      };
+    }
+
+    function downloadJSON(filename, data) {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function exportBackup() {
+      const stamp = dateKey(new Date()).replaceAll('-', '');
+      downloadJSON(`grammar-master-backup-${stamp}.json`, makeBackupPayload());
+      renderSimpleReport('', 'バックアップJSONを書き出しました。');
+    }
+
+    function validateBackupPayload(payload) {
+      if (!payload || typeof payload !== 'object') throw new Error('バックアップデータがオブジェクトではありません');
+      if (payload.app !== 'grammarMaster') throw new Error('Grammar Master用バックアップではありません');
+      if (payload.schemaVersion !== BACKUP_SCHEMA_VERSION) throw new Error(`未対応のバックアップ形式です: schemaVersion ${payload.schemaVersion}`);
+      if (!payload.data || typeof payload.data !== 'object') throw new Error('バックアップ内の data が不正です');
+      return payload.data;
+    }
+
+    function restoreJSONKey(key, value) {
+      if (value === null || value === undefined) {
+        localStorage.removeItem(key);
+        return true;
+      }
+      if (typeof value !== 'object') throw new Error(`${key} の復元データが不正です`);
+      return safeSaveJSON(key, value);
+    }
+
+    async function handleBackupFileSelected(event) {
+      const input = event.target;
+      const file = input && input.files && input.files[0];
+      if (!file) return;
+
+      try {
+        if (file.size > MAX_BACKUP_FILE_SIZE) {
+          throw new Error(`バックアップファイルが大きすぎます。上限は ${Math.round(MAX_BACKUP_FILE_SIZE / 1024 / 1024)}MB です`);
+        }
+        const data = validateBackupPayload(await parseJSONText(await file.text(), 'バックアップファイル'));
+        const ok = confirm(`現在の学習進捗・学習履歴・保存済みデッキ・前回使用デッキ設定をバックアップ内容で上書きします。よろしいですか？
+
+現在の状態を残したい場合は、先に「バックアップを書き出す」を実行してください。`);
+        if (!ok) return;
+
+        restoreJSONKey(STORAGE_KEY, data.progress || {});
+        restoreJSONKey(ACTIVITY_KEY, data.activity || {});
+        restoreJSONKey(CURRENT_DECK_KEY, data.currentDeck || null);
+        restoreJSONKey(ACTIVE_SOURCE_KEY, data.activeSource || null);
+        location.reload();
+      } catch (e) {
+        console.error('バックアップ復元に失敗しました。', e);
+        renderSimpleReport('error', 'バックアップ復元に失敗しました。', [String(e.message || e)]);
+      } finally {
+        input.value = '';
+      }
+    }
+
+    function loadSavedDeck() {
+      if (!hasSavedDeck()) {
+        renderSimpleReport('error', '保存済みデッキがありません。JSONファイルを読み込んでください。');
+        updateDeckControls();
+        return;
+      }
+      initApp({ type: 'localStorage', key: CURRENT_DECK_KEY, deckId: 'saved' });
+    }
+
+    function useDefaultDeck() {
+      initApp(DEFAULT_SOURCE);
+    }
+
+    function deleteSavedDeck() {
+      if (!hasSavedDeck()) {
+        updateDeckControls();
+        return;
+      }
+      const ok = confirm('保存済みデッキを削除し、既定デッキに戻しますか？\n学習進捗データは削除されません。');
+      if (!ok) return;
+      localStorage.removeItem(CURRENT_DECK_KEY);
+      initApp(DEFAULT_SOURCE);
+    }
+
+    // ----------------------------------------------------
+    // セッション状態
+    // ----------------------------------------------------
+    let sessionMasterList = [];  // 今日の対象（initApp時点の due カード集合）。件数表示・ゲームオーバー再開の基準。不変。
+    let sessionQueue = [];       // 実際に処理する生きたキュー。要素は { q, lapses }
     let hp = 3; let combo = 0;
     let currentQuestion = null;
-    let selectedWords = []; let remainingWords = []; let mistakeCount = 0;
-    let timerInterval; let autoAdvanceTimer; let timeLimit = 15000; let timeLeft = 15000;
-    let currentSm2Score = 3; 
+    let selectedWords = []; let remainingWords = [];
+    let timerFrameId = null; let timerStartTime = 0; let autoAdvanceTimer;
+    let timeLimit = 15000; let timeLeft = 15000;
+    let currentSm2Score = 3;
+    let currentNextReviewDays = null;
+    let isAnswerLocked = false; 
 
     // ----------------------------------------------------
     // アプリ起動・ダッシュボード構築
     // ----------------------------------------------------
-    function initApp() {
-      const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-      const now = new Date().getTime();
+    async function initApp(source = currentSource) {
+      const loadingMessage = source && source.type === 'serverAi'
+        ? 'AI生成サーバに問い合わせています。生成と検証には時間がかかる場合があります。'
+        : '問題データを読み込み中です。';
+      showLoadingState(loadingMessage);
 
-      // 今日のタスク抽出
-      todaysDeck = quizData.filter(q => {
-        const record = savedData[q.id];
-        return (!record || record.nextReviewTime <= now);
+      try {
+        quizValidationReport = await loadQuizFromSource(source);
+      } catch (e) {
+        console.error('問題データの読み込みに失敗しました。', e);
+        showErrorState('問題データの読み込みに失敗しました。', [String(e.message || e)]);
+        return;
+      }
+
+      QUIZ = quizValidationReport.valid;
+
+      // 有効問題が1問以上ある場合だけ、現在のソースを更新する。
+      // 読込失敗・全件不正のデータで直前の正常ソースを上書きしないため。
+      if (QUIZ.length > 0) {
+        if ((source.type === 'file' || source.type === 'url' || source.type === 'serverAi') && source.persistAsCurrentDeck) {
+          const saved = saveCurrentDeck(quizValidationReport.rawData, quizValidationReport);
+          if (saved) {
+            currentSource = { type: 'localStorage', key: CURRENT_DECK_KEY, deckId: quizValidationReport.deckId || 'imported' };
+            saveActiveSource(currentSource);
+          }
+        } else {
+          currentSource = makeReusableSource(source, quizValidationReport);
+          saveActiveSource(currentSource);
+        }
+      }
+
+      renderDataReport(quizValidationReport);
+
+      const savedData = safeLoadJSON(STORAGE_KEY);
+      const now = Date.now();
+
+      // 今日のタスク抽出（initApp時点の due カード集合をマスターリストに固定）
+      // 進捗キーは deckId::cardId 形式。既存利用者なしのため旧キー互換は持たない。
+      sessionMasterList = QUIZ.filter(q => {
+        const record = savedData[getProgressKey(q)];
+        return (!record || !record.nextReviewTime || record.nextReviewTime <= now);
       });
 
-      // ダッシュボード更新
-      document.getElementById('dash-todays-count').innerText = todaysDeck.length;
-      renderDummyHeatmap();
+      // ダッシュボード更新（件数はマスターリスト基準＝再出題で水増しされない）
+      const activity = getActivity();
+      document.getElementById('dash-todays-count').innerText = sessionMasterList.length;
+      document.getElementById('dash-streak').innerText = computeStreak(activity);
+      renderHeatmap();
 
-      if (todaysDeck.length === 0) {
-        document.getElementById('dash-start-btn').innerText = "今日のタスクは完了です";
-        document.getElementById('dash-start-btn').disabled = true;
+      if (QUIZ.length === 0) {
+        setStartButton('有効な問題がありません', true);
+      } else if (sessionMasterList.length === 0) {
+        setStartButton('今日のタスクは完了です', true);
+      } else {
+        setStartButton('今日の学習をスタート', false);
       }
+
+      updateDeckControls();
     }
 
-    // ダミーのヒートマップ描画
-    function renderDummyHeatmap() {
-      const grid = document.getElementById('heatmap-grid');
-      grid.innerHTML = '';
-      // 直近28日分を描画
-      for (let i = 0; i < 28; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'heat-cell';
-        const rand = Math.random();
-        if(rand > 0.9) cell.classList.add('lvl-4');
-        else if(rand > 0.7) cell.classList.add('lvl-3');
-        else if(rand > 0.5) cell.classList.add('lvl-2');
-        else if(rand > 0.3) cell.classList.add('lvl-1');
+    // 学習アクティビティ（日付 → その日のレビュー回数）
+    function dateKey(d) {
+      const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+    function getActivity() { return safeLoadJSON(ACTIVITY_KEY); }
+    function recordActivity() {                       // 採点1回ごとに当日のレビュー数を加算
+      const activity = getActivity(); const key = dateKey(new Date());
+      activity[key] = (activity[key] || 0) + 1;
+      safeSaveJSON(ACTIVITY_KEY, activity);
+    }
+    // 今日（未学習なら昨日）から遡って連続学習日数を数える
+    function computeStreak(activity) {
+      let streak = 0; const d = new Date();
+      if (!activity[dateKey(d)]) d.setDate(d.getDate() - 1); // 今日まだ学習していなければ昨日から起算
+      while (activity[dateKey(d)]) { streak++; d.setDate(d.getDate() - 1); }
+      return streak;
+    }
+    // 直近28日のヒートマップを実データで描画
+    function renderHeatmap() {
+      const grid = document.getElementById('heatmap-grid'); const activity = getActivity();
+      grid.innerHTML = ''; const today = new Date();
+      for (let i = 27; i >= 0; i--) {                 // 古い順 → 今日が最後
+        const d = new Date(today); d.setDate(today.getDate() - i);
+        const key = dateKey(d); const count = activity[key] || 0;
+        const cell = document.createElement('div'); cell.className = 'heat-cell';
+        if (count >= 10) cell.classList.add('lvl-4');
+        else if (count >= 6) cell.classList.add('lvl-3');
+        else if (count >= 3) cell.classList.add('lvl-2');
+        else if (count >= 1) cell.classList.add('lvl-1');
+        cell.title = `${key}: ${count} 回`;
         grid.appendChild(cell);
       }
     }
 
+    // マスターリストから生きたキューを生成（lapses をリセット）
+    function buildSessionQueue() {
+      sessionQueue = sessionMasterList.map(q => ({ q, lapses: 0 }));
+    }
+
     // 「学習をスタート」ボタン押下時
     function startDailySession() {
+      buildSessionQueue();
+      if (sessionQueue.length === 0) {
+        const startBtn = document.getElementById('dash-start-btn');
+        startBtn.innerText = "今日のタスクは完了です";
+        startBtn.disabled = true;
+        return;
+      }
+
       document.getElementById('dashboard-screen').style.display = 'none';
+      document.getElementById('all-clear-screen').style.display = 'none';
       document.getElementById('game-screen').style.display = 'flex';
-      currentQuestionIndex = 0;
+      hp = 3; combo = 0;
       updateHeader();
       loadQuestion();
     }
@@ -349,18 +1431,60 @@
     // ----------------------------------------------------
     // ゲーム進行ロジック
     // ----------------------------------------------------
+    function cancelTimer() {
+      if (timerFrameId !== null) {
+        cancelAnimationFrame(timerFrameId);
+        timerFrameId = null;
+      }
+    }
+
+    function resetResultUI() {
+      clearTimeout(autoAdvanceTimer);
+      autoAdvanceTimer = null;
+      cancelTimer();
+
+      const modal = document.getElementById('result-modal');
+      const toast = document.getElementById('correct-toast');
+      const reveal = document.getElementById('correct-reveal');
+      const progressBar = document.getElementById('toast-progress-bar');
+
+      modal.style.display = 'none';
+      toast.classList.add('hidden');
+      reveal.style.display = 'none';
+      reveal.innerText = '';
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '100%';
+    }
+
+    function getTimeLimitForQuestion(question) {
+      if (question.type === 'sort') {
+        const wordCount = Array.isArray(question.words) ? question.words.length : 0;
+        return Math.min(SORT_MAX_TIME, SORT_BASE_TIME + wordCount * SORT_TIME_PER_WORD);
+      }
+      return CHOICE_TIME_LIMIT;
+    }
+
     function loadQuestion() {
-      currentQuestion = todaysDeck[currentQuestionIndex];
-      mistakeCount = 0;
-      timeLimit = (currentQuestion.type === "sort") ? 3000 + (currentQuestion.words.length * 2000) : 15000;
+      resetResultUI();
+
+      if (sessionQueue.length === 0) {
+        document.getElementById('game-screen').style.display = 'none';
+        document.getElementById('all-clear-screen').style.display = 'flex';
+        return;
+      }
+
+      currentQuestion = sessionQueue[0].q;   // 先頭をピーク（取り出しは採点後に nextQuestion で実施）
+      currentNextReviewDays = null;
+      isAnswerLocked = false;
+      timeLimit = getTimeLimitForQuestion(currentQuestion);
       timeLeft = timeLimit;
       
-      document.getElementById('question-text').innerText = currentQuestion.questionJa;
+      document.getElementById('question-text').innerText = currentQuestion.questionJa || '';
 
       if (currentQuestion.type === "sort") {
         document.getElementById('mode-sort').style.display = 'flex';
         document.getElementById('mode-choice').style.display = 'none';
-        remainingWords = [...currentQuestion.words].sort(() => Math.random() - 0.5);
+        remainingWords = shuffleWordsForSort(currentQuestion);
         selectedWords = []; renderSortBoard();
       } else {
         document.getElementById('mode-sort').style.display = 'none';
@@ -371,20 +1495,39 @@
     }
 
     function startTimer() {
-      clearInterval(timerInterval);
+      cancelTimer();
       const timerBar = document.getElementById('timer-bar');
-      timerInterval = setInterval(() => {
-        timeLeft -= 50; 
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval); timeLeft = 0; timerBar.style.width = "0%";
-          handleTimeUp(); return;
+      timerStartTime = performance.now();
+      timeLeft = timeLimit;
+      timerBar.style.width = "100%";
+      timerBar.style.backgroundColor = "var(--correct)";
+
+      function tick(now) {
+        if (isAnswerLocked) {
+          timerFrameId = null;
+          return;
         }
+
+        const elapsed = now - timerStartTime;
+        timeLeft = Math.max(0, timeLimit - elapsed);
         const percentage = (timeLeft / timeLimit) * 100;
+
         timerBar.style.width = percentage + "%";
         if (percentage > 50) timerBar.style.backgroundColor = "var(--correct)";
         else if (percentage > 20) timerBar.style.backgroundColor = "var(--combo)";
         else timerBar.style.backgroundColor = "var(--wrong)";
-      }, 50);
+
+        if (timeLeft <= 0) {
+          timerFrameId = null;
+          timerBar.style.width = "0%";
+          handleTimeUp();
+          return;
+        }
+
+        timerFrameId = requestAnimationFrame(tick);
+      }
+
+      timerFrameId = requestAnimationFrame(tick);
     }
 
     // Sort処理
@@ -414,110 +1557,227 @@
     function undoLastWord() { if (selectedWords.length > 0) { remainingWords.push(selectedWords.pop()); renderSortBoard(); } }
     function resetSort() { if (selectedWords.length > 0) { remainingWords = remainingWords.concat(selectedWords); selectedWords = []; renderSortBoard(); } }
     function checkSortAnswer() {
+      if (isAnswerLocked) return;
       if (selectedWords.join(' ') === currentQuestion.correctOrder.join(' ')) handleCorrect();
-      else {
-        mistakeCount++; handleMistake();
-        setTimeout(() => { remainingWords = [...currentQuestion.words].sort(() => Math.random() - 0.5); selectedWords = []; renderSortBoard(); }, 800);
-      }
+      else handleFail('wrong');
     }
 
     // Choice処理
     function renderChoiceBoard() {
       const sentenceDiv = document.getElementById('choice-sentence'); const grid = document.getElementById('choice-grid');
-      sentenceDiv.innerHTML = currentQuestion.questionEn.replace('[   ]', '<span class="blank"></span>');
+      renderSentenceWithBlank(sentenceDiv, currentQuestion.questionEn);
       grid.innerHTML = '';
       currentQuestion.choices.forEach(choice => {
         const btn = document.createElement('button'); btn.className = 'choice-btn'; btn.innerText = choice;
         btn.onclick = () => checkChoiceAnswer(choice); grid.appendChild(btn);
       });
     }
-    function checkChoiceAnswer(selected) { if (selected === currentQuestion.correctAnswer) handleCorrect(); else { mistakeCount++; handleMistake(); } }
+    function checkChoiceAnswer(selected) {
+      if (isAnswerLocked) return;
+      if (selected === currentQuestion.correctAnswer) handleCorrect();
+      else handleFail('wrong');
+    }
 
-    // 評価・保存
+    // 評価・保存（SM-2：easeFactor でカードごとに間隔を伸縮。セッションをまたぐスケジュールを書く）
     function calculateAndSaveProgress(score) {
-      const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-      let record = savedData[currentQuestion.id] || { interval: 0, repetitions: 0 };
-      let nextIntervalDays = 0;
+      const savedData = safeLoadJSON(STORAGE_KEY);
+      const progressKey = getProgressKey(currentQuestion);
+      let record = savedData[progressKey] || { interval: 0, repetitions: 0, easeFactor: 2.5 };
+      if (typeof record !== 'object' || record === null) record = { interval: 0, repetitions: 0, easeFactor: 2.5 };
+      record.easeFactor = Number.isFinite(Number(record.easeFactor)) ? Number(record.easeFactor) : 2.5; // 旧データの移行
+      record.interval = Number.isFinite(Number(record.interval)) ? Math.max(0, Math.round(Number(record.interval))) : 0;
+      record.repetitions = Number.isFinite(Number(record.repetitions)) ? Math.max(0, Math.floor(Number(record.repetitions))) : 0;
 
+      // アプリの 1–4 評価を SM-2 の品質 q(0–5) へ対応づける
+      // 1:Re-learn→2 / 2:Hard→3 / 3:Good→4 / 4:Easy→5
+      const q = { 1: 2, 2: 3, 3: 4, 4: 5 }[score];
+
+      let nextIntervalDays;
       if (score >= 3) {
-        if (record.repetitions === 0) nextIntervalDays = (score === 4) ? 3 : 1;
-        else nextIntervalDays = Math.max(1, Math.round(record.interval * ((score === 4) ? 2 : 1.5)));
+        // Good / Easy：通常のSM-2成功
+        if (record.repetitions === 0)      nextIntervalDays = 1;   // 1回目：固定シード
+        else if (record.repetitions === 1) nextIntervalDays = 6;   // 2回目：固定シード（SM-2準拠）
+        else nextIntervalDays = Math.max(1, Math.round(record.interval * record.easeFactor)); // 3回目以降：EFで伸長
+        record.repetitions += 1;
+      } else if (score === 2) {
+        // Hard：合格扱い。repetitions は進めるが、間隔は Good より短くする。
+        // 連続Hardで1日のまま停滞しないよう、2回目以降は最低でも interval + 1 を保証する。
+        if (record.repetitions === 0) nextIntervalDays = 1;
+        else {
+          const grownByFactor = Math.round(record.interval * HARD_FACTOR);
+          nextIntervalDays = Math.max(1, record.interval + 1, grownByFactor);
+        }
         record.repetitions += 1;
       } else {
-        record.repetitions = 0; nextIntervalDays = 0;
+        // Re-learn（失敗）：連続成功回数をリセットし、保存上も「今すぐ due」にする
+        // これにより、失敗直後にリロードしても翌日まで消えず、今日中の再出題と整合する
+        record.repetitions = 0;
+        nextIntervalDays = 0;
       }
+
+      // EF 更新（毎回）：EF += 0.1 - (5-q)(0.08 + (5-q)·0.02)、下限 1.3
+      record.easeFactor += 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02);
+      if (record.easeFactor < 1.3) record.easeFactor = 1.3;
+
       record.interval = nextIntervalDays;
-      
-      const nextDate = new Date(); nextDate.setDate(nextDate.getDate() + nextIntervalDays);
-      record.nextReviewTime = nextDate.getTime();
-      savedData[currentQuestion.id] = record;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(savedData));
+      if (score === 1) {
+        record.nextReviewTime = Date.now();
+      } else {
+        const nextDate = new Date();
+        nextDate.setDate(nextDate.getDate() + nextIntervalDays);
+        record.nextReviewTime = nextDate.getTime();
+      }
+
+      savedData[progressKey] = record;
+      safeSaveJSON(STORAGE_KEY, savedData);
+      recordActivity();                                 // 学習アクティビティを記録
       return nextIntervalDays;
     }
 
-    function handleMistake() {
-      hp--; combo = 0; updateHeader();
-      if (hp <= 0) { clearInterval(timerInterval); showModal(false, 1, "ゲームオーバー。再挑戦してください。"); }
+    // 採点確定時に保存を1回だけ行う。showModal は表示専用にする。
+    function finalizeAnswer(score) {
+      if (currentNextReviewDays !== null) return currentNextReviewDays;
+      currentNextReviewDays = calculateAndSaveProgress(score);
+      return currentNextReviewDays;
     }
-    function handleTimeUp() { combo = 0; mistakeCount++; updateHeader(); currentSm2Score = 1; showModal(false, currentSm2Score, currentQuestion.explanation); }
+
+    // 不正解・時間切れを統一して扱う：1回の失敗で lapse 扱い、正解と解説を提示して次へ（#2(b)/#4/#5）
+    function handleFail(reason) {                 // reason: 'wrong' | 'timeout'
+      if (isAnswerLocked) return;
+      isAnswerLocked = true;
+      cancelTimer();
+      hp--; combo = 0; updateHeader();
+      currentSm2Score = 1;                        // SM-2に素直：失敗は grade 1（lapse）
+      const nextDays = finalizeAnswer(currentSm2Score);
+      const failTitle = (reason === 'timeout') ? "Time Up." : "Incorrect.";
+      showModal(false, currentSm2Score, currentQuestion.explanation, failTitle, nextDays);
+    }
+    function handleTimeUp() { handleFail('timeout'); }
+
+    // 不正解時に提示する正解文字列
+    function getCorrectAnswerText() {
+      return (currentQuestion.type === "sort")
+        ? currentQuestion.correctOrder.join(' ')
+        : currentQuestion.correctAnswer;
+    }
 
     function handleCorrect() {
-      clearInterval(timerInterval); combo++; updateHeader();
+      if (isAnswerLocked) return;
+      isAnswerLocked = true;
+      cancelTimer(); combo++; updateHeader();
       const timeRatio = timeLeft / timeLimit;
-      if (mistakeCount > 0) currentSm2Score = 2; else if (timeRatio > 0.6) currentSm2Score = 4; else currentSm2Score = 3;
+      // 解答速度で自動採点：速い=Easy / 普通=Good / 時間ギリギリ=Hard
+      if (timeRatio > 0.6) currentSm2Score = 4;
+      else if (timeRatio > 0.25) currentSm2Score = 3;
+      else currentSm2Score = 2;
 
       const toast = document.getElementById('correct-toast'); const progressBar = document.getElementById('toast-progress-bar');
       toast.classList.remove('hidden'); progressBar.style.transition = 'none'; progressBar.style.width = '100%';
-      setTimeout(() => { progressBar.style.transition = 'width 2.5s linear'; progressBar.style.width = '0%'; }, 50);
-      autoAdvanceTimer = setTimeout(() => { skipToNext(); }, 2500);
+      setTimeout(() => { progressBar.style.transition = `width ${AUTO_ADVANCE_MS}ms linear`; progressBar.style.width = '0%'; }, 50);
+      autoAdvanceTimer = setTimeout(() => { skipToNext(); }, AUTO_ADVANCE_MS);
     }
 
-    function skipToNext() { clearTimeout(autoAdvanceTimer); document.getElementById('correct-toast').classList.add('hidden'); calculateAndSaveProgress(currentSm2Score); nextQuestion(); }
-    function cancelAutoAdvance() { clearTimeout(autoAdvanceTimer); document.getElementById('correct-toast').classList.add('hidden'); showModal(true, currentSm2Score, currentQuestion.explanation); }
+    function skipToNext() {
+      const toast = document.getElementById('correct-toast');
+      if (toast.classList.contains('hidden')) return;   // 二重発火ガード（タップとタイマーの競合）
+      clearTimeout(autoAdvanceTimer); toast.classList.add('hidden');
+      finalizeAnswer(currentSm2Score);
+      nextQuestion();
+    }
+    // 折衷案：自動採点を Hard に上書きし、解説モーダルを表示（任意・ノンブロッキング）
+    function markHard() { currentSm2Score = 2; cancelAutoAdvance(); }
+    function cancelAutoAdvance() {
+      const toast = document.getElementById('correct-toast');
+      if (toast.classList.contains('hidden')) return;
+      clearTimeout(autoAdvanceTimer); toast.classList.add('hidden');
+      const nextDays = finalizeAnswer(currentSm2Score);
+      showModal(true, currentSm2Score, currentQuestion.explanation, null, nextDays);
+    }
 
     function updateHeader() {
       document.getElementById('hp-display').innerText = '❤️'.repeat(Math.max(0, hp));
       document.getElementById('combo-display').innerText = combo > 1 ? `🔥 ${combo}` : '';
     }
 
-    function showModal(isCorrect, sm2Score, explanation) {
+    function showModal(isCorrect, sm2Score, explanation, failTitle, nextDays) {
       const modal = document.getElementById('result-modal'); const title = document.getElementById('result-title');
       const badge = document.getElementById('sm2-badge'); const nextReviewBadge = document.getElementById('next-review-badge');
-      const text = document.getElementById('explanation-text');
-      modal.style.display = 'flex'; text.innerText = explanation;
+      const text = document.getElementById('explanation-text'); const reveal = document.getElementById('correct-reveal');
+      modal.style.display = 'flex'; text.innerText = explanation || '';
 
-      if (hp <= 0) {
-        title.innerText = "Game Over"; title.className = "result-title result-wrong";
-        badge.style.display = 'none'; nextReviewBadge.style.display = 'none';
-        document.querySelector('.next-btn').innerText = "リトライ"; return;
+      const isGameOver = hp <= 0;
+      document.querySelector('.next-btn').innerText = isGameOver ? "リトライ" : "次へ進む";
+
+      title.innerText = isGameOver ? "Game Over" : (isCorrect ? "Excellent." : (failTitle || "Incorrect."));
+      title.className = (isCorrect && !isGameOver) ? "result-title result-correct" : "result-title result-wrong";
+
+      // 不正解・時間切れ・ゲームオーバー時は正解を明示
+      if (isCorrect && !isGameOver) {
+        reveal.style.display = 'none';
+      } else {
+        reveal.style.display = 'block';
+        reveal.innerText = "正解: " + getCorrectAnswerText();
       }
 
-      title.innerText = isCorrect ? "Excellent." : "Time Up.";
-      title.className = isCorrect ? "result-title result-correct" : "result-title result-wrong";
-
-      const nextDays = calculateAndSaveProgress(sm2Score);
       badge.style.display = 'inline-block'; nextReviewBadge.style.display = 'inline-block';
       const scoreLabels = { 1: "Re-learn", 2: "Hard", 3: "Good", 4: "Easy" };
       badge.innerText = `評価: ${scoreLabels[sm2Score]}`;
-      nextReviewBadge.innerText = nextDays === 0 ? `次回復習: 今日/明日` : `次回復習: 約 ${nextDays} 日後`;
+      nextReviewBadge.innerText = (sm2Score >= 2) ? `次回復習: 約 ${nextDays} 日後` : `次回復習: 今日中に再出題`;
     }
 
+    // ----------------------------------------------------
+    // 出題キューの進行（セッション内再出題ロジックの中核）
+    // ----------------------------------------------------
     function nextQuestion() {
       document.getElementById('result-modal').style.display = 'none';
-      if (hp <= 0) { currentQuestionIndex = 0; hp = 3; combo = 0; loadQuestion(); } 
-      else {
-        currentQuestionIndex++;
-        if (currentQuestionIndex >= todaysDeck.length) {
-          document.getElementById('game-screen').style.display = 'none';
-          document.getElementById('all-clear-screen').style.display = 'flex';
-        } else { loadQuestion(); }
+
+      // ゲームオーバー：当日の対象セットを最初からやり直す
+      if (hp <= 0) {
+        hp = 3; combo = 0;
+        document.querySelector('.next-btn').innerText = "次へ進む"; // ラベルを戻す
+        buildSessionQueue();
+        updateHeader();
+        loadQuestion();
+        return;
+      }
+
+      // いま採点し終えたカード（キュー先頭）を取り出す
+      const finished = sessionQueue.shift();
+      if (!finished) {
+        loadQuestion();
+        return;
+      }
+
+      // 失敗（score 1 = 不正解/時間切れ）のみセッション内で再出題する。
+      // Hard(2) 以上は合格扱いで将来の復習にスケジュールされるため、当日の再出題はしない。
+      // 直前リピートを避けるため他カードを数枚挟み、lapses 上限で打ち切る（無限ループ防止）。
+      if (currentSm2Score === 1 && finished.lapses < MAX_SESSION_LAPSES) {
+        finished.lapses += 1;
+        const pos = Math.min(REINSERT_GAP, sessionQueue.length); // 末尾を超えない位置
+        sessionQueue.splice(pos, 0, finished);
+      }
+
+      // キューが空ならセッション完了
+      if (sessionQueue.length === 0) {
+        document.getElementById('game-screen').style.display = 'none';
+        document.getElementById('all-clear-screen').style.display = 'flex';
+      } else {
+        loadQuestion();
       }
     }
 
-    function clearSaveData() { localStorage.removeItem(STORAGE_KEY); location.reload(); }
+    function clearSaveData() {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem('grammarMaster_progress'); // 旧開発版の残データも検証時は同時に削除
+      localStorage.removeItem(ACTIVITY_KEY);
+      location.reload();
+    }
 
     // アプリ起動
-    initApp();
+    initApp(getInitialSource()).catch(e => {
+      console.error('初期化中に予期しないエラーが発生しました。', e);
+      showErrorState('初期化中に予期しないエラーが発生しました。', [String(e.message || e)]);
+    });
   </script>
 </body>
 </html>
