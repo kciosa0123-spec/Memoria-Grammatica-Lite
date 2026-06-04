@@ -455,4 +455,54 @@
     function showModal(isCorrect, sm2Score, explanation) {
       const modal = document.getElementById('result-modal');
       const title = document.getElementById('result-title');
-      const badge = document.getElementById('sm2
+      const badge = document.getElementById('sm2-badge');
+      const text = document.getElementById('explanation-text');
+      
+      modal.style.display = 'flex';
+      text.innerText = explanation;
+
+      if (hp <= 0) {
+        title.innerText = "Game Over 💀";
+        title.className = "result-title result-wrong";
+        badge.style.display = 'none';
+        document.querySelector('.next-btn').innerText = "リトライする";
+        return;
+      }
+
+      if (isCorrect) {
+        title.innerText = "正解！🎉";
+        title.className = "result-title result-correct";
+      } else {
+        title.innerText = "タイムアップ ⏱️";
+        title.className = "result-title result-wrong";
+      }
+
+      badge.style.display = 'inline-block';
+      const scoreLabels = { 1: "1 (再出題)", 2: "2 (難しい)", 3: "3 (普通)", 4: "4 (簡単/瞬殺)" };
+      badge.innerText = `内部評価: ${scoreLabels[sm2Score]}`;
+    }
+
+    function nextQuestion() {
+      document.getElementById('result-modal').style.display = 'none';
+      
+      if (hp <= 0) {
+        currentQuestionIndex = 0;
+        hp = 3;
+        combo = 0;
+      } else {
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= quizData.length) {
+          alert("全問クリアです！素晴らしい！🎉");
+          currentQuestionIndex = 0;
+          hp = 3;
+          combo = 0;
+        }
+      }
+      initGame();
+    }
+
+    // 起動
+    initGame();
+  </script>
+</body>
+</html>
