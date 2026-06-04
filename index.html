@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>文法マスター (モックアップ)</title>
+  <title>文法マスター - ゲーム型学習アプリ</title>
   <style>
     :root {
       --primary: #4A90E2;
@@ -27,6 +27,7 @@
       align-items: center;
       min-height: 100vh;
       color: var(--text-main);
+      overflow: hidden;
     }
 
     #app {
@@ -38,11 +39,10 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* ゲーミフィケーション・ヘッダー */
+    /* ヘッダー */
     header {
       display: flex;
       justify-content: space-between;
@@ -51,296 +51,43 @@
       font-size: 1.2rem;
       font-weight: bold;
     }
-
     .hp-hearts { color: var(--heart); letter-spacing: 2px; }
-    .combo-streak { color: var(--combo); animation: pop 0.3s ease-in-out; }
-    
-    @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
+    .combo-streak { color: var(--combo); transition: transform 0.2s; }
+    .combo-streak.pop { transform: scale(1.3); }
 
-    /* 制限時間バー（色と幅の動的変化） */
-    .timer-container {
-      width: 100%;
-      height: 10px;
-      background-color: #E0E0E0;
-    }
+    /* 制限時間バー */
+    .timer-container { width: 100%; height: 10px; background-color: #E0E0E0; }
     .timer-bar {
       height: 100%;
       width: 100%;
+      background-color: var(--correct);
       transform-origin: left;
-      /* モックアップ用のダミーアニメーション（10秒で減少） */
-      animation: timeGlow 10s linear infinite;
-    }
-    
-    @keyframes timeGlow {
-      0% {
-        transform: scaleX(1);
-        background-color: var(--correct); /* 開始時は緑 */
-      }
-      50% {
-        background-color: var(--combo); /* 残り半分でオレンジ */
-      }
-      100% {
-        transform: scaleX(0);
-        background-color: var(--wrong); /* ゼロで赤 */
-      }
+      transition: background-color 0.3s;
     }
 
-    /* 出題エリア */
-    main {
-      flex: 1;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .question-ja {
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 25px;
-      text-align: center;
-    }
+    /* メインエリア */
+    main { flex: 1; padding: 30px 20px; display: flex; flex-direction: column; }
+    .question-ja { font-size: 1.3rem; font-weight: bold; margin-bottom: 25px; text-align: center; }
 
     /* Sort (並び替え) モード */
     .sort-area { display: flex; flex-direction: column; gap: 30px; }
-    
     .answer-slots {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      min-height: 60px;
-      padding: 10px;
-      border-bottom: 2px dashed #CCC;
+      display: flex; flex-wrap: wrap; gap: 10px; min-height: 60px;
+      padding: 10px; border-bottom: 2px dashed #CCC; justify-content: center;
     }
-    
     .slot {
-      padding: 10px 15px;
-      background-color: #E8F0FE;
-      color: var(--primary);
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1.1rem;
+      padding: 10px 15px; background-color: #E8F0FE; color: var(--primary);
+      border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer;
     }
-    
-    .word-bank {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-    }
-    
+    .word-bank { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .word-block {
-      background-color: #FFF;
-      border: 2px solid #DDD;
-      border-bottom-width: 4px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.1s;
+      background-color: #FFF; border: 2px solid #DDD; border-bottom-width: 4px;
+      padding: 12px 20px; border-radius: 12px; font-size: 1.1rem; font-weight: bold;
+      cursor: pointer; user-select: none; transition: transform 0.1s;
     }
-    
-    .word-block:active {
-      transform: translateY(2px);
-      border-bottom-width: 2px;
-      margin-top: 2px;
-    }
+    .word-block:active { transform: translateY(2px); border-bottom-width: 2px; margin-top: 2px; }
 
     /* Choice (4択) モード */
-    .choice-area { display: none; flex-direction: column; gap: 30px; height: 100%; justify-content: center; }
-    
-    .sentence-blank {
-      font-size: 1.5rem;
-      text-align: center;
-      line-height: 1.5;
-    }
-    .blank {
-      display: inline-block;
-      width: 100px;
-      border-bottom: 2px solid var(--text-main);
-      margin: 0 5px;
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-    
-    .choice-btn {
-      background-color: #FFF;
-      border: 2px solid var(--primary);
-      border-bottom-width: 4px;
-      color: var(--primary);
-      padding: 20px 10px;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.1s, background-color 0.2s;
-    }
-
-    .choice-btn:active {
-      transform: translateY(2px);
-      border-bottom-width: 2px;
-    }
-
-    /* モックアップ用切り替えボタン */
-    .debug-toggle {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px;
-      border-radius: 50%;
-      background: #333;
-      color: #FFF;
-      border: none;
-      cursor: pointer;
-      opacity: 0.5;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="app">
-    <header>
-      <div class="hp-hearts">❤️❤️❤️</div>
-      <div class="combo-streak">🔥 3 COMBO!</div>
-      <div class="score-display">🌟 1200</div>
-    </header>
-
-    <div class="timer-container">
-      <div class="timer-bar"></div>
-    </div>
-
-    <main>
-      <div class="question-ja" id="question-text">
-        もし明日晴れたら、私たちはピクニックに行きます。
-      </div>
-
-      <div class="sort-area" id="mode-sort">
-        <div class="answer-slots">
-          <div class="slot">If</div>
-          <div class="slot">it</div>
-          <div class="slot">is</div>
-        </div>
-        <div class="word-bank">
-          <button class="word-block">sunny</button>
-          <button class="word-block">tomorrow,</button>
-          <button class="word-block">will go</button>
-          <button class="word-block">we</button>
-          <button class="word-block">on a picnic.</button>
-        </div>
-      </div>
-
-      <div class="choice-area" id="mode-choice">
-        <div class="sentence-blank">
-          If it <span class="blank"></span> sunny tomorrow, we will go on a picnic.
-        </div>
-        <div class="choice-grid">
-          <button class="choice-btn">will be</button>
-          <button class="choice-btn">is</button>
-          <button class="choice-btn">was</button>
-          <button class="choice-btn">be</button>
-        </div>
-      </div>
-    </main>
-
-    <button class="debug-toggle" onclick="toggleMode()">🔄</button>
-  </div>
-
-  <script>
-// クイズデータ
-const quizData = [
-  {
-    id: 1,
-    type: "sort",
-    questionJa: "もし明日晴れたら、私たちはピクニックに行きます。",
-    words: ["sunny", "tomorrow,", "will go", "we", "on a picnic.", "If", "it", "is"],
-    correctOrder: ["If", "it", "is", "sunny", "tomorrow,", "we", "will go", "on a picnic."]
-  }
-];
-
-let currentQuestion = quizData[0];
-let selectedWords = []; // ユーザーが選んだ単語の配列
-let remainingWords = [...currentQuestion.words]; // 下に残っている単語
-
-// 初期描画
-function renderSortMode() {
-  document.getElementById('question-text').innerText = currentQuestion.questionJa;
-  updateBoard();
-}
-
-// 画面の更新（解答スロットと単語バンクの再描画）
-function updateBoard() {
-  const answerSlots = document.querySelector('.answer-slots');
-  const wordBank = document.querySelector('.word-bank');
-  
-  answerSlots.innerHTML = '';
-  wordBank.innerHTML = '';
-
-  // 選択された単語を上のスロットに表示
-  selectedWords.forEach((word, index) => {
-    const slot = document.createElement('div');
-    slot.className = 'slot';
-    slot.innerText = word;
-    // タップで元に戻す
-    slot.onclick = () => removeWord(index);
-    answerSlots.appendChild(slot);
-  });
-
-  // 残っている単語を下に表示（シャッフル推奨ですが今回はそのまま）
-  remainingWords.forEach((word, index) => {
-    const btn = document.createElement('button');
-    btn.className = 'word-block';
-    btn.innerText = word;
-    // タップで選択
-    btn.onclick = () => selectWord(index);
-    wordBank.appendChild(btn);
-  });
-
-  // 全て選択されたら自動判定
-  if (remainingWords.length === 0) {
-    checkAnswer();
-  }
-}
-
-// 単語を選ぶ（下から上へ）
-function selectWord(index) {
-  const word = remainingWords.splice(index, 1)[0];
-  selectedWords.push(word);
-  updateBoard();
-}
-
-// 単語を戻す（上から下へ）
-function removeWord(index) {
-  const word = selectedWords.splice(index, 1)[0];
-  remainingWords.push(word);
-  updateBoard();
-}
-
-// 正誤判定
-function checkAnswer() {
-  const isCorrect = selectedWords.join(' ') === currentQuestion.correctOrder.join(' ');
-  
-  if (isCorrect) {
-    alert("正解！🎉\n(※ここにSM-2の自動評価と次の問題への遷移処理が入ります)");
-  } else {
-    alert("不正解...💔 ライフが減ります。");
-    // 間違えた場合はブロックを元の位置に戻す
-    remainingWords = [...currentQuestion.words];
-    selectedWords = [];
-    updateBoard();
-  }
-}
-
-// 起動
-renderSortMode();
-  </script>
-</body>
-</html>
+    .choice-area { display: none; flex-direction: column; gap: 30px; justify-content: center; flex: 1;}
+    .sentence-blank { font-size: 1.5rem; text-align: center; line-height: 1.5; }
+    .blank { display: inline-block; width: 80px; border-bottom: 2px solid var(--text-main);
