@@ -90,4 +90,388 @@
     /* Choice (4択) モード */
     .choice-area { display: none; flex-direction: column; gap: 30px; justify-content: center; flex: 1;}
     .sentence-blank { font-size: 1.5rem; text-align: center; line-height: 1.5; }
-    .blank { display: inline-block; width: 80px; border-bottom: 2px solid var(--text-main);
+    .blank { display: inline-block; width: 80px; border-bottom: 2px solid var(--text-main); margin: 0 5px; }
+    .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .choice-btn {
+      background-color: #FFF; border: 2px solid var(--primary); border-bottom-width: 4px;
+      color: var(--primary); padding: 20px 10px; border-radius: 12px;
+      font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: transform 0.1s;
+    }
+    .choice-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
+
+    /* 解説モーダル（リザルト画面） */
+    #result-modal {
+      display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8); flex-direction: column; justify-content: center;
+      align-items: center; padding: 20px; z-index: 10;
+    }
+    .modal-content {
+      background: #FFF; width: 100%; max-width: 400px; padding: 30px 20px;
+      border-radius: 16px; text-align: center;
+    }
+    .result-title { font-size: 2rem; font-weight: bold; margin-bottom: 10px; }
+    .result-correct { color: var(--correct); }
+    .result-wrong { color: var(--wrong); }
+    .explanation-text { font-size: 1.1rem; line-height: 1.6; margin: 20px 0; text-align: left; }
+    .sm2-badge {
+      display: inline-block; background: #eee; padding: 5px 10px;
+      border-radius: 20px; font-size: 0.9rem; color: #666; margin-bottom: 20px;
+    }
+    .next-btn {
+      background: var(--primary); color: #FFF; border: none; padding: 15px 30px;
+      font-size: 1.2rem; font-weight: bold; border-radius: 30px; cursor: pointer; width: 100%;
+    }
+
+    /* 非表示ユーティリティ */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <header>
+      <div class="hp-hearts" id="hp-display">❤️❤️❤️</div>
+      <div class="combo-streak" id="combo-display">0 COMBO</div>
+    </header>
+
+    <div class="timer-container">
+      <div class="timer-bar" id="timer-bar"></div>
+    </div>
+
+    <main>
+      <div class="question-ja" id="question-text"></div>
+
+      <div class="sort-area" id="mode-sort">
+        <div class="answer-slots" id="answer-slots"></div>
+        <div class="word-bank" id="word-bank"></div>
+      </div>
+
+      <div class="choice-area" id="mode-choice">
+        <div class="sentence-blank" id="choice-sentence"></div>
+        <div class="choice-grid" id="choice-grid"></div>
+      </div>
+    </main>
+
+    <div id="result-modal">
+      <div class="modal-content">
+        <div class="result-title" id="result-title">正解！🎉</div>
+        <div class="sm2-badge" id="sm2-badge">自動評価: 4 (簡単)</div>
+        <div class="explanation-text" id="explanation-text"></div>
+        <button class="next-btn" onclick="nextQuestion()">次の問題へ</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ----------------------------------------------------
+    // 1. クイズデータ
+    // ----------------------------------------------------
+    const quizData = [
+      {
+        id: 1,
+        type: "sort",
+        questionJa: "もし明日晴れたら、私たちはピクニックに行きます。",
+        words: ["sunny", "tomorrow,", "will go", "we", "on a picnic.", "If", "it", "is"],
+        correctOrder: ["If", "it", "is", "sunny", "tomorrow,", "we", "will go", "on a picnic."],
+        explanation: "時や条件を表す副詞節（If〜など）の中では、未来のことでも現在形（is）を使うのがルールです。"
+      },
+      {
+        id: 2,
+        type: "choice",
+        questionEn: "I am looking forward to [   ] you.",
+        questionJa: "正しい形を選びなさい。",
+        choices: ["see", "seeing", "saw", "be seen"],
+        correctAnswer: "seeing",
+        explanation: "look forward to の 'to' は前置詞です。前置詞の後ろには名詞相当語句が来るため、動名詞（-ing）が正解となります。"
+      },
+      {
+        id: 3,
+        type: "sort",
+        questionJa: "彼女は私が思っていたよりもずっと親切だった。",
+        words: ["much", "than", "I", "thought.", "kinder", "She", "was", "had"],
+        correctOrder: ["She", "was", "much", "kinder", "than", "I", "had", "thought."],
+        explanation: "「思っていた」のは「親切だった」という過去の時点よりもさらに前のことなので、過去完了形（had thought）を使います。"
+      }
+    ];
+
+    // ----------------------------------------------------
+    // 2. 状態管理変数
+    // ----------------------------------------------------
+    let currentQuestionIndex = 0;
+    let hp = 3;
+    let combo = 0;
+    
+    // 現在の問題のステータス
+    let currentQuestion = null;
+    let selectedWords = [];
+    let remainingWords = [];
+    let mistakeCount = 0;
+
+    // タイマー管理
+    let timerInterval;
+    const TIME_LIMIT = 15000; // 15秒
+    let timeLeft = TIME_LIMIT;
+
+    // ----------------------------------------------------
+    // 3. ゲーム初期化・進行ロジック
+    // ----------------------------------------------------
+    function initGame() {
+      updateHeader();
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      currentQuestion = quizData[currentQuestionIndex];
+      mistakeCount = 0;
+      timeLeft = TIME_LIMIT;
+      
+      document.getElementById('question-text').innerText = currentQuestion.questionJa;
+
+      if (currentQuestion.type === "sort") {
+        document.getElementById('mode-sort').style.display = 'flex';
+        document.getElementById('mode-choice').style.display = 'none';
+        
+        // 単語をシャッフルしてセット
+        remainingWords = [...currentQuestion.words].sort(() => Math.random() - 0.5);
+        selectedWords = [];
+        renderSortBoard();
+
+      } else if (currentQuestion.type === "choice") {
+        document.getElementById('mode-sort').style.display = 'none';
+        document.getElementById('mode-choice').style.display = 'flex';
+        
+        renderChoiceBoard();
+      }
+
+      startTimer();
+    }
+
+    // ----------------------------------------------------
+    // 4. タイマーロジック
+    // ----------------------------------------------------
+    function startTimer() {
+      clearInterval(timerInterval);
+      const timerBar = document.getElementById('timer-bar');
+      
+      timerInterval = setInterval(() => {
+        timeLeft -= 50; // 50msごとに更新
+        
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timeLeft = 0;
+          timerBar.style.width = "0%";
+          handleTimeUp();
+          return;
+        }
+
+        const percentage = (timeLeft / TIME_LIMIT) * 100;
+        timerBar.style.width = percentage + "%";
+
+        // 色の動的変化
+        if (percentage > 50) {
+          timerBar.style.backgroundColor = "var(--correct)";
+        } else if (percentage > 20) {
+          timerBar.style.backgroundColor = "var(--combo)";
+        } else {
+          timerBar.style.backgroundColor = "var(--wrong)";
+        }
+      }, 50);
+    }
+
+    // ----------------------------------------------------
+    // 5. Sort (並び替え) モードの描画と操作
+    // ----------------------------------------------------
+    function renderSortBoard() {
+      const answerSlots = document.getElementById('answer-slots');
+      const wordBank = document.getElementById('word-bank');
+      answerSlots.innerHTML = '';
+      wordBank.innerHTML = '';
+
+      // 上のスロット（選択済み）
+      selectedWords.forEach((word, index) => {
+        const slot = document.createElement('div');
+        slot.className = 'slot';
+        slot.innerText = word;
+        slot.onclick = () => {
+          remainingWords.push(selectedWords.splice(index, 1)[0]);
+          renderSortBoard();
+        };
+        answerSlots.appendChild(slot);
+      });
+
+      // 下のバンク（未選択）
+      remainingWords.forEach((word, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'word-block';
+        btn.innerText = word;
+        btn.onclick = () => {
+          selectedWords.push(remainingWords.splice(index, 1)[0]);
+          renderSortBoard();
+        };
+        wordBank.appendChild(btn);
+      });
+
+      // 全て選択されたら判定
+      if (remainingWords.length === 0 && selectedWords.length > 0) {
+        checkSortAnswer();
+      }
+    }
+
+    function checkSortAnswer() {
+      const isCorrect = selectedWords.join(' ') === currentQuestion.correctOrder.join(' ');
+      if (isCorrect) {
+        handleCorrect();
+      } else {
+        mistakeCount++;
+        handleMistake();
+        // 1秒後にブロックを元に戻す
+        setTimeout(() => {
+          remainingWords = [...currentQuestion.words].sort(() => Math.random() - 0.5);
+          selectedWords = [];
+          renderSortBoard();
+        }, 800);
+      }
+    }
+
+    // ----------------------------------------------------
+    // 6. Choice (4択) モードの描画と操作
+    // ----------------------------------------------------
+    function renderChoiceBoard() {
+      const sentenceDiv = document.getElementById('choice-sentence');
+      const grid = document.getElementById('choice-grid');
+      
+      // [   ] の部分を空欄デザインに置換
+      sentenceDiv.innerHTML = currentQuestion.questionEn.replace('[   ]', '<span class="blank"></span>');
+      grid.innerHTML = '';
+
+      currentQuestion.choices.forEach(choice => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.innerText = choice;
+        btn.onclick = () => checkChoiceAnswer(choice);
+        grid.appendChild(btn);
+      });
+    }
+
+    function checkChoiceAnswer(selected) {
+      if (selected === currentQuestion.correctAnswer) {
+        handleCorrect();
+      } else {
+        mistakeCount++;
+        handleMistake();
+      }
+    }
+
+    // ----------------------------------------------------
+    // 7. 判定と評価（SM-2算出）のロジック
+    // ----------------------------------------------------
+    function handleMistake() {
+      hp--;
+      combo = 0;
+      updateHeader();
+      
+      if (hp <= 0) {
+        clearInterval(timerInterval);
+        showModal(false, 1, "ゲームオーバー... 最初からやり直しましょう。");
+      } else {
+        // 画面を少し揺らすなどの視覚効果を入れるとより良くなります
+      }
+    }
+
+    function handleTimeUp() {
+      combo = 0;
+      mistakeCount++;
+      updateHeader();
+      showModal(false, 1, currentQuestion.explanation);
+    }
+
+    function handleCorrect() {
+      clearInterval(timerInterval);
+      combo++;
+      updateHeader();
+
+      // SM-2 自動評価アルゴリズム (1:忘れた, 2:難しい, 3:普通, 4:簡単)
+      let sm2Score = 0;
+      const timeRatio = timeLeft / TIME_LIMIT;
+
+      if (mistakeCount > 0) {
+        sm2Score = 2; // お手つき後の正解 = 難しい
+      } else if (timeRatio > 0.6) {
+        sm2Score = 4; // 60%以上の時間を残して即答 = 簡単
+      } else {
+        sm2Score = 3; // ギリギリで正解 = 普通
+      }
+
+      showModal(true, sm2Score, currentQuestion.explanation);
+    }
+
+    // ----------------------------------------------------
+    // 8. UI更新・モーダル表示
+    // ----------------------------------------------------
+    function updateHeader() {
+      document.getElementById('hp-display').innerText = '❤️'.repeat(Math.max(0, hp));
+      
+      const comboEl = document.getElementById('combo-display');
+      comboEl.innerText = combo > 1 ? `🔥 ${combo} COMBO!` : '';
+      
+      // ポップアニメーション
+      comboEl.classList.remove('pop');
+      void comboEl.offsetWidth; // reflow
+      comboEl.classList.add('pop');
+    }
+
+    function showModal(isCorrect, sm2Score, explanation) {
+      const modal = document.getElementById('result-modal');
+      const title = document.getElementById('result-title');
+      const badge = document.getElementById('sm2-badge');
+      const text = document.getElementById('explanation-text');
+      
+      modal.style.display = 'flex';
+      text.innerText = explanation;
+
+      if (hp <= 0) {
+        title.innerText = "Game Over 💀";
+        title.className = "result-title result-wrong";
+        badge.style.display = 'none';
+        document.querySelector('.next-btn').innerText = "リトライする";
+        return;
+      }
+
+      if (isCorrect) {
+        title.innerText = "正解！🎉";
+        title.className = "result-title result-correct";
+      } else {
+        title.innerText = "タイムアップ ⏱️";
+        title.className = "result-title result-wrong";
+      }
+
+      badge.style.display = 'inline-block';
+      const scoreLabels = { 1: "1 (再出題)", 2: "2 (難しい)", 3: "3 (普通)", 4: "4 (簡単/瞬殺)" };
+      badge.innerText = `内部評価: ${scoreLabels[sm2Score]}`;
+    }
+
+    function nextQuestion() {
+      document.getElementById('result-modal').style.display = 'none';
+      
+      if (hp <= 0) {
+        // ゲームオーバー時はリセット
+        currentQuestionIndex = 0;
+        hp = 3;
+        combo = 0;
+      } else {
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= quizData.length) {
+          alert("全問クリアです！素晴らしい！🎉");
+          currentQuestionIndex = 0;
+          hp = 3;
+          combo = 0;
+        }
+      }
+      initGame();
+    }
+
+    // 起動
+    initGame();
+  </script>
+</body>
+</html>
