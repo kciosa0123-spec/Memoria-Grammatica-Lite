@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>文法マスター (モックアップ)</title>
+  <style>
+    :root {
+      --primary: #4A90E2;
+      --bg-color: #F4F7F9;
+      --card-bg: #FFFFFF;
+      --text-main: #333333;
+      --correct: #2ECC71;
+      --wrong: #E74C3C;
+      --heart: #FF4757;
+      --combo: #FFA502;
+    }
+
+    * { box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--text-main);
+    }
+
+    #app {
+      width: 100%;
+      max-width: 600px;
+      height: 100vh;
+      max-height: 900px;
+      background-color: var(--card-bg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* ゲーミフィケーション・ヘッダー */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .hp-hearts { color: var(--heart); letter-spacing: 2px; }
+    .combo-streak { color: var(--combo); animation: pop 0.3s ease-in-out; }
+    
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* 制限時間バー */
+    .timer-container {
+      width: 100%;
+      height: 10px;
+      background-color: #E0E0E0;
+    }
+    .timer-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--correct) 0%, var(--combo) 50%, var(--wrong) 100%);
+      width: 100%;
+      /* モックアップ用のダミーアニメーション */
+      animation: shrink 10s linear infinite;
+      transform-origin: left;
+    }
+    @keyframes shrink {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(0); }
+    }
+
+    /* 出題エリア */
+    main {
+      flex: 1;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .question-ja {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* Sort (並び替え) モード */
+    .sort-area { display: flex; flex-direction: column; gap: 30px; }
+    
+    .answer-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      min-height: 60px;
+      padding: 10px;
+      border-bottom: 2px dashed #CCC;
+    }
+    
+    .slot {
+      padding: 10px 15px;
+      background-color: #E8F0FE;
+      color: var(--primary);
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .word-block {
+      background-color: #FFF;
+      border: 2px solid #DDD;
+      border-bottom-width: 4px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s;
+    }
+    
+    .word-block:active {
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+      margin-top: 2px;
+    }
+
+    /* Choice (4択) モード */
+    .choice-area { display: none; flex-direction: column; gap: 30px; height: 100%; justify-content: center; }
+    
+    .sentence-blank {
+      font-size: 1.5rem;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .blank {
+      display: inline-block;
+      width: 100px;
+      border-bottom: 2px solid var(--text-main);
+      margin: 0 5px;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    .choice-btn {
+      background-color: #FFF;
+      border: 2px solid var(--primary);
+      border-bottom-width: 4px;
+      color: var(--primary);
+      padding: 20px 10px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.1s, background-color 0.2s;
+    }
+
+    .choice-btn:active {
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+    }
+
+    /* モックアップ用切り替えボタン */
+    .debug-toggle {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px;
+      border-radius: 50%;
+      background: #333;
+      color: #FFF;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <header>
+      <div class="hp-hearts">❤️❤️❤️</div>
+      <div class="combo-streak">🔥 3 COMBO!</div>
+      <div class="score-display">🌟 1200</div>
+    </header>
+
+    <div class="timer-container">
+      <div class="timer-bar"></div>
+    </div>
+
+    <main>
+      <div class="question-ja" id="question-text">
+        もし明日晴れたら、私たちはピクニックに行きます。
+      </div>
+
+      <div class="sort-area" id="mode-sort">
+        <div class="answer-slots">
+          <div class="slot">If</div>
+          <div class="slot">it</div>
+          <div class="slot">is</div>
+          </div>
+        <div class="word-bank">
+          <button class="word-block">sunny</button>
+          <button class="word-block">tomorrow,</button>
+          <button class="word-block">will go</button>
+          <button class="word-block">we</button>
+          <button class="word-block">on a picnic.</button>
+        </div>
+      </div>
+
+      <div class="choice-area" id="mode-choice">
+        <div class="sentence-blank">
+          If it <span class="blank"></span> sunny tomorrow, we will go on a picnic.
+        </div>
+        <div class="choice-grid">
+          <button class="choice-btn">will be</button>
+          <button class="choice-btn">is</button>
+          <button class="choice-btn">was</button>
+          <button class="choice-btn">be</button>
+        </div>
+      </div>
+    </main>
+
+    <button class="debug-toggle" onclick="toggleMode()">🔄</button>
+  </div>
+
+  <script>
+    // UIモックアップ確認用のトグル処理
+    let isSortMode = true;
+    function toggleMode() {
+      isSortMode = !isSortMode;
+      const sortArea = document.getElementById('mode-sort');
+      const choiceArea = document.getElementById('mode-choice');
+      const qText = document.getElementById('question-text');
+
+      if (isSortMode) {
+        sortArea.style.display = 'flex';
+        choiceArea.style.display = 'none';
+        qText.innerText = "もし明日晴れたら、私たちはピクニックに行きます。";
+      } else {
+        sortArea.style.display = 'none';
+        choiceArea.style.display = 'flex';
+        qText.innerText = "正しい動詞の形を選びなさい。";
+      }
+    }
+  </script>
+</body>
+</html>
