@@ -255,24 +255,92 @@
   </div>
 
   <script>
-    // UIモックアップ確認用のトグル処理
-    let isSortMode = true;
-    function toggleMode() {
-      isSortMode = !isSortMode;
-      const sortArea = document.getElementById('mode-sort');
-      const choiceArea = document.getElementById('mode-choice');
-      const qText = document.getElementById('question-text');
+// クイズデータ
+const quizData = [
+  {
+    id: 1,
+    type: "sort",
+    questionJa: "もし明日晴れたら、私たちはピクニックに行きます。",
+    words: ["sunny", "tomorrow,", "will go", "we", "on a picnic.", "If", "it", "is"],
+    correctOrder: ["If", "it", "is", "sunny", "tomorrow,", "we", "will go", "on a picnic."]
+  }
+];
 
-      if (isSortMode) {
-        sortArea.style.display = 'flex';
-        choiceArea.style.display = 'none';
-        qText.innerText = "もし明日晴れたら、私たちはピクニックに行きます。";
-      } else {
-        sortArea.style.display = 'none';
-        choiceArea.style.display = 'flex';
-        qText.innerText = "正しい動詞の形を選びなさい。";
-      }
-    }
+let currentQuestion = quizData[0];
+let selectedWords = []; // ユーザーが選んだ単語の配列
+let remainingWords = [...currentQuestion.words]; // 下に残っている単語
+
+// 初期描画
+function renderSortMode() {
+  document.getElementById('question-text').innerText = currentQuestion.questionJa;
+  updateBoard();
+}
+
+// 画面の更新（解答スロットと単語バンクの再描画）
+function updateBoard() {
+  const answerSlots = document.querySelector('.answer-slots');
+  const wordBank = document.querySelector('.word-bank');
+  
+  answerSlots.innerHTML = '';
+  wordBank.innerHTML = '';
+
+  // 選択された単語を上のスロットに表示
+  selectedWords.forEach((word, index) => {
+    const slot = document.createElement('div');
+    slot.className = 'slot';
+    slot.innerText = word;
+    // タップで元に戻す
+    slot.onclick = () => removeWord(index);
+    answerSlots.appendChild(slot);
+  });
+
+  // 残っている単語を下に表示（シャッフル推奨ですが今回はそのまま）
+  remainingWords.forEach((word, index) => {
+    const btn = document.createElement('button');
+    btn.className = 'word-block';
+    btn.innerText = word;
+    // タップで選択
+    btn.onclick = () => selectWord(index);
+    wordBank.appendChild(btn);
+  });
+
+  // 全て選択されたら自動判定
+  if (remainingWords.length === 0) {
+    checkAnswer();
+  }
+}
+
+// 単語を選ぶ（下から上へ）
+function selectWord(index) {
+  const word = remainingWords.splice(index, 1)[0];
+  selectedWords.push(word);
+  updateBoard();
+}
+
+// 単語を戻す（上から下へ）
+function removeWord(index) {
+  const word = selectedWords.splice(index, 1)[0];
+  remainingWords.push(word);
+  updateBoard();
+}
+
+// 正誤判定
+function checkAnswer() {
+  const isCorrect = selectedWords.join(' ') === currentQuestion.correctOrder.join(' ');
+  
+  if (isCorrect) {
+    alert("正解！🎉\n(※ここにSM-2の自動評価と次の問題への遷移処理が入ります)");
+  } else {
+    alert("不正解...💔 ライフが減ります。");
+    // 間違えた場合はブロックを元の位置に戻す
+    remainingWords = [...currentQuestion.words];
+    selectedWords = [];
+    updateBoard();
+  }
+}
+
+// 起動
+renderSortMode();
   </script>
 </body>
 </html>
