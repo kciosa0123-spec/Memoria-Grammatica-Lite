@@ -1472,5 +1472,118 @@ const quizData = [
     "words": ["clear", "harms", "health", "is", "It", "our", "smoking", "that"],
     "correctOrder": ["It", "is", "clear", "that", "smoking", "harms", "our", "health"],
     "explanation": "【形式主語構文】It is clear that SV〜 で「（SV）であることは明らかだ」という構文です。筆者が事実関係や強い主張を述べる際に多用されます。harm（〜に害を及ぼす）は他動詞としての用法に注意しましょう。"
+  },
+  {
+    "id": "U14_001",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "現在進行形 ＋ 重要語彙",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "私たちは天然資源を急速に消費している。",
+    "words": ["We", "are", "consuming", "natural", "rapidly", "resources"],
+    "correctOrder": ["We", "are", "consuming", "natural", "resources", "rapidly"],
+    "explanation": "【現在進行形】am/is/are + ~ing で「まさに今〜している」という動作の進行を表します。consume（消費する）や natural resources（天然資源）は環境問題などの長文で極めてよく出る単語なので、文の骨格と一緒に処理しましょう。"
+  },
+  {
+    "id": "U14_002",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "過去完了形 ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "警察が到着したとき、容疑者はすでに逃亡していた。",
+    "words": ["The", "already", "arrived", "escaped", "had", "police", "suspect", "the", "when"],
+    "correctOrder": ["The", "suspect", "had", "already", "escaped", "when", "the", "police", "arrived"],
+    "explanation": "【過去完了形】「警察が到着した（過去）」よりも前に「容疑者が逃亡していた」という過去の前後関係を示すため、had + 過去分詞（大過去）を用います。suspect（容疑者）や escape（逃亡する）といった語彙と時制のズレに注意して文脈を読み解きましょう。"
+  },
+  {
+    "id": "U14_003",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "現在完了進行形 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The committee has been [   ] the budget since last week.",
+    "questionJa": "委員会は先週からその予算について交渉している。",
+    "choices": ["negotiating", "negotiated", "negotiate", "negotiates"],
+    "correctAnswer": "negotiating",
+    "explanation": "【現在完了進行形】have been ~ing で「過去から今までずっと〜し続けている」という動作の継続を表します。budget（予算）や negotiate（交渉する）といったビジネス系の頻出語彙が含まれる文でも、時制のサインである since last week に素早く反応しましょう。"
+  },
+  {
+    "id": "U14_004",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "部分否定 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "全ての従業員がその新しい方針に満足しているわけではない。",
+    "words": ["Not", "all", "are", "employees", "new", "policy", "satisfied", "the", "with"],
+    "correctOrder": ["Not", "all", "employees", "are", "satisfied", "with", "the", "new", "policy"],
+    "explanation": "【部分否定】Not all ~ で「すべてが〜というわけではない」という部分否定を作ります。employee（従業員）や policy（方針）といった語彙が使われる長文において、筆者が「一部の例外」を示唆する重要な論理マーカーとなります。"
+  },
+  {
+    "id": "U14_005",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "受動態 ＋ 重要語彙",
+    "difficulty": 1,
+    "type": "choice",
+    "questionEn": "The flight was [   ] because of the heavy snow.",
+    "questionJa": "激しい雪のため、その便は遅れた。",
+    "choices": ["delayed", "delaying", "delay", "to delay"],
+    "correctAnswer": "delayed",
+    "explanation": "【受動態】主語の The flight（その便）は「遅らせられる」側なので、受動態（be + 過去分詞）の delayed を選びます。delay（遅らせる）は他動詞としての用法が基本である点に注意しましょう。"
+  },
+  {
+    "id": "U14_006",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "受動態（行為者）＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その複雑な構造物は有名な建築家によって設計された。",
+    "words": ["The", "a", "architect", "by", "complex", "designed", "famous", "structure", "was"],
+    "correctOrder": ["The", "complex", "structure", "was", "designed", "by", "a", "famous", "architect"],
+    "explanation": "【受動態】be + 過去分詞 + by ~ で「〜によって…される」という行為の受け手を主語にした文です。complex structure（複雑な構造物）や architect（建築家）といった頻出単語を処理しつつ、by以下の行為者を見逃さないようにしましょう。"
+  },
+  {
+    "id": "U14_007",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "助動詞＋完了形（推量）＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "彼はその犯罪を犯したに違いない。",
+    "words": ["He", "committed", "crime", "have", "must", "the"],
+    "correctOrder": ["He", "must", "have", "committed", "the", "crime"],
+    "explanation": "【助動詞＋完了形】must have + 過去分詞 で「（過去に）〜したに違いない」という強い推量を表します。commit a crime（犯罪を犯す）という重要コロケーション（連語）と合わせて、筆者の確信の度合いを読み取りましょう。"
+  },
+  {
+    "id": "U14_008",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "助動詞＋完了形（後悔）＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "I [   ] invested in the stock at that time.",
+    "questionJa": "私はあの時、その株に投資すべきだった。",
+    "choices": ["should have", "must have", "cannot have", "needn't have"],
+    "correctAnswer": "should have",
+    "explanation": "【助動詞＋完了形】should have + 過去分詞 で「（過去に）〜すべきだったのに（しなかった）」という後悔や非難を表します。invest in ~（〜に投資する）や stock（株）といった経済用語とともに、事実とは逆の展開を把握することが読解の鍵です。"
+  },
+  {
+    "id": "U14_009",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "助動詞の否定（推量）＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この証拠からすると、彼が有罪であるはずがない。",
+    "words": ["From", "be", "cannot", "evidence,", "guilty", "he", "this"],
+    "correctOrder": ["From", "this", "evidence,", "he", "cannot", "be", "guilty"],
+    "explanation": "【助動詞の否定】cannot be ~ で「〜であるはずがない」という強い否定の推量を表します。evidence（証拠）と guilty（有罪の）という法学・社会系長文の頻出単語から、筆者の強い否定のスタンスを読み取ります。"
+  },
+  {
+    "id": "U14_010",
+    "unit": "14. 語彙置き換え問題 (2) - 時制・受動態・助動詞",
+    "theme": "時・条件の副詞節 ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "もし彼らがその提案を承認すれば、私たちはすぐにプロジェクトを始める。",
+    "words": ["If", "approve", "immediately", "project", "proposal,", "start", "the", "the", "they", "we", "will"],
+    "correctOrder": ["If", "they", "approve", "the", "proposal,", "we", "will", "start", "the", "project", "immediately"],
+    "explanation": "【時・条件の副詞節】If が導く条件の副詞節の中では、未来のこと（will start）であっても現在時制（approve）を用います。approve（承認する）や proposal（提案）といった重要語彙の意味を、条件の展開（もし〜なら）として正確に捉えましょう。"
   }
 ];
