@@ -339,5 +339,119 @@ const quizData = [
     "choices": ["shouldn't have", "must not have", "cannot have", "needn't have"],
     "correctAnswer": "shouldn't have",
     "explanation": "【助動詞＋完了形】shouldn't have + 過去分詞 で「（過去に）〜するべきではなかったのに（してしまった）」という後悔や非難を表します。筆者の主張や評価を読み取る上で非常に重要な表現です。"
+  },
+  {
+    "id": "U04_001",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "不定詞の名詞的用法",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "外出するときはドアに鍵をかけるのを忘れないでください。",
+    "words": ["Don't", "door", "forget", "go", "lock", "out", "the", "to", "when", "you"],
+    "correctOrder": ["Don't", "forget", "to", "lock", "the", "door", "when", "you", "go", "out"],
+    "explanation": "【名詞的用法】forget to do で「〜することを忘れる」という意味になります。to lock the door 全体が forget の目的語（名詞のカタマリ）として働いています。"
+  },
+  {
+    "id": "U04_002",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "不定詞（形式主語）",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "運転免許を持っていることは役に立つ。",
+    "words": ["It", "a", "driver's", "have", "is", "license", "to", "useful"],
+    "correctOrder": ["It", "is", "useful", "to", "have", "a", "driver's", "license"],
+    "explanation": "【名詞的用法】It is ~ to do の構文です。It は形式的な主語であり、本当の主語は to have a driver's license（運転免許を持っていること）になります。"
+  },
+  {
+    "id": "U04_003",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "不定詞の形容詞的用法",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "They have sent the applicant a form to [   ] in.",
+    "questionJa": "彼らは応募者に記入するための用紙を送った。",
+    "choices": ["fill", "filling", "filled", "be filled"],
+    "correctAnswer": "fill",
+    "explanation": "【形容詞的用法】名詞 a form を後ろから修飾する to fill in（記入するための）という形容詞のカタマリを作ります。前置詞 in を忘れやすいので注意しましょう。"
+  },
+  {
+    "id": "U04_004",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "不定詞の副詞的用法",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "私は英語を学ぶためにオーストラリアへ行く予定だ。",
+    "words": ["Australia", "English", "I", "am", "going", "learn", "to", "to"],
+    "correctOrder": ["I", "am", "going", "to", "Australia", "to", "learn", "English"],
+    "explanation": "【副詞的用法】to learn English（英語を学ぶために）が目的を表す副詞のカタマリとして働いています。文の骨格（I am going to Australia）が完成した後に情報が追加される構造を意識しましょう。"
+  },
+  {
+    "id": "U04_005",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "原形不定詞（知覚動詞）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "I didn't see her [   ] in.",
+    "questionJa": "私は彼女が入ってくるのを見なかった。",
+    "choices": ["come", "to come", "came", "comes"],
+    "correctAnswer": "come",
+    "explanation": "【原形不定詞】see O do（Oが〜するのを見る）という知覚動詞の構文では、to のない原形不定詞を使います。Oとdoの間に「彼女が入る」という主語・述語の関係が成り立ちます。"
+  },
+  {
+    "id": "U04_006",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "原形不定詞（使役動詞）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私たちは子供たちに夜更かしをさせない。",
+    "words": ["We", "children", "don't", "late", "let", "stay", "the", "up"],
+    "correctOrder": ["We", "don't", "let", "the", "children", "stay", "up", "late"],
+    "explanation": "【原形不定詞】let O do（Oに〜させる）という使役動詞の構文です。the children が stay up late するのを let（許可する）という論理構造を掴みましょう。"
+  },
+  {
+    "id": "U04_007",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "現在分詞による後置修飾",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "あなたの友達と踊っている女の子は誰ですか？",
+    "words": ["Who", "dancing", "friend", "girl", "is", "the", "with", "your"],
+    "correctOrder": ["Who", "is", "the", "girl", "dancing", "with", "your", "friend"],
+    "explanation": "【現在分詞】dancing with your friend という分詞のカタマリが、前の名詞 the girl を修飾しています。名詞の直後に ～ing が来た場合、修飾語の始まりを疑うのが読解のコツです。"
+  },
+  {
+    "id": "U04_008",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "過去分詞による後置修飾",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "Do you know the number of people [   ] by the government?",
+    "questionJa": "政府に雇用されている人々の数を知っていますか？",
+    "choices": ["employed", "employing", "employ", "to employ"],
+    "correctAnswer": "employed",
+    "explanation": "【過去分詞】people employed by the government（政府に雇用されている人々）という受動の意味を持った過去分詞のカタマリです。名詞の後に過去分詞が置かれるパターンも長文頻出です。"
+  },
+  {
+    "id": "U04_009",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "分詞構文",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "簡単な英語で書かれているので、この本は読みやすい。",
+    "words": ["English,", "Written", "book", "easy", "in", "is", "read", "simple", "this", "to"],
+    "correctOrder": ["Written", "in", "simple", "English,", "this", "book", "is", "easy", "to", "read"],
+    "explanation": "【分詞構文】Written ~（書かれているので）という過去分詞から始まる副詞のカタマリが、主節の理由や条件などの状況を説明しています。主語（this book）との受動関係に注意しましょう。"
+  },
+  {
+    "id": "U04_010",
+    "unit": "4. 不定詞・分詞・動名詞",
+    "theme": "動名詞",
+    "difficulty": 1,
+    "type": "choice",
+    "questionEn": "The doctor suggested [   ] a long holiday.",
+    "questionJa": "医者は長期休暇を取ることを提案した。",
+    "choices": ["taking", "to take", "take", "taken"],
+    "correctAnswer": "taking",
+    "explanation": "【動名詞】suggest（提案する）の目的語には、不定詞（to do）ではなく動名詞（~ing）を用います。「休暇を取ること」という名詞のカタマリを作っています。"
   }
 ];
