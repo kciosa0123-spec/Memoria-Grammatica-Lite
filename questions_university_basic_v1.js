@@ -1133,5 +1133,119 @@ const quizData = [
     "words": ["he", "in", "Japan,", "many", "shrines", "staying", "visited", "While"],
     "correctOrder": ["While", "staying", "in", "Japan,", "he", "visited", "many", "shrines"],
     "explanation": "【省略構文】While (he was) staying in Japan のように、時や条件を表す接続詞の直後では「主語＋be動詞」が省略されることがよくあります。分詞構文のように見えますが、接続詞の意味を明確に残した形です。"
+  },
+  {
+    "id": "U11_001",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "熟語 (turn down)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼女の昇給の要求は却下された。",
+    "words": ["a", "down", "for", "Her", "raise", "request", "turned", "was"],
+    "correctOrder": ["Her", "request", "for", "a", "raise", "was", "turned", "down"],
+    "explanation": "【熟語】turn down は「〜を拒絶する、却下する」という意味の重要熟語です。受動態（was turned down）の形でよく使われ、筆者の否定的な展開を読み取るサインになります。"
+  },
+  {
+    "id": "U11_002",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "熟語 (be opposed to)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "Most of us are opposed [   ] the death penalty.",
+    "questionJa": "私たちのほとんどは死刑に反対している。",
+    "choices": ["to", "against", "for", "with"],
+    "correctAnswer": "to",
+    "explanation": "【熟語】be opposed to 〜 で「〜に反対している」状態を表します。この to は不定詞ではなく前置詞なので、後ろには名詞（the death penalty）や動名詞が続く点に注意しましょう。"
+  },
+  {
+    "id": "U11_003",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "論理マーカー (have ~ in common with)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "日本文化は中国文化と共通点が多い。",
+    "words": ["a", "Chinese", "common", "culture", "culture", "has", "in", "Japanese", "lot", "with"],
+    "correctOrder": ["Japanese", "culture", "has", "a", "lot", "in", "common", "with", "Chinese", "culture"],
+    "explanation": "【熟語】have A in common with B で「Bと共通してAを持つ」という意味になります。長文の中で比較や対比の論理展開を示す強力なサイン（ディスコースマーカー）です。"
+  },
+  {
+    "id": "U11_004",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "論理マーカー (in terms of)",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "彼はすべてをお金の観点から考える傾向がある。",
+    "words": ["everything", "He", "in", "money", "of", "of", "tends", "terms", "think", "to"],
+    "correctOrder": ["He", "tends", "to", "think", "of", "everything", "in", "terms", "of", "money"],
+    "explanation": "【熟語】in terms of 〜 は「〜の観点から、〜の基準で」という意味です。筆者がどのような評価基準で物事を論じているかを示す重要な表現です。tend to（〜する傾向がある）も頻出です。"
+  },
+  {
+    "id": "U11_005",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "論理マーカー (as well as)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The city is famous for its history [   ] its food.",
+    "questionJa": "その都市は食べ物だけでなく歴史でも有名だ。",
+    "choices": ["as well as", "as far as", "as long as", "as soon as"],
+    "correctAnswer": "as well as",
+    "explanation": "【論理マーカー】A as well as B で「BだけでなくAも」という情報の追加を表します。not only B but also A と同じ論理展開（Bは当然として、さらにAも）を作ります。"
+  },
+  {
+    "id": "U11_006",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "論理マーカー (On the other hand)",
+    "difficulty": 1,
+    "type": "choice",
+    "questionEn": "[   ], some people agree with the plan.",
+    "questionJa": "一方で、その計画に賛成する人もいる。",
+    "choices": ["On the other hand", "In other words", "As a result", "For instance"],
+    "correctAnswer": "On the other hand",
+    "explanation": "【論理マーカー】On the other hand は「一方で」と対比や逆接を表す重要なディスコースマーカーです。前後の文で異なる意見や側面が対比されていることに注目しましょう。"
+  },
+  {
+    "id": "U11_007",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "因果関係 (result in)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "大雨が洪水を引き起こした（洪水という結果になった）。",
+    "words": ["a", "flood", "heavy", "in", "rain", "resulted", "The"],
+    "correctOrder": ["The", "heavy", "rain", "resulted", "in", "a", "flood"],
+    "explanation": "【熟語】result in 〜 で「〜という結果になる（＝〜を引き起こす）」という意味になります。主語が原因、in の後ろが結果となる因果関係（原因→結果）を表す重要表現です。"
+  },
+  {
+    "id": "U11_008",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "因果関係 (depend on)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "プロジェクトの成功はあなたの努力次第だ。",
+    "words": ["depends", "effort", "of", "on", "project", "success", "The", "the", "your"],
+    "correctOrder": ["The", "success", "of", "the", "project", "depends", "on", "your", "effort"],
+    "explanation": "【熟語】depend on 〜 は「〜に依存する、〜次第である」という意味です。長文では、何が何に影響を与えているかの論理構造（条件や因果関係）を掴む鍵になります。"
+  },
+  {
+    "id": "U11_009",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "熟語 (look forward to ~ing)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "I am looking forward to [   ] from you.",
+    "questionJa": "あなたからの連絡を楽しみにしています。",
+    "choices": ["hearing", "hear", "be heard", "have heard"],
+    "correctAnswer": "hearing",
+    "explanation": "【熟語】look forward to 〜ing で「〜するのを楽しみに待つ」という意味です。この to は不定詞ではなく前置詞なので、後ろには動詞の原形ではなく動名詞（~ing）が来ます。"
+  },
+  {
+    "id": "U11_010",
+    "unit": "11. 重要熟語と論理マーカー (1)",
+    "theme": "熟語 (take place)",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "会議は次の月曜日に行われる。",
+    "words": ["meeting", "Monday", "next", "place", "take", "The", "will"],
+    "correctOrder": ["The", "meeting", "will", "take", "place", "next", "Monday"],
+    "explanation": "【熟語】take place は「（予定されていたことが）行われる、開催される」という意味です。意味の中に「行われる」という受身のニュアンスが含まれているため、受動態にはならない点に注意しましょう。"
   }
 ];
