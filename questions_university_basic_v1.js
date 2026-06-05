@@ -1360,5 +1360,117 @@ const quizData = [
     "words": ["It", "is", "likely", "rain", "to", "tonight"],
     "correctOrder": ["It", "is", "likely", "to", "rain", "tonight"],
     "explanation": "【熟語】be likely to do は「〜しそうである、〜する可能性が高い」という傾向や未来の予測を表す重要表現です。長文では、研究結果からの推測や一般的な傾向を述べる際によく登場します。"
+  },
+  {
+    "id": "U13_001",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "第2文型 (SVC) ＋重要語彙",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "その実験は極めて成功だった。",
+    "words": ["experiment", "extremely", "successful", "The", "was"],
+    "correctOrder": ["The", "experiment", "was", "extremely", "successful"],
+    "explanation": "【第2文型】主語(The experiment)＝補語(successful)のSVC構造です。experiment（実験）、successful（成功した）、extremely（極めて）といった学術的な頻出単語も、基本文型に当てはめて前から理解しましょう。"
+  },
+  {
+    "id": "U13_002",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "第3文型 (SVO) ＋重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その研究者はデータを正確に分析した。",
+    "words": ["accurately", "analyzed", "data", "researcher", "the", "The"],
+    "correctOrder": ["The", "researcher", "analyzed", "the", "data", "accurately"],
+    "explanation": "【第3文型】researcher（研究者）が主語、analyzed（分析した）が動詞、data（データ）が目的語のSVO構造です。副詞の accurately（正確に）が動詞を修飾する位置を正しく把握しましょう。"
+  },
+  {
+    "id": "U13_003",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "第4文型 (SVOO) ＋重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The professor gave [   ] a difficult assignment.",
+    "questionJa": "その教授は学生たちに難しい課題を与えた。",
+    "choices": ["the students", "to the students", "for the students", "students"],
+    "correctAnswer": "the students",
+    "explanation": "【第4文型】give O1 O2 で「O1（人）にO2（物）を与える」という構造になります。professor（教授）や assignment（課題・宿題）などの大学生活・長文頻出語彙と文型をセットで覚えましょう。"
+  },
+  {
+    "id": "U13_004",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "第5文型 (SVOC) ＋重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私はその理論を理解するのは難しいとわかった。",
+    "words": ["difficult", "found", "I", "the", "theory", "to", "understand"],
+    "correctOrder": ["I", "found", "the", "theory", "difficult", "to", "understand"],
+    "explanation": "【第5文型】find O C で「OがCだとわかる」構造です。the theory（理論）＝ difficult（難しい）という関係を見抜くことが重要です。to understand は difficult を修飾する副詞的用法の不定詞です。"
+  },
+  {
+    "id": "U13_005",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "形容詞句（分詞）＋重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "経済に影響を与える多くの要因がある。",
+    "words": ["are", "economy", "factors", "influencing", "many", "the", "There"],
+    "correctOrder": ["There", "are", "many", "factors", "influencing", "the", "economy"],
+    "explanation": "【形容詞句】influencing the economy（経済に影響を与える）という現在分詞のカタマリが、直前の名詞 factors（要因）を修飾しています。factor、influence、economy は論説文における最重要語彙の組み合わせです。"
+  },
+  {
+    "id": "U13_006",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "形容詞句（前置詞）＋重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "環境に対する彼らの態度は変化した。",
+    "words": ["attitude", "changed", "environment", "has", "the", "Their", "toward"],
+    "correctOrder": ["Their", "attitude", "toward", "the", "environment", "has", "changed"],
+    "explanation": "【形容詞句】toward the environment（環境に対する）という前置詞のカタマリが、前の名詞 attitude（態度）を修飾しています。長い主語のカタマリを正確に捉え、述語動詞（has changed）に繋げるのが精読の基本です。"
+  },
+  {
+    "id": "U13_007",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "名詞節（that）＋重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The evidence suggests [   ] the climate is changing.",
+    "questionJa": "その証拠は気候が変化していることを示唆している。",
+    "choices": ["that", "if", "what", "which"],
+    "correctAnswer": "that",
+    "explanation": "【名詞節】suggest の目的語となる「〜ということ」という名詞節を作る接続詞 that が正解です。evidence（証拠）が〜を示唆する、という展開は論文や論説文の典型的なパターンです。"
+  },
+  {
+    "id": "U13_008",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "形容詞節（省略）＋重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "彼らが昨年導入した設備は非常に効率的だ。",
+    "words": ["efficient", "equipment", "highly", "introduced", "is", "last", "The", "they", "year"],
+    "correctOrder": ["The", "equipment", "they", "introduced", "last", "year", "is", "highly", "efficient"],
+    "explanation": "【形容詞節】The equipment（名詞）の直後に they introduced（S+V）が続くため、関係代名詞が省略されていると判断します。equipment（設備）、introduce（導入する）、efficient（効率的な）の語彙とともに、修飾構造を見抜きましょう。"
+  },
+  {
+    "id": "U13_009",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "副詞節（理由）＋重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "消費者の需要が減少したため、利益は落ちた。",
+    "words": ["because", "consumer", "decreased", "demand", "fell", "Profits"],
+    "correctOrder": ["Profits", "fell", "because", "consumer", "demand", "decreased"],
+    "explanation": "【副詞節】because は後ろにSVを伴って「〜なので」という理由の副詞節を作ります。profit（利益）、consumer demand（消費者の需要）、decrease（減少する）などのビジネス・経済系語彙をセットで確認しましょう。"
+  },
+  {
+    "id": "U13_010",
+    "unit": "13. 語彙置き換え問題 (1) - 文の成り立ち",
+    "theme": "形式主語構文＋重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "喫煙が健康に害を及ぼすことは明らかだ。",
+    "words": ["clear", "harms", "health", "is", "It", "our", "smoking", "that"],
+    "correctOrder": ["It", "is", "clear", "that", "smoking", "harms", "our", "health"],
+    "explanation": "【形式主語構文】It is clear that SV〜 で「（SV）であることは明らかだ」という構文です。筆者が事実関係や強い主張を述べる際に多用されます。harm（〜に害を及ぼす）は他動詞としての用法に注意しましょう。"
   }
 ];
