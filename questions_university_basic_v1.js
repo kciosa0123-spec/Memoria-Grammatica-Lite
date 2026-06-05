@@ -1247,5 +1247,118 @@ const quizData = [
     "words": ["meeting", "Monday", "next", "place", "take", "The", "will"],
     "correctOrder": ["The", "meeting", "will", "take", "place", "next", "Monday"],
     "explanation": "【熟語】take place は「（予定されていたことが）行われる、開催される」という意味です。意味の中に「行われる」という受身のニュアンスが含まれているため、受動態にはならない点に注意しましょう。"
+  },
+  {
+    "id": "U12_001",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "因果関係 (bring about)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その新しい技術は私たちの生活に大きな変化をもたらした。",
+    "words": ["The", "a", "about", "brought", "change", "great", "in", "lives", "new", "our", "technology"],
+    "correctOrder": ["The", "new", "technology", "brought", "about", "a", "great", "change", "in", "our", "lives"],
+    "explanation": "【熟語】bring about（〜を引き起こす、もたらす）は長文の因果関係（原因→結果）を示す重要な熟語です。technology（技術）などの無生物が主語になり、事象の変化を述べる展開に慣れましょう。"
+  },
+  {
+    "id": "U12_002",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "熟語 (figure out)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私はその機械の操作方法を理解することができなかった。",
+    "words": ["I", "couldn't", "figure", "how", "machine", "operate", "out", "the", "to"],
+    "correctOrder": ["I", "couldn't", "figure", "out", "how", "to", "operate", "the", "machine"],
+    "explanation": "【熟語】figure out（〜を理解する、解決する）は頻出熟語です。how to operate（どのように操作するか）という疑問詞＋不定詞の名詞のカタマリを目的語にとっています。"
+  },
+  {
+    "id": "U12_003",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "熟語 (take advantage of)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "You should take [   ] of this opportunity.",
+    "questionJa": "あなたはこの機会を利用するべきだ。",
+    "choices": ["advantage", "care", "part", "pride"],
+    "correctAnswer": "advantage",
+    "explanation": "【熟語】take advantage of 〜 で「（機会や状況などを）利用する」という意味の重要熟語です。opportunity（機会）とセットで出題されることが多く、筆者の主張やアドバイスの文脈でよく見られます。"
+  },
+  {
+    "id": "U12_004",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "熟語 (pay attention to)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "学生たちは先生の言うことに注意を払わなければならない。",
+    "words": ["Students", "attention", "must", "pay", "says", "teacher", "the", "to", "what"],
+    "correctOrder": ["Students", "must", "pay", "attention", "to", "what", "the", "teacher", "says"],
+    "explanation": "【熟語】pay attention to 〜 で「〜に注意を払う」という意味です。to は不定詞ではなく前置詞なので、後ろには名詞または名詞節（what the teacher says：先生が言うこと）が続きます。"
+  },
+  {
+    "id": "U12_005",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "無生物主語構文 (prevent A from ~ing)",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "悪天候のため、私たちは出発できなかった。",
+    "words": ["The", "bad", "from", "leaving", "prevented", "us", "weather"],
+    "correctOrder": ["The", "bad", "weather", "prevented", "us", "from", "leaving"],
+    "explanation": "【無生物主語】prevent A from ~ing は「Aが〜するのを防ぐ・妨げる」という構文の代表格です。直訳の「悪天候が私たちを妨げた」から「悪天候のために出発できなかった」と因果関係で訳せるようにしましょう。"
+  },
+  {
+    "id": "U12_006",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "熟語 (be used to ~ing)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "I am not used to [   ] in public.",
+    "questionJa": "私は人前で話すことには慣れていない。",
+    "choices": ["speaking", "speak", "spoken", "be spoken"],
+    "correctAnswer": "speaking",
+    "explanation": "【熟語】be used to ~ing で「〜することに慣れている」という状態を表します。to は不定詞の記号ではなく前置詞なので、後ろには動詞の原形ではなく動名詞（~ing）が来る点に注意が必要です。"
+  },
+  {
+    "id": "U12_007",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "動詞の語法 (remind A of B)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この歌は私に故郷を思い出させる。",
+    "words": ["This", "hometown", "me", "my", "of", "reminds", "song"],
+    "correctOrder": ["This", "song", "reminds", "me", "of", "my", "hometown"],
+    "explanation": "【語法】remind A of B で「AにBを思い出させる」という語法です。of は「分離」や「関連」を表す前置詞であり、この形を見たら「Aの頭の中にBの情報を呼び起こす」というイメージを持ちましょう。"
+  },
+  {
+    "id": "U12_008",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "因果関係 (due to)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "He was late [   ] a traffic jam.",
+    "questionJa": "交通渋滞のために彼は遅刻した。",
+    "choices": ["due to", "because", "since", "as"],
+    "correctAnswer": "due to",
+    "explanation": "【群前置詞】due to 〜 は「〜のために、〜が原因で」という意味の前置詞のカタマリです。because of と同様に、後ろには文（S+V）ではなく名詞句が続き、因果関係（結果 due to 原因）を示す論理マーカーとなります。"
+  },
+  {
+    "id": "U12_009",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "熟語 (play a role in)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "教育は社会において重要な役割を果たす。",
+    "words": ["Education", "an", "important", "in", "plays", "role", "society"],
+    "correctOrder": ["Education", "plays", "an", "important", "role", "in", "society"],
+    "explanation": "【熟語】play a role in 〜 で「〜において役割を果たす」という意味になります。important（重要な）や key（鍵となる）などの形容詞を伴って、主題の重要性を述べるトピックセンテンスによく使われます。"
+  },
+  {
+    "id": "U12_010",
+    "unit": "12. 重要熟語と論理マーカー (2)",
+    "theme": "熟語 (be likely to do)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "今夜は雨が降りそうだ。",
+    "words": ["It", "is", "likely", "rain", "to", "tonight"],
+    "correctOrder": ["It", "is", "likely", "to", "rain", "tonight"],
+    "explanation": "【熟語】be likely to do は「〜しそうである、〜する可能性が高い」という傾向や未来の予測を表す重要表現です。長文では、研究結果からの推測や一般的な傾向を述べる際によく登場します。"
   }
 ];
