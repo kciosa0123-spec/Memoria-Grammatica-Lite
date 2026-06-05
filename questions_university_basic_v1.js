@@ -2263,7 +2263,6 @@ const quizData = [
     "correctOrder": ["No", "more", "than", "10,000", "dollars", "was", "allocated", "to", "the", "project"],
     "explanation": "【比較の否定】no more than 〜 は「（数値を強調して）わずか〜、たった〜」という意味になります。allocate（割り当てる）や project（プロジェクト）といったビジネスシーンで、少ない予算や規模の小ささを強調する論理マーカーとして機能します。"
   },
-  [
   {
     "id": "U21_001",
     "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
