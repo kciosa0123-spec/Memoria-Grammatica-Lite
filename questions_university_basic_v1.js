@@ -453,5 +453,118 @@ const quizData = [
     "choices": ["taking", "to take", "take", "taken"],
     "correctAnswer": "taking",
     "explanation": "【動名詞】suggest（提案する）の目的語には、不定詞（to do）ではなく動名詞（~ing）を用います。「休暇を取ること」という名詞のカタマリを作っています。"
+  },
+  {
+    "id": "U05_001",
+    "unit": "5. 関係詞",
+    "theme": "主格の関係代名詞",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "そのプロジェクトを率いている研究者は有名だ。",
+    "words": ["famous", "is", "is", "leading", "project", "researcher", "The", "the", "who"],
+    "correctOrder": ["The", "researcher", "who", "is", "leading", "the", "project", "is", "famous"],
+    "explanation": "【主格の関係代名詞】who is leading the project という関係代名詞の節が、直前の名詞（先行詞）The researcher を修飾しています。主語が長くなるため、2つ目の is が文全体の述語動詞であることを見抜くのが読解のポイントです。"
+  },
+  {
+    "id": "U05_002",
+    "unit": "5. 関係詞",
+    "theme": "目的格の関係代名詞（省略）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私たちが先週雇った従業員はとても優秀だ。",
+    "words": ["capable", "employee", "hired", "is", "last", "The", "very", "we", "week"],
+    "correctOrder": ["The", "employee", "we", "hired", "last", "week", "is", "very", "capable"],
+    "explanation": "【目的格の関係代名詞】名詞（The employee）の直後にS+V（we hired）が続く場合、目的格の関係代名詞（whom/that）が省略されています。「名詞＋S＋V」の語順は、長文読解において後置修飾の強力なサインとなります。"
+  },
+  {
+    "id": "U05_003",
+    "unit": "5. 関係詞",
+    "theme": "所有格の関係代名詞",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The company [   ] products are famous is expanding.",
+    "questionJa": "その製品が有名な企業は事業を拡大している。",
+    "choices": ["whose", "which", "of which", "that"],
+    "correctAnswer": "whose",
+    "explanation": "【所有格の関係代名詞】先行詞（The company）と関係詞節内の名詞（products）の間に「企業の製品（the company's products）」という所有の関係が成り立つため、whose が正解です。"
+  },
+  {
+    "id": "U05_004",
+    "unit": "5. 関係詞",
+    "theme": "関係代名詞 what",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "重要なのは、我々が次に何をすべきかだ。",
+    "words": ["do", "important", "is", "is", "next", "should", "we", "What", "what"],
+    "correctOrder": ["What", "is", "important", "is", "what", "we", "should", "do", "next"],
+    "explanation": "【関係代名詞 what】what は「〜するもの・こと」という意味の名詞節を作ります。文頭の What is important（重要なこと）が主語となり、後半の what we should do next（我々が次にすべきこと）が補語となる構造です。"
+  },
+  {
+    "id": "U05_005",
+    "unit": "5. 関係詞",
+    "theme": "前置詞＋関係代名詞",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "これが彼が担当している資料だ。",
+    "words": ["document", "for", "he", "is", "is", "responsible", "the", "This", "which"],
+    "correctOrder": ["This", "is", "the", "document", "for", "which", "he", "is", "responsible"],
+    "explanation": "【前置詞＋関係代名詞】be responsible for ~（〜を担当している）の for が関係代名詞 which の前に移動した形です。長文で「前置詞＋which/whom」を見たら、その後ろには完全な文（S+V...）が続くと予測しましょう。"
+  },
+  {
+    "id": "U05_006",
+    "unit": "5. 関係詞",
+    "theme": "関係代名詞の非制限用法",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "I tried to open the door, [   ] I found impossible.",
+    "questionJa": "私はドアを開けようとしたが、それは不可能だとわかった。",
+    "choices": ["which", "that", "it", "what"],
+    "correctAnswer": "which",
+    "explanation": "【非制限用法】カンマ（,）に続く関係代名詞 which は、直前の名詞だけでなく、前の文全体（ドアを開けようとしたこと）を先行詞として受けることができます。that は非制限用法（カンマの後）では使えないため注意が必要です。"
+  },
+  {
+    "id": "U05_007",
+    "unit": "5. 関係詞",
+    "theme": "関係副詞 where",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "これがその事故が起こった交差点だ。",
+    "words": ["accident", "happened", "intersection", "is", "the", "the", "This", "where"],
+    "correctOrder": ["This", "is", "the", "intersection", "where", "the", "accident", "happened"],
+    "explanation": "【関係副詞】先行詞が場所（intersection：交差点）であり、後ろの文が the accident happened（事故が起こった）という完全な構造（第1文型）になっているため、関係代名詞ではなく関係副詞 where を用いて修飾します。"
+  },
+  {
+    "id": "U05_008",
+    "unit": "5. 関係詞",
+    "theme": "関係副詞 why",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "Tell me the reason [   ] you were late for the meeting.",
+    "questionJa": "会議に遅れた理由を教えてください。",
+    "choices": ["why", "which", "what", "how"],
+    "correctAnswer": "why",
+    "explanation": "【関係副詞】先行詞が the reason（理由）のときは、関係副詞 why を使います。後ろの you were late for the meeting が完全な文であることからも、関係副詞が入ることが論理的に判断できます。"
+  },
+  {
+    "id": "U05_009",
+    "unit": "5. 関係詞",
+    "theme": "関係副詞 how",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "このようにして彼はその問題を解決した。",
+    "words": ["he", "how", "is", "problem", "solved", "the", "This"],
+    "correctOrder": ["This", "is", "how", "he", "solved", "the", "problem"],
+    "explanation": "【関係副詞】This is how S+V ~ は「このようにしてSは〜する」というプロセスや手段を表す重要構文です。how 自体が「〜する方法」という名詞節を作るため、先行詞 the way を一緒に置かないのがルールです。"
+  },
+  {
+    "id": "U05_010",
+    "unit": "5. 関係詞",
+    "theme": "複合関係代名詞",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "誰でも最初に来た人がそのチケットをもらえる。",
+    "words": ["can", "comes", "first", "get", "the", "ticket", "Whoever"],
+    "correctOrder": ["Whoever", "comes", "first", "can", "get", "the", "ticket"],
+    "explanation": "【複合関係代名詞】whoever（〜する人は誰でも）が名詞節を作り、文全体の主語になっています。anyone who comes first と書き換えることもでき、条件や譲歩のニュアンスを含む読解のキーフレーズとなります。"
   }
 ];
