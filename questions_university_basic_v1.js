@@ -2036,5 +2036,118 @@ const quizData = [
     "choices": ["means", "ways", "methods", "accounts"],
     "correctAnswer": "means",
     "explanation": "【強い否定】by no means（決して〜ない）という重要熟語です。discovery（発見）や fossil（化石）、accidental（偶然の）といった科学・歴史系の文章で、筆者が既存の常識や単なる偶然を強く否定する際によく用いられます。"
+  },
+  {
+    "id": "U19_001",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "熟語 (turn down) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "委員会はその物議を醸す提案を却下した。",
+    "words": ["The", "committee", "controversial", "down", "proposal", "the", "turned"],
+    "correctOrder": ["The", "committee", "turned", "down", "the", "controversial", "proposal"],
+    "explanation": "【熟語】turn down は「〜を拒絶する、却下する」という長文頻出の熟語です。committee（委員会）、controversial（物議を醸す）、proposal（提案）といったハイレベルな語彙と組み合わさっても、動詞＋副詞の熟語のカタマリを素早く見抜きましょう。"
+  },
+  {
+    "id": "U19_002",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "論理マーカー (have ~ in common with) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この概念は現代の理論と共通点が多い。",
+    "words": ["a", "common", "concept", "has", "in", "lot", "modern", "theories", "This", "with"],
+    "correctOrder": ["This", "concept", "has", "a", "lot", "in", "common", "with", "modern", "theories"],
+    "explanation": "【論理マーカー】have A in common with B（Bと共通してAを持つ）は比較・対比を示す重要な表現です。concept（概念）や modern theories（現代の理論）などの抽象的な語彙同士の関連性を、この熟語から正確に読み取ります。"
+  },
+  {
+    "id": "U19_003",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "論理マーカー (in terms of) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "We must evaluate the project [   ] long-term profit.",
+    "questionJa": "私たちは長期的な利益の観点からそのプロジェクトを評価しなければならない。",
+    "choices": ["in terms of", "in spite of", "instead of", "because of"],
+    "correctAnswer": "in terms of",
+    "explanation": "【論理マーカー】in terms of 〜 は「〜の観点から、〜の基準で」という意味です。evaluate（評価する）や long-term profit（長期的な利益）といったビジネス・経済系語彙とともに、筆者が「どのような視点で論じているか」を示すサインとなります。"
+  },
+  {
+    "id": "U19_004",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "論理マーカー (as well as) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "個人だけでなく社会もこのシステムから利益を得るだろう。",
+    "words": ["as", "as", "benefit", "from", "individuals", "Society", "system", "the", "well", "will"],
+    "correctOrder": ["Society", "as", "well", "as", "individuals", "will", "benefit", "from", "the", "system"],
+    "explanation": "【論理マーカー】A as well as B で「BだけでなくAも」という情報の追加・強調を表します。Society（社会）と individuals（個人）を対比しつつ、benefit（利益を得る）という結論を補強する論理展開です。"
+  },
+  {
+    "id": "U19_005",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "因果関係の熟語 (result in) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "Global warming will [   ] severe consequences.",
+    "questionJa": "地球温暖化は深刻な結果を引き起こすだろう。",
+    "choices": ["result in", "result from", "depend on", "consist of"],
+    "correctAnswer": "result in",
+    "explanation": "【因果関係】result in 〜（〜という結果になる、〜を引き起こす）は「原因 result in 結果」の語順になります。global warming（地球温暖化）や severe consequence（深刻な結果）など、環境問題の長文で必ずと言っていいほど使われる表現です。"
+  },
+  {
+    "id": "U19_006",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "無生物主語 (prevent A from ~ing) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その厳しい規制は、企業が事業を拡大するのを妨げた。",
+    "words": ["business", "corporation", "expanding", "from", "its", "prevented", "regulations", "strict", "the", "The"],
+    "correctOrder": ["The", "strict", "regulations", "prevented", "the", "corporation", "from", "expanding", "its", "business"],
+    "explanation": "【無生物主語】prevent A from ~ing（Aが〜するのを妨げる）の構文です。strict regulations（厳しい規制）が原因となり、corporation（企業）が expand（拡大する）できないという因果関係を、無生物主語の直訳から自然な日本語へと変換して理解しましょう。"
+  },
+  {
+    "id": "U19_007",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "因果関係の熟語 (depend on) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "そのビジネスの成功は消費者の需要次第だ。",
+    "words": ["business", "consumer", "demand", "depends", "of", "on", "success", "the", "The"],
+    "correctOrder": ["The", "success", "of", "the", "business", "depends", "on", "consumer", "demand"],
+    "explanation": "【因果関係】depend on 〜 は「〜次第である、〜に依存する」という意味で、A depends on B で「Aという結果はBという条件・原因に左右される」ことを示します。consumer demand（消費者の需要）などの経済用語と合わせて覚えましょう。"
+  },
+  {
+    "id": "U19_008",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "因果関係の群前置詞 (due to) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The conference was canceled [   ] a lack of funds.",
+    "questionJa": "資金不足のためにその会議は中止された。",
+    "choices": ["due to", "because", "instead of", "prior to"],
+    "correctAnswer": "due to",
+    "explanation": "【群前置詞】due to 〜 は「〜が原因で、〜のために」という意味を表す前置詞のカタマリで、直後には名詞（a lack of funds：資金不足）が続きます。conference（会議）や cancel（中止する）などの語彙の背景にある理由を示すマーカーです。"
+  },
+  {
+    "id": "U19_009",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "熟語 (play a role in) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "人工知能は現代の産業において極めて重要な役割を果たす。",
+    "words": ["a", "Artificial", "crucial", "in", "industry", "intelligence", "modern", "plays", "role"],
+    "correctOrder": ["Artificial", "intelligence", "plays", "a", "crucial", "role", "in", "modern", "industry"],
+    "explanation": "【熟語】play a role in 〜 は「〜において役割を果たす」という表現です。crucial（極めて重要な）という形容詞を伴うことで、Artificial intelligence（人工知能）や modern industry（現代の産業）といったテーマの重要性を読者に強くアピールしています。"
+  },
+  {
+    "id": "U19_010",
+    "unit": "19. 語彙置き換え問題 (7) - 重要熟語と論理マーカー",
+    "theme": "熟語 (take advantage of) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その候補者は自身のキャンペーンを宣伝する機会を利用した。",
+    "words": ["advantage", "campaign", "candidate", "his", "of", "opportunity", "promote", "the", "The", "to", "took"],
+    "correctOrder": ["The", "candidate", "took", "advantage", "of", "the", "opportunity", "to", "promote", "his", "campaign"],
+    "explanation": "【熟語】take advantage of 〜 は「〜（機会や状況）を利用する」という頻出熟語です。candidate（候補者）、opportunity（機会）、promote（宣伝する、促進する）といった語彙が連なり、to promote 以下が opportunity を修飾する形容詞的用法になっていることにも注目です。"
   }
 ];
