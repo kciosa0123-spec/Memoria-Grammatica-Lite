@@ -680,5 +680,119 @@ const quizData = [
     "choices": ["wiser", "more wise", "as wise", "the wise"],
     "correctAnswer": "wiser",
     "explanation": "【比較慣用】A rather than B（BというよりむしろA）と同じ意味を、more + 原形形容詞 + than で表します。賢い（wise）という単語は一音節なので wiser と比較級にします。"
+  },
+  [
+  {
+    "id": "U07_001",
+    "unit": "7. 仮定法",
+    "theme": "仮定法過去",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "私があなたなら、その提案を受け入れるだろう。",
+    "words": ["I", "I", "If", "accept", "proposal", "the", "were", "would", "you"],
+    "correctOrder": ["If", "I", "were", "you", "I", "would", "accept", "the", "proposal"],
+    "explanation": "【仮定法過去】現在の事実とは異なる「もし〜なら」を過去形を用いて表します。長文読解では、If 節の過去形（were）と主節の助動詞の過去形（would）のセットを見たら「筆者の反実仮想（事実に反する仮定）」のサインと捉えましょう。"
+  },
+  {
+    "id": "U07_002",
+    "unit": "7. 仮定法",
+    "theme": "仮定法過去完了",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "もし真実を知っていたら、私はあなたに話していただろう。",
+    "words": ["I", "I", "If", "had", "have", "known", "the", "told", "truth", "would", "you"],
+    "correctOrder": ["If", "I", "had", "known", "the", "truth", "I", "would", "have", "told", "you"],
+    "explanation": "【仮定法過去完了】過去の事実とは異なる仮定を表します。had + 過去分詞 と would have + 過去分詞 の組み合わせがサインです。過去の出来事に対する筆者の後悔や「別の可能性（もし〜だったら）」を示す重要な構文です。"
+  },
+  {
+    "id": "U07_003",
+    "unit": "7. 仮定法",
+    "theme": "if の省略による倒置",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "もし私があなたの立場なら、同じことをするだろう。",
+    "words": ["I", "I", "Were", "do", "in", "position", "same", "the", "would", "your"],
+    "correctOrder": ["Were", "I", "in", "your", "position", "I", "would", "do", "the", "same"],
+    "explanation": "【倒置構文】If I were in your position の If が省略されると、Were I という疑問文のような語順（倒置）になります。文頭に Were, Had, Should が来て疑問文ではない場合、仮定法の倒置を疑うのが長文読解の鉄則です。"
+  },
+  {
+    "id": "U07_004",
+    "unit": "7. 仮定法",
+    "theme": "混合型仮定法",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "If I had taken the medicine then, I [   ] fine now.",
+    "questionJa": "もしあの時薬を飲んでいたら、今は元気になっているだろう。",
+    "choices": ["would be", "will be", "would have been", "am"],
+    "correctAnswer": "would be",
+    "explanation": "【混合型仮定法】前半が「過去の仮定（had taken）」、後半が「現在の結果（would be）」となる複合パターンです。then（あの時）や now（今）などの「時を表す副詞」が、時制のズレを見抜く決定的なマーカーになります。"
+  },
+  {
+    "id": "U07_005",
+    "unit": "7. 仮定法",
+    "theme": "I wish 構文",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私はもっと上手に英語を話せたらよいのにと思う。",
+    "words": ["English", "I", "I", "better", "could", "speak", "wish"],
+    "correctOrder": ["I", "wish", "I", "could", "speak", "English", "better"],
+    "explanation": "【I wish 構文】「〜であればいいのに」という現在の叶わぬ願望を表します。wish の後ろの節の動詞が過去形（could speak）になることに注意してください。長文では筆者の強い願望や現状への不満を読み取るポイントになります。"
+  },
+  {
+    "id": "U07_006",
+    "unit": "7. 仮定法",
+    "theme": "as if 構文",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼はまるで幽霊でも見たかのように話す。",
+    "words": ["He", "a", "as", "ghost", "had", "he", "if", "seen", "talks"],
+    "correctOrder": ["He", "talks", "as", "if", "he", "had", "seen", "a", "ghost"],
+    "explanation": "【as if 構文】「まるで〜であるかのように」という意味の重要構文です。as if の後ろが仮定法過去完了（had seen）になることで、「実際には幽霊を見ていない」という比喩表現であることが論理的に判断できます。"
+  },
+  {
+    "id": "U07_007",
+    "unit": "7. 仮定法",
+    "theme": "without を用いた仮定法",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "あなたの財政的な支援がなかったら、そのプロジェクトは失敗していただろう。",
+    "words": ["Without", "failed", "financial", "have", "project", "support", "the", "would", "your"],
+    "correctOrder": ["Without", "your", "financial", "support", "the", "project", "would", "have", "failed"],
+    "explanation": "【without 構文】Without 〜 で「〜がなかったら」という条件節の代わりになります。主節に would have failed が続くことで、これが単なる前置詞ではなく仮定法であると気づくことができます。"
+  },
+  {
+    "id": "U07_008",
+    "unit": "7. 仮定法",
+    "theme": "It is time 構文",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "It is high time you [   ] an independent life.",
+    "questionJa": "あなたはもう自立した生活を送ってもよい頃だ。",
+    "choices": ["started", "start", "will start", "have started"],
+    "correctAnswer": "started",
+    "explanation": "【It is time 構文】「もう（とっくに）〜してもよい時間だ」という意味です。time の後ろの節の動詞が仮定法過去形（started）になるのが最大の特徴です。筆者の「早くそうすべきだ」という強い主張や焦りを示すサインとなります。"
+  },
+  {
+    "id": "U07_009",
+    "unit": "7. 仮定法",
+    "theme": "万が一の should",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "万一、彼が来たら、私に電話するように伝えてください。",
+    "words": ["If", "call", "come", "he", "him", "me", "should", "tell", "to"],
+    "correctOrder": ["If", "he", "should", "come", "tell", "him", "to", "call", "me"],
+    "explanation": "【should を用いた仮定法】If 節の中に should を用いると、「万が一〜したら」という未来の実現可能性が極めて低い仮定を表します。主節にはこの文のように命令文（tell him...）が続くことが多い点も特徴です。"
+  },
+  {
+    "id": "U07_010",
+    "unit": "7. 仮定法",
+    "theme": "副詞 otherwise",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "I started early; [   ], I would have missed the train.",
+    "questionJa": "私は早く出発した。そうでなければ、列車に乗り遅れていただろう。",
+    "choices": ["otherwise", "therefore", "however", "moreover"],
+    "correctAnswer": "otherwise",
+    "explanation": "【副詞による仮定法】otherwise は「そうでなければ」と、直前の事実と反対の仮定を表す副詞です。長文の論理展開において、もし違う選択をしていたらどうなっていたかを示す非常に重要なディスコースマーカー（論理の標識）です。"
   }
 ];
