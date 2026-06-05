@@ -1698,5 +1698,117 @@ const quizData = [
     "words": ["The", "financial", "for", "is", "organization", "providing", "responsible", "support"],
     "correctOrder": ["The", "organization", "is", "responsible", "for", "providing", "financial", "support"],
     "explanation": "【動名詞】be responsible for ~（〜に対して責任がある）の for は前置詞なので、直後には動名詞（providing）が来ます。organization（組織）、provide（提供する）、financial support（財政的支援）の語彙をそのまま定着させましょう。"
+  },
+  {
+    "id": "U16_001",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "主格の関係代名詞 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その傾向を示すデータは信頼できる。",
+    "words": ["data", "is", "reliable", "shows", "The", "the", "trend", "which"],
+    "correctOrder": ["The", "data", "which", "shows", "the", "trend", "is", "reliable"],
+    "explanation": "【関係代名詞】which shows the trend（その傾向を示す）が主語の The data を修飾しています。data（データ）、trend（傾向）、reliable（信頼できる）といった論文やグラフ読み取り問題で頻出する語彙を、修飾構造の中で正確に捉えましょう。"
+  },
+  {
+    "id": "U16_002",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "目的格の関係代名詞（省略） ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私たちが昨年採用した戦略は成功だった。",
+    "words": ["adopted", "last", "strategy", "successful", "The", "was", "we", "year"],
+    "correctOrder": ["The", "strategy", "we", "adopted", "last", "year", "was", "successful"],
+    "explanation": "【関係代名詞の省略】The strategy（名詞）の直後に we adopted（S+V）が続くため、目的格の関係代名詞が省略されています。strategy（戦略）や adopt（採用する）といったビジネス・社会系の頻出語彙と「名詞＋S＋V」のサインを結びつけましょう。"
+  },
+  {
+    "id": "U16_003",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "前置詞＋関係代名詞 ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "This is the specific topic [   ] which we should focus.",
+    "questionJa": "これが私たちが焦点を当てるべき特定のトピックだ。",
+    "choices": ["on", "in", "to", "for"],
+    "correctAnswer": "on",
+    "explanation": "【前置詞＋関係代名詞】focus on 〜（〜に焦点を当てる）という熟語の on が関係代名詞 which の前に移動した構造です。specific（特定の）や topic（話題）といった語彙と熟語の知識が、関係詞の構造を見抜く手がかりになります。"
+  },
+  {
+    "id": "U16_004",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "関係代名詞 what ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この仕事に要求されるのはコミュニケーションスキルだ。",
+    "words": ["communication", "for", "is", "is", "job", "required", "skills", "this", "What"],
+    "correctOrder": ["What", "is", "required", "for", "this", "job", "is", "communication", "skills"],
+    "explanation": "【関係代名詞 what】What is required（要求されること）が文全体の主語（名詞のカタマリ）になっています。require（要求する）の受動態と組み合わさり、筆者が重要視している条件を提示する際によく使われる形です。"
+  },
+  {
+    "id": "U16_005",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "関係副詞 where ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "これがその種が生き残ることができる環境だ。",
+    "words": ["can", "environment", "is", "species", "survive", "the", "the", "This", "where"],
+    "correctOrder": ["This", "is", "the", "environment", "where", "the", "species", "can", "survive"],
+    "explanation": "【関係副詞】先行詞が the environment（環境）という場所・状況を表す名詞であり、後ろが完全な文（the species can survive）となっているため where を使います。species（種）や survive（生き残る）は生物・環境系の長文で必須の語彙です。"
+  },
+  {
+    "id": "U16_006",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "原級比較 ＋ 重要語彙",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "そのプロセスは結果と同じくらい極めて重要だ。",
+    "words": ["as", "as", "crucial", "is", "outcome", "process", "The", "the"],
+    "correctOrder": ["The", "process", "is", "as", "crucial", "as", "the", "outcome"],
+    "explanation": "【原級比較】as + 形容詞 + as で「〜と同じくらい…」という同等の比較を表します。crucial（極めて重要な）や outcome（結果）といった語彙は、筆者の価値基準や結論を読み取る上で重要なキーワードになります。"
+  },
+  {
+    "id": "U16_007",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "比較級 ＋ 重要語彙",
+    "difficulty": 1,
+    "type": "choice",
+    "questionEn": "The new system is [   ] efficient than the traditional method.",
+    "questionJa": "新しいシステムは伝統的な方法より効率的だ。",
+    "choices": ["more", "much", "very", "most"],
+    "correctAnswer": "more",
+    "explanation": "【比較級】than（〜よりも）があるため比較級を選びます。efficient（効率的な）は長い形容詞なので more をつけます。traditional（伝統的な）と new（新しい）の対比は、長文の論理展開の王道パターンです。"
+  },
+  {
+    "id": "U16_008",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "比較の重要構文 (The 比較級..., the 比較級...) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "証拠を集めれば集めるほど、結論はより正確になる。",
+    "words": ["accurate", "becomes", "conclusion", "evidence", "gather,", "more", "more", "The", "the", "the", "we"],
+    "correctOrder": ["The", "more", "evidence", "we", "gather,", "the", "more", "accurate", "the", "conclusion", "becomes"],
+    "explanation": "【比較構文】The 比較級 S V, the 比較級 S V の構文です。evidence（証拠）、gather（集める）、accurate（正確な）、conclusion（結論）という学術的な語彙が並んでも、比例関係（〜すればするほど…）の論理構造を見失わないようにしましょう。"
+  },
+  {
+    "id": "U16_009",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "最上級 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "これは今世紀で最も重要な発見だ。",
+    "words": ["century", "discovery", "is", "most", "of", "significant", "the", "the", "This"],
+    "correctOrder": ["This", "is", "the", "most", "significant", "discovery", "of", "the", "century"],
+    "explanation": "【最上級】the most + 形容詞 で「最も〜な」という最上級を作ります。significant（重要な・意義深い）や discovery（発見）が組み合わさることで、その段落や文章全体の核心となる主張（トピックセンテンス）であることが読み取れます。"
+  },
+  {
+    "id": "U16_010",
+    "unit": "16. 語彙置き換え問題 (4) - 関係詞・比較",
+    "theme": "倍数表現 ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "新しい予算は前のもののおよそ2倍の規模だ。",
+    "words": ["as", "as", "budget", "is", "large", "new", "one", "previous", "roughly", "The", "the", "twice"],
+    "correctOrder": ["The", "new", "budget", "is", "roughly", "twice", "as", "large", "as", "the", "previous", "one"],
+    "explanation": "【倍数表現】twice as large as 〜（〜の2倍の大きさ）という比較の構文です。budget（予算）、roughly（およそ）、previous（前の）といったビジネスや統計の長文でデータを比較・分析する際に不可欠な表現です。"
   }
 ];
