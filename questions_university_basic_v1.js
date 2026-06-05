@@ -1923,5 +1923,118 @@ const quizData = [
     "words": ["Unless", "complain", "customers", "improve", "quality,", "the", "we", "will"],
     "correctOrder": ["Unless", "we", "improve", "the", "quality,", "customers", "will", "complain"],
     "explanation": "【接続詞】Unless は「〜しない限り」という否定条件を表します。improve（〜を改善する）、quality（品質）、complain（不満を言う・クレームをつける）という因果関係を、If we do not improve... と同じ意味で素早く処理しましょう。"
+  },
+  {
+    "id": "U18_001",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "形式主語構文 (It is ... that) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その理論が科学的な証拠に基づいていることは明らかだ。",
+    "words": ["based", "clear", "evidence", "is", "is", "It", "on", "scientific", "that", "the", "theory"],
+    "correctOrder": ["It", "is", "clear", "that", "the", "theory", "is", "based", "on", "scientific", "evidence"],
+    "explanation": "【形式主語構文】It is clear that SV〜 で「（SV）であることは明らかだ」という構文です。theory（理論）や evidence（証拠）、be based on（〜に基づいている）といった学術論文で頻出する語彙を当てはめて処理しましょう。"
+  },
+  {
+    "id": "U18_002",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "結果を表す構文 (so ... that) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その現象はとても複雑だったので、専門家でさえ説明できなかった。",
+    "words": ["complex", "could", "even", "explain", "experts", "it", "not", "phenomenon", "so", "that", "The", "was"],
+    "correctOrder": ["The", "phenomenon", "was", "so", "complex", "that", "even", "experts", "could", "not", "explain", "it"],
+    "explanation": "【結果の構文】so ~ that S V（とても〜なのでSはVだ）の構文です。phenomenon（現象）や complex（複雑な）、expert（専門家）などの語彙と組み合わされ、原因と結果の論理を構成します。"
+  },
+  {
+    "id": "U18_003",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "不定詞を用いた構文 (too ... to) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The budget was [   ] small to cover the new project.",
+    "questionJa": "その予算は小さすぎて、新しいプロジェクトをまかなうことはできなかった。",
+    "choices": ["too", "so", "very", "enough"],
+    "correctAnswer": "too",
+    "explanation": "【不定詞の重要構文】too ~ to do（〜すぎて…できない）という否定の意味を含む構文です。budget（予算）などのビジネス語彙を含む文でも、否定語(not)なしで否定のニュアンスを読み取る必要があります。"
+  },
+  {
+    "id": "U18_004",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "否定を表す重要構文 (far from) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その戦略の結果は、決して満足のいくものではなかった。",
+    "words": ["far", "from", "of", "outcome", "satisfactory", "strategy", "the", "The", "was"],
+    "correctOrder": ["The", "outcome", "of", "the", "strategy", "was", "far", "from", "satisfactory"],
+    "explanation": "【強い否定表現】far from 〜 は「決して〜ない、〜には程遠い」という意味の重要構文です。outcome（結果）や strategy（戦略）といった語彙に対し、筆者がマイナスの評価を下していることを示す重要なサインです。"
+  },
+  {
+    "id": "U18_005",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "形式目的語 (take it for granted that) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "Consumers take [   ] for granted that the product is safe.",
+    "questionJa": "消費者たちは、その製品が安全であることを当然だと思っている。",
+    "choices": ["it", "this", "that", "them"],
+    "correctAnswer": "it",
+    "explanation": "【形式目的語】take it for granted that 〜 で「〜ということを当然だと思う」という重要熟語です。consumer（消費者）や product（製品）といった頻出語彙と絡め、it が指す内容（that以下）を正確に把握しましょう。"
+  },
+  {
+    "id": "U18_006",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "強い否定 (the last person to) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "彼は最もその規則に違反しそうにない人だ。",
+    "words": ["He", "is", "last", "person", "rule", "the", "the", "to", "violate"],
+    "correctOrder": ["He", "is", "the", "last", "person", "to", "violate", "the", "rule"],
+    "explanation": "【強い否定表現】the last person to do（最も〜しそうにない人）という構文です。violate（違反する）などの単語と組み合わせることで、「彼は絶対に規則に違反しない」という強い意味になります。"
+  },
+  {
+    "id": "U18_007",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "倒置構文 (No sooner ~ than) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その方針が発表されるやいなや、激しい議論が起こった。",
+    "words": ["a", "announced", "been", "debate", "fierce", "had", "No", "occurred", "policy", "sooner", "than", "the"],
+    "correctOrder": ["No", "sooner", "had", "the", "policy", "been", "announced", "than", "a", "fierce", "debate", "occurred"],
+    "explanation": "【倒置構文】No sooner had S V than ...（SがVするとすぐに…）の構文です。policy（方針）や announce（発表する）、debate（議論）などの重要語彙が倒置構文（疑問文の語順）に組み込まれても、落ち着いて構造を見抜きましょう。"
+  },
+  {
+    "id": "U18_008",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "比較構文 (The 比較級 ..., the 比較級 ...) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その機器が効率的であればあるほど、生産性は高くなる。",
+    "words": ["becomes", "efficient", "equipment", "higher", "is,", "more", "productivity", "The", "the", "the", "the"],
+    "correctOrder": ["The", "more", "efficient", "the", "equipment", "is,", "the", "higher", "the", "productivity", "becomes"],
+    "explanation": "【比較構文】The 比較級 S V, the 比較級 S V の構文です。equipment（機器・設備）や efficient（効率的な）、productivity（生産性）といった産業・ビジネス系の重要語彙を用いた比例関係（〜すればするほど…）を表しています。"
+  },
+  {
+    "id": "U18_009",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "比較の重要表現 (as ~ as possible) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "経営陣はできるだけ早くその構造を改革する必要がある。",
+    "words": ["as", "as", "management", "needs", "possible", "reform", "soon", "structure", "The", "the", "to"],
+    "correctOrder": ["The", "management", "needs", "to", "reform", "the", "structure", "as", "soon", "as", "possible"],
+    "explanation": "【比較構文】as ~ as possible（できるだけ〜）という頻出表現です。management（経営陣・管理）や reform（改革する）、structure（構造）といった硬い語彙も、慣れ親しんだ比較の構文に落とし込んで理解しましょう。"
+  },
+  {
+    "id": "U18_010",
+    "unit": "18. 語彙置き換え問題 (6) - 重要構文・熟語",
+    "theme": "強い否定の熟語 (by no means) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The discovery of the fossil was by no [   ] accidental.",
+    "questionJa": "その化石の発見は決して偶然ではなかった。",
+    "choices": ["means", "ways", "methods", "accounts"],
+    "correctAnswer": "means",
+    "explanation": "【強い否定】by no means（決して〜ない）という重要熟語です。discovery（発見）や fossil（化石）、accidental（偶然の）といった科学・歴史系の文章で、筆者が既存の常識や単なる偶然を強く否定する際によく用いられます。"
   }
 ];
