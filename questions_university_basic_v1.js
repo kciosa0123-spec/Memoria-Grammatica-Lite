@@ -224,5 +224,120 @@ const quizData = [
     "words": ["How", "been", "have", "here", "long", "working", "you"],
     "correctOrder": ["How", "long", "have", "you", "been", "working", "here"],
     "explanation": "【現在完了進行形】過去から現在まで動作が「ずっと継続している」ことを強調する場合、have been ~ing を用います。How long ~?（どのくらいの間）などの期間を問う表現と結びつきやすい点に注目しましょう。"
+  },
+  {
+    "id": "U03_001",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "部分否定",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "このお金のすべてが私のものではない。",
+    "words": ["Not", "all", "is", "mine", "money", "of", "this"],
+    "correctOrder": ["Not", "all", "of", "this", "money", "is", "mine"],
+    "explanation": "【部分否定】Not all 〜 で「すべてが〜というわけではない」という部分否定になります。「このお金のすべてが私のものではない（一部は違う）」という意味になります。"
+  },
+  {
+    "id": "U03_002",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "準否定（数）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "He has [   ] friends here.",
+    "questionJa": "彼にはここにはほとんど友達がいない。",
+    "choices": ["few", "a few", "little", "a little"],
+    "correctAnswer": "few",
+    "explanation": "【準否定】few は可算名詞の複数形につき「ほとんど〜ない」という否定的な意味を表します。a few（少しいる）や、不可算名詞につく little との区別に注意しましょう。"
+  },
+  {
+    "id": "U03_003",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "準否定（程度）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "My leg was hurting. I could [   ] walk.",
+    "questionJa": "足が痛かった。私はほとんど歩くことができなかった。",
+    "choices": ["hardly", "hard", "rarely", "seldom"],
+    "correctAnswer": "hardly",
+    "explanation": "【準否定】hardly は「程度」が「ほとんど〜ない」ことを表す副詞です。rarely や seldom は「頻度」が「めったに〜ない」ことを表すため、ここでは文脈上不適切です。"
+  },
+  {
+    "id": "U03_004",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "二重否定",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その少女は外出すると必ず傘をなくす。",
+    "words": ["The", "girl", "goes", "her", "losing", "never", "out", "umbrella", "without"],
+    "correctOrder": ["The", "girl", "never", "goes", "out", "without", "losing", "her", "umbrella"],
+    "explanation": "【二重否定】never ... without ~ing で「...すれば必ず〜する（〜することなしに...しない）」という強い肯定の意味を表します。長文読解では、二つの否定語を打ち消し合って肯定で訳すと文脈が掴みやすくなります。"
+  },
+  {
+    "id": "U03_005",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "受動態の基本",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "2000人がその会社に雇用されている。",
+    "words": ["Two", "are", "by", "company", "employed", "people", "the", "thousand"],
+    "correctOrder": ["Two", "thousand", "people", "are", "employed", "by", "the", "company"],
+    "explanation": "【受動態】be動詞＋過去分詞（are employed）で「〜される（雇用されている）」という意味を表します。行為の主体は by ~ で示されることに注目しましょう。"
+  },
+  {
+    "id": "U03_006",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "受動態（不規則動詞）",
+    "difficulty": 1,
+    "type": "choice",
+    "questionEn": "A lot of money was [   ] in the robbery.",
+    "questionJa": "その強盗事件で大金が盗まれた。",
+    "choices": ["stolen", "stole", "steal", "stealing"],
+    "correctAnswer": "stolen",
+    "explanation": "【受動態】主語の A lot of money（大金）は「盗まれる」側なので、受動態（be動詞＋過去分詞）になります。steal（原形） - stole（過去形） - stolen（過去分詞）の不規則変化も確認しておきましょう。"
+  },
+  {
+    "id": "U03_007",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "助動詞（否定の推量）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "It [   ] be true.",
+    "questionJa": "それが本当であるはずがない。",
+    "choices": ["can't", "mustn't", "shouldn't", "won't"],
+    "correctAnswer": "can't",
+    "explanation": "【助動詞】「〜のはずがない」という強い否定の推量は cannot (can't) を使います。must (〜に違いない) の反対の意味にあたります。mustn't は「〜してはいけない（禁止）」なので注意が必要です。"
+  },
+  {
+    "id": "U03_008",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "助動詞＋完了形（推量）",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "彼らは外出したに違いない。",
+    "words": ["They", "gone", "have", "must", "out"],
+    "correctOrder": ["They", "must", "have", "gone", "out"],
+    "explanation": "【助動詞＋完了形】must have + 過去分詞 で「（過去に）〜したに違いない」という過去の事象に対する強い推量を表します。長文の中で過去の出来事を振り返って考察する際に頻出します。"
+  },
+  {
+    "id": "U03_009",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "助動詞（過去の習慣）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私は子供の頃、毎冬よくスキーに行ったものだ。",
+    "words": ["When", "I", "I", "a", "child,", "every", "go", "skiing", "was", "winter", "would"],
+    "correctOrder": ["When", "I", "was", "a", "child,", "I", "would", "go", "skiing", "every", "winter"],
+    "explanation": "【助動詞】would (often) do で「（過去に）よく〜したものだ」という過去の習慣を表します。When I was a child のような過去の時を表す句や節とともに使われ、昔の回想を示すサインとなります。"
+  },
+  {
+    "id": "U03_010",
+    "unit": "3. 否定・受動態・助動詞",
+    "theme": "助動詞＋完了形（後悔・非難）",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "You [   ] eaten so much.",
+    "questionJa": "あなたはそんなにたくさん食べるべきではなかったのに。",
+    "choices": ["shouldn't have", "must not have", "cannot have", "needn't have"],
+    "correctAnswer": "shouldn't have",
+    "explanation": "【助動詞＋完了形】shouldn't have + 過去分詞 で「（過去に）〜するべきではなかったのに（してしまった）」という後悔や非難を表します。筆者の主張や評価を読み取る上で非常に重要な表現です。"
   }
 ];
