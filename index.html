@@ -1542,7 +1542,7 @@
       const attemptedUnits = units.filter(group => group.firstAttempts > 0);
       const totalFirstAttempts = attemptedUnits.reduce((sum, group) => sum + group.firstAttempts, 0);
       summary.textContent = totalFirstAttempts > 0
-        ? `現在のデッキについて、セッション初回回答 ${totalFirstAttempts}回を中心に集計しています。再出題分は補助情報として表示します。`
+        ? `現在のデッキについて、各問題のその日の初回回答 ${totalFirstAttempts}回を中心に集計しています。再出題分は補助情報として表示します。`
         : 'まだ分析データがありません。問題に回答すると、単元・テーマ別の傾向が表示されます。';
 
       const eligible = sortAnalyticsGroups(units.filter(group => group.firstAttempts >= 5));
@@ -1653,14 +1653,19 @@
       }
     }
 
+    function showAllClearScreen() {
+      resetResultUI();
+      document.getElementById('game-screen').style.display = 'none';
+      document.getElementById('all-clear-screen').style.display = 'flex';
+      announceToScreenReader('学習が完了しました。');
+      focusElementById('clear-return-btn');
+    }
+
     function loadQuestion() {
       resetResultUI();
 
       if (sessionQueue.length === 0) {
-        document.getElementById('game-screen').style.display = 'none';
-        document.getElementById('all-clear-screen').style.display = 'flex';
-        announceToScreenReader('学習が完了しました。');
-        focusElementById('clear-return-btn');
+        showAllClearScreen();
         return;
       }
 
@@ -1980,8 +1985,7 @@
 
       // キューが空ならセッション完了
       if (sessionQueue.length === 0) {
-        document.getElementById('game-screen').style.display = 'none';
-        document.getElementById('all-clear-screen').style.display = 'flex';
+        showAllClearScreen();
       } else {
         loadQuestion();
       }
