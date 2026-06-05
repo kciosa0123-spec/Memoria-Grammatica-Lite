@@ -1810,5 +1810,118 @@ const quizData = [
     "words": ["as", "as", "budget", "is", "large", "new", "one", "previous", "roughly", "The", "the", "twice"],
     "correctOrder": ["The", "new", "budget", "is", "roughly", "twice", "as", "large", "as", "the", "previous", "one"],
     "explanation": "【倍数表現】twice as large as 〜（〜の2倍の大きさ）という比較の構文です。budget（予算）、roughly（およそ）、previous（前の）といったビジネスや統計の長文でデータを比較・分析する際に不可欠な表現です。"
+  },
+  {
+    "id": "U17_001",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "仮定法過去 ＋ 重要語彙",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "私がマネージャーなら、その政策を実行するだろう。",
+    "words": ["I", "If", "I", "implement", "manager,", "policy", "the", "the", "were", "would"],
+    "correctOrder": ["If", "I", "were", "the", "manager,", "I", "would", "implement", "the", "policy"],
+    "explanation": "【仮定法過去】現在の事実に反する仮定を表す If I were ~ の構文です。implement（〜を実行する、実施する）や policy（政策、方針）といったビジネス・社会系の頻出語彙と仮定法の組み合わせに慣れましょう。"
+  },
+  {
+    "id": "U17_002",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "仮定法過去完了 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "If he [   ] the risk, he would not have invested.",
+    "questionJa": "もしそのリスクを知っていたら、彼は投資しなかっただろう。",
+    "choices": ["had known", "knew", "knows", "has known"],
+    "correctAnswer": "had known",
+    "explanation": "【仮定法過去完了】過去の事実に反する仮定を表します。帰結節（主節）が would not have invested（投資しなかっただろう）となっているため、条件節（If節）は had ＋過去分詞になります。invest（投資する）や risk（危険）という経済語彙を用いた論理展開です。"
+  },
+  {
+    "id": "U17_003",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "仮定法の倒置 (Were I) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "もし私があなたの立場なら、その戦略を再考するだろう。",
+    "words": ["I", "I", "Were", "in", "position,", "reconsider", "strategy", "the", "would", "your"],
+    "correctOrder": ["Were", "I", "in", "your", "position,", "I", "would", "reconsider", "the", "strategy"],
+    "explanation": "【倒置構文】If I were in your position の If が省略され、Were I という倒置が起きています。reconsider（再考する）や strategy（戦略）などの語彙を伴い、筆者が「別の選択肢」を提示する際の高度な表現です。"
+  },
+  {
+    "id": "U17_004",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "without を用いた仮定法 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼らの協力がなかったら、私たちの努力は失敗していただろう。",
+    "words": ["Without", "cooperation,", "effort", "failed", "have", "our", "their", "would"],
+    "correctOrder": ["Without", "their", "cooperation,", "our", "effort", "would", "have", "failed"],
+    "explanation": "【without を用いた仮定法】Without 〜 で「（もし）〜がなかったら」という条件の代わりを果たします。cooperation（協力）や effort（努力）といった抽象名詞と仮定法のセットは、長文の結論や教訓を述べる際によく登場します。"
+  },
+  {
+    "id": "U17_005",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "話法（間接疑問文）＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The client asked [   ] the product would arrive.",
+    "questionJa": "クライアントはいつ製品が到着するのか尋ねた。",
+    "choices": ["when", "what", "which", "how"],
+    "correctAnswer": "when",
+    "explanation": "【間接疑問文】ask の目的語として「いつ〜するのか」という名詞節を作る疑問詞 when を選びます。client（クライアント・顧客）や product（製品）など、ビジネスシーンを想定した長文で文の骨格を見抜く力が問われます。"
+  },
+  {
+    "id": "U17_006",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "相関接続詞 (not only ~ but also) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "消費者だけでなく従業員も利益を得るだろう。",
+    "words": ["Not", "also", "benefit", "but", "consumers", "employees", "only", "will"],
+    "correctOrder": ["Not", "only", "consumers", "but", "also", "employees", "will", "benefit"],
+    "explanation": "【相関接続詞】not only A but also B で「AだけでなくBも」という意味です。consumers（消費者たち）や employees（従業員たち）を対比させながら、全体として benefit（利益を得る）という結論を強調する論理構造です。"
+  },
+  {
+    "id": "U17_007",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "代名詞 (Those who ~) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "法律に違反する人々は処罰される。",
+    "words": ["Those", "be", "law", "punished", "the", "violate", "who", "will"],
+    "correctOrder": ["Those", "who", "violate", "the", "law", "will", "be", "punished"],
+    "explanation": "【代名詞】Those who ~ は「〜する人々」という重要な表現です。violate（違反する）、law（法律）、punish（処罰する）といった社会的・法的なテーマの長文で、特定の集団に関する一般論を述べる際に多用されます。"
+  },
+  {
+    "id": "U17_008",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "時を表す接続詞 (As soon as) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "[   ] she submitted the application, it was approved.",
+    "questionJa": "彼女が申請書を提出するとすぐに、それは承認された。",
+    "choices": ["As soon as", "As far as", "As long as", "In case"],
+    "correctAnswer": "As soon as",
+    "explanation": "【接続詞】As soon as S V で「SがVするとすぐに」という時の副詞節を作ります。submit（〜を提出する）、application（申請・応募）、approve（〜を承認する）といった一連のプロセスを示す語彙を繋ぐ論理マーカーです。"
+  },
+  {
+    "id": "U17_009",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "譲歩の接続詞 (Although) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "予算は限られていたが、プロジェクトは成功した。",
+    "words": ["Although", "budget", "limited,", "project", "succeeded", "the", "the", "was"],
+    "correctOrder": ["Although", "the", "budget", "was", "limited,", "the", "project", "succeeded"],
+    "explanation": "【接続詞】Although S V は「SはVするけれども」という譲歩（逆接に近い論理展開）を表します。budget（予算）が limited（限られている）というマイナス要素から、succeed（成功する）というプラスの結果を導き出す文章の要になります。"
+  },
+  {
+    "id": "U17_010",
+    "unit": "17. 語彙置き換え問題 (5) - 仮定法・話法・接続詞",
+    "theme": "条件の接続詞 (Unless) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "品質を改善しない限り、顧客は不満を言うだろう。",
+    "words": ["Unless", "complain", "customers", "improve", "quality,", "the", "we", "will"],
+    "correctOrder": ["Unless", "we", "improve", "the", "quality,", "customers", "will", "complain"],
+    "explanation": "【接続詞】Unless は「〜しない限り」という否定条件を表します。improve（〜を改善する）、quality（品質）、complain（不満を言う・クレームをつける）という因果関係を、If we do not improve... と同じ意味で素早く処理しましょう。"
   }
 ];
