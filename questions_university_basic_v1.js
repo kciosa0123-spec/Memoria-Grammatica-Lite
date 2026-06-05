@@ -8,7 +8,7 @@
     "questionJa": "その資料は価値があった。",
     "words": ["document", "The", "valuable", "was"],
     "correctOrder": ["The", "document", "was", "valuable"],
-    "explanation": "【第2文型】主語がThe document、動詞がwas、補語がvaluableのSVC構造です。document（資料・書かれたもの）、valuable（価値がある）などの重要単語と文の骨格をセットで定着させましょう。"
+    "explanation": "【第2文型】主語がThe document、動詞がwas、補語がvaluableのSVC構造です。document（資料・書かれたもの）、valuable（価値がある）などの重要単語（龍たん）と文の骨格をセットで定着させましょう。"
   },
   {
     "id": "U01_002",
