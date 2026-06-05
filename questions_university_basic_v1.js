@@ -1020,5 +1020,118 @@ const quizData = [
     "choices": ["postponing", "to postpone", "postpone", "postponed"],
     "correctAnswer": "postponing",
     "explanation": "【動名詞】suggest（〜を提案する）の目的語には不定詞ではなく動名詞（~ing）をとります。committee（委員会）、postpone（〜を延期する）、election（選挙）など、長文でよく目にする語彙と文法規則をリンクさせておきましょう。"
+  },
+  {
+    "id": "U10_001",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "不定代名詞を用いた構文 (It is no use ~ing)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その決定について不満を言っても無駄だ。",
+    "words": ["about", "complaining", "decision", "is", "It", "no", "the", "use"],
+    "correctOrder": ["It", "is", "no", "use", "complaining", "about", "the", "decision"],
+    "explanation": "【重要構文】It is no use ~ing で「〜しても無駄だ」という構文です。it は形式主語で、~ing の部分が真主語になります。complain（不満を言う）や decision（決定）といった語彙とセットで、筆者の「意味がない」という主張を読み取りましょう。"
+  },
+  {
+    "id": "U10_002",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "不定詞を用いた構文 (too ~ to ...)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The problem was [   ] complicated for me to solve.",
+    "questionJa": "その問題は私が解決するには複雑すぎた。",
+    "choices": ["too", "so", "very", "much"],
+    "correctAnswer": "too",
+    "explanation": "【不定詞の重要構文】too ~ to do で「〜すぎて…できない」という否定の意味を含みます。complicated（複雑な）や solve（解決する）といった語彙の組み合わせで、文面に not がなくても否定として訳出する精読力が問われます。"
+  },
+  {
+    "id": "U10_003",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "結果を表す構文 (so ~ that ...)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その講義はとても退屈だったので、私は眠ってしまった。",
+    "words": ["asleep", "boring", "fell", "I", "lecture", "so", "that", "The", "was"],
+    "correctOrder": ["The", "lecture", "was", "so", "boring", "that", "I", "fell", "asleep"],
+    "explanation": "【結果の構文】so ~ that S V で「とても〜なので（その結果）SはVだ」という因果関係を表します。lecture（講義）が boring（退屈な）であったことと、眠ってしまった結果が that によって論理的に結ばれています。"
+  },
+  {
+    "id": "U10_004",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "相関接続詞 (not only A but also B)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼は英語だけでなくフランス語も流暢に話す。",
+    "words": ["also", "but", "English", "fluently", "French", "He", "not", "only", "speaks"],
+    "correctOrder": ["He", "speaks", "not", "only", "English", "but", "also", "French", "fluently"],
+    "explanation": "【相関構文】not only A but also B で「AだけでなくBも」という意味になります。筆者はAよりもBの方を強調したい（新情報として伝えたい）という論理展開のサインになるため、長文で非常に重要です。"
+  },
+  {
+    "id": "U10_005",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "強調構文 (It is ~ that ...)",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "It was the manager [   ] canceled the meeting.",
+    "questionJa": "会議をキャンセルしたのはマネージャーだった。",
+    "choices": ["that", "what", "which", "whom"],
+    "correctAnswer": "that",
+    "explanation": "【強調構文】It is (was) 〜 that ... で「…なのは〜だ」と、〜の部分を強調します。ここでは the manager（マネージャー）を強調しています。cancel（キャンセルする）という事実に対して、誰が主導したのかを正確に読み取るサインになります。"
+  },
+  {
+    "id": "U10_006",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "否定語の倒置 (Little did I ...)",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "私は彼女に再び会うとは全く予期していなかった。",
+    "words": ["again", "did", "expect", "her", "I", "Little", "see", "to"],
+    "correctOrder": ["Little", "did", "I", "expect", "to", "see", "her", "again"],
+    "explanation": "【倒置構文】Little や Never などの否定語が文頭に出ると、後ろが「助動詞＋S＋V」の疑問文の語順（倒置）になります。expect（予期する）と結びつき「全く予期していなかった」という筆者の強い感情や驚きを表します。"
+  },
+  {
+    "id": "U10_007",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "強い否定を表す重要表現 (by no means)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その結果は決して満足のいくものではなかった。",
+    "words": ["by", "means", "no", "result", "satisfactory", "The", "was"],
+    "correctOrder": ["The", "result", "was", "by", "no", "means", "satisfactory"],
+    "explanation": "【強い否定】by no means は「決して〜ない」という強い否定を表す熟語です。result（結果）や satisfactory（満足のいく）などの単語と結びつき、筆者の評価や結論を決定づける重要な表現です。"
+  },
+  {
+    "id": "U10_008",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "否定を含まない否定表現 (free from)",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "This document is free [   ] errors.",
+    "questionJa": "この書類には誤りがない。",
+    "choices": ["from", "of", "with", "without"],
+    "correctAnswer": "from",
+    "explanation": "【否定の重要表現】be free from 〜 で「（苦痛や誤りなど）好ましくないものがない」という意味を表します。not を使わずに否定の意味を持つため、document（書類）などの情報を正確に読み取る際に重要です。"
+  },
+  {
+    "id": "U10_009",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "比較の重要構文 (as ~ as possible)",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "私はできるだけ早くそのタスクを完了させる必要がある。",
+    "words": ["as", "as", "complete", "I", "need", "possible", "soon", "task", "the", "to"],
+    "correctOrder": ["I", "need", "to", "complete", "the", "task", "as", "soon", "as", "possible"],
+    "explanation": "【比較構文】as ~ as possible で「できるだけ〜」という意味になります。complete（完了させる）、task（タスク・仕事）などの語彙と組み合わされ、ビジネスや日常の文脈で頻出します。"
+  },
+  {
+    "id": "U10_010",
+    "unit": "10. 重要構文・語彙の応用 (2)",
+    "theme": "接続詞の後の主語・be動詞の省略",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "日本に滞在している間、彼は多くの神社を訪れた。",
+    "words": ["he", "in", "Japan,", "many", "shrines", "staying", "visited", "While"],
+    "correctOrder": ["While", "staying", "in", "Japan,", "he", "visited", "many", "shrines"],
+    "explanation": "【省略構文】While (he was) staying in Japan のように、時や条件を表す接続詞の直後では「主語＋be動詞」が省略されることがよくあります。分詞構文のように見えますが、接続詞の意味を明確に残した形です。"
   }
 ];
