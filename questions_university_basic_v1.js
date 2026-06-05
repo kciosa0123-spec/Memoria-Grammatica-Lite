@@ -2262,5 +2262,119 @@ const quizData = [
     "words": ["10,000", "allocated", "dollars", "more", "No", "project", "than", "the", "to", "was"],
     "correctOrder": ["No", "more", "than", "10,000", "dollars", "was", "allocated", "to", "the", "project"],
     "explanation": "【比較の否定】no more than 〜 は「（数値を強調して）わずか〜、たった〜」という意味になります。allocate（割り当てる）や project（プロジェクト）といったビジネスシーンで、少ない予算や規模の小ささを強調する論理マーカーとして機能します。"
+  },
+  [
+  {
+    "id": "U21_001",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "慣用表現 (It goes without saying that) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "健康が最優先事項であることは言うまでもない。",
+    "words": ["goes", "health", "is", "It", "priority", "saying", "that", "the", "top", "without"],
+    "correctOrder": ["It", "goes", "without", "saying", "that", "health", "is", "the", "top", "priority"],
+    "explanation": "【重要構文】It goes without saying that ~ で「〜であることは言うまでもない」という頻出表現です。health（健康）や top priority（最優先事項）といった語彙と結びつき、筆者が「誰もが認める大前提」を提示する際に用いられます。"
+  },
+  {
+    "id": "U21_002",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "動名詞の慣用表現 (There is no ~ing) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その実験の結果を予測することはできない。",
+    "words": ["experiment", "is", "no", "of", "outcome", "predicting", "the", "the", "There"],
+    "correctOrder": ["There", "is", "no", "predicting", "the", "outcome", "of", "the", "experiment"],
+    "explanation": "【動名詞】There is no ~ing で「〜することはできない（= It is impossible to ~）」という意味の重要構文です。predict（予測する）、outcome（結果）、experiment（実験）といった研究・科学系の文章でよく使われる語彙の組み合わせです。"
+  },
+  {
+    "id": "U21_003",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "不定詞の慣用表現 (be willing to) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私たちは社会に貢献する労をいとわない。",
+    "words": ["are", "contribute", "society", "to", "to", "We", "willing"],
+    "correctOrder": ["We", "are", "willing", "to", "contribute", "to", "society"],
+    "explanation": "【不定詞】be willing to do は「〜するのをいとわない、快く〜する」という前向きな意志を表します。contribute to society（社会に貢献する）は、企業の理念や社会問題を論じる長文で非常に頻出するコロケーション（連語）です。"
+  },
+  {
+    "id": "U21_004",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "形容詞の語法 (be capable of) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The new system is [   ] of handling complex tasks.",
+    "questionJa": "その新しいシステムは複雑なタスクを処理する能力がある。",
+    "choices": ["capable", "possible", "able", "potential"],
+    "correctAnswer": "capable",
+    "explanation": "【形容詞の語法】「〜する能力がある」を表す際、be able to do（不定詞）に対して、be capable of ~ing（前置詞＋動名詞）を使います。handle（処理する・扱う）、complex（複雑な）といった語彙とセットで頻出します。"
+  },
+  {
+    "id": "U21_005",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "慣用表現 (be accustomed to ~ing) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "医療スタッフは緊急事態に対処することに慣れている。",
+    "words": ["accustomed", "an", "are", "dealing", "emergency", "medical", "staff", "The", "to", "with"],
+    "correctOrder": ["The", "medical", "staff", "are", "accustomed", "to", "dealing", "with", "an", "emergency"],
+    "explanation": "【慣用表現】be accustomed to ~ing（〜することに慣れている）の to は前置詞なので、後ろに動名詞（dealing）が来ます。deal with（対処する）や emergency（緊急事態）といった語彙とともに、事実や現状を説明する文脈で読解のポイントになります。"
+  },
+  {
+    "id": "U21_006",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "関係代名詞 (what is called) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "これがいわゆる持続可能な農業だ。",
+    "words": ["agriculture", "called", "is", "is", "sustainable", "This", "what"],
+    "correctOrder": ["This", "is", "what", "is", "called", "sustainable", "agriculture"],
+    "explanation": "【関係詞の慣用表現】what is called は「いわゆる〜」という意味で、専門用語や新しい概念を導入する際の論理マーカーとして機能します。sustainable（持続可能な）、agriculture（農業）という頻出テーマで確認しましょう。"
+  },
+  {
+    "id": "U21_007",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "相関接続詞 (not A but B) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "重要なのは量ではなく質だ。",
+    "words": ["but", "important", "is", "is", "not", "quality", "quantity,", "What"],
+    "correctOrder": ["What", "is", "important", "is", "not", "quantity,", "but", "quality"],
+    "explanation": "【相関接続詞】not A but B で「AではなくB」という強い対比を表します。筆者が本当に主張したいのはB（quality：質）の方であり、A（quantity：量）との対比構造を見抜くことが長文読解の要となります。"
+  },
+  {
+    "id": "U21_008",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "名詞節 (whether A or not) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼らがその提案を承認するかどうかは疑わしい。",
+    "words": ["approve", "doubtful", "is", "it", "or", "proposal", "not", "the", "they", "whether"],
+    "correctOrder": ["It", "is", "doubtful", "whether", "they", "approve", "the", "proposal", "or", "not"],
+    "explanation": "【名詞節】whether ~ or not で「〜するかどうか」という名詞のカタマリを作ります。It が形式主語、whether 以下が真主語です。doubtful（疑わしい）や approve（承認する）、proposal（提案）などの語彙と組み合わさります。"
+  },
+  {
+    "id": "U21_009",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "助動詞の慣用表現 (would rather ~ than) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "He would [   ] resign than compromise.",
+    "questionJa": "彼は妥協するくらいならむしろ辞任したい。",
+    "choices": ["rather", "better", "prefer", "sooner"],
+    "correctAnswer": "rather",
+    "explanation": "【助動詞の慣用表現】would rather A than B で「BするくらいならむしろAしたい」という比較・選択を表します。resign（辞任する）と compromise（妥協する）というビジネスや政治の長文で対比されやすい語彙で構成されています。"
+  },
+  {
+    "id": "U21_010",
+    "unit": "21. 語彙置き換え問題 (9) - 構文・慣用表現の総仕上げ",
+    "theme": "仮定法の慣用表現 (It is high time) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "私たちは抜本的な対策を講じてもよい時期だ。",
+    "words": ["a", "fundamental", "high", "is", "It", "measure", "time", "took", "we"],
+    "correctOrder": ["It", "is", "high", "time", "we", "took", "a", "fundamental", "measure"],
+    "explanation": "【仮定法】It is high time + 仮定法過去形（ここでは took）で「（とっくに）〜してもよい時期だ」という意味になります。fundamental measure（抜本的な対策）を「早く取るべきだ」という筆者の強い主張や焦燥感を読み取ります。"
   }
+]
 ];
