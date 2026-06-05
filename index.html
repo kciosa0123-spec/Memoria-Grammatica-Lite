@@ -29,13 +29,7 @@
     }
 
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-}
-
-button,
-input,
-summary {
-  -webkit-tap-highlight-color: transparent;
-}    
+    
     body {
       margin: 0; padding: 0; background-color: var(--bg-color);
       display: flex; justify-content: center; align-items: center;
@@ -1783,6 +1777,15 @@ summary {
       else handleFail('wrong');
     }
 
+    // 次回復習日は、指定日数後のローカル時刻0:00を返す。
+    // Re-learn（失敗）はこの関数を使わず、従来どおり即 due とする。
+    function getNextReviewTimeAtDayStart(intervalDays) {
+      const nextDate = new Date();
+      nextDate.setHours(0, 0, 0, 0);
+      nextDate.setDate(nextDate.getDate() + intervalDays);
+      return nextDate.getTime();
+    }
+
     // 評価・保存（SM-2：easeFactor でカードごとに間隔を伸縮。セッションをまたぐスケジュールを書く）
     function calculateAndSaveProgress(score) {
       const savedData = safeLoadJSON(STORAGE_KEY);
@@ -1829,9 +1832,9 @@ summary {
       if (score === 1) {
         record.nextReviewTime = Date.now();
       } else {
-        const nextDate = new Date();
-        nextDate.setDate(nextDate.getDate() + nextIntervalDays);
-        record.nextReviewTime = nextDate.getTime();
+        // 日次学習アプリとして、指定された復習日になった時点（ローカル時刻の午前0時）で due にする。
+        // 学習した時刻を引き継がないため、夜に学習しても翌日の朝から復習できる。
+        record.nextReviewTime = getNextReviewTimeAtDayStart(nextIntervalDays);
       }
 
       savedData[progressKey] = record;
