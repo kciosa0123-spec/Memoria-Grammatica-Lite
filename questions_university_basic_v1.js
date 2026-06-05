@@ -1,4 +1,4 @@
-[
+const quizData = [
   {
     "id": "U01_001",
     "unit": "1. 文の成り立ち",
@@ -112,4 +112,4 @@
     "correctOrder": ["It", "seems", "that", "my", "son", "understands", "French"],
     "explanation": "【形式主語構文】It seems that SV〜 で「（SV）であるように思われる」という構文です。文頭の It は形式主語であり、that 以下が真の主語となる、筆者の認識を示す論理展開のサインとして機能します。"
   }
-]
+];
