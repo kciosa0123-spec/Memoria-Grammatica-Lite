@@ -1,4 +1,4 @@
-const quizData = [
+[
   {
     "id": "U01_001",
     "unit": "1. 文の成り立ち",
@@ -6,9 +6,9 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "その資料は価値があった。",
-    "words": ["document", "the", "valuable", "was"],
+    "words": ["document", "The", "valuable", "was"],
     "correctOrder": ["The", "document", "was", "valuable"],
-    "explanation": "【第2文型】主語がThe document、動詞がwas、補語がvaluableのSVC構造です。document（資料・書かれたもの）、valuable（価値がある）などの重要単語（龍たん）と文の骨格をセットで定着させましょう。"
+    "explanation": "【第2文型】主語がThe document、動詞がwas、補語がvaluableのSVC構造です。document（資料・書かれたもの）、valuable（価値がある）などの重要単語と文の骨格をセットで定着させましょう。"
   },
   {
     "id": "U01_002",
@@ -28,7 +28,7 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その同僚は私を動揺させた。",
-    "words": ["colleague", "made", "me", "the", "upset"],
+    "words": ["colleague", "made", "me", "The", "upset"],
     "correctOrder": ["The", "colleague", "made", "me", "upset"],
     "explanation": "【第5文型】make O C で「OをC（の状態）にする」という構造です。colleague（同僚）やupset（動揺して）などの重要語彙（龍たん）を用いた文でも、瞬時にSVOCの骨格を見抜けるようにしましょう。"
   },
@@ -62,7 +62,7 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "これがその犯罪に関する唯一の証拠だ。",
-    "words": ["about", "crime", "evidence", "is", "only", "the", "the", "this"],
+    "words": ["about", "crime", "evidence", "is", "only", "the", "the", "This"],
     "correctOrder": ["This", "is", "the", "only", "evidence", "about", "the", "crime"],
     "explanation": "【形容詞句（前置詞＋名詞）】about the crime が前の名詞 evidence（証拠）を修飾しています。evidence や crime（犯罪）といった重要語彙（龍たん）の修飾関係を正確に捉えましょう。"
   },
@@ -85,7 +85,7 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その学生は図書館で借りた本を読んでいる。",
-    "words": ["a", "book", "borrowed", "from", "he", "is", "library", "reading", "student", "the", "the"],
+    "words": ["a", "book", "borrowed", "from", "he", "is", "library", "reading", "student", "The", "the"],
     "correctOrder": ["The", "student", "is", "reading", "a", "book", "he", "borrowed", "from", "the", "library"],
     "explanation": "【形容詞節】名詞(a book)の直後に主語と動詞(he borrowed...)が続く場合、関係代名詞が省略されています。長文でこの「名詞＋S＋V」のサインを見つけたら、前の名詞を修飾するカタマリだと判断しましょう。"
   },
@@ -108,8 +108,8 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "私の息子はフランス語を理解しているようだ。",
-    "words": ["French", "it", "my", "seems", "son", "that", "understands"],
+    "words": ["French", "It", "my", "seems", "son", "that", "understands"],
     "correctOrder": ["It", "seems", "that", "my", "son", "understands", "French"],
     "explanation": "【形式主語構文】It seems that SV〜 で「（SV）であるように思われる」という構文です。文頭の It は形式主語であり、that 以下が真の主語となる、筆者の認識を示す論理展開のサインとして機能します。"
   }
-];
+]
