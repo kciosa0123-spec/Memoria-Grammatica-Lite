@@ -906,5 +906,119 @@ const quizData = [
     "words": ["Unless", "bus", "hurry", "miss", "the", "will", "you", "you"],
     "correctOrder": ["Unless", "you", "hurry", "you", "will", "miss", "the", "bus"],
     "explanation": "【接続詞】Unless は「〜しない限り」という意味の接続詞で、If ~ not とほぼ同じ働きをします。Unless 自体に否定の意味が含まれているため、後ろの文（you hurry）は肯定形になります。"
+  },
+  {
+    "id": "U09_001",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "第5文型 (SVOC) ＋重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私はその従業員が有能だとわかった。",
+    "words": ["capable", "employee", "found", "I", "the"],
+    "correctOrder": ["I", "found", "the", "employee", "capable"],
+    "explanation": "【第5文型】find O C（OがCだとわかる）の構造に、重要語彙 employee（従業員）と capable（有能な）を組み込んだ形です。長文では単語が難しくなっても文の骨格を瞬時に見抜くことが重要です。"
+  },
+  {
+    "id": "U09_002",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "形式目的語 (take it for granted)",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "The politician takes [   ] for granted that he should apologize.",
+    "questionJa": "その政治家は自分が謝罪すべきだと当然のように思っている。",
+    "choices": ["it", "this", "that", "them"],
+    "correctAnswer": "it",
+    "explanation": "【形式目的語】take it for granted that 〜 で「〜ということを当然だと思う」という重要イディオムです。it は that 以下を指す形式目的語であり、長文の論理展開を掴むための重要なサインとなります。politician（政治家）、apologize（謝罪する）も頻出語です。"
+  },
+  {
+    "id": "U09_003",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "否定を表す重要構文 (far from)",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その解決策は妥当には程遠かった。",
+    "words": ["far", "from", "reasonable", "solution", "The", "was"],
+    "correctOrder": ["The", "solution", "was", "far", "from", "reasonable"],
+    "explanation": "【強い否定表現】far from 〜 は「〜には程遠い、決して〜ない」という強い否定を表す重要構文です。not を使わずに否定の意味を持つため、読解時に筆者の批判的なスタンスを読み取る強力なマーカーになります。solution（解決策）、reasonable（妥当な）とセットで覚えましょう。"
+  },
+  {
+    "id": "U09_004",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "否定を表す重要構文 (the last person)",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "彼は最も不正をしそうにない人だ。",
+    "words": ["cheat", "He", "is", "last", "person", "the", "to"],
+    "correctOrder": ["He", "is", "the", "last", "person", "to", "cheat"],
+    "explanation": "【強い否定表現】the last person to do は「最も〜しそうにない人（決して〜しない人）」という意味の重要構文です。肯定文の形をしていますが、意味は強い否定になる点に注意が必要です。cheat（不正をする・ごまかす）という単語のニュアンスも押さえておきましょう。"
+  },
+  {
+    "id": "U09_005",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "倒置構文 (No sooner ~ than)",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "No sooner had he arrived at the conference [   ] it began.",
+    "questionJa": "彼が会議に到着するとすぐにそれは始まった。",
+    "choices": ["than", "when", "that", "before"],
+    "correctAnswer": "than",
+    "explanation": "【倒置構文】No sooner had S V than ... で「SがVするとすぐに…」という構文です。否定語（No sooner）が文頭に出ることで had S V という疑問文の語順（倒置）が起きています。比較級 sooner が使われているため、呼応する接続詞は than になります。conference（会議）などの単語とともに出題されやすい形です。"
+  },
+  {
+    "id": "U09_006",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "前置詞 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "疲労にもかかわらず、そのアスリートは奮闘した。",
+    "words": ["athlete", "Despite", "fatigue,", "his", "struggled", "the"],
+    "correctOrder": ["Despite", "his", "fatigue,", "the", "athlete", "struggled"],
+    "explanation": "【前置詞】Despite は「〜にもかかわらず」を表す前置詞で、後ろに名詞句（his fatigue）を取ります。fatigue（疲労）、athlete（運動選手）、struggle（奮闘する）といった重要語彙と論理展開のサインを同時に処理しましょう。"
+  },
+  {
+    "id": "U09_007",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "関係代名詞 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "Candidates [   ] oppose the policy should resign.",
+    "questionJa": "その政策に反対する候補者は辞任すべきだ。",
+    "choices": ["who", "which", "whom", "what"],
+    "correctAnswer": "who",
+    "explanation": "【主格の関係代名詞】Candidates（候補者たち）を先行詞とし、後ろの動詞 oppose（〜に反対する）の主語となる主格の関係代名詞 who を選びます。policy（政策）や resign（辞任する）など、政治・ビジネス系の長文で頻出する語彙の組み合わせです。"
+  },
+  {
+    "id": "U09_008",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "無生物主語 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その病気は患者を絶望させた。",
+    "words": ["desperate", "disease", "made", "patient", "The", "the"],
+    "correctOrder": ["The", "disease", "made", "the", "patient", "desperate"],
+    "explanation": "【無生物主語】The disease（病気）という無生物が主語になり、make O C で「OをCの状態にする」という因果関係（原因と結果）を表しています。desperate（絶望した・必死の）や patient（患者）の語彙とともに、長文の論理（なぜそうなったか）を把握する力が問われます。"
+  },
+  {
+    "id": "U09_009",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "最上級の強調 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この解決策は断然最も信頼できる。",
+    "words": ["by", "far", "is", "most", "reliable", "solution", "the", "This"],
+    "correctOrder": ["This", "solution", "is", "by", "far", "the", "most", "reliable"],
+    "explanation": "【最上級の強調】by far は the most reliable（最も信頼できる）という最上級を強調し、「断然、ずば抜けて」という意味を加えます。solution（解決策）を評価する筆者の強い主張を読み取るためのサインです。"
+  },
+  {
+    "id": "U09_010",
+    "unit": "9. 重要構文・語彙の応用 (1)",
+    "theme": "動名詞を目的語にとる動詞",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The committee suggested [   ] the election.",
+    "questionJa": "委員会は選挙を延期することを提案した。",
+    "choices": ["postponing", "to postpone", "postpone", "postponed"],
+    "correctAnswer": "postponing",
+    "explanation": "【動名詞】suggest（〜を提案する）の目的語には不定詞ではなく動名詞（~ing）をとります。committee（委員会）、postpone（〜を延期する）、election（選挙）など、長文でよく目にする語彙と文法規則をリンクさせておきましょう。"
   }
 ];
