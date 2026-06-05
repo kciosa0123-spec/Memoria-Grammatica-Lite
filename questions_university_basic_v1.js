@@ -681,7 +681,6 @@ const quizData = [
     "correctAnswer": "wiser",
     "explanation": "【比較慣用】A rather than B（BというよりむしろA）と同じ意味を、more + 原形形容詞 + than で表します。賢い（wise）という単語は一音節なので wiser と比較級にします。"
   },
-  [
   {
     "id": "U07_001",
     "unit": "7. 仮定法",
@@ -794,5 +793,118 @@ const quizData = [
     "choices": ["otherwise", "therefore", "however", "moreover"],
     "correctAnswer": "otherwise",
     "explanation": "【副詞による仮定法】otherwise は「そうでなければ」と、直前の事実と反対の仮定を表す副詞です。長文の論理展開において、もし違う選択をしていたらどうなっていたかを示す非常に重要なディスコースマーカー（論理の標識）です。"
+  },
+    {
+    "id": "U08_001",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "話法（平叙文の伝達）",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "彼は財布をなくしたと私に言った。",
+    "words": ["He", "had", "he", "his", "lost", "me", "that", "told", "wallet"],
+    "correctOrder": ["He", "told", "me", "that", "he", "had", "lost", "his", "wallet"],
+    "explanation": "【話法】「Sに〜だと言う」は tell O that S V で表します。主節の動詞（told）が過去形のため、that節の中の時制も過去完了（had lost）に一致しています。"
+  },
+  {
+    "id": "U08_002",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "話法（疑問文の伝達）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "She asked me [   ] I lived.",
+    "questionJa": "彼女は私がどこに住んでいるのか私に尋ねた。",
+    "choices": ["where", "what", "which", "how"],
+    "correctAnswer": "where",
+    "explanation": "【話法】疑問詞で始まる疑問文を間接話法にする場合、ask O + 疑問詞 + S + V の語順（間接疑問文）になります。「どこに」を表す where が入ります。"
+  },
+  {
+    "id": "U08_003",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "話法（命令文の伝達）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "医者は彼にタバコをやめるように忠告した。",
+    "words": ["The", "advised", "doctor", "him", "smoking", "stop", "to"],
+    "correctOrder": ["The", "doctor", "advised", "him", "to", "stop", "smoking"],
+    "explanation": "【話法】advise O to do で「Oに〜するように忠告する」という意味になります。命令や依頼を間接話法で伝える際の頻出パターンです。tell O to do や ask O to do と同じ構造です。"
+  },
+  {
+    "id": "U08_004",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "時制の一致",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "私は彼がその試験に合格するだろうと思った。",
+    "words": ["I", "exam", "he", "pass", "that", "the", "thought", "would"],
+    "correctOrder": ["I", "thought", "that", "he", "would", "pass", "the", "exam"],
+    "explanation": "【時制の一致】主節の動詞（thought）が過去形なので、従属節（that節）の助動詞も will から would に過去形へと変化します。"
+  },
+  {
+    "id": "U08_005",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "不定代名詞（another / the other）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "I don't like this design. Please show me [   ].",
+    "questionJa": "私はこのデザインが好きではありません。別のものを見せてください。",
+    "choices": ["another", "other", "the other", "others"],
+    "correctAnswer": "another",
+    "explanation": "【代名詞】「（不特定の）もう1つの別のもの」を指す場合は another を使います。the other は「（残りすべてのうちの）もう1つ」を指すため、文脈上ここでは不適切です。"
+  },
+  {
+    "id": "U08_006",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "代名詞（Those who ~）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "そのプロジェクトに興味がある人は会議に出席すべきだ。",
+    "words": ["Those", "are", "attend", "in", "interested", "meeting", "project", "should", "the", "the", "who"],
+    "correctOrder": ["Those", "who", "are", "interested", "in", "the", "project", "should", "attend", "the", "meeting"],
+    "explanation": "【代名詞】Those who ~ で「〜する人々」という重要な働きをします。長文で筆者が一般論や特定の集団について述べる際によく使われる表現です。"
+  },
+  {
+    "id": "U08_007",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "相関接続詞（not only A but also B）",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "生徒たちだけでなく先生も驚いた。",
+    "words": ["Not", "also", "but", "only", "students", "surprised", "teacher", "the", "the", "was"],
+    "correctOrder": ["Not", "only", "the", "students", "but", "also", "the", "teacher", "was", "surprised"],
+    "explanation": "【相関接続詞】not only A but also B（AだけでなくBも）が主語になる場合、動詞はB（ここでは the teacher）の数に一致するため、were ではなく was になる点に注意しましょう。"
+  },
+  {
+    "id": "U08_008",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "時を表す接続詞（as soon as）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "[   ] he arrived at the station, it began to rain.",
+    "questionJa": "彼が駅に着くとすぐに雨が降り始めた。",
+    "choices": ["As soon as", "As far as", "As long as", "As well as"],
+    "correctAnswer": "As soon as",
+    "explanation": "【接続詞】As soon as S V で「SがVするとすぐに」という時の副詞節を作ります。as far as（〜する限りでは：範囲）や as long as（〜する間は：時間・条件）との意味の違いに注意しましょう。"
+  },
+  {
+    "id": "U08_009",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "前置詞（despite）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "悪天候にもかかわらず、彼らはピクニックに出かけた。",
+    "words": ["Despite", "a", "bad", "on", "picnic", "the", "they", "weather", "went"],
+    "correctOrder": ["Despite", "the", "bad", "weather", "they", "went", "on", "a", "picnic"],
+    "explanation": "【前置詞】Despite は「〜にもかかわらず」という意味の前置詞で、後ろには名詞（句）が続きます。接続詞の Although（後ろにS+Vが続く）との使い分けが文法問題や読解の鍵になります。"
+  },
+  {
+    "id": "U08_010",
+    "unit": "8. 話法・代名詞・接続詞",
+    "theme": "条件の接続詞（unless）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "急がない限り、あなたはバスに乗り遅れるだろう。",
+    "words": ["Unless", "bus", "hurry", "miss", "the", "will", "you", "you"],
+    "correctOrder": ["Unless", "you", "hurry", "you", "will", "miss", "the", "bus"],
+    "explanation": "【接続詞】Unless は「〜しない限り」という意味の接続詞で、If ~ not とほぼ同じ働きをします。Unless 自体に否定の意味が含まれているため、後ろの文（you hurry）は肯定形になります。"
   }
 ];
