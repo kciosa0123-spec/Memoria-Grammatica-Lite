@@ -608,7 +608,7 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この部屋はあの部屋の3倍の大きさだ。",
-    "words": ["as", "as", "is", "large", "room", "that", "three", "This", "times"],
+    "words": ["as", "as", "is", "large", "room", "that", "three", "This", "times", "room"],
     "correctOrder": ["This", "room", "is", "three", "times", "as", "large", "as", "that", "room"],
     "explanation": "【倍数表現】A times as + 原級 + as B で「AはBの何倍…だ」となります。この構文は論理的な比較や数値の変動を示す文章で非常に重要な役割を果たします。"
   },
@@ -619,7 +619,7 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "経験を積めば積むほど、ますます賢くなる。",
-    "words": ["experience", "more", "the", "the", "we", "we", "wiser", "get", "gain"],
+    "words": ["experience", "more", "The", "the", "we", "we", "wiser", "get", "gain"],
     "correctOrder": ["The", "more", "experience", "we", "gain", "the", "wiser", "we", "get"],
     "explanation": "【比較構文】The + 比較級 S V, the + 比較級 S V で「〜すればするほど、ますます…だ」となります。因果関係や論理展開を説明する文脈で筆者が主張を強調するために使われます。"
   },
@@ -665,7 +665,7 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼はクラスで断然背が高い。",
-    "words": ["by", "class", "far", "He", "tallest", "the", "in", "the"],
+    "words": ["by", "class", "far", "He", "is", "tallest", "the", "in", "the"],
     "correctOrder": ["He", "is", "by", "far", "the", "tallest", "in", "the", "class"],
     "explanation": "【最上級強調】by far は最上級（the tallest）を強調し「断然〜、ずば抜けて〜」という意味になります。比較級にも使えますが、最上級とも相性が良い表現です。"
   },
