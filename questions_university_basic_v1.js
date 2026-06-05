@@ -566,5 +566,119 @@ const quizData = [
     "words": ["can", "comes", "first", "get", "the", "ticket", "Whoever"],
     "correctOrder": ["Whoever", "comes", "first", "can", "get", "the", "ticket"],
     "explanation": "【複合関係代名詞】whoever（〜する人は誰でも）が名詞節を作り、文全体の主語になっています。anyone who comes first と書き換えることもでき、条件や譲歩のニュアンスを含む読解のキーフレーズとなります。"
+  },
+  {
+    "id": "U06_001",
+    "unit": "6. 比較",
+    "theme": "原級を用いた比較",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "彼は私と同じくらい一生懸命に働いた。",
+    "words": ["as", "hard", "He", "as", "I", "worked", "did"],
+    "correctOrder": ["He", "worked", "as", "hard", "as", "I", "did"],
+    "explanation": "【原級比較】as + 形容詞/副詞 + as で「〜と同じくらい…」という比較を表します。比較対象が文（I did）の場合は as I did となる点に注意しましょう。"
+  },
+  {
+    "id": "U06_002",
+    "unit": "6. 比較",
+    "theme": "比較級＋than",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "この車はあの車より速い。",
+    "words": ["car", "faster", "is", "than", "that", "This", "one"],
+    "correctOrder": ["This", "car", "is", "faster", "than", "that", "one"],
+    "explanation": "【比較級】形容詞・副詞の比較級（faster）＋ than で「〜より…だ」という比較を表します。one は直前の car を繰り返すのを避けるための代名詞です。"
+  },
+  {
+    "id": "U06_003",
+    "unit": "6. 比較",
+    "theme": "最上級の表現",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "This is the [   ] book I have ever read.",
+    "questionJa": "これは私が今まで読んだ中で最も興味深い本だ。",
+    "choices": ["most interesting", "more interesting", "interesting", "as interesting"],
+    "correctAnswer": "most interesting",
+    "explanation": "【最上級】「〜の中で最も…」という最上級には the + 最上級 の形を使います。ever read（今まで〜した中で）と結びついて強い印象を表す長文の頻出パターンです。"
+  },
+  {
+    "id": "U06_004",
+    "unit": "6. 比較",
+    "theme": "倍数表現",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この部屋はあの部屋の3倍の大きさだ。",
+    "words": ["as", "as", "is", "large", "room", "that", "three", "This", "times"],
+    "correctOrder": ["This", "room", "is", "three", "times", "as", "large", "as", "that", "room"],
+    "explanation": "【倍数表現】A times as + 原級 + as B で「AはBの何倍…だ」となります。この構文は論理的な比較や数値の変動を示す文章で非常に重要な役割を果たします。"
+  },
+  {
+    "id": "U06_005",
+    "unit": "6. 比較",
+    "theme": "比較級を使った構文（The 比較級...）",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "経験を積めば積むほど、ますます賢くなる。",
+    "words": ["experience", "more", "the", "the", "we", "we", "wiser", "get", "gain"],
+    "correctOrder": ["The", "more", "experience", "we", "gain", "the", "wiser", "we", "get"],
+    "explanation": "【比較構文】The + 比較級 S V, the + 比較級 S V で「〜すればするほど、ますます…だ」となります。因果関係や論理展開を説明する文脈で筆者が主張を強調するために使われます。"
+  },
+  {
+    "id": "U06_006",
+    "unit": "6. 比較",
+    "theme": "比較対象の代用（that of）",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "The population of Tokyo is larger than [   ] of Osaka.",
+    "questionJa": "東京の人口は大阪のそれ（人口）より多い。",
+    "choices": ["that", "those", "it", "this"],
+    "correctAnswer": "that",
+    "explanation": "【比較対象】比較対象を一致させる必要があります。population（単数名詞）を指す代名詞には that を使います。those は複数名詞を指す場合に使うので間違いに注意しましょう。"
+  },
+  {
+    "id": "U06_007",
+    "unit": "6. 比較",
+    "theme": "no more than",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "彼はわずか10ドルしか持っていない。",
+    "words": ["than", "has", "more", "He", "no", "ten", "dollars"],
+    "correctOrder": ["He", "has", "no", "more", "than", "ten", "dollars"],
+    "explanation": "【否定比較】no more than は「（数値を強調して）たった〜（わずか〜）」という意味になります。直訳すると「10ドルより多くはない」となります。"
+  },
+  {
+    "id": "U06_008",
+    "unit": "6. 比較",
+    "theme": "比較級の重要表現（no longer）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "He [   ] lives here.",
+    "questionJa": "彼はもはやここには住んでいない。",
+    "choices": ["no longer", "any longer", "not long", "no more"],
+    "correctAnswer": "no longer",
+    "explanation": "【比較表現】no longer は「もはや〜ない」という状態の変化を表す重要表現です。文の動詞の前に置くのが基本ルールです。"
+  },
+  {
+    "id": "U06_009",
+    "unit": "6. 比較",
+    "theme": "最上級の強調",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼はクラスで断然背が高い。",
+    "words": ["by", "class", "far", "He", "tallest", "the", "in", "the"],
+    "correctOrder": ["He", "is", "by", "far", "the", "tallest", "in", "the", "class"],
+    "explanation": "【最上級強調】by far は最上級（the tallest）を強調し「断然〜、ずば抜けて〜」という意味になります。比較級にも使えますが、最上級とも相性が良い表現です。"
+  },
+  {
+    "id": "U06_010",
+    "unit": "6. 比較",
+    "theme": "比較級の慣用表現",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "She is [   ] than pretty.",
+    "questionJa": "彼女は可愛いというよりむしろ賢い。",
+    "choices": ["wiser", "more wise", "as wise", "the wise"],
+    "correctAnswer": "wiser",
+    "explanation": "【比較慣用】A rather than B（BというよりむしろA）と同じ意味を、more + 原形形容詞 + than で表します。賢い（wise）という単語は一音節なので wiser と比較級にします。"
   }
 ];
