@@ -111,5 +111,118 @@ const quizData = [
     "words": ["The", "a", "book", "borrowed", "from", "he", "is", "library", "reading", "student", "the"],
     "correctOrder": ["The", "student", "is", "reading", "a", "book", "he", "borrowed", "from", "the", "library"],
     "explanation": "【形容詞節】名詞(a book)の直後に主語と動詞(he borrowed...)が続く場合、関係代名詞が省略されています。長文でこの「名詞＋S＋V」のサインを見つけたら、前の名詞を修飾するカタマリだと判断しましょう。"
+  },
+  {
+    "id": "U02_001",
+    "unit": "2. 時制",
+    "theme": "現在時制（一般的事実・状態）",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "数学と歴史は私のお気に入りの科目だ。",
+    "words": ["Mathematics", "and", "are", "favorite", "history", "my", "subjects"],
+    "correctOrder": ["Mathematics", "and", "history", "are", "my", "favorite", "subjects"],
+    "explanation": "【現在時制】現在の状態や一般的な事実を述べる場合は現在時制を用います。Mathematics and history が複数扱いの主語となるため、動詞は are になります。"
+  },
+  {
+    "id": "U02_002",
+    "unit": "2. 時制",
+    "theme": "現在時制（現在の習慣）",
+    "difficulty": 1,
+    "type": "choice",
+    "questionEn": "I [   ] a cup of coffee every morning.",
+    "questionJa": "私は毎朝コーヒーを飲む。",
+    "choices": ["have", "am having", "had", "have had"],
+    "correctAnswer": "have",
+    "explanation": "【現在時制】every morning（毎朝）などの反復する現在の習慣を表す場合、現在進行形ではなく現在時制を使います。長文の中で時間の副詞句（every ~ や always など）を見たら、現在の習慣について述べていると判断しましょう。"
+  },
+  {
+    "id": "U02_003",
+    "unit": "2. 時制",
+    "theme": "過去時制",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "その少年は昨日友達に会った。",
+    "words": ["The", "boy", "friends", "his", "met", "yesterday"],
+    "correctOrder": ["The", "boy", "met", "his", "friends", "yesterday"],
+    "explanation": "【過去時制】yesterday（昨日）という過去の明確な時点を表す語句があるため、動詞は過去形（met）になります。長文では、過去を表す副詞句が時制を決定する重要なサインとなります。"
+  },
+  {
+    "id": "U02_004",
+    "unit": "2. 時制",
+    "theme": "未来時制（時や条件を表す副詞節）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "I will call you when I [   ].",
+    "questionJa": "到着したらあなたに電話します。",
+    "choices": ["arrive", "will arrive", "arrived", "am arriving"],
+    "correctAnswer": "arrive",
+    "explanation": "【時・条件の副詞節】when や if が導く「時や条件を表す副詞節」の中では、未来の出来事であっても現在時制を用います。文意が未来であっても動詞の形が変わるため、長文読解時は when などの接続詞に注意しましょう。"
+  },
+  {
+    "id": "U02_005",
+    "unit": "2. 時制",
+    "theme": "未来時制（予定・意図）",
+    "difficulty": 1,
+    "type": "sort",
+    "questionJa": "私たちはもうすぐ新しい車を買うつもりだ。",
+    "words": ["We", "a", "are", "buy", "car", "going", "new", "soon", "to"],
+    "correctOrder": ["We", "are", "going", "to", "buy", "a", "new", "car", "soon"],
+    "explanation": "【未来時制】be going to do は、すでに心に決めている「予定・意図」を表します。soon（もうすぐ）のような未来を示す副詞とともに、筆者の今後の展開を予告する働きをします。"
+  },
+  {
+    "id": "U02_006",
+    "unit": "2. 時制",
+    "theme": "過去進行形",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "通りを歩いていたとき、私はメアリーを見かけた。",
+    "words": ["I", "I", "Mary", "When", "down", "saw", "street", "the", "walking", "was"],
+    "correctOrder": ["When", "I", "was", "walking", "down", "the", "street", "I", "saw", "Mary"],
+    "explanation": "【過去進行形】「〜していたとき」という過去のある時点における進行中の動作は、過去進行形（was/were + ~ing）で表します。when節（〜したとき）と組み合わさることで、出来事の背景状況を説明します。"
+  },
+  {
+    "id": "U02_007",
+    "unit": "2. 時制",
+    "theme": "現在完了相（経験）",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼は私が今まで会った中で最も良い先生だ。",
+    "words": ["He", "I", "best", "ever", "have", "is", "met", "teacher", "the"],
+    "correctOrder": ["He", "is", "the", "best", "teacher", "I", "have", "ever", "met"],
+    "explanation": "【現在完了（経験）】「これまでに〜したことがある」という経験を表す現在完了形（have + 過去分詞）です。the best（最上級）と I have ever met がセットになることで「これまでで最も〜だ」という強い主張を読み取ることができます。"
+  },
+  {
+    "id": "U02_008",
+    "unit": "2. 時制",
+    "theme": "現在完了相（継続・期間）",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "It has been a long time [   ] we last met.",
+    "questionJa": "私たちが最後に会ってから長い時間が経った。",
+    "choices": ["since", "for", "from", "when"],
+    "correctAnswer": "since",
+    "explanation": "【現在完了（継続）】「〜して以来」と過去の起点を示す場合は since を用います。It has been + 期間 + since + 過去形の文 は「〜してから…（期間）になる」という頻出構文なので、そのまま形を暗記しておきましょう。"
+  },
+  {
+    "id": "U02_009",
+    "unit": "2. 時制",
+    "theme": "過去完了相（大過去）",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "私がパーティーに到着したとき、友人はすでに帰宅していた。",
+    "words": ["I", "When", "already", "arrived", "at", "friend", "gone", "had", "home", "my", "party", "the"],
+    "correctOrder": ["When", "I", "arrived", "at", "the", "party", "my", "friend", "had", "already", "gone", "home"],
+    "explanation": "【過去完了】「到着した（過去）」よりも前に「帰宅していた」という「過去よりさらに前の出来事（大過去）」を表すため、had + 過去分詞 を使います。長文の中で複数の過去の出来事が登場した際、時間的な前後関係を整理する強力なサインとなります。"
+  },
+  {
+    "id": "U02_010",
+    "unit": "2. 時制",
+    "theme": "現在完了進行形",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "あなたはここでどのくらいの間働いていますか？",
+    "words": ["How", "been", "have", "here", "long", "working", "you"],
+    "correctOrder": ["How", "long", "have", "you", "been", "working", "here"],
+    "explanation": "【現在完了進行形】過去から現在まで動作が「ずっと継続している」ことを強調する場合、have been ~ing を用います。How long ~?（どのくらいの間）などの期間を問う表現と結びつきやすい点に注目しましょう。"
   }
 ];
