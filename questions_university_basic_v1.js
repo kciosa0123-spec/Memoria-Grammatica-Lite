@@ -2149,5 +2149,118 @@ const quizData = [
     "words": ["advantage", "campaign", "candidate", "his", "of", "opportunity", "promote", "the", "The", "to", "took"],
     "correctOrder": ["The", "candidate", "took", "advantage", "of", "the", "opportunity", "to", "promote", "his", "campaign"],
     "explanation": "【熟語】take advantage of 〜 は「〜（機会や状況）を利用する」という頻出熟語です。candidate（候補者）、opportunity（機会）、promote（宣伝する、促進する）といった語彙が連なり、to promote 以下が opportunity を修飾する形容詞的用法になっていることにも注目です。"
+  },
+  {
+    "id": "U20_001",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "形式目的語 (make it possible to) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その新しい技術は効率的なコミュニケーションを可能にした。",
+    "words": ["communicate", "efficiently", "it", "made", "new", "possible", "technology", "The", "to"],
+    "correctOrder": ["The", "new", "technology", "made", "it", "possible", "to", "communicate", "efficiently"],
+    "explanation": "【形式目的語】make it possible to do（〜することを可能にする）という重要構文です。it は形式目的語で、真の目的語は to communicate 以下になります。technology や efficient といった頻出語彙とセットで構文を把握しましょう。"
+  },
+  {
+    "id": "U20_002",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "結果を表す構文 (so ~ that) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The theory was [   ] abstract that ordinary people could not comprehend it.",
+    "questionJa": "その理論はとても抽象的だったので、普通の人々には理解できなかった。",
+    "choices": ["so", "too", "very", "such"],
+    "correctAnswer": "so",
+    "explanation": "【結果の構文】so ~ that ...（とても〜なので…だ）の構文です。abstract（抽象的な）や ordinary（普通の）、comprehend（理解する）といった少し難易度の高い語彙に対しても、so ~ that の骨格を見抜くことが精読の鍵です。"
+  },
+  {
+    "id": "U20_003",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "目的の不定詞句 (in order to) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "正確な結果を得るために、彼らはその実験を実施した。",
+    "words": ["accurate", "conducted", "experiment", "in", "obtain", "order", "results", "the", "They", "to"],
+    "correctOrder": ["They", "conducted", "the", "experiment", "in", "order", "to", "obtain", "accurate", "results"],
+    "explanation": "【目的の構文】in order to do で「〜するために」という目的を明確に表す副詞句を作ります。conduct an experiment（実験を実施する）や obtain accurate results（正確な結果を得る）は論文などの頻出表現です。"
+  },
+  {
+    "id": "U20_004",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "譲歩の複合関係副詞 (No matter how) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "状況がどれほど困難であっても、私たちはそれを克服しなければならない。",
+    "words": ["difficult", "how", "is,", "it", "matter", "must", "No", "overcome", "situation", "the", "we"],
+    "correctOrder": ["No", "matter", "how", "difficult", "the", "situation", "is,", "we", "must", "overcome", "it"],
+    "explanation": "【譲歩構文】No matter how + 形容詞/副詞 + S V ~（どんなに〜でも）という構文です。状況（situation）が困難（difficult）でも克服する（overcome）という逆接的な論理展開を導きます。"
+  },
+  {
+    "id": "U20_005",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "強調構文 (It is ~ that) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "It was the government [   ] implemented the measure.",
+    "questionJa": "その対策を実行したのは政府だった。",
+    "choices": ["that", "what", "which", "whom"],
+    "correctAnswer": "that",
+    "explanation": "【強調構文】It is/was ~ that ... で、~の部分（the government：政府）を強調しています。implement（〜を実行する）、measure（対策・手段）といった語彙と結びつき、誰がその行動を起こしたのかを特定する際に使われます。"
+  },
+  {
+    "id": "U20_006",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "動名詞の慣用表現 (cannot help ~ing) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "私はその著しい違いに気づかずにはいられなかった。",
+    "words": ["could", "difference", "help", "I", "not", "noticing", "significant", "the"],
+    "correctOrder": ["I", "could", "not", "help", "noticing", "the", "significant", "difference"],
+    "explanation": "【動名詞の慣用表現】cannot help ~ing で「〜せずにはいられない」という意味になります。notice（〜に気づく）や significant difference（著しい違い）という表現と結びつき、筆者の強い感情や避けられない認識を表します。"
+  },
+  {
+    "id": "U20_007",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "無生物主語 (enable O to do) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "インターネットのおかげで、私たちは膨大な情報にアクセスできる。",
+    "words": ["a", "access", "amount", "enables", "information", "internet", "of", "The", "to", "us", "vast"],
+    "correctOrder": ["The", "internet", "enables", "us", "to", "access", "a", "vast", "amount", "of", "information"],
+    "explanation": "【無生物主語】enable O to do で「Oが〜することを可能にする」という意味です。直訳の「インターネットが私たちにアクセスすることを可能にする」から因果関係（原因→結果）を読み取る長文読解の必須構文です。"
+  },
+  {
+    "id": "U20_008",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "付帯状況の with ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "choice",
+    "questionEn": "With the global economy [   ], many companies are suffering.",
+    "questionJa": "世界経済が衰退している中で、多くの企業が苦境に立たされている。",
+    "choices": ["declining", "declined", "to decline", "decline"],
+    "correctAnswer": "declining",
+    "explanation": "【付帯状況のwith】with + O + ~ing/過去分詞 で「Oが〜している状態で」という同時進行の状況や背景を表します。the global economy（世界経済）が自ら decline（衰退する）するため、能動の関係を表す現在分詞（~ing）が正解です。"
+  },
+  {
+    "id": "U20_009",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "助動詞の慣用表現 (may well) ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "市民がその決定に抗議するのももっともだ。",
+    "words": ["against", "Citizens", "decision", "may", "protest", "the", "well"],
+    "correctOrder": ["Citizens", "may", "well", "protest", "against", "the", "decision"],
+    "explanation": "【助動詞の慣用表現】may well do で「〜するのももっともだ、たぶん〜するだろう」という意味になります。protest against（〜に抗議する）や decision（決定）といった政治・社会系の語彙とともに、筆者の推測や正当化の論理を読み取ります。"
+  },
+  {
+    "id": "U20_010",
+    "unit": "20. 語彙置き換え問題 (8) - 重要構文・熟語と論理マーカーの総仕上げ",
+    "theme": "比較の否定構文 (no more than) ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "そのプロジェクトにはわずか1万ドルしか割り当てられなかった。",
+    "words": ["10,000", "allocated", "dollars", "more", "No", "project", "than", "the", "to", "was"],
+    "correctOrder": ["No", "more", "than", "10,000", "dollars", "was", "allocated", "to", "the", "project"],
+    "explanation": "【比較の否定】no more than 〜 は「（数値を強調して）わずか〜、たった〜」という意味になります。allocate（割り当てる）や project（プロジェクト）といったビジネスシーンで、少ない予算や規模の小ささを強調する論理マーカーとして機能します。"
   }
 ];
