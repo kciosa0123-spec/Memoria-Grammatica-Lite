@@ -1585,5 +1585,118 @@ const quizData = [
     "words": ["If", "approve", "immediately", "project", "proposal,", "start", "the", "the", "they", "we", "will"],
     "correctOrder": ["If", "they", "approve", "the", "proposal,", "we", "will", "start", "the", "project", "immediately"],
     "explanation": "【時・条件の副詞節】If が導く条件の副詞節の中では、未来のこと（will start）であっても現在時制（approve）を用います。approve（承認する）や proposal（提案）といった重要語彙の意味を、条件の展開（もし〜なら）として正確に捉えましょう。"
+  },
+  {
+    "id": "U15_001",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "不定詞の名詞的用法（形式主語）＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "環境を保護することは不可欠だ。",
+    "words": ["It", "environment", "essential", "is", "protect", "the", "to"],
+    "correctOrder": ["It", "is", "essential", "to", "protect", "the", "environment"],
+    "explanation": "【不定詞（名詞的用法）】It is ~ to do で「〜することは…だ」という形式主語構文です。essential（不可欠な、極めて重要な）や environment（環境）といった論文・長文の頻出語彙とセットで、筆者の強い主張を読み取るサインとして活用しましょう。"
+  },
+  {
+    "id": "U15_002",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "不定詞の形容詞的用法 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The government has a responsibility [   ] the community.",
+    "questionJa": "政府は地域社会を支援する責任がある。",
+    "choices": ["to support", "supporting", "supported", "support"],
+    "correctAnswer": "to support",
+    "explanation": "【不定詞（形容詞的用法）】responsibility（責任）という名詞を後ろから修飾する to support（支援するための）を選びます。government（政府）や community（地域社会）など、社会系のテーマで非常によく使われる組み合わせです。"
+  },
+  {
+    "id": "U15_003",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "不定詞の副詞的用法 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "彼らはその原因を調査するためにアンケートを実施した。",
+    "words": ["They", "a", "cause", "conducted", "investigate", "survey", "the", "to"],
+    "correctOrder": ["They", "conducted", "a", "survey", "to", "investigate", "the", "cause"],
+    "explanation": "【不定詞（副詞的用法）】to investigate the cause（原因を調査するために）が、目的を表す副詞のカタマリとして働いています。conduct a survey（アンケートを実施する）という重要なコロケーション（連語）と併せて覚えましょう。"
+  },
+  {
+    "id": "U15_004",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "原形不定詞（使役動詞）＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その新しい政策は経済を急速に成長させた。",
+    "words": ["The", "economy", "grow", "made", "new", "policy", "rapidly", "the"],
+    "correctOrder": ["The", "new", "policy", "made", "the", "economy", "grow", "rapidly"],
+    "explanation": "【原形不定詞】make O do で「Oを〜させる」という因果関係を表します。policy（政策）という無生物が主語になり、economy（経済）を grow（成長）させた、という論理展開を的確に読み取るための構造です。"
+  },
+  {
+    "id": "U15_005",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "原形不定詞（知覚動詞）＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The researcher noticed the temperature [   ] suddenly.",
+    "questionJa": "その研究者は温度が突然下がるのに気づいた。",
+    "choices": ["drop", "to drop", "dropped", "drops"],
+    "correctAnswer": "drop",
+    "explanation": "【原形不定詞】notice O do（Oが〜するのに気づく）という知覚動詞の構文では、to のない原形不定詞を用います。researcher（研究者）や temperature（温度）といった理系・実験系の長文で登場する基本構造です。"
+  },
+  {
+    "id": "U15_006",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "現在分詞の後置修飾 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この地域に住んでいる個人は医療を必要としている。",
+    "words": ["The", "area", "care", "in", "individuals", "living", "medical", "need", "this"],
+    "correctOrder": ["The", "individuals", "living", "in", "this", "area", "need", "medical", "care"],
+    "explanation": "【現在分詞】living in this area（この地域に住んでいる）という分詞のカタマリが、主語である individuals（個人・人々）を後ろから修飾しています。長い主語をひとまとめにして述語動詞（need）に繋ぐ精読の基本です。"
+  },
+  {
+    "id": "U15_007",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "過去分詞の後置修飾 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "この工場で製造された製品は海外へ輸出される。",
+    "words": ["Products", "are", "exported", "factory", "in", "manufactured", "overseas", "this"],
+    "correctOrder": ["Products", "manufactured", "in", "this", "factory", "are", "exported", "overseas"],
+    "explanation": "【過去分詞】manufactured in this factory（この工場で製造された）という受動のカタマリが Products（製品）を修飾しています。export（輸出する）や overseas（海外へ）といった経済・ビジネス語彙とセットで処理しましょう。"
+  },
+  {
+    "id": "U15_008",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "分詞構文 ＋ 重要語彙",
+    "difficulty": 3,
+    "type": "sort",
+    "questionJa": "その危険性を認識したので、消費者はその製品を避けた。",
+    "words": ["Realizing", "avoided", "consumer", "danger,", "product", "the", "the", "the"],
+    "correctOrder": ["Realizing", "the", "danger,", "the", "consumer", "avoided", "the", "product"],
+    "explanation": "【分詞構文】Realizing ~（〜を認識したので）という分詞から始まる副詞のカタマリが、主節の理由を表しています。consumer（消費者）が realize（認識する）するという能動関係に注意し、前後の因果関係を把握しましょう。"
+  },
+  {
+    "id": "U15_009",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "動名詞を目的語にとる動詞 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "choice",
+    "questionEn": "The committee considered [   ] the budget.",
+    "questionJa": "委員会は予算を拡大することを検討した。",
+    "choices": ["expanding", "to expand", "expand", "expanded"],
+    "correctAnswer": "expanding",
+    "explanation": "【動名詞】consider（〜を検討する、よく考える）は、目的語に不定詞ではなく動名詞（~ing）を取る代表的な動詞です。committee（委員会）、expand（拡大する）、budget（予算）などの必須語彙と絡めて出題されやすいポイントです。"
+  },
+  {
+    "id": "U15_010",
+    "unit": "15. 語彙置き換え問題 (3) - 不定詞・分詞・動名詞",
+    "theme": "前置詞の目的語としての動名詞 ＋ 重要語彙",
+    "difficulty": 2,
+    "type": "sort",
+    "questionJa": "その組織は財政的支援を提供する責任がある。",
+    "words": ["The", "financial", "for", "is", "organization", "providing", "responsible", "support"],
+    "correctOrder": ["The", "organization", "is", "responsible", "for", "providing", "financial", "support"],
+    "explanation": "【動名詞】be responsible for ~（〜に対して責任がある）の for は前置詞なので、直後には動名詞（providing）が来ます。organization（組織）、provide（提供する）、financial support（財政的支援）の語彙をそのまま定着させましょう。"
   }
 ];
