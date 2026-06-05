@@ -94,6 +94,38 @@
     .heat-cell.lvl-3 { background-color: var(--heat-3); }
     .heat-cell.lvl-4 { background-color: var(--heat-4); }
 
+    /* 弱点分析 */
+    .analytics-card {
+      background: var(--card-bg); border: 1px solid #EAEAEA; border-radius: 12px;
+      padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .analytics-card h3 { font-size: 1rem; color: var(--primary); margin: 0 0 8px 0; }
+    .analytics-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 12px; }
+    .analytics-recommendation {
+      background: #FFF7E6; border: 1px solid #FAD7A0; color: #7A5000;
+      border-radius: 8px; padding: 10px 12px; margin-bottom: 12px;
+      font-size: 0.9rem; font-weight: 600; line-height: 1.5;
+    }
+    .analytics-recommendation.good { background: #E8F8F0; border-color: #BFE9D2; color: #196F3D; }
+    .analytics-recommendation.neutral { background: #F1F5F9; border-color: #E2E8F0; color: var(--primary); }
+    .analytics-details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; font-weight: 700; }
+    .analytics-section { margin-top: 16px; }
+    .analytics-section h4 { color: var(--primary); font-size: 0.92rem; margin: 0 0 10px; }
+    .analytics-list { display: flex; flex-direction: column; gap: 10px; }
+    .analytics-row { border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; }
+    .analytics-row-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .analytics-row-title { color: var(--primary); font-size: 0.88rem; font-weight: 700; line-height: 1.4; }
+    .analytics-status { font-size: 0.72rem; font-weight: 700; white-space: nowrap; color: var(--text-muted); }
+    .analytics-status.warn { color: #9A6700; }
+    .analytics-status.weak { color: var(--wrong); }
+    .analytics-status.good { color: var(--correct); }
+    .analytics-bar-bg { height: 8px; background: #EBEDF0; border-radius: 999px; overflow: hidden; margin: 8px 0 6px; }
+    .analytics-bar { height: 100%; background: var(--accent); border-radius: inherit; }
+    .analytics-meta { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+    .analytics-empty { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .analytics-question { font-size: 0.84rem; color: var(--primary); line-height: 1.45; }
+    .analytics-question-meta { display: block; color: var(--text-muted); font-size: 0.74rem; margin-top: 3px; }
+
     /* スタートボタン */
     .start-btn {
       background-color: var(--accent); color: white; border: none;
@@ -110,16 +142,25 @@
     #game-screen { display: none; flex-direction: column; height: 100%; }
 
     header {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
       padding: 15px 20px; font-size: 1.1rem; font-weight: bold; border-bottom: 1px solid #EAEAEA;
     }
-    .hp-hearts { color: var(--heart); letter-spacing: 2px; }
-    .combo-streak { color: var(--combo); transition: transform 0.2s; font-size: 1rem; }
+    .hp-hearts { color: var(--heart); letter-spacing: 2px; flex-shrink: 0; }
+    .combo-streak { color: var(--combo); transition: transform 0.2s; font-size: 1rem; margin-left: auto; }
+    .exit-session-btn {
+      background: transparent; border: 1px solid #CBD5E0; color: var(--text-muted);
+      padding: 6px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    }
+    .exit-session-btn:active { transform: translateY(1px); }
 
     .timer-container { width: 100%; height: 6px; background-color: #EAEAEA; }
     .timer-bar { height: 100%; width: 100%; background-color: var(--correct); transform-origin: left; transition: background-color 0.3s; }
 
-    main { flex: 1; padding: 40px 20px; display: flex; flex-direction: column; }
+    #game-screen main {
+      flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+      padding: 40px 20px; display: flex; flex-direction: column;
+    }
     .question-ja { font-size: 1.2rem; font-weight: 600; margin-bottom: 30px; text-align: center; color: var(--primary); line-height: 1.5; }
 
     /* Sort Mode */
@@ -228,6 +269,10 @@
     .deck-actions .deck-action-btn:last-child { grid-column: 1 / -1; }
     .deck-status { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 10px 0 0 0; }
 
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
     .hidden { display: none !important; }
   </style>
 </head>
@@ -275,6 +320,27 @@
         </div>
       </div>
 
+      <section class="analytics-card" id="analytics-card" aria-labelledby="analytics-title">
+        <h3 id="analytics-title">弱点分析</h3>
+        <p class="analytics-summary" id="analytics-summary">学習履歴を集計しています。</p>
+        <div class="analytics-recommendation neutral" id="analytics-recommendation">学習を始めると、復習をおすすめする単元が表示されます。</div>
+        <details class="analytics-details" id="analytics-details">
+          <summary>単元別・テーマ別の詳細を見る</summary>
+          <div class="analytics-section">
+            <h4>単元別</h4>
+            <div class="analytics-list" id="analytics-unit-list"></div>
+          </div>
+          <div class="analytics-section">
+            <h4>テーマ別</h4>
+            <div class="analytics-list" id="analytics-theme-list"></div>
+          </div>
+          <div class="analytics-section">
+            <h4>間違い・Hardが多かった問題</h4>
+            <div class="analytics-list" id="analytics-question-list"></div>
+          </div>
+        </details>
+      </section>
+
       <div class="heatmap-card">
         <h3>学習ヒストリー</h3>
         <div class="heatmap-grid" id="heatmap-grid">
@@ -290,13 +356,14 @@
          ========================================= -->
     <div id="game-screen">
       <header>
-        <div class="hp-hearts" id="hp-display">❤️❤️❤️</div>
+        <div class="hp-hearts" id="hp-display" aria-label="残りHP 3">❤️❤️❤️</div>
         <div class="combo-streak" id="combo-display"></div>
+        <button type="button" class="exit-session-btn" onclick="interruptSession()">中断して戻る</button>
       </header>
       <div class="timer-container"><div class="timer-bar" id="timer-bar"></div></div>
       
       <main>
-        <div class="question-ja" id="question-text"></div>
+        <div class="question-ja" id="question-text" tabindex="-1"></div>
 
         <div class="sort-area" id="mode-sort">
           <div class="answer-slots" id="answer-slots"></div>
@@ -315,18 +382,20 @@
       </main>
     </div>
 
+    <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
     <!-- オーバーレイUI（トースト＆モーダル） -->
-    <div id="correct-toast" class="hidden">
-      <div class="toast-title">Excellent.</div>
+    <div id="correct-toast" class="hidden" role="dialog" aria-modal="true" aria-labelledby="correct-toast-title">
+      <div class="toast-title" id="correct-toast-title">Excellent.</div>
       <div class="toast-progress-bg"><div class="toast-progress-bar" id="toast-progress-bar"></div></div>
       <div class="toast-actions">
-        <button class="skip-btn" onclick="skipToNext()">次へ進む</button>
-        <button class="hard-btn" onclick="markHard()">難しかった（短めに復習）</button>
-        <button class="pause-btn" onclick="cancelAutoAdvance()">解説を確認する</button>
+        <button class="skip-btn" id="correct-skip-btn" onclick="skipToNext()">次へ進む</button>
+        <button class="hard-btn" id="correct-hard-btn" onclick="markHard()">難しかった（短めに復習）</button>
+        <button class="pause-btn" id="correct-pause-btn" onclick="cancelAutoAdvance()">解説を確認する</button>
       </div>
     </div>
 
-    <div id="result-modal">
+    <div id="result-modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
       <div class="modal-content">
         <div class="result-title" id="result-title"></div>
         <div class="sm2-badge" id="sm2-badge"></div>
@@ -341,7 +410,7 @@
       <div class="clear-icon">☕️</div>
       <div class="clear-text">Session Complete</div>
       <div class="clear-sub">今日のタスクはすべて完了しました。<br>また明日お会いしましょう。</div>
-      <button class="next-btn clear-return-btn" onclick="returnToDashboard()">ダッシュボードへ戻る</button>
+      <button class="next-btn clear-return-btn" id="clear-return-btn" onclick="returnToDashboard()">ダッシュボードへ戻る</button>
     </div>
 
   </div>
@@ -350,8 +419,10 @@
 
   <script>
     // Memoria Grammatica Lite v1：学生配布用。AI生成・任意URL読込は搭載しない。
+    // Release candidate: 配布前必須修正と弱点分析（初回正答率・単元/テーマ別集計・バックアップ）反映済み。
     const STORAGE_KEY = 'memoriaGrammaticaLite_progress_v1';
     const ACTIVITY_KEY = 'memoriaGrammaticaLite_activity_v1';   // 学習日ごとのレビュー回数（ストリーク・ヒートマップ用）
+    const ANALYTICS_KEY = 'memoriaGrammaticaLite_analytics_v1'; // 問題別・単元別の弱点分析用累積データ
     const CURRENT_DECK_KEY = 'memoriaGrammaticaLite_current_deck_v1'; // JSONインポートした現在のデッキ
     const ACTIVE_SOURCE_KEY = 'memoriaGrammaticaLite_active_source_v1'; // 前回正常に使用したデータソース
     const BACKUP_SCHEMA_VERSION = 1;
@@ -639,6 +710,11 @@
       q.type = (typeof q.type === 'string') ? q.type.trim() : q.type;
       if (typeof q.questionJa === 'string') q.questionJa = q.questionJa.normalize('NFKC').trim();
       if (typeof q.explanation === 'string') q.explanation = q.explanation.trim();
+      if (typeof q.unit === 'string') q.unit = q.unit.normalize('NFKC').trim();
+      if (typeof q.theme === 'string') q.theme = q.theme.normalize('NFKC').trim();
+      if (typeof q.unitId === 'string') q.unitId = sanitizeId(q.unitId);
+      if (typeof q.themeId === 'string') q.themeId = sanitizeId(q.themeId);
+      if (q.difficulty !== undefined && Number.isFinite(Number(q.difficulty))) q.difficulty = Number(q.difficulty);
 
       if (q.type === 'sort') {
         q.words = toTrimmedStringArray(q.words);
@@ -1008,9 +1084,6 @@
     }
 
     function makeReusableSource(source, report) {
-      if (source.type === 'file' && source.persistAsCurrentDeck) {
-        return { type: 'localStorage', key: CURRENT_DECK_KEY, deckId: report.deckId || DEFAULT_DECK_ID };
-      }
       if (source.type === 'file') {
         return currentSource; // Fileオブジェクトは永続的な再読込元にしない
       }
@@ -1071,6 +1144,7 @@
         data: {
           progress: loadStoredJSONOrNull(STORAGE_KEY) || {},
           activity: loadStoredJSONOrNull(ACTIVITY_KEY) || {},
+          analytics: loadStoredJSONOrNull(ANALYTICS_KEY) || { schemaVersion: 1, cards: {} },
           currentDeck: loadStoredJSONOrNull(CURRENT_DECK_KEY),
           activeSource: loadStoredJSONOrNull(ACTIVE_SOURCE_KEY)
         }
@@ -1122,13 +1196,14 @@
           throw new Error(`バックアップファイルが大きすぎます。上限は ${Math.round(MAX_BACKUP_FILE_SIZE / 1024 / 1024)}MB です`);
         }
         const data = validateBackupPayload(await parseJSONText(await file.text(), 'バックアップファイル'));
-        const ok = confirm(`現在の学習進捗・学習履歴・保存済みデッキ・前回使用デッキ設定をバックアップ内容で上書きします。よろしいですか？
+        const ok = confirm(`現在の学習進捗・学習履歴・弱点分析・保存済みデッキ・前回使用デッキ設定をバックアップ内容で上書きします。よろしいですか？
 
 現在の状態を残したい場合は、先に「バックアップを書き出す」を実行してください。`);
         if (!ok) return;
 
         restoreJSONKey(STORAGE_KEY, data.progress || {});
         restoreJSONKey(ACTIVITY_KEY, data.activity || {});
+        restoreJSONKey(ANALYTICS_KEY, data.analytics || { schemaVersion: 1, cards: {} });
         restoreJSONKey(CURRENT_DECK_KEY, data.currentDeck || null);
         restoreJSONKey(ACTIVE_SOURCE_KEY, data.activeSource || null);
         location.reload();
@@ -1169,6 +1244,7 @@
     // ----------------------------------------------------
     let sessionMasterList = [];  // 今日の対象（initApp時点の due カード集合）。件数表示・ゲームオーバー再開の基準。不変。
     let sessionQueue = [];       // 実際に処理する生きたキュー。要素は { q, lapses }
+    // 弱点分析の初回回答は「同じカードの同日初回」として recordAnswerAnalytics 内で判定する。
     let hp = 3; let combo = 0;
     let currentQuestion = null;
     let selectedWords = []; let remainingWords = [];
@@ -1184,25 +1260,37 @@
     async function initApp(source = currentSource) {
       showLoadingState('問題データを読み込み中です。');
 
+      let loadedReport;
       try {
-        quizValidationReport = await loadQuizFromSource(source);
+        loadedReport = await loadQuizFromSource(source);
       } catch (e) {
         console.error('問題データの読み込みに失敗しました。', e);
         showErrorState('問題データの読み込みに失敗しました。', [String(e.message || e)]);
         return;
       }
 
+      // JSONファイルは、検証だけでなく端末への保存にも成功した場合だけ現在のデッキとして採用する。
+      // 保存に失敗した状態で一時的に使い始めると、ダッシュボードへ戻った際に旧デッキへ戻り混乱するため。
+      if (loadedReport.valid.length > 0 && source.type === 'file' && source.persistAsCurrentDeck) {
+        const saved = saveCurrentDeck(loadedReport.rawData, loadedReport);
+        if (!saved) {
+          await initApp(currentSource);
+          renderSimpleReport('error', 'デッキの読み込みには成功しましたが、端末へ保存できませんでした。現在のデッキは変更されていません。', [
+            '端末の空き容量、ブラウザのプライベートモード、サイトデータの保存設定を確認してください。'
+          ]);
+          return;
+        }
+      }
+
+      quizValidationReport = loadedReport;
       QUIZ = quizValidationReport.valid;
 
       // 有効問題が1問以上ある場合だけ、現在のソースを更新する。
       // 読込失敗・全件不正のデータで直前の正常ソースを上書きしないため。
       if (QUIZ.length > 0) {
         if (source.type === 'file' && source.persistAsCurrentDeck) {
-          const saved = saveCurrentDeck(quizValidationReport.rawData, quizValidationReport);
-          if (saved) {
-            currentSource = { type: 'localStorage', key: CURRENT_DECK_KEY, deckId: quizValidationReport.deckId || 'imported' };
-            saveActiveSource(currentSource);
-          }
+          currentSource = { type: 'localStorage', key: CURRENT_DECK_KEY, deckId: quizValidationReport.deckId || 'imported' };
+          saveActiveSource(currentSource);
         } else {
           currentSource = makeReusableSource(source, quizValidationReport);
           saveActiveSource(currentSource);
@@ -1226,6 +1314,7 @@
       document.getElementById('dash-todays-count').innerText = sessionMasterList.length;
       document.getElementById('dash-streak').innerText = computeStreak(activity);
       renderHeatmap();
+      renderWeaknessAnalysis();
 
       if (QUIZ.length === 0) {
         setStartButton('有効な問題がありません', true);
@@ -1273,6 +1362,208 @@
       }
     }
 
+    // ----------------------------------------------------
+    // 弱点分析（問題別累積記録を unit / theme ごとに集計）
+    // ----------------------------------------------------
+    function emptyAnalyticsData() {
+      return { schemaVersion: 1, cards: {} };
+    }
+
+    function getAnalyticsData() {
+      const data = safeLoadJSON(ANALYTICS_KEY, emptyAnalyticsData());
+      if (!data || typeof data !== 'object' || Array.isArray(data)) return emptyAnalyticsData();
+      if (!data.cards || typeof data.cards !== 'object' || Array.isArray(data.cards)) data.cards = {};
+      data.schemaVersion = 1;
+      return data;
+    }
+
+    function getQuestionAnalyticsMeta(question) {
+      const unit = (typeof question.unit === 'string' && question.unit.trim()) ? question.unit.trim() : '未分類';
+      const theme = (typeof question.theme === 'string' && question.theme.trim()) ? question.theme.trim() : '未分類';
+      // 明示IDがない場合は表示名の内容ハッシュを使う。日本語名を sanitizeId だけで処理すると
+      // 異なる単元名が同じアンダースコア列へ潰れる可能性があるため。
+      const explicitUnitId = (typeof question.unitId === 'string') ? sanitizeId(question.unitId) : '';
+      const explicitThemeId = (typeof question.themeId === 'string') ? sanitizeId(question.themeId) : '';
+      const unitId = explicitUnitId || `unit_${hashStringFNV1a(unit)}`;
+      const themeId = explicitThemeId || `theme_${hashStringFNV1a(theme)}`;
+      return {
+        deckId: question.deckId || DEFAULT_DECK_ID,
+        cardId: question.id,
+        unitId, unit, themeId, theme,
+        difficulty: Number.isFinite(Number(question.difficulty)) ? Number(question.difficulty) : null
+      };
+    }
+
+    function recordAnswerAnalytics(question, score) {
+      if (!question) return false;
+      const data = getAnalyticsData();
+      const key = getProgressKey(question);
+      const meta = getQuestionAnalyticsMeta(question);
+      const previous = data.cards[key];
+      const record = (previous && typeof previous === 'object' && !Array.isArray(previous)) ? previous : {};
+
+      Object.assign(record, meta);
+      record.questionJa = String(question.questionJa || '');
+      const today = dateKey(new Date());
+      const isFirstAttemptToday = record.lastFirstAttemptDate !== today;
+      record.totalAttempts = Math.max(0, Number(record.totalAttempts) || 0) + 1;
+      record.correctCount = Math.max(0, Number(record.correctCount) || 0) + (score >= 2 ? 1 : 0);
+      record.wrongCount = Math.max(0, Number(record.wrongCount) || 0) + (score === 1 ? 1 : 0);
+      record.hardCount = Math.max(0, Number(record.hardCount) || 0) + (score === 2 ? 1 : 0);
+      record.firstAttempts = Math.max(0, Number(record.firstAttempts) || 0) + (isFirstAttemptToday ? 1 : 0);
+      record.firstCorrectCount = Math.max(0, Number(record.firstCorrectCount) || 0) + (isFirstAttemptToday && score >= 2 ? 1 : 0);
+      if (isFirstAttemptToday) record.lastFirstAttemptDate = today;
+      record.lastRating = ({ 1: 'relearn', 2: 'hard', 3: 'good', 4: 'easy' })[score] || 'unknown';
+      record.lastAnsweredAt = Date.now();
+      data.cards[key] = record;
+      return safeSaveJSON(ANALYTICS_KEY, data);
+    }
+
+    function aggregateAnalytics(level) {
+      const data = getAnalyticsData();
+      const groups = new Map();
+
+      QUIZ.forEach(question => {
+        const meta = getQuestionAnalyticsMeta(question);
+        const isUnit = level === 'unit';
+        const groupKey = isUnit ? meta.unitId : `${meta.unitId}::${meta.themeId}`;
+        const label = isUnit ? meta.unit : meta.theme;
+        const subtitle = isUnit ? '' : meta.unit;
+        if (!groups.has(groupKey)) {
+          groups.set(groupKey, {
+            key: groupKey, label, subtitle,
+            cardCount: 0, attemptedCards: 0,
+            totalAttempts: 0, correctCount: 0, wrongCount: 0, hardCount: 0,
+            firstAttempts: 0, firstCorrectCount: 0
+          });
+        }
+        const group = groups.get(groupKey);
+        group.cardCount += 1;
+        const record = data.cards[getProgressKey(question)];
+        if (!record || typeof record !== 'object') return;
+        group.attemptedCards += 1;
+        ['totalAttempts', 'correctCount', 'wrongCount', 'hardCount', 'firstAttempts', 'firstCorrectCount'].forEach(name => {
+          group[name] += Math.max(0, Number(record[name]) || 0);
+        });
+      });
+
+      return [...groups.values()].map(group => ({
+        ...group,
+        firstAccuracy: group.firstAttempts > 0 ? Math.round(group.firstCorrectCount / group.firstAttempts * 100) : null,
+        hardRate: group.correctCount > 0 ? group.hardCount / group.correctCount : 0
+      }));
+    }
+
+    function getAnalysisStatus(group) {
+      if (group.firstAttempts < 5) return { label: 'データ蓄積中', className: '' };
+      if (group.firstAccuracy < 60) return { label: '復習推奨', className: 'weak' };
+      if (group.firstAccuracy < 80) return { label: 'もう少し復習', className: 'warn' };
+      return { label: 'よく定着', className: 'good' };
+    }
+
+    function sortAnalyticsGroups(groups) {
+      return [...groups].sort((a, b) => {
+        const aReady = a.firstAttempts >= 5 ? 0 : 1;
+        const bReady = b.firstAttempts >= 5 ? 0 : 1;
+        if (aReady !== bReady) return aReady - bReady;
+        if (a.firstAccuracy !== b.firstAccuracy) return (a.firstAccuracy ?? 101) - (b.firstAccuracy ?? 101);
+        if (a.hardRate !== b.hardRate) return b.hardRate - a.hardRate;
+        return b.firstAttempts - a.firstAttempts;
+      });
+    }
+
+    function renderAnalyticsRows(containerId, groups) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      const sorted = sortAnalyticsGroups(groups);
+      if (sorted.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'analytics-empty';
+        empty.textContent = 'このデッキには集計できる単元情報がありません。';
+        container.appendChild(empty);
+        return;
+      }
+
+      sorted.forEach(group => {
+        const row = document.createElement('div'); row.className = 'analytics-row';
+        const head = document.createElement('div'); head.className = 'analytics-row-head';
+        const title = document.createElement('div'); title.className = 'analytics-row-title';
+        title.textContent = group.subtitle ? `${group.label}（${group.subtitle}）` : group.label;
+        const statusInfo = getAnalysisStatus(group);
+        const status = document.createElement('span');
+        status.className = `analytics-status ${statusInfo.className}`.trim(); status.textContent = statusInfo.label;
+        head.appendChild(title); head.appendChild(status); row.appendChild(head);
+
+        const barBg = document.createElement('div'); barBg.className = 'analytics-bar-bg';
+        const bar = document.createElement('div'); bar.className = 'analytics-bar';
+        bar.style.width = `${group.firstAccuracy ?? 0}%`;
+        barBg.appendChild(bar); row.appendChild(barBg);
+
+        const meta = document.createElement('div'); meta.className = 'analytics-meta';
+        const accuracyText = group.firstAccuracy === null ? '初回正答率: 未回答' : `初回正答率: ${group.firstAccuracy}%（${group.firstCorrectCount}/${group.firstAttempts}）`;
+        meta.textContent = `${accuracyText} / 誤答 ${group.wrongCount}回 / Hard ${group.hardCount}回 / 回答済み ${group.attemptedCards}/${group.cardCount}問`;
+        row.appendChild(meta); container.appendChild(row);
+      });
+    }
+
+    function renderDifficultQuestions() {
+      const container = document.getElementById('analytics-question-list');
+      if (!container) return;
+      container.innerHTML = '';
+      const data = getAnalyticsData();
+      const rows = QUIZ.map(question => ({ question, record: data.cards[getProgressKey(question)] }))
+        .filter(item => item.record && ((Number(item.record.wrongCount) || 0) > 0 || (Number(item.record.hardCount) || 0) > 0))
+        .sort((a, b) => {
+          const aw = Number(a.record.wrongCount) || 0; const bw = Number(b.record.wrongCount) || 0;
+          if (aw !== bw) return bw - aw;
+          return (Number(b.record.hardCount) || 0) - (Number(a.record.hardCount) || 0);
+        }).slice(0, 5);
+
+      if (rows.length === 0) {
+        const empty = document.createElement('p'); empty.className = 'analytics-empty';
+        empty.textContent = '間違い・Hardとして記録された問題はまだありません。'; container.appendChild(empty); return;
+      }
+      rows.forEach(({ question, record }) => {
+        const row = document.createElement('div'); row.className = 'analytics-row';
+        const text = document.createElement('div'); text.className = 'analytics-question'; text.textContent = question.questionJa || question.id;
+        const meta = document.createElement('span'); meta.className = 'analytics-question-meta';
+        meta.textContent = `${question.unit || '未分類'} / ${question.theme || '未分類'} / 誤答 ${Number(record.wrongCount) || 0}回 / Hard ${Number(record.hardCount) || 0}回`;
+        text.appendChild(meta); row.appendChild(text); container.appendChild(row);
+      });
+    }
+
+    function renderWeaknessAnalysis() {
+      const summary = document.getElementById('analytics-summary');
+      const recommendation = document.getElementById('analytics-recommendation');
+      if (!summary || !recommendation) return;
+      const units = aggregateAnalytics('unit');
+      const themes = aggregateAnalytics('theme');
+      const attemptedUnits = units.filter(group => group.firstAttempts > 0);
+      const totalFirstAttempts = attemptedUnits.reduce((sum, group) => sum + group.firstAttempts, 0);
+      summary.textContent = totalFirstAttempts > 0
+        ? `現在のデッキについて、セッション初回回答 ${totalFirstAttempts}回を中心に集計しています。再出題分は補助情報として表示します。`
+        : 'まだ分析データがありません。問題に回答すると、単元・テーマ別の傾向が表示されます。';
+
+      const eligible = sortAnalyticsGroups(units.filter(group => group.firstAttempts >= 5));
+      recommendation.className = 'analytics-recommendation neutral';
+      if (eligible.length === 0) {
+        recommendation.textContent = '各単元の初回回答が5回以上たまると、復習をおすすめする単元を判定します。';
+      } else {
+        const weakest = eligible[0];
+        if (weakest.firstAccuracy < 80) {
+          recommendation.className = 'analytics-recommendation';
+          recommendation.textContent = `復習おすすめ：「${weakest.label}」の初回正答率は ${weakest.firstAccuracy}% です。詳細から苦手なテーマを確認しましょう。`;
+        } else {
+          recommendation.className = 'analytics-recommendation good';
+          recommendation.textContent = `よく定着しています。集計対象単元のうち最も低い初回正答率も ${weakest.firstAccuracy}% です。`;
+        }
+      }
+      renderAnalyticsRows('analytics-unit-list', units);
+      renderAnalyticsRows('analytics-theme-list', themes);
+      renderDifficultQuestions();
+    }
+
     // マスターリストから生きたキューを生成（lapses をリセット）
     function buildSessionQueue() {
       sessionQueue = sessionMasterList.map(q => ({ q, lapses: 0 }));
@@ -1284,6 +1575,12 @@
       document.getElementById('all-clear-screen').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'flex';
       await initApp(currentSource);
+    }
+
+    async function interruptSession() {
+      const ok = confirm('学習を中断してダッシュボードへ戻りますか？\n採点済みの進捗は保存されています。未回答の問題は次回も出題されます。');
+      if (!ok) return;
+      await returnToDashboard();
     }
 
     // 「学習をスタート」ボタン押下時
@@ -1330,6 +1627,7 @@
       reveal.innerText = '';
       progressBar.style.transition = 'none';
       progressBar.style.width = '100%';
+      document.getElementById('result-next-btn').innerText = '次へ進む';
     }
 
     function getTimeLimitForQuestion(question) {
@@ -1340,12 +1638,29 @@
       return CHOICE_TIME_LIMIT;
     }
 
+
+    function announceToScreenReader(message) {
+      const announcer = document.getElementById('sr-announcer');
+      if (!announcer) return;
+      announcer.textContent = '';
+      setTimeout(() => { announcer.textContent = message || ''; }, 20);
+    }
+
+    function focusElementById(id) {
+      const el = document.getElementById(id);
+      if (el && typeof el.focus === 'function') {
+        setTimeout(() => el.focus({ preventScroll: true }), 0);
+      }
+    }
+
     function loadQuestion() {
       resetResultUI();
 
       if (sessionQueue.length === 0) {
         document.getElementById('game-screen').style.display = 'none';
         document.getElementById('all-clear-screen').style.display = 'flex';
+        announceToScreenReader('学習が完了しました。');
+        focusElementById('clear-return-btn');
         return;
       }
 
@@ -1368,6 +1683,7 @@
         renderChoiceBoard();
       }
       startTimer();
+      focusElementById('question-text');
     }
 
     function startTimer() {
@@ -1414,12 +1730,14 @@
       answerSlots.innerHTML = ''; wordBank.innerHTML = '';
 
       selectedWords.forEach((word, index) => {
-        const slot = document.createElement('div'); slot.className = 'slot'; slot.innerText = word;
+        const slot = document.createElement('button');
+        slot.type = 'button'; slot.className = 'slot'; slot.innerText = word;
+        slot.setAttribute('aria-label', `${word} を語群に戻す`);
         slot.onclick = () => { remainingWords.push(selectedWords.splice(index, 1)[0]); renderSortBoard(); };
         answerSlots.appendChild(slot);
       });
       remainingWords.forEach((word, index) => {
-        const btn = document.createElement('button'); btn.className = 'word-block'; btn.innerText = word;
+        const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'word-block'; btn.innerText = word;
         btn.onclick = () => { selectedWords.push(remainingWords.splice(index, 1)[0]); renderSortBoard(); };
         wordBank.appendChild(btn);
       });
@@ -1444,7 +1762,7 @@
       renderSentenceWithBlank(sentenceDiv, currentQuestion.questionEn);
       grid.innerHTML = '';
       currentQuestion.choices.forEach(choice => {
-        const btn = document.createElement('button'); btn.className = 'choice-btn'; btn.innerText = choice;
+        const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'choice-btn'; btn.innerText = choice;
         btn.onclick = () => checkChoiceAnswer(choice); grid.appendChild(btn);
       });
     }
@@ -1464,7 +1782,8 @@
       record.interval = Number.isFinite(Number(record.interval)) ? Math.max(0, Math.round(Number(record.interval))) : 0;
       record.repetitions = Number.isFinite(Number(record.repetitions)) ? Math.max(0, Math.floor(Number(record.repetitions))) : 0;
 
-      // アプリの 1–4 評価を SM-2 の品質 q(0–5) へ対応づける
+      // アプリの 1–4 評価を SM-2 の品質 q(0–5) へ対応づける。
+      // Lite v1の通常操作では 1:Re-learn / 2:手動Hard / 3:Good を使用し、Easyは自動判定しない。
       // 1:Re-learn→2 / 2:Hard→3 / 3:Good→4 / 4:Easy→5
       const q = { 1: 2, 2: 3, 3: 4, 4: 5 }[score];
 
@@ -1514,6 +1833,7 @@
     function finalizeAnswer(score) {
       if (currentNextReviewDays !== null) return currentNextReviewDays;
       currentNextReviewDays = calculateAndSaveProgress(score);
+      recordAnswerAnalytics(currentQuestion, score);
       return currentNextReviewDays;
     }
 
@@ -1541,14 +1861,15 @@
       if (isAnswerLocked) return;
       isAnswerLocked = true;
       cancelTimer(); combo++; updateHeader();
-      const timeRatio = timeLeft / timeLimit;
-      // 解答速度で自動採点：速い=Easy / 普通=Good / 時間ギリギリ=Hard
-      if (timeRatio > 0.6) currentSm2Score = 4;
-      else if (timeRatio > 0.25) currentSm2Score = 3;
-      else currentSm2Score = 2;
+
+      // Lite v1では、出題形式・操作量・端末差による速度偏りを避けるため、
+      // 正解は原則 Good とする。難しかった場合だけ、学習者が手動で Hard を選ぶ。
+      currentSm2Score = 3;
 
       const toast = document.getElementById('correct-toast'); const progressBar = document.getElementById('toast-progress-bar');
       toast.classList.remove('hidden'); progressBar.style.transition = 'none'; progressBar.style.width = '100%';
+      announceToScreenReader('正解です。次へ進む、難しかった、解説を確認する、から選べます。');
+      focusElementById('correct-skip-btn');
       setTimeout(() => { progressBar.style.transition = `width ${AUTO_ADVANCE_MS}ms linear`; progressBar.style.width = '0%'; }, 50);
       autoAdvanceTimer = setTimeout(() => { skipToNext(); }, AUTO_ADVANCE_MS);
     }
@@ -1560,7 +1881,7 @@
       finalizeAnswer(currentSm2Score);
       nextQuestion();
     }
-    // 折衷案：自動採点を Hard に上書きし、解説モーダルを表示（任意・ノンブロッキング）
+    // 正解後に学習者が「難しかった」を選んだ場合だけ Hard に上書きし、解説を表示する。
     function markHard() { currentSm2Score = 2; cancelAutoAdvance(); }
     function cancelAutoAdvance() {
       const toast = document.getElementById('correct-toast');
@@ -1571,7 +1892,10 @@
     }
 
     function updateHeader() {
-      document.getElementById('hp-display').innerText = '❤️'.repeat(Math.max(0, hp));
+      const hpDisplay = document.getElementById('hp-display');
+      const hpValue = Math.max(0, hp);
+      hpDisplay.innerText = '❤️'.repeat(hpValue);
+      hpDisplay.setAttribute('aria-label', `残りHP ${hpValue}`);
       document.getElementById('combo-display').innerText = combo > 1 ? `🔥 ${combo}` : '';
     }
 
@@ -1585,7 +1909,9 @@
       document.getElementById('result-next-btn').innerText = isRecoveryBreak ? "HPを回復して続ける" : "次へ進む";
 
       title.innerText = isRecoveryBreak ? "ひと休み" : (isCorrect ? "Excellent." : (failTitle || "Incorrect."));
-      title.className = (isCorrect && !isRecoveryBreak) ? "result-title result-correct" : "result-title result-wrong";
+      title.className = isRecoveryBreak
+        ? "result-title"
+        : (isCorrect ? "result-title result-correct" : "result-title result-wrong");
 
       // 不正解・時間切れ・HP回復休憩時は正解を明示
       if (isCorrect && !isRecoveryBreak) {
@@ -1595,7 +1921,6 @@
         reveal.innerText = "正解: " + getCorrectAnswerText();
       }
 
-      // HPが0になったときは、学習スケジュールよりも継続導線を優先してバッジを隠す。
       if (isRecoveryBreak) {
         badge.style.display = 'none';
         nextReviewBadge.style.display = 'none';
@@ -1608,6 +1933,14 @@
         badge.innerText = `評価: ${scoreLabels[sm2Score]}`;
         nextReviewBadge.innerText = (sm2Score >= 2) ? `次回復習: 約 ${nextDays} 日後` : `次回復習: 今日中に再出題`;
       }
+
+      const announcement = isRecoveryBreak
+        ? `ひと休み。正解は ${getCorrectAnswerText()} です。HPを回復して続けられます。`
+        : (isCorrect
+          ? `正解です。評価は ${sm2Score === 2 ? 'Hard' : 'Good'} です。`
+          : `${failTitle || '不正解'} 正解は ${getCorrectAnswerText()} です。`);
+      announceToScreenReader(announcement);
+      focusElementById('result-next-btn');
     }
 
     // ----------------------------------------------------
@@ -1615,11 +1948,16 @@
     // ----------------------------------------------------
     function nextQuestion() {
       document.getElementById('result-modal').style.display = 'none';
+      const needsHpRecovery = hp <= 0;
 
       // いま採点し終えたカード（キュー先頭）を取り出す。
-      // HPが0になっても、正解済みカードを含む当日セット全体は再構築しない。
+      // HPが0でも、正解済みカードを含む当日セット全体は再構築しない。
       const finished = sessionQueue.shift();
       if (!finished) {
+        if (needsHpRecovery) {
+          hp = 3; combo = 0;
+          updateHeader();
+        }
         loadQuestion();
         return;
       }
@@ -1633,10 +1971,9 @@
         sessionQueue.splice(pos, 0, finished);
       }
 
-      // HPが0になった場合は、現在の未通過キューを維持したままHPとコンボだけを回復する。
-      if (hp <= 0) {
-        hp = 3;
-        combo = 0;
+      // HPが0になった場合は、残りキューを維持したままHPとコンボだけを回復する。
+      if (needsHpRecovery) {
+        hp = 3; combo = 0;
         document.getElementById('result-next-btn').innerText = "次へ進む";
         updateHeader();
       }
@@ -1649,6 +1986,20 @@
         loadQuestion();
       }
     }
+
+
+    // タブを裏に回していた時間はタイマーに含めない。
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden || isAnswerLocked || timerFrameId === null) return;
+      timerStartTime = performance.now() - (timeLimit - timeLeft);
+    });
+
+    // 正解トースト表示中にページを閉じた場合だけ、未確定の正解を保存する。
+    window.addEventListener('pagehide', () => {
+      if (isAnswerLocked && currentQuestion && currentSm2Score >= 2 && currentNextReviewDays === null) {
+        finalizeAnswer(currentSm2Score);
+      }
+    });
 
     // アプリ起動
     initApp(getInitialSource()).catch(e => {
