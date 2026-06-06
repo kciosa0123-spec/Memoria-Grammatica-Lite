@@ -29,13 +29,6 @@
     }
 
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-    }
-
-button,
-input,
-summary {
-  -webkit-tap-highlight-color: transparent;
-}
     
     body {
       margin: 0; padding: 0; background-color: var(--bg-color);
@@ -276,6 +269,21 @@ summary {
     .deck-actions .deck-action-btn:last-child { grid-column: 1 / -1; }
     .deck-status { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 10px 0 0 0; }
 
+    .pace-card {
+      background: #F7FAFC; border: 1px solid #E2E8F0; border-radius: 12px;
+      padding: 16px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .pace-card h3 { font-size: 1rem; color: var(--primary); margin: 0 0 10px; }
+    .pace-help { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 12px; }
+    .pace-presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .pace-btn {
+      background: #FFF; border: 1px solid #CBD5E0; color: var(--primary);
+      padding: 10px 6px; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer;
+    }
+    .pace-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #FFF; }
+    .pace-btn:disabled { color: #A0AEC0; background: #F1F5F9; cursor: not-allowed; }
+    .pace-status { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 10px 0 0; }
+
     .sr-only {
       position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
       overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
@@ -312,6 +320,13 @@ summary {
         </div>
         <input class="hidden" id="backup-file-input" type="file" accept=".json,application/json" onchange="handleBackupFileSelected(event)">
         <p class="deck-status" id="deck-status">現在のデッキ: -</p>
+      </div>
+
+      <div class="pace-card" id="pace-card">
+        <h3>学習ペース（1日の新規カード）</h3>
+        <p class="pace-help">復習は毎日すべて出題されます。ここで選ぶのは「新しく導入する枚数」だけです。0 にすると新規を止めて復習のみにできます。</p>
+        <div class="pace-presets" id="pace-presets" role="group" aria-label="1日の新規カード数"></div>
+        <p class="pace-status" id="pace-status"></p>
       </div>
 
       <div class="stats-grid">
@@ -432,6 +447,7 @@ summary {
     const ANALYTICS_KEY = 'memoriaGrammaticaLite_analytics_v1'; // 問題別・単元別の弱点分析用累積データ
     const CURRENT_DECK_KEY = 'memoriaGrammaticaLite_current_deck_v1'; // JSONインポートした現在のデッキ
     const ACTIVE_SOURCE_KEY = 'memoriaGrammaticaLite_active_source_v1'; // 前回正常に使用したデータソース
+    const PREFS_KEY = 'memoriaGrammaticaLite_prefs_v1'; // 学習者の表示・ペース設定
     const BACKUP_SCHEMA_VERSION = 1;
     const MAX_IMPORT_FILE_SIZE = 2 * 1024 * 1024;  // JSONインポートの上限（2MB）
     const MAX_BACKUP_FILE_SIZE = 5 * 1024 * 1024;  // バックアップ復元の上限（5MB）
@@ -447,6 +463,13 @@ summary {
     const SORT_BASE_TIME = 3000;
     const SORT_TIME_PER_WORD = 2000;
     const SORT_MAX_TIME = 30000;      // 外部デッキで長い並べ替え問題が来ても、ゲームテンポを保つための上限
+
+    // ====================================================
+    // 1日あたりの新規カード導入数（復習=due は対象外＝常に全件）
+    // ====================================================
+    const NEW_CARDS_PER_DAY = 20;             // 既定の新規導入上限/日
+    const MAX_USER_NEW_CARDS_PER_DAY = 40;    // 学生プリセット値の物理クランプ（教師デッキ値は対象外）
+    const NEW_CARD_PRESETS = [0, 10, 20, 30]; // 0=新規停止（復習のみ）
 
     // ----------------------------------------------------
     // 問題データ：questions_university_basic_v1.js があればそれを使用。
@@ -582,6 +605,24 @@ summary {
       const stored = normalizeSourceForStorage(source);
       if (!stored) return false;
       return safeSaveJSON(ACTIVE_SOURCE_KEY, stored);
+    }
+
+    // ----------------------------------------------------
+    // 学習者設定（1日の新規カード数プリセット）
+    // ----------------------------------------------------
+    function getPrefs() { return safeLoadJSON(PREFS_KEY, {}); }
+
+    // 未設定なら null。設定済みなら [0, MAX_USER_NEW_CARDS_PER_DAY] にクランプして返す。
+    function getUserNewCardCap() {
+      const raw = Number(getPrefs().newCardsPerDay);
+      if (!Number.isFinite(raw)) return null;
+      return Math.max(0, Math.min(MAX_USER_NEW_CARDS_PER_DAY, Math.floor(raw)));
+    }
+
+    function setUserNewCardCap(value) {
+      const prefs = getPrefs();
+      prefs.newCardsPerDay = Math.max(0, Math.min(MAX_USER_NEW_CARDS_PER_DAY, Math.floor(Number(value) || 0)));
+      safeSaveJSON(PREFS_KEY, prefs);
     }
 
     // ----------------------------------------------------
@@ -1153,7 +1194,8 @@ summary {
           activity: loadStoredJSONOrNull(ACTIVITY_KEY) || {},
           analytics: loadStoredJSONOrNull(ANALYTICS_KEY) || { schemaVersion: 1, cards: {} },
           currentDeck: loadStoredJSONOrNull(CURRENT_DECK_KEY),
-          activeSource: loadStoredJSONOrNull(ACTIVE_SOURCE_KEY)
+          activeSource: loadStoredJSONOrNull(ACTIVE_SOURCE_KEY),
+          prefs: loadStoredJSONOrNull(PREFS_KEY) || {}
         }
       };
     }
@@ -1213,6 +1255,7 @@ summary {
         restoreJSONKey(ANALYTICS_KEY, data.analytics || { schemaVersion: 1, cards: {} });
         restoreJSONKey(CURRENT_DECK_KEY, data.currentDeck || null);
         restoreJSONKey(ACTIVE_SOURCE_KEY, data.activeSource || null);
+        restoreJSONKey(PREFS_KEY, data.prefs || {});
         location.reload();
       } catch (e) {
         console.error('バックアップ復元に失敗しました。', e);
@@ -1308,13 +1351,32 @@ summary {
 
       const savedData = safeLoadJSON(STORAGE_KEY);
       const now = Date.now();
+      const todayKey = dateKey(new Date());
 
-      // 今日のタスク抽出（initApp時点の due カード集合をマスターリストに固定）
+      // 新規上限の決定：ユーザー設定 → 教師デッキ設定 → 既定値。
+      // 教師値(newCardsPerDay)は権限として尊重し、物理上限(=問題数)だけでクランプする。
+      const rawDeck = quizValidationReport.rawData;
+      const deckIsObject = rawDeck && typeof rawDeck === 'object' && !Array.isArray(rawDeck);
+      const teacherCap = (deckIsObject && Number.isFinite(Number(rawDeck.newCardsPerDay)))
+        ? Math.max(0, Math.min(QUIZ.length, Math.floor(Number(rawDeck.newCardsPerDay))))
+        : NEW_CARDS_PER_DAY;
+      const allowUserOverride = !(deckIsObject && rawDeck.allowUserNewCardOverride === false);
+      const userCap = getUserNewCardCap();   // null=未設定
+      const effectiveNewCap = (allowUserOverride && userCap !== null) ? userCap : teacherCap;
+
+      // due な復習は常に全件。新規(未回答)は「今日まだ導入していない枠」だけ追加する。
       // 進捗キーは deckId::cardId 形式。既存利用者なしのため旧キー互換は持たない。
-      sessionMasterList = QUIZ.filter(q => {
+      const dueReviews = [];
+      const newCards = [];
+      let introducedToday = 0;
+      QUIZ.forEach(q => {
         const record = savedData[getProgressKey(q)];
-        return (!record || !record.nextReviewTime || record.nextReviewTime <= now);
+        if (!record) { newCards.push(q); return; }                 // 未回答＝新規候補
+        if (record.firstSeenDate === todayKey) introducedToday++;  // 今日導入済みは枠を消費
+        if (!record.nextReviewTime || record.nextReviewTime <= now) dueReviews.push(q);
       });
+      const newBudget = Math.max(0, effectiveNewCap - introducedToday);
+      sessionMasterList = [...dueReviews, ...newCards.slice(0, newBudget)];
 
       // ダッシュボード更新（件数はマスターリスト基準＝再出題で水増しされない）
       const activity = getActivity();
@@ -1322,6 +1384,7 @@ summary {
       document.getElementById('dash-streak').innerText = computeStreak(activity);
       renderHeatmap();
       renderWeaknessAnalysis();
+      renderNewCardPresets(effectiveNewCap, allowUserOverride);
 
       if (QUIZ.length === 0) {
         setStartButton('有効な問題がありません', true);
@@ -1571,6 +1634,31 @@ summary {
       renderDifficultQuestions();
     }
 
+    // 1日の新規カード数プリセット（タップ選択）を描画する。
+    // effectiveCap=実効値（ユーザー/教師/既定の決定後）。allowUserOverride=false なら固定表示。
+    function renderNewCardPresets(effectiveCap, allowUserOverride) {
+      const wrap = document.getElementById('pace-presets');
+      const status = document.getElementById('pace-status');
+      if (!wrap) return;
+      wrap.innerHTML = '';
+      NEW_CARD_PRESETS.forEach(value => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pace-btn';
+        btn.textContent = value === 0 ? '0（停止）' : String(value);
+        btn.setAttribute('aria-pressed', value === effectiveCap ? 'true' : 'false');
+        btn.disabled = !allowUserOverride;
+        btn.onclick = () => { setUserNewCardCap(value); initApp(currentSource); };
+        wrap.appendChild(btn);
+      });
+      if (status) {
+        const userSet = getUserNewCardCap() !== null;
+        status.textContent = allowUserOverride
+          ? `現在の設定: 1日 ${effectiveCap} 枚${userSet ? '' : '（既定）'}`
+          : `このデッキは教師設定で固定されています（1日 ${effectiveCap} 枚）。`;
+      }
+    }
+
     // マスターリストから生きたキューを生成（lapses をリセット）
     function buildSessionQueue() {
       sessionQueue = sessionMasterList.map(q => ({ q, lapses: 0 }));
@@ -1784,19 +1872,11 @@ summary {
       else handleFail('wrong');
     }
 
-    // 次回復習日は、指定日数後のローカル時刻0:00を返す。
-    // Re-learn（失敗）はこの関数を使わず、従来どおり即 due とする。
-    function getNextReviewTimeAtDayStart(intervalDays) {
-      const nextDate = new Date();
-      nextDate.setHours(0, 0, 0, 0);
-      nextDate.setDate(nextDate.getDate() + intervalDays);
-      return nextDate.getTime();
-    }
-
     // 評価・保存（SM-2：easeFactor でカードごとに間隔を伸縮。セッションをまたぐスケジュールを書く）
     function calculateAndSaveProgress(score) {
       const savedData = safeLoadJSON(STORAGE_KEY);
       const progressKey = getProgressKey(currentQuestion);
+      const isNewRecord = !savedData[progressKey];   // 初導入日(firstSeenDate)の記録用
       let record = savedData[progressKey] || { interval: 0, repetitions: 0, easeFactor: 2.5 };
       if (typeof record !== 'object' || record === null) record = { interval: 0, repetitions: 0, easeFactor: 2.5 };
       record.easeFactor = Number.isFinite(Number(record.easeFactor)) ? Number(record.easeFactor) : 2.5; // 旧データの移行
@@ -1839,11 +1919,12 @@ summary {
       if (score === 1) {
         record.nextReviewTime = Date.now();
       } else {
-        // 日次学習アプリとして、指定された復習日になった時点（ローカル時刻の午前0時）で due にする。
-        // 学習した時刻を引き継がないため、夜に学習しても翌日の朝から復習できる。
-        record.nextReviewTime = getNextReviewTimeAtDayStart(nextIntervalDays);
+        const nextDate = new Date();
+        nextDate.setDate(nextDate.getDate() + nextIntervalDays);
+        record.nextReviewTime = nextDate.getTime();
       }
 
+      if (isNewRecord && !record.firstSeenDate) record.firstSeenDate = dateKey(new Date());
       savedData[progressKey] = record;
       safeSaveJSON(STORAGE_KEY, savedData);
       recordActivity();                                 // 学習アクティビティを記録
@@ -2014,8 +2095,10 @@ summary {
       timerStartTime = performance.now() - (timeLimit - timeLeft);
     });
 
-    // 正解トースト表示中にページを閉じた場合だけ、未確定の正解を保存する。
-    window.addEventListener('pagehide', () => {
+    // 実クローズ時だけ未確定の正解を保存する。bfcache 復帰の可能性がある場合は確定しない
+    // （確定すると、復帰後に手動Hardへ切り替えられなくなるため）。
+    window.addEventListener('pagehide', (event) => {
+      if (event.persisted) return;
       if (isAnswerLocked && currentQuestion && currentSm2Score >= 2 && currentNextReviewDays === null) {
         finalizeAnswer(currentSm2Score);
       }
