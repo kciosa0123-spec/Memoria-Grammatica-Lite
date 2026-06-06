@@ -6,8 +6,22 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "その店は6時に閉まる。",
-    "words": ["6", "The", "at", "closes", "o'clock", "shop"],
-    "correctOrder": ["The", "shop", "closes", "at", "6", "o'clock"],
+    "words": [
+      "6",
+      "The",
+      "at",
+      "closes",
+      "o'clock",
+      "shop"
+    ],
+    "correctOrder": [
+      "The",
+      "shop",
+      "closes",
+      "at",
+      "6",
+      "o'clock"
+    ],
     "explanation": "【第1文型】主語がThe shop、動詞がclosesのSV構造です。at 6 o'clockは時を表す修飾語（副詞句）であり、文の主要な骨格には含まれません。"
   },
   {
@@ -17,8 +31,18 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "その本は面白かった。",
-    "words": ["The", "book", "interesting", "was"],
-    "correctOrder": ["The", "book", "was", "interesting"],
+    "words": [
+      "The",
+      "book",
+      "interesting",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "book",
+      "was",
+      "interesting"
+    ],
     "explanation": "【第2文型】主語がThe book、動詞がwas、補語がinterestingのSVC構造です。主語＝補語（The book = interesting）の関係が成り立ちます。"
   },
   {
@@ -28,8 +52,18 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "彼は私の質問に答えた。",
-    "words": ["He", "answered", "my", "question"],
-    "correctOrder": ["He", "answered", "my", "question"],
+    "words": [
+      "He",
+      "answered",
+      "my",
+      "question"
+    ],
+    "correctOrder": [
+      "He",
+      "answered",
+      "my",
+      "question"
+    ],
     "explanation": "【第3文型】主語がHe、動詞がanswered、目的語がmy questionのSVO構造です。answerは他動詞なので、前置詞を伴わずに直接目的語をとる点に注意しましょう。"
   },
   {
@@ -40,7 +74,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The photographer showed [   ] his photos.",
     "questionJa": "カメラマンは私たちに彼の写真を見せてくれた。",
-    "choices": ["us", "to us", "we", "our"],
+    "choices": [
+      "us",
+      "to us",
+      "we",
+      "our"
+    ],
     "correctAnswer": "us",
     "explanation": "【第4文型】show O1 O2で「O1（人）にO2（物）を見せる」となります。to usと前置詞を入れる場合は、showed his photos to usのように語順が変わる点に注意しましょう。"
   },
@@ -51,8 +90,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私はこの本を読むのが難しいとわかった。",
-    "words": ["I", "book", "difficult", "found", "read", "this", "to"],
-    "correctOrder": ["I", "found", "this", "book", "difficult", "to", "read"],
+    "words": [
+      "I",
+      "book",
+      "difficult",
+      "found",
+      "read",
+      "this",
+      "to"
+    ],
+    "correctOrder": [
+      "I",
+      "found",
+      "this",
+      "book",
+      "difficult",
+      "to",
+      "read"
+    ],
     "explanation": "【第5文型】find O C で「OがCだとわかる」という構造を作ります。長文の中で見落としやすい「OとCの間にbe動詞を補って意味が通じる関係（this book = difficult）」に気づくことが読解の鍵です。"
   },
   {
@@ -62,8 +117,24 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "私がロンドンを訪れるのはこれが初めてだ。",
-    "words": ["London", "This", "first", "is", "my", "to", "visit"],
-    "correctOrder": ["This", "is", "my", "first", "visit", "to", "London"],
+    "words": [
+      "London",
+      "This",
+      "first",
+      "is",
+      "my",
+      "to",
+      "visit"
+    ],
+    "correctOrder": [
+      "This",
+      "is",
+      "my",
+      "first",
+      "visit",
+      "to",
+      "London"
+    ],
     "explanation": "【名詞句】my first visit to London（私の初めてのロンドン訪問）が、2語以上で名詞の働きをする「名詞句」として文の補語（C）になっています。"
   },
   {
@@ -73,8 +144,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私は通りを歩いている女の子に話しかけた。",
-    "words": ["I", "a", "girl", "on", "street", "talked", "the", "to", "walking"],
-    "correctOrder": ["I", "talked", "to", "a", "girl", "walking", "on", "the", "street"],
+    "words": [
+      "I",
+      "a",
+      "girl",
+      "on",
+      "street",
+      "talked",
+      "the",
+      "to",
+      "walking"
+    ],
+    "correctOrder": [
+      "I",
+      "talked",
+      "to",
+      "a",
+      "girl",
+      "walking",
+      "on",
+      "the",
+      "street"
+    ],
     "explanation": "【形容詞句（現在分詞）】walking on the street という分詞のカタマリが、直前の名詞 girl を後ろから修飾しています。英語特有の「名詞＋後置修飾」の語順を前から処理する感覚を養いましょう。"
   },
   {
@@ -85,7 +176,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I had to cancel the trip [   ] ill health.",
     "questionJa": "私は体調不良のために旅行をキャンセルしなければならなかった。",
-    "choices": ["because of", "because", "as", "since"],
+    "choices": [
+      "because of",
+      "because",
+      "as",
+      "since"
+    ],
     "correctAnswer": "because of",
     "explanation": "【副詞句】空所の後ろがSV（主語と動詞）を持つ「節」ではなく、ill healthという「名詞句」であることに注目します。名詞の前に置けるのは接続詞（because等）ではなく前置詞（because of）のみです。"
   },
@@ -97,7 +193,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I don't know [   ] Mary likes Chinese food.",
     "questionJa": "メアリーが中華料理を好きかどうか私は知らない。",
-    "choices": ["if", "that", "what", "which"],
+    "choices": [
+      "if",
+      "that",
+      "what",
+      "which"
+    ],
     "correctAnswer": "if",
     "explanation": "【名詞節】「〜かどうか」という不確実な内容を表す名詞節を作る接続詞 if を選びます。動詞 know の目的語となる大きなカタマリを作っているサインとして if に反応できるようにしましょう。"
   },
@@ -108,8 +209,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その学生は図書館で借りた本を読んでいる。",
-    "words": ["The", "a", "book", "borrowed", "from", "he", "is", "library", "reading", "student", "the"],
-    "correctOrder": ["The", "student", "is", "reading", "a", "book", "he", "borrowed", "from", "the", "library"],
+    "words": [
+      "The",
+      "a",
+      "book",
+      "borrowed",
+      "from",
+      "he",
+      "is",
+      "library",
+      "reading",
+      "student",
+      "the"
+    ],
+    "correctOrder": [
+      "The",
+      "student",
+      "is",
+      "reading",
+      "a",
+      "book",
+      "he",
+      "borrowed",
+      "from",
+      "the",
+      "library"
+    ],
     "explanation": "【形容詞節】名詞(a book)の直後に主語と動詞(he borrowed...)が続く場合、関係代名詞が省略されています。長文でこの「名詞＋S＋V」のサインを見つけたら、前の名詞を修飾するカタマリだと判断しましょう。"
   },
   {
@@ -119,8 +244,24 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "数学と歴史は私のお気に入りの科目だ。",
-    "words": ["Mathematics", "and", "are", "favorite", "history", "my", "subjects"],
-    "correctOrder": ["Mathematics", "and", "history", "are", "my", "favorite", "subjects"],
+    "words": [
+      "Mathematics",
+      "and",
+      "are",
+      "favorite",
+      "history",
+      "my",
+      "subjects"
+    ],
+    "correctOrder": [
+      "Mathematics",
+      "and",
+      "history",
+      "are",
+      "my",
+      "favorite",
+      "subjects"
+    ],
     "explanation": "【現在時制】現在の状態や一般的な事実を述べる場合は現在時制を用います。Mathematics and history が複数扱いの主語となるため、動詞は are になります。"
   },
   {
@@ -131,7 +272,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I [   ] a cup of coffee every morning.",
     "questionJa": "私は毎朝コーヒーを飲む。",
-    "choices": ["have", "am having", "had", "have had"],
+    "choices": [
+      "have",
+      "am having",
+      "had",
+      "have had"
+    ],
     "correctAnswer": "have",
     "explanation": "【現在時制】every morning（毎朝）などの反復する現在の習慣を表す場合、現在進行形ではなく現在時制を使います。長文の中で時間の副詞句（every ~ や always など）を見たら、現在の習慣について述べていると判断しましょう。"
   },
@@ -142,8 +288,22 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "その少年は昨日友達に会った。",
-    "words": ["The", "boy", "friends", "his", "met", "yesterday"],
-    "correctOrder": ["The", "boy", "met", "his", "friends", "yesterday"],
+    "words": [
+      "The",
+      "boy",
+      "friends",
+      "his",
+      "met",
+      "yesterday"
+    ],
+    "correctOrder": [
+      "The",
+      "boy",
+      "met",
+      "his",
+      "friends",
+      "yesterday"
+    ],
     "explanation": "【過去時制】yesterday（昨日）という過去の明確な時点を表す語句があるため、動詞は過去形（met）になります。長文では、過去を表す副詞句が時制を決定する重要なサインとなります。"
   },
   {
@@ -154,7 +314,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I will call you when I [   ].",
     "questionJa": "到着したらあなたに電話します。",
-    "choices": ["arrive", "will arrive", "arrived", "am arriving"],
+    "choices": [
+      "arrive",
+      "will arrive",
+      "arrived",
+      "am arriving"
+    ],
     "correctAnswer": "arrive",
     "explanation": "【時・条件の副詞節】when や if が導く「時や条件を表す副詞節」の中では、未来の出来事であっても現在時制を用います。文意が未来であっても動詞の形が変わるため、長文読解時は when などの接続詞に注意しましょう。"
   },
@@ -165,8 +330,28 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "私たちはもうすぐ新しい車を買うつもりだ。",
-    "words": ["We", "a", "are", "buy", "car", "going", "new", "soon", "to"],
-    "correctOrder": ["We", "are", "going", "to", "buy", "a", "new", "car", "soon"],
+    "words": [
+      "We",
+      "a",
+      "are",
+      "buy",
+      "car",
+      "going",
+      "new",
+      "soon",
+      "to"
+    ],
+    "correctOrder": [
+      "We",
+      "are",
+      "going",
+      "to",
+      "buy",
+      "a",
+      "new",
+      "car",
+      "soon"
+    ],
     "explanation": "【未来時制】be going to do は、すでに心に決めている「予定・意図」を表します。soon（もうすぐ）のような未来を示す副詞とともに、筆者の今後の展開を予告する働きをします。"
   },
   {
@@ -176,8 +361,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "通りを歩いていたとき、私はメアリーを見かけた。",
-    "words": ["I", "I", "Mary", "When", "down", "saw", "street", "the", "walking", "was"],
-    "correctOrder": ["When", "I", "was", "walking", "down", "the", "street", "I", "saw", "Mary"],
+    "words": [
+      "I",
+      "I",
+      "Mary",
+      "When",
+      "down",
+      "saw",
+      "street",
+      "the",
+      "walking",
+      "was"
+    ],
+    "correctOrder": [
+      "When",
+      "I",
+      "was",
+      "walking",
+      "down",
+      "the",
+      "street",
+      "I",
+      "saw",
+      "Mary"
+    ],
     "explanation": "【過去進行形】「〜していたとき」という過去のある時点における進行中の動作は、過去進行形（was/were + ~ing）で表します。when節（〜したとき）と組み合わさることで、出来事の背景状況を説明します。"
   },
   {
@@ -187,8 +394,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼は私が今まで会った中で最も良い先生だ。",
-    "words": ["He", "I", "best", "ever", "have", "is", "met", "teacher", "the"],
-    "correctOrder": ["He", "is", "the", "best", "teacher", "I", "have", "ever", "met"],
+    "words": [
+      "He",
+      "I",
+      "best",
+      "ever",
+      "have",
+      "is",
+      "met",
+      "teacher",
+      "the"
+    ],
+    "correctOrder": [
+      "He",
+      "is",
+      "the",
+      "best",
+      "teacher",
+      "I",
+      "have",
+      "ever",
+      "met"
+    ],
     "explanation": "【現在完了（経験）】「これまでに〜したことがある」という経験を表す現在完了形（have + 過去分詞）です。the best（最上級）と I have ever met がセットになることで「これまでで最も〜だ」という強い主張を読み取ることができます。"
   },
   {
@@ -199,7 +426,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "It has been a long time [   ] we last met.",
     "questionJa": "私たちが最後に会ってから長い時間が経った。",
-    "choices": ["since", "for", "from", "when"],
+    "choices": [
+      "since",
+      "for",
+      "from",
+      "when"
+    ],
     "correctAnswer": "since",
     "explanation": "【現在完了（継続）】「〜して以来」と過去の起点を示す場合は since を用います。It has been + 期間 + since + 過去形の文 は「〜してから…（期間）になる」という頻出構文なので、そのまま形を暗記しておきましょう。"
   },
@@ -210,8 +442,34 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "私がパーティーに到着したとき、友人はすでに帰宅していた。",
-    "words": ["I", "When", "already", "arrived", "at", "friend", "gone", "had", "home", "my", "party", "the"],
-    "correctOrder": ["When", "I", "arrived", "at", "the", "party", "my", "friend", "had", "already", "gone", "home"],
+    "words": [
+      "I",
+      "When",
+      "already",
+      "arrived",
+      "at",
+      "friend",
+      "gone",
+      "had",
+      "home",
+      "my",
+      "party",
+      "the"
+    ],
+    "correctOrder": [
+      "When",
+      "I",
+      "arrived",
+      "at",
+      "the",
+      "party",
+      "my",
+      "friend",
+      "had",
+      "already",
+      "gone",
+      "home"
+    ],
     "explanation": "【過去完了】「到着した（過去）」よりも前に「帰宅していた」という「過去よりさらに前の出来事（大過去）」を表すため、had + 過去分詞 を使います。長文の中で複数の過去の出来事が登場した際、時間的な前後関係を整理する強力なサインとなります。"
   },
   {
@@ -221,8 +479,24 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "あなたはここでどのくらいの間働いていますか？",
-    "words": ["How", "been", "have", "here", "long", "working", "you"],
-    "correctOrder": ["How", "long", "have", "you", "been", "working", "here"],
+    "words": [
+      "How",
+      "been",
+      "have",
+      "here",
+      "long",
+      "working",
+      "you"
+    ],
+    "correctOrder": [
+      "How",
+      "long",
+      "have",
+      "you",
+      "been",
+      "working",
+      "here"
+    ],
     "explanation": "【現在完了進行形】過去から現在まで動作が「ずっと継続している」ことを強調する場合、have been ~ing を用います。How long ~?（どのくらいの間）などの期間を問う表現と結びつきやすい点に注目しましょう。"
   },
   {
@@ -232,8 +506,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "このお金のすべてが私のものではない。",
-    "words": ["Not", "all", "is", "mine", "money", "of", "this"],
-    "correctOrder": ["Not", "all", "of", "this", "money", "is", "mine"],
+    "words": [
+      "Not",
+      "all",
+      "is",
+      "mine",
+      "money",
+      "of",
+      "this"
+    ],
+    "correctOrder": [
+      "Not",
+      "all",
+      "of",
+      "this",
+      "money",
+      "is",
+      "mine"
+    ],
     "explanation": "【部分否定】Not all 〜 で「すべてが〜というわけではない」という部分否定になります。「このお金のすべてが私のものではない（一部は違う）」という意味になります。"
   },
   {
@@ -244,7 +534,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "He has [   ] friends here.",
     "questionJa": "彼にはここにはほとんど友達がいない。",
-    "choices": ["few", "a few", "little", "a little"],
+    "choices": [
+      "few",
+      "a few",
+      "little",
+      "a little"
+    ],
     "correctAnswer": "few",
     "explanation": "【準否定】few は可算名詞の複数形につき「ほとんど〜ない」という否定的な意味を表します。a few（少しいる）や、不可算名詞につく little との区別に注意しましょう。"
   },
@@ -256,7 +551,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "My leg was hurting. I could [   ] walk.",
     "questionJa": "足が痛かった。私はほとんど歩くことができなかった。",
-    "choices": ["hardly", "hard", "rarely", "seldom"],
+    "choices": [
+      "hardly",
+      "hard",
+      "rarely",
+      "seldom"
+    ],
     "correctAnswer": "hardly",
     "explanation": "【準否定】hardly は「程度」が「ほとんど〜ない」ことを表す副詞です。rarely や seldom は「頻度」が「めったに〜ない」ことを表すため、ここでは文脈上不適切です。"
   },
@@ -267,8 +567,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その少女は外出すると必ず傘をなくす。",
-    "words": ["The", "girl", "goes", "her", "losing", "never", "out", "umbrella", "without"],
-    "correctOrder": ["The", "girl", "never", "goes", "out", "without", "losing", "her", "umbrella"],
+    "words": [
+      "The",
+      "girl",
+      "goes",
+      "her",
+      "losing",
+      "never",
+      "out",
+      "umbrella",
+      "without"
+    ],
+    "correctOrder": [
+      "The",
+      "girl",
+      "never",
+      "goes",
+      "out",
+      "without",
+      "losing",
+      "her",
+      "umbrella"
+    ],
     "explanation": "【二重否定】never ... without ~ing で「...すれば必ず〜する（〜することなしに...しない）」という強い肯定の意味を表します。長文読解では、二つの否定語を打ち消し合って肯定で訳すと文脈が掴みやすくなります。"
   },
   {
@@ -278,8 +598,26 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "2000人がその会社に雇用されている。",
-    "words": ["Two", "are", "by", "company", "employed", "people", "the", "thousand"],
-    "correctOrder": ["Two", "thousand", "people", "are", "employed", "by", "the", "company"],
+    "words": [
+      "Two",
+      "are",
+      "by",
+      "company",
+      "employed",
+      "people",
+      "the",
+      "thousand"
+    ],
+    "correctOrder": [
+      "Two",
+      "thousand",
+      "people",
+      "are",
+      "employed",
+      "by",
+      "the",
+      "company"
+    ],
     "explanation": "【受動態】be動詞＋過去分詞（are employed）で「〜される（雇用されている）」という意味を表します。行為の主体は by ~ で示されることに注目しましょう。"
   },
   {
@@ -290,7 +628,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "A lot of money was [   ] in the robbery.",
     "questionJa": "その強盗事件で大金が盗まれた。",
-    "choices": ["stolen", "stole", "steal", "stealing"],
+    "choices": [
+      "stolen",
+      "stole",
+      "steal",
+      "stealing"
+    ],
     "correctAnswer": "stolen",
     "explanation": "【受動態】主語の A lot of money（大金）は「盗まれる」側なので、受動態（be動詞＋過去分詞）になります。steal（原形） - stole（過去形） - stolen（過去分詞）の不規則変化も確認しておきましょう。"
   },
@@ -302,7 +645,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "It [   ] be true.",
     "questionJa": "それが本当であるはずがない。",
-    "choices": ["can't", "mustn't", "shouldn't", "won't"],
+    "choices": [
+      "can't",
+      "mustn't",
+      "shouldn't",
+      "won't"
+    ],
     "correctAnswer": "can't",
     "explanation": "【助動詞】「〜のはずがない」という強い否定の推量は cannot (can't) を使います。must (〜に違いない) の反対の意味にあたります。mustn't は「〜してはいけない（禁止）」なので注意が必要です。"
   },
@@ -313,8 +661,20 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼らは外出したに違いない。",
-    "words": ["They", "gone", "have", "must", "out"],
-    "correctOrder": ["They", "must", "have", "gone", "out"],
+    "words": [
+      "They",
+      "gone",
+      "have",
+      "must",
+      "out"
+    ],
+    "correctOrder": [
+      "They",
+      "must",
+      "have",
+      "gone",
+      "out"
+    ],
     "explanation": "【助動詞＋完了形】must have + 過去分詞 で「（過去に）〜したに違いない」という過去の事象に対する強い推量を表します。長文の中で過去の出来事を振り返って考察する際に頻出します。"
   },
   {
@@ -324,8 +684,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私は子供の頃、毎冬よくスキーに行ったものだ。",
-    "words": ["When", "I", "I", "a", "child,", "every", "go", "skiing", "was", "winter", "would"],
-    "correctOrder": ["When", "I", "was", "a", "child,", "I", "would", "go", "skiing", "every", "winter"],
+    "words": [
+      "When",
+      "I",
+      "I",
+      "a",
+      "child,",
+      "every",
+      "go",
+      "skiing",
+      "was",
+      "winter",
+      "would"
+    ],
+    "correctOrder": [
+      "When",
+      "I",
+      "was",
+      "a",
+      "child,",
+      "I",
+      "would",
+      "go",
+      "skiing",
+      "every",
+      "winter"
+    ],
     "explanation": "【助動詞】would (often) do で「（過去に）よく〜したものだ」という過去の習慣を表します。When I was a child のような過去の時を表す句や節とともに使われ、昔の回想を示すサインとなります。"
   },
   {
@@ -336,7 +720,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "You [   ] eaten so much.",
     "questionJa": "あなたはそんなにたくさん食べるべきではなかったのに。",
-    "choices": ["shouldn't have", "must not have", "cannot have", "needn't have"],
+    "choices": [
+      "shouldn't have",
+      "must not have",
+      "cannot have",
+      "needn't have"
+    ],
     "correctAnswer": "shouldn't have",
     "explanation": "【助動詞＋完了形】shouldn't have + 過去分詞 で「（過去に）〜するべきではなかったのに（してしまった）」という後悔や非難を表します。筆者の主張や評価を読み取る上で非常に重要な表現です。"
   },
@@ -347,8 +736,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "外出するときはドアに鍵をかけるのを忘れないでください。",
-    "words": ["Don't", "door", "forget", "go", "lock", "out", "the", "to", "when", "you"],
-    "correctOrder": ["Don't", "forget", "to", "lock", "the", "door", "when", "you", "go", "out"],
+    "words": [
+      "Don't",
+      "door",
+      "forget",
+      "go",
+      "lock",
+      "out",
+      "the",
+      "to",
+      "when",
+      "you"
+    ],
+    "correctOrder": [
+      "Don't",
+      "forget",
+      "to",
+      "lock",
+      "the",
+      "door",
+      "when",
+      "you",
+      "go",
+      "out"
+    ],
     "explanation": "【名詞的用法】forget to do で「〜することを忘れる」という意味になります。to lock the door 全体が forget の目的語（名詞のカタマリ）として働いています。"
   },
   {
@@ -358,8 +769,26 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "運転免許を持っていることは役に立つ。",
-    "words": ["It", "a", "driver's", "have", "is", "license", "to", "useful"],
-    "correctOrder": ["It", "is", "useful", "to", "have", "a", "driver's", "license"],
+    "words": [
+      "It",
+      "a",
+      "driver's",
+      "have",
+      "is",
+      "license",
+      "to",
+      "useful"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "useful",
+      "to",
+      "have",
+      "a",
+      "driver's",
+      "license"
+    ],
     "explanation": "【名詞的用法】It is ~ to do の構文です。It は形式的な主語であり、本当の主語は to have a driver's license（運転免許を持っていること）になります。"
   },
   {
@@ -370,7 +799,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "They have sent the applicant a form to [   ] in.",
     "questionJa": "彼らは応募者に記入するための用紙を送った。",
-    "choices": ["fill", "filling", "filled", "be filled"],
+    "choices": [
+      "fill",
+      "filling",
+      "filled",
+      "be filled"
+    ],
     "correctAnswer": "fill",
     "explanation": "【形容詞的用法】名詞 a form を後ろから修飾する to fill in（記入するための）という形容詞のカタマリを作ります。前置詞 in を忘れやすいので注意しましょう。"
   },
@@ -381,8 +815,26 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "私は英語を学ぶためにオーストラリアへ行く予定だ。",
-    "words": ["Australia", "English", "I", "am", "going", "learn", "to", "to"],
-    "correctOrder": ["I", "am", "going", "to", "Australia", "to", "learn", "English"],
+    "words": [
+      "Australia",
+      "English",
+      "I",
+      "am",
+      "going",
+      "learn",
+      "to",
+      "to"
+    ],
+    "correctOrder": [
+      "I",
+      "am",
+      "going",
+      "to",
+      "Australia",
+      "to",
+      "learn",
+      "English"
+    ],
     "explanation": "【副詞的用法】to learn English（英語を学ぶために）が目的を表す副詞のカタマリとして働いています。文の骨格（I am going to Australia）が完成した後に情報が追加される構造を意識しましょう。"
   },
   {
@@ -393,7 +845,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I didn't see her [   ] in.",
     "questionJa": "私は彼女が入ってくるのを見なかった。",
-    "choices": ["come", "to come", "came", "comes"],
+    "choices": [
+      "come",
+      "to come",
+      "came",
+      "comes"
+    ],
     "correctAnswer": "come",
     "explanation": "【原形不定詞】see O do（Oが〜するのを見る）という知覚動詞の構文では、to のない原形不定詞を使います。Oとdoの間に「彼女が入る」という主語・述語の関係が成り立ちます。"
   },
@@ -404,8 +861,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私たちは子供たちに夜更かしをさせない。",
-    "words": ["We", "children", "don't", "late", "let", "stay", "the", "up"],
-    "correctOrder": ["We", "don't", "let", "the", "children", "stay", "up", "late"],
+    "words": [
+      "We",
+      "children",
+      "don't",
+      "late",
+      "let",
+      "stay",
+      "the",
+      "up"
+    ],
+    "correctOrder": [
+      "We",
+      "don't",
+      "let",
+      "the",
+      "children",
+      "stay",
+      "up",
+      "late"
+    ],
     "explanation": "【原形不定詞】let O do（Oに〜させる）という使役動詞の構文です。the children が stay up late するのを let（許可する）という論理構造を掴みましょう。"
   },
   {
@@ -415,8 +890,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "あなたの友達と踊っている女の子は誰ですか？",
-    "words": ["Who", "dancing", "friend", "girl", "is", "the", "with", "your"],
-    "correctOrder": ["Who", "is", "the", "girl", "dancing", "with", "your", "friend"],
+    "words": [
+      "Who",
+      "dancing",
+      "friend",
+      "girl",
+      "is",
+      "the",
+      "with",
+      "your"
+    ],
+    "correctOrder": [
+      "Who",
+      "is",
+      "the",
+      "girl",
+      "dancing",
+      "with",
+      "your",
+      "friend"
+    ],
     "explanation": "【現在分詞】dancing with your friend という分詞のカタマリが、前の名詞 the girl を修飾しています。名詞の直後に ～ing が来た場合、修飾語の始まりを疑うのが読解のコツです。"
   },
   {
@@ -427,7 +920,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "Do you know the number of people [   ] by the government?",
     "questionJa": "政府に雇用されている人々の数を知っていますか？",
-    "choices": ["employed", "employing", "employ", "to employ"],
+    "choices": [
+      "employed",
+      "employing",
+      "employ",
+      "to employ"
+    ],
     "correctAnswer": "employed",
     "explanation": "【過去分詞】people employed by the government（政府に雇用されている人々）という受動の意味を持った過去分詞のカタマリです。名詞の後に過去分詞が置かれるパターンも長文頻出です。"
   },
@@ -438,8 +936,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "簡単な英語で書かれているので、この本は読みやすい。",
-    "words": ["English,", "Written", "book", "easy", "in", "is", "read", "simple", "this", "to"],
-    "correctOrder": ["Written", "in", "simple", "English,", "this", "book", "is", "easy", "to", "read"],
+    "words": [
+      "English,",
+      "Written",
+      "book",
+      "easy",
+      "in",
+      "is",
+      "read",
+      "simple",
+      "this",
+      "to"
+    ],
+    "correctOrder": [
+      "Written",
+      "in",
+      "simple",
+      "English,",
+      "this",
+      "book",
+      "is",
+      "easy",
+      "to",
+      "read"
+    ],
     "explanation": "【分詞構文】Written ~（書かれているので）という過去分詞から始まる副詞のカタマリが、主節の理由や条件などの状況を説明しています。主語（this book）との受動関係に注意しましょう。"
   },
   {
@@ -450,7 +970,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The doctor suggested [   ] a long holiday.",
     "questionJa": "医者は長期休暇を取ることを提案した。",
-    "choices": ["taking", "to take", "take", "taken"],
+    "choices": [
+      "taking",
+      "to take",
+      "take",
+      "taken"
+    ],
     "correctAnswer": "taking",
     "explanation": "【動名詞】suggest（提案する）の目的語には、不定詞（to do）ではなく動名詞（~ing）を用います。「休暇を取ること」という名詞のカタマリを作っています。"
   },
@@ -461,8 +986,28 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "そのプロジェクトを率いている研究者は有名だ。",
-    "words": ["famous", "is", "is", "leading", "project", "researcher", "The", "the", "who"],
-    "correctOrder": ["The", "researcher", "who", "is", "leading", "the", "project", "is", "famous"],
+    "words": [
+      "famous",
+      "is",
+      "is",
+      "leading",
+      "project",
+      "researcher",
+      "The",
+      "the",
+      "who"
+    ],
+    "correctOrder": [
+      "The",
+      "researcher",
+      "who",
+      "is",
+      "leading",
+      "the",
+      "project",
+      "is",
+      "famous"
+    ],
     "explanation": "【主格の関係代名詞】who is leading the project という関係代名詞の節が、直前の名詞（先行詞）The researcher を修飾しています。主語が長くなるため、2つ目の is が文全体の述語動詞であることを見抜くのが読解のポイントです。"
   },
   {
@@ -472,8 +1017,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私たちが先週雇った従業員はとても優秀だ。",
-    "words": ["capable", "employee", "hired", "is", "last", "The", "very", "we", "week"],
-    "correctOrder": ["The", "employee", "we", "hired", "last", "week", "is", "very", "capable"],
+    "words": [
+      "capable",
+      "employee",
+      "hired",
+      "is",
+      "last",
+      "The",
+      "very",
+      "we",
+      "week"
+    ],
+    "correctOrder": [
+      "The",
+      "employee",
+      "we",
+      "hired",
+      "last",
+      "week",
+      "is",
+      "very",
+      "capable"
+    ],
     "explanation": "【目的格の関係代名詞】名詞（The employee）の直後にS+V（we hired）が続く場合、目的格の関係代名詞（whom/that）が省略されています。「名詞＋S＋V」の語順は、長文読解において後置修飾の強力なサインとなります。"
   },
   {
@@ -484,7 +1049,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The company [   ] products are famous is expanding.",
     "questionJa": "その製品が有名な企業は事業を拡大している。",
-    "choices": ["whose", "which", "of which", "that"],
+    "choices": [
+      "whose",
+      "which",
+      "of which",
+      "that"
+    ],
     "correctAnswer": "whose",
     "explanation": "【所有格の関係代名詞】先行詞（The company）と関係詞節内の名詞（products）の間に「企業の製品（the company's products）」という所有の関係が成り立つため、whose が正解です。"
   },
@@ -495,8 +1065,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "重要なのは、我々が次に何をすべきかだ。",
-    "words": ["do", "important", "is", "is", "next", "should", "we", "What", "what"],
-    "correctOrder": ["What", "is", "important", "is", "what", "we", "should", "do", "next"],
+    "words": [
+      "do",
+      "important",
+      "is",
+      "is",
+      "next",
+      "should",
+      "we",
+      "What",
+      "what"
+    ],
+    "correctOrder": [
+      "What",
+      "is",
+      "important",
+      "is",
+      "what",
+      "we",
+      "should",
+      "do",
+      "next"
+    ],
     "explanation": "【関係代名詞 what】what は「〜するもの・こと」という意味の名詞節を作ります。文頭の What is important（重要なこと）が主語となり、後半の what we should do next（我々が次にすべきこと）が補語となる構造です。"
   },
   {
@@ -506,8 +1096,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "これが彼が担当している資料だ。",
-    "words": ["document", "for", "he", "is", "is", "responsible", "the", "This", "which"],
-    "correctOrder": ["This", "is", "the", "document", "for", "which", "he", "is", "responsible"],
+    "words": [
+      "document",
+      "for",
+      "he",
+      "is",
+      "is",
+      "responsible",
+      "the",
+      "This",
+      "which"
+    ],
+    "correctOrder": [
+      "This",
+      "is",
+      "the",
+      "document",
+      "for",
+      "which",
+      "he",
+      "is",
+      "responsible"
+    ],
     "explanation": "【前置詞＋関係代名詞】be responsible for ~（〜を担当している）の for が関係代名詞 which の前に移動した形です。長文で「前置詞＋which/whom」を見たら、その後ろには完全な文（S+V...）が続くと予測しましょう。"
   },
   {
@@ -518,7 +1128,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I tried to open the door, [   ] I found impossible.",
     "questionJa": "私はドアを開けようとしたが、それは不可能だとわかった。",
-    "choices": ["which", "that", "it", "what"],
+    "choices": [
+      "which",
+      "that",
+      "it",
+      "what"
+    ],
     "correctAnswer": "which",
     "explanation": "【非制限用法】カンマ（,）に続く関係代名詞 which は、直前の名詞だけでなく、前の文全体（ドアを開けようとしたこと）を先行詞として受けることができます。that は非制限用法（カンマの後）では使えないため注意が必要です。"
   },
@@ -529,8 +1144,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "これがその事故が起こった交差点だ。",
-    "words": ["accident", "happened", "intersection", "is", "the", "the", "This", "where"],
-    "correctOrder": ["This", "is", "the", "intersection", "where", "the", "accident", "happened"],
+    "words": [
+      "accident",
+      "happened",
+      "intersection",
+      "is",
+      "the",
+      "the",
+      "This",
+      "where"
+    ],
+    "correctOrder": [
+      "This",
+      "is",
+      "the",
+      "intersection",
+      "where",
+      "the",
+      "accident",
+      "happened"
+    ],
     "explanation": "【関係副詞】先行詞が場所（intersection：交差点）であり、後ろの文が the accident happened（事故が起こった）という完全な構造（第1文型）になっているため、関係代名詞ではなく関係副詞 where を用いて修飾します。"
   },
   {
@@ -541,7 +1174,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "Tell me the reason [   ] you were late for the meeting.",
     "questionJa": "会議に遅れた理由を教えてください。",
-    "choices": ["why", "which", "what", "how"],
+    "choices": [
+      "why",
+      "which",
+      "what",
+      "how"
+    ],
     "correctAnswer": "why",
     "explanation": "【関係副詞】先行詞が the reason（理由）のときは、関係副詞 why を使います。後ろの you were late for the meeting が完全な文であることからも、関係副詞が入ることが論理的に判断できます。"
   },
@@ -552,8 +1190,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "このようにして彼はその問題を解決した。",
-    "words": ["he", "how", "is", "problem", "solved", "the", "This"],
-    "correctOrder": ["This", "is", "how", "he", "solved", "the", "problem"],
+    "words": [
+      "he",
+      "how",
+      "is",
+      "problem",
+      "solved",
+      "the",
+      "This"
+    ],
+    "correctOrder": [
+      "This",
+      "is",
+      "how",
+      "he",
+      "solved",
+      "the",
+      "problem"
+    ],
     "explanation": "【関係副詞】This is how S+V ~ は「このようにしてSは〜する」というプロセスや手段を表す重要構文です。how 自体が「〜する方法」という名詞節を作るため、先行詞 the way を一緒に置かないのがルールです。"
   },
   {
@@ -563,8 +1217,24 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "誰でも最初に来た人がそのチケットをもらえる。",
-    "words": ["can", "comes", "first", "get", "the", "ticket", "Whoever"],
-    "correctOrder": ["Whoever", "comes", "first", "can", "get", "the", "ticket"],
+    "words": [
+      "can",
+      "comes",
+      "first",
+      "get",
+      "the",
+      "ticket",
+      "Whoever"
+    ],
+    "correctOrder": [
+      "Whoever",
+      "comes",
+      "first",
+      "can",
+      "get",
+      "the",
+      "ticket"
+    ],
     "explanation": "【複合関係代名詞】whoever（〜する人は誰でも）が名詞節を作り、文全体の主語になっています。anyone who comes first と書き換えることもでき、条件や譲歩のニュアンスを含む読解のキーフレーズとなります。"
   },
   {
@@ -574,8 +1244,24 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "彼は私と同じくらい一生懸命に働いた。",
-    "words": ["as", "hard", "He", "as", "I", "worked", "did"],
-    "correctOrder": ["He", "worked", "as", "hard", "as", "I", "did"],
+    "words": [
+      "as",
+      "hard",
+      "He",
+      "as",
+      "I",
+      "worked",
+      "did"
+    ],
+    "correctOrder": [
+      "He",
+      "worked",
+      "as",
+      "hard",
+      "as",
+      "I",
+      "did"
+    ],
     "explanation": "【原級比較】as + 形容詞/副詞 + as で「〜と同じくらい…」という比較を表します。比較対象が文（I did）の場合は as I did となる点に注意しましょう。"
   },
   {
@@ -585,8 +1271,24 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "この車はあの車より速い。",
-    "words": ["car", "faster", "is", "than", "that", "This", "one"],
-    "correctOrder": ["This", "car", "is", "faster", "than", "that", "one"],
+    "words": [
+      "car",
+      "faster",
+      "is",
+      "than",
+      "that",
+      "This",
+      "one"
+    ],
+    "correctOrder": [
+      "This",
+      "car",
+      "is",
+      "faster",
+      "than",
+      "that",
+      "one"
+    ],
     "explanation": "【比較級】形容詞・副詞の比較級（faster）＋ than で「〜より…だ」という比較を表します。one は直前の car を繰り返すのを避けるための代名詞です。"
   },
   {
@@ -597,7 +1299,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "This is the [   ] book I have ever read.",
     "questionJa": "これは私が今まで読んだ中で最も興味深い本だ。",
-    "choices": ["most interesting", "more interesting", "interesting", "as interesting"],
+    "choices": [
+      "most interesting",
+      "more interesting",
+      "interesting",
+      "as interesting"
+    ],
     "correctAnswer": "most interesting",
     "explanation": "【最上級】「〜の中で最も…」という最上級には the + 最上級 の形を使います。ever read（今まで〜した中で）と結びついて強い印象を表す長文の頻出パターンです。"
   },
@@ -608,8 +1315,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この部屋はあの部屋の3倍の大きさだ。",
-    "words": ["as", "as", "is", "large", "room", "that", "three", "This", "times", "room"],
-    "correctOrder": ["This", "room", "is", "three", "times", "as", "large", "as", "that", "room"],
+    "words": [
+      "as",
+      "as",
+      "is",
+      "large",
+      "room",
+      "that",
+      "three",
+      "This",
+      "times",
+      "room"
+    ],
+    "correctOrder": [
+      "This",
+      "room",
+      "is",
+      "three",
+      "times",
+      "as",
+      "large",
+      "as",
+      "that",
+      "room"
+    ],
     "explanation": "【倍数表現】A times as + 原級 + as B で「AはBの何倍…だ」となります。この構文は論理的な比較や数値の変動を示す文章で非常に重要な役割を果たします。"
   },
   {
@@ -619,8 +1348,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "経験を積めば積むほど、ますます賢くなる。",
-    "words": ["experience", "more", "The", "the", "we", "we", "wiser", "get", "gain"],
-    "correctOrder": ["The", "more", "experience", "we", "gain", "the", "wiser", "we", "get"],
+    "words": [
+      "experience",
+      "more",
+      "The",
+      "the",
+      "we",
+      "we",
+      "wiser",
+      "get",
+      "gain"
+    ],
+    "correctOrder": [
+      "The",
+      "more",
+      "experience",
+      "we",
+      "gain",
+      "the",
+      "wiser",
+      "we",
+      "get"
+    ],
     "explanation": "【比較構文】The + 比較級 S V, the + 比較級 S V で「〜すればするほど、ますます…だ」となります。因果関係や論理展開を説明する文脈で筆者が主張を強調するために使われます。"
   },
   {
@@ -631,7 +1380,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The population of Tokyo is larger than [   ] of Osaka.",
     "questionJa": "東京の人口は大阪のそれ（人口）より多い。",
-    "choices": ["that", "those", "it", "this"],
+    "choices": [
+      "that",
+      "those",
+      "it",
+      "this"
+    ],
     "correctAnswer": "that",
     "explanation": "【比較対象】比較対象を一致させる必要があります。population（単数名詞）を指す代名詞には that を使います。those は複数名詞を指す場合に使うので間違いに注意しましょう。"
   },
@@ -642,8 +1396,24 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼はわずか10ドルしか持っていない。",
-    "words": ["than", "has", "more", "He", "no", "ten", "dollars"],
-    "correctOrder": ["He", "has", "no", "more", "than", "ten", "dollars"],
+    "words": [
+      "than",
+      "has",
+      "more",
+      "He",
+      "no",
+      "ten",
+      "dollars"
+    ],
+    "correctOrder": [
+      "He",
+      "has",
+      "no",
+      "more",
+      "than",
+      "ten",
+      "dollars"
+    ],
     "explanation": "【否定比較】no more than は「（数値を強調して）たった〜（わずか〜）」という意味になります。直訳すると「10ドルより多くはない」となります。"
   },
   {
@@ -654,7 +1424,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "He [   ] lives here.",
     "questionJa": "彼はもはやここには住んでいない。",
-    "choices": ["no longer", "any longer", "not long", "no more"],
+    "choices": [
+      "no longer",
+      "any longer",
+      "not long",
+      "no more"
+    ],
     "correctAnswer": "no longer",
     "explanation": "【比較表現】no longer は「もはや〜ない」という状態の変化を表す重要表現です。文の動詞の前に置くのが基本ルールです。"
   },
@@ -665,8 +1440,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼はクラスで断然背が高い。",
-    "words": ["by", "class", "far", "He", "is", "tallest", "the", "in", "the"],
-    "correctOrder": ["He", "is", "by", "far", "the", "tallest", "in", "the", "class"],
+    "words": [
+      "by",
+      "class",
+      "far",
+      "He",
+      "is",
+      "tallest",
+      "the",
+      "in",
+      "the"
+    ],
+    "correctOrder": [
+      "He",
+      "is",
+      "by",
+      "far",
+      "the",
+      "tallest",
+      "in",
+      "the",
+      "class"
+    ],
     "explanation": "【最上級強調】by far は最上級（the tallest）を強調し「断然〜、ずば抜けて〜」という意味になります。比較級にも使えますが、最上級とも相性が良い表現です。"
   },
   {
@@ -677,9 +1472,14 @@ const quizData = [
     "type": "choice",
     "questionEn": "She is [   ] than pretty.",
     "questionJa": "彼女は可愛いというよりむしろ賢い。",
-    "choices": ["wiser", "more wise", "as wise", "the wise"],
-    "correctAnswer": "wiser",
-    "explanation": "【比較慣用】A rather than B（BというよりむしろA）と同じ意味を、more + 原形形容詞 + than で表します。賢い（wise）という単語は一音節なので wiser と比較級にします。"
+    "choices": [
+      "wiser",
+      "more wise",
+      "as wise",
+      "the wise"
+    ],
+    "correctAnswer": "more wise",
+    "explanation": "【比較慣用】同じ人物の2つの性質を比べて「可愛いというよりむしろ賢い」と言う場合は、通常の比較級 wiser ではなく more wise than pretty の形にします。"
   },
   {
     "id": "U07_001",
@@ -688,8 +1488,28 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "私があなたなら、その提案を受け入れるだろう。",
-    "words": ["I", "I", "If", "accept", "proposal", "the", "were", "would", "you"],
-    "correctOrder": ["If", "I", "were", "you", "I", "would", "accept", "the", "proposal"],
+    "words": [
+      "I",
+      "I",
+      "If",
+      "accept",
+      "proposal",
+      "the",
+      "were",
+      "would",
+      "you"
+    ],
+    "correctOrder": [
+      "If",
+      "I",
+      "were",
+      "you",
+      "I",
+      "would",
+      "accept",
+      "the",
+      "proposal"
+    ],
     "explanation": "【仮定法過去】現在の事実とは異なる「もし〜なら」を過去形を用いて表します。長文読解では、If 節の過去形（were）と主節の助動詞の過去形（would）のセットを見たら「筆者の反実仮想（事実に反する仮定）」のサインと捉えましょう。"
   },
   {
@@ -699,8 +1519,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "もし真実を知っていたら、私はあなたに話していただろう。",
-    "words": ["I", "I", "If", "had", "have", "known", "the", "told", "truth", "would", "you"],
-    "correctOrder": ["If", "I", "had", "known", "the", "truth", "I", "would", "have", "told", "you"],
+    "words": [
+      "I",
+      "I",
+      "If",
+      "had",
+      "have",
+      "known",
+      "the",
+      "told",
+      "truth",
+      "would",
+      "you"
+    ],
+    "correctOrder": [
+      "If",
+      "I",
+      "had",
+      "known",
+      "the",
+      "truth",
+      "I",
+      "would",
+      "have",
+      "told",
+      "you"
+    ],
     "explanation": "【仮定法過去完了】過去の事実とは異なる仮定を表します。had + 過去分詞 と would have + 過去分詞 の組み合わせがサインです。過去の出来事に対する筆者の後悔や「別の可能性（もし〜だったら）」を示す重要な構文です。"
   },
   {
@@ -710,8 +1554,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "もし私があなたの立場なら、同じことをするだろう。",
-    "words": ["I", "I", "Were", "do", "in", "position", "same", "the", "would", "your"],
-    "correctOrder": ["Were", "I", "in", "your", "position", "I", "would", "do", "the", "same"],
+    "words": [
+      "I",
+      "I",
+      "Were",
+      "do",
+      "in",
+      "position",
+      "same",
+      "the",
+      "would",
+      "your"
+    ],
+    "correctOrder": [
+      "Were",
+      "I",
+      "in",
+      "your",
+      "position",
+      "I",
+      "would",
+      "do",
+      "the",
+      "same"
+    ],
     "explanation": "【倒置構文】If I were in your position の If が省略されると、Were I という疑問文のような語順（倒置）になります。文頭に Were, Had, Should が来て疑問文ではない場合、仮定法の倒置を疑うのが長文読解の鉄則です。"
   },
   {
@@ -722,7 +1588,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "If I had taken the medicine then, I [   ] fine now.",
     "questionJa": "もしあの時薬を飲んでいたら、今は元気になっているだろう。",
-    "choices": ["would be", "will be", "would have been", "am"],
+    "choices": [
+      "would be",
+      "will be",
+      "would have been",
+      "am"
+    ],
     "correctAnswer": "would be",
     "explanation": "【混合型仮定法】前半が「過去の仮定（had taken）」、後半が「現在の結果（would be）」となる複合パターンです。then（あの時）や now（今）などの「時を表す副詞」が、時制のズレを見抜く決定的なマーカーになります。"
   },
@@ -733,8 +1604,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私はもっと上手に英語を話せたらよいのにと思う。",
-    "words": ["English", "I", "I", "better", "could", "speak", "wish"],
-    "correctOrder": ["I", "wish", "I", "could", "speak", "English", "better"],
+    "words": [
+      "English",
+      "I",
+      "I",
+      "better",
+      "could",
+      "speak",
+      "wish"
+    ],
+    "correctOrder": [
+      "I",
+      "wish",
+      "I",
+      "could",
+      "speak",
+      "English",
+      "better"
+    ],
     "explanation": "【I wish 構文】「〜であればいいのに」という現在の叶わぬ願望を表します。wish の後ろの節の動詞が過去形（could speak）になることに注意してください。長文では筆者の強い願望や現状への不満を読み取るポイントになります。"
   },
   {
@@ -744,9 +1631,29 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼はまるで幽霊でも見たかのように話す。",
-    "words": ["He", "a", "as", "ghost", "had", "he", "if", "seen", "talks"],
-    "correctOrder": ["He", "talks", "as", "if", "he", "had", "seen", "a", "ghost"],
-    "explanation": "【as if 構文】「まるで〜であるかのように」という意味の重要構文です。as if の後ろが仮定法過去完了（had seen）になることで、「実際には幽霊を見ていない」という比喩表現であることが論理的に判断できます。"
+    "words": [
+      "He",
+      "a",
+      "as",
+      "ghost",
+      "had",
+      "he",
+      "if",
+      "seen",
+      "talks"
+    ],
+    "correctOrder": [
+      "He",
+      "talks",
+      "as",
+      "if",
+      "he",
+      "had",
+      "seen",
+      "a",
+      "ghost"
+    ],
+    "explanation": "【as if 構文】「まるで〜であるかのように」という意味の重要構文です。as if の後ろが仮定法過去完了（had seen）になることで、実際には見ていない、またはそのように見えるほど異常な様子である、という比喩的なニュアンスを表します。"
   },
   {
     "id": "U07_007",
@@ -755,8 +1662,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "あなたの財政的な支援がなかったら、そのプロジェクトは失敗していただろう。",
-    "words": ["Without", "failed", "financial", "have", "project", "support", "the", "would", "your"],
-    "correctOrder": ["Without", "your", "financial", "support", "the", "project", "would", "have", "failed"],
+    "words": [
+      "Without",
+      "failed",
+      "financial",
+      "have",
+      "project",
+      "support",
+      "the",
+      "would",
+      "your"
+    ],
+    "correctOrder": [
+      "Without",
+      "your",
+      "financial",
+      "support",
+      "the",
+      "project",
+      "would",
+      "have",
+      "failed"
+    ],
     "explanation": "【without 構文】Without 〜 で「〜がなかったら」という条件節の代わりになります。主節に would have failed が続くことで、これが単なる前置詞ではなく仮定法であると気づくことができます。"
   },
   {
@@ -767,7 +1694,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "It is high time you [   ] an independent life.",
     "questionJa": "あなたはもう自立した生活を送ってもよい頃だ。",
-    "choices": ["started", "start", "will start", "have started"],
+    "choices": [
+      "started",
+      "start",
+      "will start",
+      "have started"
+    ],
     "correctAnswer": "started",
     "explanation": "【It is time 構文】「もう（とっくに）〜してもよい時間だ」という意味です。time の後ろの節の動詞が仮定法過去形（started）になるのが最大の特徴です。筆者の「早くそうすべきだ」という強い主張や焦りを示すサインとなります。"
   },
@@ -778,8 +1710,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "万一、彼が来たら、私に電話するように伝えてください。",
-    "words": ["If", "call", "come", "he", "him", "me", "should", "tell", "to"],
-    "correctOrder": ["If", "he", "should", "come", "tell", "him", "to", "call", "me"],
+    "words": [
+      "If",
+      "call",
+      "come",
+      "he",
+      "him",
+      "me",
+      "should",
+      "tell",
+      "to"
+    ],
+    "correctOrder": [
+      "If",
+      "he",
+      "should",
+      "come",
+      "tell",
+      "him",
+      "to",
+      "call",
+      "me"
+    ],
     "explanation": "【should を用いた仮定法】If 節の中に should を用いると、「万が一〜したら」という未来の実現可能性が極めて低い仮定を表します。主節にはこの文のように命令文（tell him...）が続くことが多い点も特徴です。"
   },
   {
@@ -790,19 +1742,44 @@ const quizData = [
     "type": "choice",
     "questionEn": "I started early; [   ], I would have missed the train.",
     "questionJa": "私は早く出発した。そうでなければ、列車に乗り遅れていただろう。",
-    "choices": ["otherwise", "therefore", "however", "moreover"],
+    "choices": [
+      "otherwise",
+      "therefore",
+      "however",
+      "moreover"
+    ],
     "correctAnswer": "otherwise",
     "explanation": "【副詞による仮定法】otherwise は「そうでなければ」と、直前の事実と反対の仮定を表す副詞です。長文の論理展開において、もし違う選択をしていたらどうなっていたかを示す非常に重要なディスコースマーカー（論理の標識）です。"
   },
-    {
+  {
     "id": "U08_001",
     "unit": "8. 話法・代名詞・接続詞",
     "theme": "話法（平叙文の伝達）",
     "difficulty": 1,
     "type": "sort",
     "questionJa": "彼は財布をなくしたと私に言った。",
-    "words": ["He", "had", "he", "his", "lost", "me", "that", "told", "wallet"],
-    "correctOrder": ["He", "told", "me", "that", "he", "had", "lost", "his", "wallet"],
+    "words": [
+      "He",
+      "had",
+      "he",
+      "his",
+      "lost",
+      "me",
+      "that",
+      "told",
+      "wallet"
+    ],
+    "correctOrder": [
+      "He",
+      "told",
+      "me",
+      "that",
+      "he",
+      "had",
+      "lost",
+      "his",
+      "wallet"
+    ],
     "explanation": "【話法】「Sに〜だと言う」は tell O that S V で表します。主節の動詞（told）が過去形のため、that節の中の時制も過去完了（had lost）に一致しています。"
   },
   {
@@ -813,7 +1790,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "She asked me [   ] I lived.",
     "questionJa": "彼女は私がどこに住んでいるのか私に尋ねた。",
-    "choices": ["where", "what", "which", "how"],
+    "choices": [
+      "where",
+      "what",
+      "which",
+      "how"
+    ],
     "correctAnswer": "where",
     "explanation": "【話法】疑問詞で始まる疑問文を間接話法にする場合、ask O + 疑問詞 + S + V の語順（間接疑問文）になります。「どこに」を表す where が入ります。"
   },
@@ -824,8 +1806,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "医者は彼にタバコをやめるように忠告した。",
-    "words": ["The", "advised", "doctor", "him", "smoking", "stop", "to"],
-    "correctOrder": ["The", "doctor", "advised", "him", "to", "stop", "smoking"],
+    "words": [
+      "The",
+      "advised",
+      "doctor",
+      "him",
+      "smoking",
+      "stop",
+      "to"
+    ],
+    "correctOrder": [
+      "The",
+      "doctor",
+      "advised",
+      "him",
+      "to",
+      "stop",
+      "smoking"
+    ],
     "explanation": "【話法】advise O to do で「Oに〜するように忠告する」という意味になります。命令や依頼を間接話法で伝える際の頻出パターンです。tell O to do や ask O to do と同じ構造です。"
   },
   {
@@ -835,8 +1833,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私は彼がその試験に合格するだろうと思った。",
-    "words": ["I", "exam", "he", "pass", "that", "the", "thought", "would"],
-    "correctOrder": ["I", "thought", "that", "he", "would", "pass", "the", "exam"],
+    "words": [
+      "I",
+      "exam",
+      "he",
+      "pass",
+      "that",
+      "the",
+      "thought",
+      "would"
+    ],
+    "correctOrder": [
+      "I",
+      "thought",
+      "that",
+      "he",
+      "would",
+      "pass",
+      "the",
+      "exam"
+    ],
     "explanation": "【時制の一致】主節の動詞（thought）が過去形なので、従属節（that節）の助動詞も will から would に過去形へと変化します。"
   },
   {
@@ -847,7 +1863,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I don't like this design. Please show me [   ].",
     "questionJa": "私はこのデザインが好きではありません。別のものを見せてください。",
-    "choices": ["another", "other", "the other", "others"],
+    "choices": [
+      "another",
+      "other",
+      "the other",
+      "others"
+    ],
     "correctAnswer": "another",
     "explanation": "【代名詞】「（不特定の）もう1つの別のもの」を指す場合は another を使います。the other は「（残りすべてのうちの）もう1つ」を指すため、文脈上ここでは不適切です。"
   },
@@ -858,8 +1879,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "そのプロジェクトに興味がある人は会議に出席すべきだ。",
-    "words": ["Those", "are", "attend", "in", "interested", "meeting", "project", "should", "the", "the", "who"],
-    "correctOrder": ["Those", "who", "are", "interested", "in", "the", "project", "should", "attend", "the", "meeting"],
+    "words": [
+      "Those",
+      "are",
+      "attend",
+      "in",
+      "interested",
+      "meeting",
+      "project",
+      "should",
+      "the",
+      "the",
+      "who"
+    ],
+    "correctOrder": [
+      "Those",
+      "who",
+      "are",
+      "interested",
+      "in",
+      "the",
+      "project",
+      "should",
+      "attend",
+      "the",
+      "meeting"
+    ],
     "explanation": "【代名詞】Those who ~ で「〜する人々」という重要な働きをします。長文で筆者が一般論や特定の集団について述べる際によく使われる表現です。"
   },
   {
@@ -869,8 +1914,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "生徒たちだけでなく先生も驚いた。",
-    "words": ["Not", "also", "but", "only", "students", "surprised", "teacher", "the", "the", "was"],
-    "correctOrder": ["Not", "only", "the", "students", "but", "also", "the", "teacher", "was", "surprised"],
+    "words": [
+      "Not",
+      "also",
+      "but",
+      "only",
+      "students",
+      "surprised",
+      "teacher",
+      "the",
+      "the",
+      "was"
+    ],
+    "correctOrder": [
+      "Not",
+      "only",
+      "the",
+      "students",
+      "but",
+      "also",
+      "the",
+      "teacher",
+      "was",
+      "surprised"
+    ],
     "explanation": "【相関接続詞】not only A but also B（AだけでなくBも）が主語になる場合、動詞はB（ここでは the teacher）の数に一致するため、were ではなく was になる点に注意しましょう。"
   },
   {
@@ -881,7 +1948,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "[   ] he arrived at the station, it began to rain.",
     "questionJa": "彼が駅に着くとすぐに雨が降り始めた。",
-    "choices": ["As soon as", "As far as", "As long as", "As well as"],
+    "choices": [
+      "As soon as",
+      "As far as",
+      "As long as",
+      "As well as"
+    ],
     "correctAnswer": "As soon as",
     "explanation": "【接続詞】As soon as S V で「SがVするとすぐに」という時の副詞節を作ります。as far as（〜する限りでは：範囲）や as long as（〜する間は：時間・条件）との意味の違いに注意しましょう。"
   },
@@ -892,8 +1964,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "悪天候にもかかわらず、彼らはピクニックに出かけた。",
-    "words": ["Despite", "a", "bad", "on", "picnic", "the", "they", "weather", "went"],
-    "correctOrder": ["Despite", "the", "bad", "weather", "they", "went", "on", "a", "picnic"],
+    "words": [
+      "Despite",
+      "a",
+      "bad",
+      "on",
+      "picnic",
+      "the",
+      "they",
+      "weather",
+      "went"
+    ],
+    "correctOrder": [
+      "Despite",
+      "the",
+      "bad",
+      "weather",
+      "they",
+      "went",
+      "on",
+      "a",
+      "picnic"
+    ],
     "explanation": "【前置詞】Despite は「〜にもかかわらず」という意味の前置詞で、後ろには名詞（句）が続きます。接続詞の Although（後ろにS+Vが続く）との使い分けが文法問題や読解の鍵になります。"
   },
   {
@@ -903,8 +1995,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "急がない限り、あなたはバスに乗り遅れるだろう。",
-    "words": ["Unless", "bus", "hurry", "miss", "the", "will", "you", "you"],
-    "correctOrder": ["Unless", "you", "hurry", "you", "will", "miss", "the", "bus"],
+    "words": [
+      "Unless",
+      "bus",
+      "hurry",
+      "miss",
+      "the",
+      "will",
+      "you",
+      "you"
+    ],
+    "correctOrder": [
+      "Unless",
+      "you",
+      "hurry",
+      "you",
+      "will",
+      "miss",
+      "the",
+      "bus"
+    ],
     "explanation": "【接続詞】Unless は「〜しない限り」という意味の接続詞で、If ~ not とほぼ同じ働きをします。Unless 自体に否定の意味が含まれているため、後ろの文（you hurry）は肯定形になります。"
   },
   {
@@ -914,8 +2024,20 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私はその従業員が有能だとわかった。",
-    "words": ["capable", "employee", "found", "I", "the"],
-    "correctOrder": ["I", "found", "the", "employee", "capable"],
+    "words": [
+      "capable",
+      "employee",
+      "found",
+      "I",
+      "the"
+    ],
+    "correctOrder": [
+      "I",
+      "found",
+      "the",
+      "employee",
+      "capable"
+    ],
     "explanation": "【第5文型】find O C（OがCだとわかる）の構造に、重要語彙 employee（従業員）と capable（有能な）を組み込んだ形です。長文では単語が難しくなっても文の骨格を瞬時に見抜くことが重要です。"
   },
   {
@@ -926,7 +2048,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The politician takes [   ] for granted that he should apologize.",
     "questionJa": "その政治家は自分が謝罪すべきだと当然のように思っている。",
-    "choices": ["it", "this", "that", "them"],
+    "choices": [
+      "it",
+      "this",
+      "that",
+      "them"
+    ],
     "correctAnswer": "it",
     "explanation": "【形式目的語】take it for granted that 〜 で「〜ということを当然だと思う」という重要イディオムです。it は that 以下を指す形式目的語であり、長文の論理展開を掴むための重要なサインとなります。politician（政治家）、apologize（謝罪する）も頻出語です。"
   },
@@ -937,8 +2064,22 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その解決策は妥当には程遠かった。",
-    "words": ["far", "from", "reasonable", "solution", "The", "was"],
-    "correctOrder": ["The", "solution", "was", "far", "from", "reasonable"],
+    "words": [
+      "far",
+      "from",
+      "reasonable",
+      "solution",
+      "The",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "solution",
+      "was",
+      "far",
+      "from",
+      "reasonable"
+    ],
     "explanation": "【強い否定表現】far from 〜 は「〜には程遠い、決して〜ない」という強い否定を表す重要構文です。not を使わずに否定の意味を持つため、読解時に筆者の批判的なスタンスを読み取る強力なマーカーになります。solution（解決策）、reasonable（妥当な）とセットで覚えましょう。"
   },
   {
@@ -948,8 +2089,24 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼は最も不正をしそうにない人だ。",
-    "words": ["cheat", "He", "is", "last", "person", "the", "to"],
-    "correctOrder": ["He", "is", "the", "last", "person", "to", "cheat"],
+    "words": [
+      "cheat",
+      "He",
+      "is",
+      "last",
+      "person",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "He",
+      "is",
+      "the",
+      "last",
+      "person",
+      "to",
+      "cheat"
+    ],
     "explanation": "【強い否定表現】the last person to do は「最も〜しそうにない人（決して〜しない人）」という意味の重要構文です。肯定文の形をしていますが、意味は強い否定になる点に注意が必要です。cheat（不正をする・ごまかす）という単語のニュアンスも押さえておきましょう。"
   },
   {
@@ -960,7 +2117,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "No sooner had he arrived at the conference [   ] it began.",
     "questionJa": "彼が会議に到着するとすぐにそれは始まった。",
-    "choices": ["than", "when", "that", "before"],
+    "choices": [
+      "than",
+      "when",
+      "that",
+      "before"
+    ],
     "correctAnswer": "than",
     "explanation": "【倒置構文】No sooner had S V than ... で「SがVするとすぐに…」という構文です。否定語（No sooner）が文頭に出ることで had S V という疑問文の語順（倒置）が起きています。比較級 sooner が使われているため、呼応する接続詞は than になります。conference（会議）などの単語とともに出題されやすい形です。"
   },
@@ -971,8 +2133,22 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "疲労にもかかわらず、そのアスリートは奮闘した。",
-    "words": ["athlete", "Despite", "fatigue,", "his", "struggled", "the"],
-    "correctOrder": ["Despite", "his", "fatigue,", "the", "athlete", "struggled"],
+    "words": [
+      "athlete",
+      "Despite",
+      "fatigue,",
+      "his",
+      "struggled",
+      "the"
+    ],
+    "correctOrder": [
+      "Despite",
+      "his",
+      "fatigue,",
+      "the",
+      "athlete",
+      "struggled"
+    ],
     "explanation": "【前置詞】Despite は「〜にもかかわらず」を表す前置詞で、後ろに名詞句（his fatigue）を取ります。fatigue（疲労）、athlete（運動選手）、struggle（奮闘する）といった重要語彙と論理展開のサインを同時に処理しましょう。"
   },
   {
@@ -983,7 +2159,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "Candidates [   ] oppose the policy should resign.",
     "questionJa": "その政策に反対する候補者は辞任すべきだ。",
-    "choices": ["who", "which", "whom", "what"],
+    "choices": [
+      "who",
+      "which",
+      "whom",
+      "what"
+    ],
     "correctAnswer": "who",
     "explanation": "【主格の関係代名詞】Candidates（候補者たち）を先行詞とし、後ろの動詞 oppose（〜に反対する）の主語となる主格の関係代名詞 who を選びます。policy（政策）や resign（辞任する）など、政治・ビジネス系の長文で頻出する語彙の組み合わせです。"
   },
@@ -994,8 +2175,22 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その病気は患者を絶望させた。",
-    "words": ["desperate", "disease", "made", "patient", "The", "the"],
-    "correctOrder": ["The", "disease", "made", "the", "patient", "desperate"],
+    "words": [
+      "desperate",
+      "disease",
+      "made",
+      "patient",
+      "The",
+      "the"
+    ],
+    "correctOrder": [
+      "The",
+      "disease",
+      "made",
+      "the",
+      "patient",
+      "desperate"
+    ],
     "explanation": "【無生物主語】The disease（病気）という無生物が主語になり、make O C で「OをCの状態にする」という因果関係（原因と結果）を表しています。desperate（絶望した・必死の）や patient（患者）の語彙とともに、長文の論理（なぜそうなったか）を把握する力が問われます。"
   },
   {
@@ -1005,8 +2200,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この解決策は断然最も信頼できる。",
-    "words": ["by", "far", "is", "most", "reliable", "solution", "the", "This"],
-    "correctOrder": ["This", "solution", "is", "by", "far", "the", "most", "reliable"],
+    "words": [
+      "by",
+      "far",
+      "is",
+      "most",
+      "reliable",
+      "solution",
+      "the",
+      "This"
+    ],
+    "correctOrder": [
+      "This",
+      "solution",
+      "is",
+      "by",
+      "far",
+      "the",
+      "most",
+      "reliable"
+    ],
     "explanation": "【最上級の強調】by far は the most reliable（最も信頼できる）という最上級を強調し、「断然、ずば抜けて」という意味を加えます。solution（解決策）を評価する筆者の強い主張を読み取るためのサインです。"
   },
   {
@@ -1017,7 +2230,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The committee suggested [   ] the election.",
     "questionJa": "委員会は選挙を延期することを提案した。",
-    "choices": ["postponing", "to postpone", "postpone", "postponed"],
+    "choices": [
+      "postponing",
+      "to postpone",
+      "postpone",
+      "postponed"
+    ],
     "correctAnswer": "postponing",
     "explanation": "【動名詞】suggest（〜を提案する）の目的語には不定詞ではなく動名詞（~ing）をとります。committee（委員会）、postpone（〜を延期する）、election（選挙）など、長文でよく目にする語彙と文法規則をリンクさせておきましょう。"
   },
@@ -1028,8 +2246,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その決定について不満を言っても無駄だ。",
-    "words": ["about", "complaining", "decision", "is", "It", "no", "the", "use"],
-    "correctOrder": ["It", "is", "no", "use", "complaining", "about", "the", "decision"],
+    "words": [
+      "about",
+      "complaining",
+      "decision",
+      "is",
+      "It",
+      "no",
+      "the",
+      "use"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "no",
+      "use",
+      "complaining",
+      "about",
+      "the",
+      "decision"
+    ],
     "explanation": "【重要構文】It is no use ~ing で「〜しても無駄だ」という構文です。it は形式主語で、~ing の部分が真主語になります。complain（不満を言う）や decision（決定）といった語彙とセットで、筆者の「意味がない」という主張を読み取りましょう。"
   },
   {
@@ -1040,7 +2276,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The problem was [   ] complicated for me to solve.",
     "questionJa": "その問題は私が解決するには複雑すぎた。",
-    "choices": ["too", "so", "very", "much"],
+    "choices": [
+      "too",
+      "so",
+      "very",
+      "much"
+    ],
     "correctAnswer": "too",
     "explanation": "【不定詞の重要構文】too ~ to do で「〜すぎて…できない」という否定の意味を含みます。complicated（複雑な）や solve（解決する）といった語彙の組み合わせで、文面に not がなくても否定として訳出する精読力が問われます。"
   },
@@ -1051,8 +2292,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その講義はとても退屈だったので、私は眠ってしまった。",
-    "words": ["asleep", "boring", "fell", "I", "lecture", "so", "that", "The", "was"],
-    "correctOrder": ["The", "lecture", "was", "so", "boring", "that", "I", "fell", "asleep"],
+    "words": [
+      "asleep",
+      "boring",
+      "fell",
+      "I",
+      "lecture",
+      "so",
+      "that",
+      "The",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "lecture",
+      "was",
+      "so",
+      "boring",
+      "that",
+      "I",
+      "fell",
+      "asleep"
+    ],
     "explanation": "【結果の構文】so ~ that S V で「とても〜なので（その結果）SはVだ」という因果関係を表します。lecture（講義）が boring（退屈な）であったことと、眠ってしまった結果が that によって論理的に結ばれています。"
   },
   {
@@ -1062,8 +2323,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼は英語だけでなくフランス語も流暢に話す。",
-    "words": ["also", "but", "English", "fluently", "French", "He", "not", "only", "speaks"],
-    "correctOrder": ["He", "speaks", "not", "only", "English", "but", "also", "French", "fluently"],
+    "words": [
+      "also",
+      "but",
+      "English",
+      "fluently",
+      "French",
+      "He",
+      "not",
+      "only",
+      "speaks"
+    ],
+    "correctOrder": [
+      "He",
+      "speaks",
+      "not",
+      "only",
+      "English",
+      "but",
+      "also",
+      "French",
+      "fluently"
+    ],
     "explanation": "【相関構文】not only A but also B で「AだけでなくBも」という意味になります。筆者はAよりもBの方を強調したい（新情報として伝えたい）という論理展開のサインになるため、長文で非常に重要です。"
   },
   {
@@ -1074,7 +2355,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "It was the manager [   ] canceled the meeting.",
     "questionJa": "会議をキャンセルしたのはマネージャーだった。",
-    "choices": ["that", "what", "which", "whom"],
+    "choices": [
+      "that",
+      "what",
+      "which",
+      "whom"
+    ],
     "correctAnswer": "that",
     "explanation": "【強調構文】It is (was) 〜 that ... で「…なのは〜だ」と、〜の部分を強調します。ここでは the manager（マネージャー）を強調しています。cancel（キャンセルする）という事実に対して、誰が主導したのかを正確に読み取るサインになります。"
   },
@@ -1085,8 +2371,26 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "私は彼女に再び会うとは全く予期していなかった。",
-    "words": ["again", "did", "expect", "her", "I", "Little", "see", "to"],
-    "correctOrder": ["Little", "did", "I", "expect", "to", "see", "her", "again"],
+    "words": [
+      "again",
+      "did",
+      "expect",
+      "her",
+      "I",
+      "Little",
+      "see",
+      "to"
+    ],
+    "correctOrder": [
+      "Little",
+      "did",
+      "I",
+      "expect",
+      "to",
+      "see",
+      "her",
+      "again"
+    ],
     "explanation": "【倒置構文】Little や Never などの否定語が文頭に出ると、後ろが「助動詞＋S＋V」の疑問文の語順（倒置）になります。expect（予期する）と結びつき「全く予期していなかった」という筆者の強い感情や驚きを表します。"
   },
   {
@@ -1096,8 +2400,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その結果は決して満足のいくものではなかった。",
-    "words": ["by", "means", "no", "result", "satisfactory", "The", "was"],
-    "correctOrder": ["The", "result", "was", "by", "no", "means", "satisfactory"],
+    "words": [
+      "by",
+      "means",
+      "no",
+      "result",
+      "satisfactory",
+      "The",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "result",
+      "was",
+      "by",
+      "no",
+      "means",
+      "satisfactory"
+    ],
     "explanation": "【強い否定】by no means は「決して〜ない」という強い否定を表す熟語です。result（結果）や satisfactory（満足のいく）などの単語と結びつき、筆者の評価や結論を決定づける重要な表現です。"
   },
   {
@@ -1108,7 +2428,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "This document is free [   ] errors.",
     "questionJa": "この書類には誤りがない。",
-    "choices": ["from", "of", "with", "without"],
+    "choices": [
+      "from",
+      "of",
+      "with",
+      "without"
+    ],
     "correctAnswer": "from",
     "explanation": "【否定の重要表現】be free from 〜 で「（苦痛や誤りなど）好ましくないものがない」という意味を表します。not を使わずに否定の意味を持つため、document（書類）などの情報を正確に読み取る際に重要です。"
   },
@@ -1119,8 +2444,30 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "私はできるだけ早くそのタスクを完了させる必要がある。",
-    "words": ["as", "as", "complete", "I", "need", "possible", "soon", "task", "the", "to"],
-    "correctOrder": ["I", "need", "to", "complete", "the", "task", "as", "soon", "as", "possible"],
+    "words": [
+      "as",
+      "as",
+      "complete",
+      "I",
+      "need",
+      "possible",
+      "soon",
+      "task",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "I",
+      "need",
+      "to",
+      "complete",
+      "the",
+      "task",
+      "as",
+      "soon",
+      "as",
+      "possible"
+    ],
     "explanation": "【比較構文】as ~ as possible で「できるだけ〜」という意味になります。complete（完了させる）、task（タスク・仕事）などの語彙と組み合わされ、ビジネスや日常の文脈で頻出します。"
   },
   {
@@ -1130,8 +2477,26 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "日本に滞在している間、彼は多くの神社を訪れた。",
-    "words": ["he", "in", "Japan,", "many", "shrines", "staying", "visited", "While"],
-    "correctOrder": ["While", "staying", "in", "Japan,", "he", "visited", "many", "shrines"],
+    "words": [
+      "he",
+      "in",
+      "Japan,",
+      "many",
+      "shrines",
+      "staying",
+      "visited",
+      "While"
+    ],
+    "correctOrder": [
+      "While",
+      "staying",
+      "in",
+      "Japan,",
+      "he",
+      "visited",
+      "many",
+      "shrines"
+    ],
     "explanation": "【省略構文】While (he was) staying in Japan のように、時や条件を表す接続詞の直後では「主語＋be動詞」が省略されることがよくあります。分詞構文のように見えますが、接続詞の意味を明確に残した形です。"
   },
   {
@@ -1141,8 +2506,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼女の昇給の要求は却下された。",
-    "words": ["a", "down", "for", "Her", "raise", "request", "turned", "was"],
-    "correctOrder": ["Her", "request", "for", "a", "raise", "was", "turned", "down"],
+    "words": [
+      "a",
+      "down",
+      "for",
+      "Her",
+      "raise",
+      "request",
+      "turned",
+      "was"
+    ],
+    "correctOrder": [
+      "Her",
+      "request",
+      "for",
+      "a",
+      "raise",
+      "was",
+      "turned",
+      "down"
+    ],
     "explanation": "【熟語】turn down は「〜を拒絶する、却下する」という意味の重要熟語です。受動態（was turned down）の形でよく使われ、筆者の否定的な展開を読み取るサインになります。"
   },
   {
@@ -1153,7 +2536,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "Most of us are opposed [   ] the death penalty.",
     "questionJa": "私たちのほとんどは死刑に反対している。",
-    "choices": ["to", "against", "for", "with"],
+    "choices": [
+      "to",
+      "against",
+      "for",
+      "with"
+    ],
     "correctAnswer": "to",
     "explanation": "【熟語】be opposed to 〜 で「〜に反対している」状態を表します。この to は不定詞ではなく前置詞なので、後ろには名詞（the death penalty）や動名詞が続く点に注意しましょう。"
   },
@@ -1164,8 +2552,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "日本文化は中国文化と共通点が多い。",
-    "words": ["a", "Chinese", "common", "culture", "culture", "has", "in", "Japanese", "lot", "with"],
-    "correctOrder": ["Japanese", "culture", "has", "a", "lot", "in", "common", "with", "Chinese", "culture"],
+    "words": [
+      "a",
+      "Chinese",
+      "common",
+      "culture",
+      "culture",
+      "has",
+      "in",
+      "Japanese",
+      "lot",
+      "with"
+    ],
+    "correctOrder": [
+      "Japanese",
+      "culture",
+      "has",
+      "a",
+      "lot",
+      "in",
+      "common",
+      "with",
+      "Chinese",
+      "culture"
+    ],
     "explanation": "【熟語】have A in common with B で「Bと共通してAを持つ」という意味になります。長文の中で比較や対比の論理展開を示す強力なサイン（ディスコースマーカー）です。"
   },
   {
@@ -1175,8 +2585,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼はすべてをお金の観点から考える傾向がある。",
-    "words": ["everything", "He", "in", "money", "of", "of", "tends", "terms", "think", "to"],
-    "correctOrder": ["He", "tends", "to", "think", "of", "everything", "in", "terms", "of", "money"],
+    "words": [
+      "everything",
+      "He",
+      "in",
+      "money",
+      "of",
+      "of",
+      "tends",
+      "terms",
+      "think",
+      "to"
+    ],
+    "correctOrder": [
+      "He",
+      "tends",
+      "to",
+      "think",
+      "of",
+      "everything",
+      "in",
+      "terms",
+      "of",
+      "money"
+    ],
     "explanation": "【熟語】in terms of 〜 は「〜の観点から、〜の基準で」という意味です。筆者がどのような評価基準で物事を論じているかを示す重要な表現です。tend to（〜する傾向がある）も頻出です。"
   },
   {
@@ -1187,7 +2619,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The city is famous for its history [   ] its food.",
     "questionJa": "その都市は食べ物だけでなく歴史でも有名だ。",
-    "choices": ["as well as", "as far as", "as long as", "as soon as"],
+    "choices": [
+      "as well as",
+      "as far as",
+      "as long as",
+      "as soon as"
+    ],
     "correctAnswer": "as well as",
     "explanation": "【論理マーカー】A as well as B で「BだけでなくAも」という情報の追加を表します。not only B but also A と同じ論理展開（Bは当然として、さらにAも）を作ります。"
   },
@@ -1199,7 +2636,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "[   ], some people agree with the plan.",
     "questionJa": "一方で、その計画に賛成する人もいる。",
-    "choices": ["On the other hand", "In other words", "As a result", "For instance"],
+    "choices": [
+      "On the other hand",
+      "In other words",
+      "As a result",
+      "For instance"
+    ],
     "correctAnswer": "On the other hand",
     "explanation": "【論理マーカー】On the other hand は「一方で」と対比や逆接を表す重要なディスコースマーカーです。前後の文で異なる意見や側面が対比されていることに注目しましょう。"
   },
@@ -1210,8 +2652,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "大雨が洪水を引き起こした（洪水という結果になった）。",
-    "words": ["a", "flood", "heavy", "in", "rain", "resulted", "The"],
-    "correctOrder": ["The", "heavy", "rain", "resulted", "in", "a", "flood"],
+    "words": [
+      "a",
+      "flood",
+      "heavy",
+      "in",
+      "rain",
+      "resulted",
+      "The"
+    ],
+    "correctOrder": [
+      "The",
+      "heavy",
+      "rain",
+      "resulted",
+      "in",
+      "a",
+      "flood"
+    ],
     "explanation": "【熟語】result in 〜 で「〜という結果になる（＝〜を引き起こす）」という意味になります。主語が原因、in の後ろが結果となる因果関係（原因→結果）を表す重要表現です。"
   },
   {
@@ -1221,8 +2679,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "プロジェクトの成功はあなたの努力次第だ。",
-    "words": ["depends", "effort", "of", "on", "project", "success", "The", "the", "your"],
-    "correctOrder": ["The", "success", "of", "the", "project", "depends", "on", "your", "effort"],
+    "words": [
+      "depends",
+      "effort",
+      "of",
+      "on",
+      "project",
+      "success",
+      "The",
+      "the",
+      "your"
+    ],
+    "correctOrder": [
+      "The",
+      "success",
+      "of",
+      "the",
+      "project",
+      "depends",
+      "on",
+      "your",
+      "effort"
+    ],
     "explanation": "【熟語】depend on 〜 は「〜に依存する、〜次第である」という意味です。長文では、何が何に影響を与えているかの論理構造（条件や因果関係）を掴む鍵になります。"
   },
   {
@@ -1233,7 +2711,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I am looking forward to [   ] from you.",
     "questionJa": "あなたからの連絡を楽しみにしています。",
-    "choices": ["hearing", "hear", "be heard", "have heard"],
+    "choices": [
+      "hearing",
+      "hear",
+      "be heard",
+      "have heard"
+    ],
     "correctAnswer": "hearing",
     "explanation": "【熟語】look forward to 〜ing で「〜するのを楽しみに待つ」という意味です。この to は不定詞ではなく前置詞なので、後ろには動詞の原形ではなく動名詞（~ing）が来ます。"
   },
@@ -1244,8 +2727,24 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "会議は次の月曜日に行われる。",
-    "words": ["meeting", "Monday", "next", "place", "take", "The", "will"],
-    "correctOrder": ["The", "meeting", "will", "take", "place", "next", "Monday"],
+    "words": [
+      "meeting",
+      "Monday",
+      "next",
+      "place",
+      "take",
+      "The",
+      "will"
+    ],
+    "correctOrder": [
+      "The",
+      "meeting",
+      "will",
+      "take",
+      "place",
+      "next",
+      "Monday"
+    ],
     "explanation": "【熟語】take place は「（予定されていたことが）行われる、開催される」という意味です。意味の中に「行われる」という受身のニュアンスが含まれているため、受動態にはならない点に注意しましょう。"
   },
   {
@@ -1255,8 +2754,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その新しい技術は私たちの生活に大きな変化をもたらした。",
-    "words": ["The", "a", "about", "brought", "change", "great", "in", "lives", "new", "our", "technology"],
-    "correctOrder": ["The", "new", "technology", "brought", "about", "a", "great", "change", "in", "our", "lives"],
+    "words": [
+      "The",
+      "a",
+      "about",
+      "brought",
+      "change",
+      "great",
+      "in",
+      "lives",
+      "new",
+      "our",
+      "technology"
+    ],
+    "correctOrder": [
+      "The",
+      "new",
+      "technology",
+      "brought",
+      "about",
+      "a",
+      "great",
+      "change",
+      "in",
+      "our",
+      "lives"
+    ],
     "explanation": "【熟語】bring about（〜を引き起こす、もたらす）は長文の因果関係（原因→結果）を示す重要な熟語です。technology（技術）などの無生物が主語になり、事象の変化を述べる展開に慣れましょう。"
   },
   {
@@ -1266,8 +2789,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私はその機械の操作方法を理解することができなかった。",
-    "words": ["I", "couldn't", "figure", "how", "machine", "operate", "out", "the", "to"],
-    "correctOrder": ["I", "couldn't", "figure", "out", "how", "to", "operate", "the", "machine"],
+    "words": [
+      "I",
+      "couldn't",
+      "figure",
+      "how",
+      "machine",
+      "operate",
+      "out",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "I",
+      "couldn't",
+      "figure",
+      "out",
+      "how",
+      "to",
+      "operate",
+      "the",
+      "machine"
+    ],
     "explanation": "【熟語】figure out（〜を理解する、解決する）は頻出熟語です。how to operate（どのように操作するか）という疑問詞＋不定詞の名詞のカタマリを目的語にとっています。"
   },
   {
@@ -1278,7 +2821,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "You should take [   ] of this opportunity.",
     "questionJa": "あなたはこの機会を利用するべきだ。",
-    "choices": ["advantage", "care", "part", "pride"],
+    "choices": [
+      "advantage",
+      "care",
+      "part",
+      "pride"
+    ],
     "correctAnswer": "advantage",
     "explanation": "【熟語】take advantage of 〜 で「（機会や状況などを）利用する」という意味の重要熟語です。opportunity（機会）とセットで出題されることが多く、筆者の主張やアドバイスの文脈でよく見られます。"
   },
@@ -1289,8 +2837,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "学生たちは先生の言うことに注意を払わなければならない。",
-    "words": ["Students", "attention", "must", "pay", "says", "teacher", "the", "to", "what"],
-    "correctOrder": ["Students", "must", "pay", "attention", "to", "what", "the", "teacher", "says"],
+    "words": [
+      "Students",
+      "attention",
+      "must",
+      "pay",
+      "says",
+      "teacher",
+      "the",
+      "to",
+      "what"
+    ],
+    "correctOrder": [
+      "Students",
+      "must",
+      "pay",
+      "attention",
+      "to",
+      "what",
+      "the",
+      "teacher",
+      "says"
+    ],
     "explanation": "【熟語】pay attention to 〜 で「〜に注意を払う」という意味です。to は不定詞ではなく前置詞なので、後ろには名詞または名詞節（what the teacher says：先生が言うこと）が続きます。"
   },
   {
@@ -1300,8 +2868,24 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "悪天候のため、私たちは出発できなかった。",
-    "words": ["The", "bad", "from", "leaving", "prevented", "us", "weather"],
-    "correctOrder": ["The", "bad", "weather", "prevented", "us", "from", "leaving"],
+    "words": [
+      "The",
+      "bad",
+      "from",
+      "leaving",
+      "prevented",
+      "us",
+      "weather"
+    ],
+    "correctOrder": [
+      "The",
+      "bad",
+      "weather",
+      "prevented",
+      "us",
+      "from",
+      "leaving"
+    ],
     "explanation": "【無生物主語】prevent A from ~ing は「Aが〜するのを防ぐ・妨げる」という構文の代表格です。直訳の「悪天候が私たちを妨げた」から「悪天候のために出発できなかった」と因果関係で訳せるようにしましょう。"
   },
   {
@@ -1312,7 +2896,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I am not used to [   ] in public.",
     "questionJa": "私は人前で話すことには慣れていない。",
-    "choices": ["speaking", "speak", "spoken", "be spoken"],
+    "choices": [
+      "speaking",
+      "speak",
+      "spoken",
+      "be spoken"
+    ],
     "correctAnswer": "speaking",
     "explanation": "【熟語】be used to ~ing で「〜することに慣れている」という状態を表します。to は不定詞の記号ではなく前置詞なので、後ろには動詞の原形ではなく動名詞（~ing）が来る点に注意が必要です。"
   },
@@ -1323,8 +2912,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この歌は私に故郷を思い出させる。",
-    "words": ["This", "hometown", "me", "my", "of", "reminds", "song"],
-    "correctOrder": ["This", "song", "reminds", "me", "of", "my", "hometown"],
+    "words": [
+      "This",
+      "hometown",
+      "me",
+      "my",
+      "of",
+      "reminds",
+      "song"
+    ],
+    "correctOrder": [
+      "This",
+      "song",
+      "reminds",
+      "me",
+      "of",
+      "my",
+      "hometown"
+    ],
     "explanation": "【語法】remind A of B で「AにBを思い出させる」という語法です。of は「分離」や「関連」を表す前置詞であり、この形を見たら「Aの頭の中にBの情報を呼び起こす」というイメージを持ちましょう。"
   },
   {
@@ -1335,7 +2940,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "He was late [   ] a traffic jam.",
     "questionJa": "交通渋滞のために彼は遅刻した。",
-    "choices": ["due to", "because", "since", "as"],
+    "choices": [
+      "due to",
+      "because",
+      "since",
+      "as"
+    ],
     "correctAnswer": "due to",
     "explanation": "【群前置詞】due to 〜 は「〜のために、〜が原因で」という意味の前置詞のカタマリです。because of と同様に、後ろには文（S+V）ではなく名詞句が続き、因果関係（結果 due to 原因）を示す論理マーカーとなります。"
   },
@@ -1346,8 +2956,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "教育は社会において重要な役割を果たす。",
-    "words": ["Education", "an", "important", "in", "plays", "role", "society"],
-    "correctOrder": ["Education", "plays", "an", "important", "role", "in", "society"],
+    "words": [
+      "Education",
+      "an",
+      "important",
+      "in",
+      "plays",
+      "role",
+      "society"
+    ],
+    "correctOrder": [
+      "Education",
+      "plays",
+      "an",
+      "important",
+      "role",
+      "in",
+      "society"
+    ],
     "explanation": "【熟語】play a role in 〜 で「〜において役割を果たす」という意味になります。important（重要な）や key（鍵となる）などの形容詞を伴って、主題の重要性を述べるトピックセンテンスによく使われます。"
   },
   {
@@ -1357,8 +2983,22 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "今夜は雨が降りそうだ。",
-    "words": ["It", "is", "likely", "rain", "to", "tonight"],
-    "correctOrder": ["It", "is", "likely", "to", "rain", "tonight"],
+    "words": [
+      "It",
+      "is",
+      "likely",
+      "rain",
+      "to",
+      "tonight"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "likely",
+      "to",
+      "rain",
+      "tonight"
+    ],
     "explanation": "【熟語】be likely to do は「〜しそうである、〜する可能性が高い」という傾向や未来の予測を表す重要表現です。長文では、研究結果からの推測や一般的な傾向を述べる際によく登場します。"
   },
   {
@@ -1368,8 +3008,20 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "その実験は極めて成功だった。",
-    "words": ["experiment", "extremely", "successful", "The", "was"],
-    "correctOrder": ["The", "experiment", "was", "extremely", "successful"],
+    "words": [
+      "experiment",
+      "extremely",
+      "successful",
+      "The",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "experiment",
+      "was",
+      "extremely",
+      "successful"
+    ],
     "explanation": "【第2文型】主語(The experiment)＝補語(successful)のSVC構造です。experiment（実験）、successful（成功した）、extremely（極めて）といった学術的な頻出単語も、基本文型に当てはめて前から理解しましょう。"
   },
   {
@@ -1379,8 +3031,22 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その研究者はデータを正確に分析した。",
-    "words": ["accurately", "analyzed", "data", "researcher", "the", "The"],
-    "correctOrder": ["The", "researcher", "analyzed", "the", "data", "accurately"],
+    "words": [
+      "accurately",
+      "analyzed",
+      "data",
+      "researcher",
+      "the",
+      "The"
+    ],
+    "correctOrder": [
+      "The",
+      "researcher",
+      "analyzed",
+      "the",
+      "data",
+      "accurately"
+    ],
     "explanation": "【第3文型】researcher（研究者）が主語、analyzed（分析した）が動詞、data（データ）が目的語のSVO構造です。副詞の accurately（正確に）が動詞を修飾する位置を正しく把握しましょう。"
   },
   {
@@ -1391,7 +3057,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The professor gave [   ] a difficult assignment.",
     "questionJa": "その教授は学生たちに難しい課題を与えた。",
-    "choices": ["the students", "to the students", "for the students", "students"],
+    "choices": [
+      "the students",
+      "to the students",
+      "for the students",
+      "students"
+    ],
     "correctAnswer": "the students",
     "explanation": "【第4文型】give O1 O2 で「O1（人）にO2（物）を与える」という構造になります。professor（教授）や assignment（課題・宿題）などの大学生活・長文頻出語彙と文型をセットで覚えましょう。"
   },
@@ -1402,8 +3073,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私はその理論を理解するのは難しいとわかった。",
-    "words": ["difficult", "found", "I", "the", "theory", "to", "understand"],
-    "correctOrder": ["I", "found", "the", "theory", "difficult", "to", "understand"],
+    "words": [
+      "difficult",
+      "found",
+      "I",
+      "the",
+      "theory",
+      "to",
+      "understand"
+    ],
+    "correctOrder": [
+      "I",
+      "found",
+      "the",
+      "theory",
+      "difficult",
+      "to",
+      "understand"
+    ],
     "explanation": "【第5文型】find O C で「OがCだとわかる」構造です。the theory（理論）＝ difficult（難しい）という関係を見抜くことが重要です。to understand は difficult を修飾する副詞的用法の不定詞です。"
   },
   {
@@ -1413,8 +3100,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "経済に影響を与える多くの要因がある。",
-    "words": ["are", "economy", "factors", "influencing", "many", "the", "There"],
-    "correctOrder": ["There", "are", "many", "factors", "influencing", "the", "economy"],
+    "words": [
+      "are",
+      "economy",
+      "factors",
+      "influencing",
+      "many",
+      "the",
+      "There"
+    ],
+    "correctOrder": [
+      "There",
+      "are",
+      "many",
+      "factors",
+      "influencing",
+      "the",
+      "economy"
+    ],
     "explanation": "【形容詞句】influencing the economy（経済に影響を与える）という現在分詞のカタマリが、直前の名詞 factors（要因）を修飾しています。factor、influence、economy は論説文における最重要語彙の組み合わせです。"
   },
   {
@@ -1424,8 +3127,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "環境に対する彼らの態度は変化した。",
-    "words": ["attitude", "changed", "environment", "has", "the", "Their", "toward"],
-    "correctOrder": ["Their", "attitude", "toward", "the", "environment", "has", "changed"],
+    "words": [
+      "attitude",
+      "changed",
+      "environment",
+      "has",
+      "the",
+      "Their",
+      "toward"
+    ],
+    "correctOrder": [
+      "Their",
+      "attitude",
+      "toward",
+      "the",
+      "environment",
+      "has",
+      "changed"
+    ],
     "explanation": "【形容詞句】toward the environment（環境に対する）という前置詞のカタマリが、前の名詞 attitude（態度）を修飾しています。長い主語のカタマリを正確に捉え、述語動詞（has changed）に繋げるのが精読の基本です。"
   },
   {
@@ -1436,7 +3155,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The evidence suggests [   ] the climate is changing.",
     "questionJa": "その証拠は気候が変化していることを示唆している。",
-    "choices": ["that", "if", "what", "which"],
+    "choices": [
+      "that",
+      "if",
+      "what",
+      "which"
+    ],
     "correctAnswer": "that",
     "explanation": "【名詞節】suggest の目的語となる「〜ということ」という名詞節を作る接続詞 that が正解です。evidence（証拠）が〜を示唆する、という展開は論文や論説文の典型的なパターンです。"
   },
@@ -1447,8 +3171,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼らが昨年導入した設備は非常に効率的だ。",
-    "words": ["efficient", "equipment", "highly", "introduced", "is", "last", "The", "they", "year"],
-    "correctOrder": ["The", "equipment", "they", "introduced", "last", "year", "is", "highly", "efficient"],
+    "words": [
+      "efficient",
+      "equipment",
+      "highly",
+      "introduced",
+      "is",
+      "last",
+      "The",
+      "they",
+      "year"
+    ],
+    "correctOrder": [
+      "The",
+      "equipment",
+      "they",
+      "introduced",
+      "last",
+      "year",
+      "is",
+      "highly",
+      "efficient"
+    ],
     "explanation": "【形容詞節】The equipment（名詞）の直後に they introduced（S+V）が続くため、関係代名詞が省略されていると判断します。equipment（設備）、introduce（導入する）、efficient（効率的な）の語彙とともに、修飾構造を見抜きましょう。"
   },
   {
@@ -1458,8 +3202,22 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "消費者の需要が減少したため、利益は落ちた。",
-    "words": ["because", "consumer", "decreased", "demand", "fell", "Profits"],
-    "correctOrder": ["Profits", "fell", "because", "consumer", "demand", "decreased"],
+    "words": [
+      "because",
+      "consumer",
+      "decreased",
+      "demand",
+      "fell",
+      "Profits"
+    ],
+    "correctOrder": [
+      "Profits",
+      "fell",
+      "because",
+      "consumer",
+      "demand",
+      "decreased"
+    ],
     "explanation": "【副詞節】because は後ろにSVを伴って「〜なので」という理由の副詞節を作ります。profit（利益）、consumer demand（消費者の需要）、decrease（減少する）などのビジネス・経済系語彙をセットで確認しましょう。"
   },
   {
@@ -1469,8 +3227,26 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "喫煙が健康に害を及ぼすことは明らかだ。",
-    "words": ["clear", "harms", "health", "is", "It", "our", "smoking", "that"],
-    "correctOrder": ["It", "is", "clear", "that", "smoking", "harms", "our", "health"],
+    "words": [
+      "clear",
+      "harms",
+      "health",
+      "is",
+      "It",
+      "our",
+      "smoking",
+      "that"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "clear",
+      "that",
+      "smoking",
+      "harms",
+      "our",
+      "health"
+    ],
     "explanation": "【形式主語構文】It is clear that SV〜 で「（SV）であることは明らかだ」という構文です。筆者が事実関係や強い主張を述べる際に多用されます。harm（〜に害を及ぼす）は他動詞としての用法に注意しましょう。"
   },
   {
@@ -1480,8 +3256,22 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "私たちは天然資源を急速に消費している。",
-    "words": ["We", "are", "consuming", "natural", "rapidly", "resources"],
-    "correctOrder": ["We", "are", "consuming", "natural", "resources", "rapidly"],
+    "words": [
+      "We",
+      "are",
+      "consuming",
+      "natural",
+      "rapidly",
+      "resources"
+    ],
+    "correctOrder": [
+      "We",
+      "are",
+      "consuming",
+      "natural",
+      "resources",
+      "rapidly"
+    ],
     "explanation": "【現在進行形】am/is/are + ~ing で「まさに今〜している」という動作の進行を表します。consume（消費する）や natural resources（天然資源）は環境問題などの長文で極めてよく出る単語なので、文の骨格と一緒に処理しましょう。"
   },
   {
@@ -1491,8 +3281,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "警察が到着したとき、容疑者はすでに逃亡していた。",
-    "words": ["The", "already", "arrived", "escaped", "had", "police", "suspect", "the", "when"],
-    "correctOrder": ["The", "suspect", "had", "already", "escaped", "when", "the", "police", "arrived"],
+    "words": [
+      "The",
+      "already",
+      "arrived",
+      "escaped",
+      "had",
+      "police",
+      "suspect",
+      "the",
+      "when"
+    ],
+    "correctOrder": [
+      "The",
+      "suspect",
+      "had",
+      "already",
+      "escaped",
+      "when",
+      "the",
+      "police",
+      "arrived"
+    ],
     "explanation": "【過去完了形】「警察が到着した（過去）」よりも前に「容疑者が逃亡していた」という過去の前後関係を示すため、had + 過去分詞（大過去）を用います。suspect（容疑者）や escape（逃亡する）といった語彙と時制のズレに注意して文脈を読み解きましょう。"
   },
   {
@@ -1503,7 +3313,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The committee has been [   ] the budget since last week.",
     "questionJa": "委員会は先週からその予算について交渉している。",
-    "choices": ["negotiating", "negotiated", "negotiate", "negotiates"],
+    "choices": [
+      "negotiating",
+      "negotiated",
+      "negotiate",
+      "negotiates"
+    ],
     "correctAnswer": "negotiating",
     "explanation": "【現在完了進行形】have been ~ing で「過去から今までずっと〜し続けている」という動作の継続を表します。budget（予算）や negotiate（交渉する）といったビジネス系の頻出語彙が含まれる文でも、時制のサインである since last week に素早く反応しましょう。"
   },
@@ -1514,8 +3329,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "全ての従業員がその新しい方針に満足しているわけではない。",
-    "words": ["Not", "all", "are", "employees", "new", "policy", "satisfied", "the", "with"],
-    "correctOrder": ["Not", "all", "employees", "are", "satisfied", "with", "the", "new", "policy"],
+    "words": [
+      "Not",
+      "all",
+      "are",
+      "employees",
+      "new",
+      "policy",
+      "satisfied",
+      "the",
+      "with"
+    ],
+    "correctOrder": [
+      "Not",
+      "all",
+      "employees",
+      "are",
+      "satisfied",
+      "with",
+      "the",
+      "new",
+      "policy"
+    ],
     "explanation": "【部分否定】Not all ~ で「すべてが〜というわけではない」という部分否定を作ります。employee（従業員）や policy（方針）といった語彙が使われる長文において、筆者が「一部の例外」を示唆する重要な論理マーカーとなります。"
   },
   {
@@ -1526,7 +3361,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The flight was [   ] because of the heavy snow.",
     "questionJa": "激しい雪のため、その便は遅れた。",
-    "choices": ["delayed", "delaying", "delay", "to delay"],
+    "choices": [
+      "delayed",
+      "delaying",
+      "delay",
+      "to delay"
+    ],
     "correctAnswer": "delayed",
     "explanation": "【受動態】主語の The flight（その便）は「遅らせられる」側なので、受動態（be + 過去分詞）の delayed を選びます。delay（遅らせる）は他動詞としての用法が基本である点に注意しましょう。"
   },
@@ -1537,8 +3377,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その複雑な構造物は有名な建築家によって設計された。",
-    "words": ["The", "a", "architect", "by", "complex", "designed", "famous", "structure", "was"],
-    "correctOrder": ["The", "complex", "structure", "was", "designed", "by", "a", "famous", "architect"],
+    "words": [
+      "The",
+      "a",
+      "architect",
+      "by",
+      "complex",
+      "designed",
+      "famous",
+      "structure",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "complex",
+      "structure",
+      "was",
+      "designed",
+      "by",
+      "a",
+      "famous",
+      "architect"
+    ],
     "explanation": "【受動態】be + 過去分詞 + by ~ で「〜によって…される」という行為の受け手を主語にした文です。complex structure（複雑な構造物）や architect（建築家）といった頻出単語を処理しつつ、by以下の行為者を見逃さないようにしましょう。"
   },
   {
@@ -1548,8 +3408,22 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼はその犯罪を犯したに違いない。",
-    "words": ["He", "committed", "crime", "have", "must", "the"],
-    "correctOrder": ["He", "must", "have", "committed", "the", "crime"],
+    "words": [
+      "He",
+      "committed",
+      "crime",
+      "have",
+      "must",
+      "the"
+    ],
+    "correctOrder": [
+      "He",
+      "must",
+      "have",
+      "committed",
+      "the",
+      "crime"
+    ],
     "explanation": "【助動詞＋完了形】must have + 過去分詞 で「（過去に）〜したに違いない」という強い推量を表します。commit a crime（犯罪を犯す）という重要コロケーション（連語）と合わせて、筆者の確信の度合いを読み取りましょう。"
   },
   {
@@ -1560,7 +3434,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I [   ] invested in the stock at that time.",
     "questionJa": "私はあの時、その株に投資すべきだった。",
-    "choices": ["should have", "must have", "cannot have", "needn't have"],
+    "choices": [
+      "should have",
+      "must have",
+      "cannot have",
+      "needn't have"
+    ],
     "correctAnswer": "should have",
     "explanation": "【助動詞＋完了形】should have + 過去分詞 で「（過去に）〜すべきだったのに（しなかった）」という後悔や非難を表します。invest in ~（〜に投資する）や stock（株）といった経済用語とともに、事実とは逆の展開を把握することが読解の鍵です。"
   },
@@ -1571,8 +3450,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この証拠からすると、彼が有罪であるはずがない。",
-    "words": ["From", "be", "cannot", "evidence,", "guilty", "he", "this"],
-    "correctOrder": ["From", "this", "evidence,", "he", "cannot", "be", "guilty"],
+    "words": [
+      "From",
+      "be",
+      "cannot",
+      "evidence,",
+      "guilty",
+      "he",
+      "this"
+    ],
+    "correctOrder": [
+      "From",
+      "this",
+      "evidence,",
+      "he",
+      "cannot",
+      "be",
+      "guilty"
+    ],
     "explanation": "【助動詞の否定】cannot be ~ で「〜であるはずがない」という強い否定の推量を表します。evidence（証拠）と guilty（有罪の）という法学・社会系長文の頻出単語から、筆者の強い否定のスタンスを読み取ります。"
   },
   {
@@ -1582,8 +3477,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "もし彼らがその提案を承認すれば、私たちはすぐにプロジェクトを始める。",
-    "words": ["If", "approve", "immediately", "project", "proposal,", "start", "the", "the", "they", "we", "will"],
-    "correctOrder": ["If", "they", "approve", "the", "proposal,", "we", "will", "start", "the", "project", "immediately"],
+    "words": [
+      "If",
+      "approve",
+      "immediately",
+      "project",
+      "proposal,",
+      "start",
+      "the",
+      "the",
+      "they",
+      "we",
+      "will"
+    ],
+    "correctOrder": [
+      "If",
+      "they",
+      "approve",
+      "the",
+      "proposal,",
+      "we",
+      "will",
+      "start",
+      "the",
+      "project",
+      "immediately"
+    ],
     "explanation": "【時・条件の副詞節】If が導く条件の副詞節の中では、未来のこと（will start）であっても現在時制（approve）を用います。approve（承認する）や proposal（提案）といった重要語彙の意味を、条件の展開（もし〜なら）として正確に捉えましょう。"
   },
   {
@@ -1593,8 +3512,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "環境を保護することは不可欠だ。",
-    "words": ["It", "environment", "essential", "is", "protect", "the", "to"],
-    "correctOrder": ["It", "is", "essential", "to", "protect", "the", "environment"],
+    "words": [
+      "It",
+      "environment",
+      "essential",
+      "is",
+      "protect",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "essential",
+      "to",
+      "protect",
+      "the",
+      "environment"
+    ],
     "explanation": "【不定詞（名詞的用法）】It is ~ to do で「〜することは…だ」という形式主語構文です。essential（不可欠な、極めて重要な）や environment（環境）といった論文・長文の頻出語彙とセットで、筆者の強い主張を読み取るサインとして活用しましょう。"
   },
   {
@@ -1605,7 +3540,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The government has a responsibility [   ] the community.",
     "questionJa": "政府は地域社会を支援する責任がある。",
-    "choices": ["to support", "supporting", "supported", "support"],
+    "choices": [
+      "to support",
+      "supporting",
+      "supported",
+      "support"
+    ],
     "correctAnswer": "to support",
     "explanation": "【不定詞（形容詞的用法）】responsibility（責任）という名詞を後ろから修飾する to support（支援するための）を選びます。government（政府）や community（地域社会）など、社会系のテーマで非常によく使われる組み合わせです。"
   },
@@ -1616,8 +3556,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼らはその原因を調査するためにアンケートを実施した。",
-    "words": ["They", "a", "cause", "conducted", "investigate", "survey", "the", "to"],
-    "correctOrder": ["They", "conducted", "a", "survey", "to", "investigate", "the", "cause"],
+    "words": [
+      "They",
+      "a",
+      "cause",
+      "conducted",
+      "investigate",
+      "survey",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "They",
+      "conducted",
+      "a",
+      "survey",
+      "to",
+      "investigate",
+      "the",
+      "cause"
+    ],
     "explanation": "【不定詞（副詞的用法）】to investigate the cause（原因を調査するために）が、目的を表す副詞のカタマリとして働いています。conduct a survey（アンケートを実施する）という重要なコロケーション（連語）と併せて覚えましょう。"
   },
   {
@@ -1627,8 +3585,26 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その新しい政策は経済を急速に成長させた。",
-    "words": ["The", "economy", "grow", "made", "new", "policy", "rapidly", "the"],
-    "correctOrder": ["The", "new", "policy", "made", "the", "economy", "grow", "rapidly"],
+    "words": [
+      "The",
+      "economy",
+      "grow",
+      "made",
+      "new",
+      "policy",
+      "rapidly",
+      "the"
+    ],
+    "correctOrder": [
+      "The",
+      "new",
+      "policy",
+      "made",
+      "the",
+      "economy",
+      "grow",
+      "rapidly"
+    ],
     "explanation": "【原形不定詞】make O do で「Oを〜させる」という因果関係を表します。policy（政策）という無生物が主語になり、economy（経済）を grow（成長）させた、という論理展開を的確に読み取るための構造です。"
   },
   {
@@ -1639,7 +3615,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The researcher noticed the temperature [   ] suddenly.",
     "questionJa": "その研究者は温度が突然下がるのに気づいた。",
-    "choices": ["drop", "to drop", "dropped", "drops"],
+    "choices": [
+      "drop",
+      "to drop",
+      "dropped",
+      "drops"
+    ],
     "correctAnswer": "drop",
     "explanation": "【原形不定詞】notice O do（Oが〜するのに気づく）という知覚動詞の構文では、to のない原形不定詞を用います。researcher（研究者）や temperature（温度）といった理系・実験系の長文で登場する基本構造です。"
   },
@@ -1650,8 +3631,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この地域に住んでいる個人は医療を必要としている。",
-    "words": ["The", "area", "care", "in", "individuals", "living", "medical", "need", "this"],
-    "correctOrder": ["The", "individuals", "living", "in", "this", "area", "need", "medical", "care"],
+    "words": [
+      "The",
+      "area",
+      "care",
+      "in",
+      "individuals",
+      "living",
+      "medical",
+      "need",
+      "this"
+    ],
+    "correctOrder": [
+      "The",
+      "individuals",
+      "living",
+      "in",
+      "this",
+      "area",
+      "need",
+      "medical",
+      "care"
+    ],
     "explanation": "【現在分詞】living in this area（この地域に住んでいる）という分詞のカタマリが、主語である individuals（個人・人々）を後ろから修飾しています。長い主語をひとまとめにして述語動詞（need）に繋ぐ精読の基本です。"
   },
   {
@@ -1661,8 +3662,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この工場で製造された製品は海外へ輸出される。",
-    "words": ["Products", "are", "exported", "factory", "in", "manufactured", "overseas", "this"],
-    "correctOrder": ["Products", "manufactured", "in", "this", "factory", "are", "exported", "overseas"],
+    "words": [
+      "Products",
+      "are",
+      "exported",
+      "factory",
+      "in",
+      "manufactured",
+      "overseas",
+      "this"
+    ],
+    "correctOrder": [
+      "Products",
+      "manufactured",
+      "in",
+      "this",
+      "factory",
+      "are",
+      "exported",
+      "overseas"
+    ],
     "explanation": "【過去分詞】manufactured in this factory（この工場で製造された）という受動のカタマリが Products（製品）を修飾しています。export（輸出する）や overseas（海外へ）といった経済・ビジネス語彙とセットで処理しましょう。"
   },
   {
@@ -1672,8 +3691,26 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その危険性を認識したので、消費者はその製品を避けた。",
-    "words": ["Realizing", "avoided", "consumer", "danger,", "product", "the", "the", "the"],
-    "correctOrder": ["Realizing", "the", "danger,", "the", "consumer", "avoided", "the", "product"],
+    "words": [
+      "Realizing",
+      "avoided",
+      "consumer",
+      "danger,",
+      "product",
+      "the",
+      "the",
+      "the"
+    ],
+    "correctOrder": [
+      "Realizing",
+      "the",
+      "danger,",
+      "the",
+      "consumer",
+      "avoided",
+      "the",
+      "product"
+    ],
     "explanation": "【分詞構文】Realizing ~（〜を認識したので）という分詞から始まる副詞のカタマリが、主節の理由を表しています。consumer（消費者）が realize（認識する）するという能動関係に注意し、前後の因果関係を把握しましょう。"
   },
   {
@@ -1684,7 +3721,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The committee considered [   ] the budget.",
     "questionJa": "委員会は予算を拡大することを検討した。",
-    "choices": ["expanding", "to expand", "expand", "expanded"],
+    "choices": [
+      "expanding",
+      "to expand",
+      "expand",
+      "expanded"
+    ],
     "correctAnswer": "expanding",
     "explanation": "【動名詞】consider（〜を検討する、よく考える）は、目的語に不定詞ではなく動名詞（~ing）を取る代表的な動詞です。committee（委員会）、expand（拡大する）、budget（予算）などの必須語彙と絡めて出題されやすいポイントです。"
   },
@@ -1695,8 +3737,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その組織は財政的支援を提供する責任がある。",
-    "words": ["The", "financial", "for", "is", "organization", "providing", "responsible", "support"],
-    "correctOrder": ["The", "organization", "is", "responsible", "for", "providing", "financial", "support"],
+    "words": [
+      "The",
+      "financial",
+      "for",
+      "is",
+      "organization",
+      "providing",
+      "responsible",
+      "support"
+    ],
+    "correctOrder": [
+      "The",
+      "organization",
+      "is",
+      "responsible",
+      "for",
+      "providing",
+      "financial",
+      "support"
+    ],
     "explanation": "【動名詞】be responsible for ~（〜に対して責任がある）の for は前置詞なので、直後には動名詞（providing）が来ます。organization（組織）、provide（提供する）、financial support（財政的支援）の語彙をそのまま定着させましょう。"
   },
   {
@@ -1706,9 +3766,27 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その傾向を示すデータは信頼できる。",
-    "words": ["data", "is", "reliable", "shows", "The", "the", "trend", "which"],
-    "correctOrder": ["The", "data", "which", "shows", "the", "trend", "is", "reliable"],
-    "explanation": "【関係代名詞】which shows the trend（その傾向を示す）が主語の The data を修飾しています。data（データ）、trend（傾向）、reliable（信頼できる）といった論文やグラフ読み取り問題で頻出する語彙を、修飾構造の中で正確に捉えましょう。"
+    "words": [
+      "The",
+      "data",
+      "that",
+      "show",
+      "the",
+      "trend",
+      "are",
+      "reliable"
+    ],
+    "correctOrder": [
+      "The",
+      "data",
+      "that",
+      "show",
+      "the",
+      "trend",
+      "are",
+      "reliable"
+    ],
+    "explanation": "【関係代名詞】that show the trend（その傾向を示す）が主語の The data を修飾しています。data はここでは複数扱いにし、動詞は show / are になります。trend（傾向）、reliable（信頼できる）といった語彙も確認しましょう。"
   },
   {
     "id": "U16_002",
@@ -1717,8 +3795,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私たちが昨年採用した戦略は成功だった。",
-    "words": ["adopted", "last", "strategy", "successful", "The", "was", "we", "year"],
-    "correctOrder": ["The", "strategy", "we", "adopted", "last", "year", "was", "successful"],
+    "words": [
+      "adopted",
+      "last",
+      "strategy",
+      "successful",
+      "The",
+      "was",
+      "we",
+      "year"
+    ],
+    "correctOrder": [
+      "The",
+      "strategy",
+      "we",
+      "adopted",
+      "last",
+      "year",
+      "was",
+      "successful"
+    ],
     "explanation": "【関係代名詞の省略】The strategy（名詞）の直後に we adopted（S+V）が続くため、目的格の関係代名詞が省略されています。strategy（戦略）や adopt（採用する）といったビジネス・社会系の頻出語彙と「名詞＋S＋V」のサインを結びつけましょう。"
   },
   {
@@ -1729,7 +3825,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "This is the specific topic [   ] which we should focus.",
     "questionJa": "これが私たちが焦点を当てるべき特定のトピックだ。",
-    "choices": ["on", "in", "to", "for"],
+    "choices": [
+      "on",
+      "in",
+      "to",
+      "for"
+    ],
     "correctAnswer": "on",
     "explanation": "【前置詞＋関係代名詞】focus on 〜（〜に焦点を当てる）という熟語の on が関係代名詞 which の前に移動した構造です。specific（特定の）や topic（話題）といった語彙と熟語の知識が、関係詞の構造を見抜く手がかりになります。"
   },
@@ -1740,9 +3841,29 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この仕事に要求されるのはコミュニケーションスキルだ。",
-    "words": ["communication", "for", "is", "is", "job", "required", "skills", "this", "What"],
-    "correctOrder": ["What", "is", "required", "for", "this", "job", "is", "communication", "skills"],
-    "explanation": "【関係代名詞 what】What is required（要求されること）が文全体の主語（名詞のカタマリ）になっています。require（要求する）の受動態と組み合わさり、筆者が重要視している条件を提示する際によく使われる形です。"
+    "words": [
+      "communication",
+      "for",
+      "are",
+      "is",
+      "job",
+      "required",
+      "skills",
+      "this",
+      "What"
+    ],
+    "correctOrder": [
+      "What",
+      "is",
+      "required",
+      "for",
+      "this",
+      "job",
+      "are",
+      "communication",
+      "skills"
+    ],
+    "explanation": "【関係代名詞 what】What is required（要求されること）が文全体の主語（名詞のカタマリ）になっています。補語が communication skills のように複数扱いの場合、この文では are を用いています。"
   },
   {
     "id": "U16_005",
@@ -1751,8 +3872,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "これがその種が生き残ることができる環境だ。",
-    "words": ["can", "environment", "is", "species", "survive", "the", "the", "This", "where"],
-    "correctOrder": ["This", "is", "the", "environment", "where", "the", "species", "can", "survive"],
+    "words": [
+      "can",
+      "environment",
+      "is",
+      "species",
+      "survive",
+      "the",
+      "the",
+      "This",
+      "where"
+    ],
+    "correctOrder": [
+      "This",
+      "is",
+      "the",
+      "environment",
+      "where",
+      "the",
+      "species",
+      "can",
+      "survive"
+    ],
     "explanation": "【関係副詞】先行詞が the environment（環境）という場所・状況を表す名詞であり、後ろが完全な文（the species can survive）となっているため where を使います。species（種）や survive（生き残る）は生物・環境系の長文で必須の語彙です。"
   },
   {
@@ -1762,8 +3903,26 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "そのプロセスは結果と同じくらい極めて重要だ。",
-    "words": ["as", "as", "crucial", "is", "outcome", "process", "The", "the"],
-    "correctOrder": ["The", "process", "is", "as", "crucial", "as", "the", "outcome"],
+    "words": [
+      "as",
+      "as",
+      "crucial",
+      "is",
+      "outcome",
+      "process",
+      "The",
+      "the"
+    ],
+    "correctOrder": [
+      "The",
+      "process",
+      "is",
+      "as",
+      "crucial",
+      "as",
+      "the",
+      "outcome"
+    ],
     "explanation": "【原級比較】as + 形容詞 + as で「〜と同じくらい…」という同等の比較を表します。crucial（極めて重要な）や outcome（結果）といった語彙は、筆者の価値基準や結論を読み取る上で重要なキーワードになります。"
   },
   {
@@ -1774,7 +3933,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The new system is [   ] efficient than the traditional method.",
     "questionJa": "新しいシステムは伝統的な方法より効率的だ。",
-    "choices": ["more", "much", "very", "most"],
+    "choices": [
+      "more",
+      "much",
+      "very",
+      "most"
+    ],
     "correctAnswer": "more",
     "explanation": "【比較級】than（〜よりも）があるため比較級を選びます。efficient（効率的な）は長い形容詞なので more をつけます。traditional（伝統的な）と new（新しい）の対比は、長文の論理展開の王道パターンです。"
   },
@@ -1785,8 +3949,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "証拠を集めれば集めるほど、結論はより正確になる。",
-    "words": ["accurate", "becomes", "conclusion", "evidence", "gather,", "more", "more", "The", "the", "the", "we"],
-    "correctOrder": ["The", "more", "evidence", "we", "gather,", "the", "more", "accurate", "the", "conclusion", "becomes"],
+    "words": [
+      "accurate",
+      "becomes",
+      "conclusion",
+      "evidence",
+      "gather,",
+      "more",
+      "more",
+      "The",
+      "the",
+      "the",
+      "we"
+    ],
+    "correctOrder": [
+      "The",
+      "more",
+      "evidence",
+      "we",
+      "gather,",
+      "the",
+      "more",
+      "accurate",
+      "the",
+      "conclusion",
+      "becomes"
+    ],
     "explanation": "【比較構文】The 比較級 S V, the 比較級 S V の構文です。evidence（証拠）、gather（集める）、accurate（正確な）、conclusion（結論）という学術的な語彙が並んでも、比例関係（〜すればするほど…）の論理構造を見失わないようにしましょう。"
   },
   {
@@ -1796,8 +3984,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "これは今世紀で最も重要な発見だ。",
-    "words": ["century", "discovery", "is", "most", "of", "significant", "the", "the", "This"],
-    "correctOrder": ["This", "is", "the", "most", "significant", "discovery", "of", "the", "century"],
+    "words": [
+      "century",
+      "discovery",
+      "is",
+      "most",
+      "of",
+      "significant",
+      "the",
+      "the",
+      "This"
+    ],
+    "correctOrder": [
+      "This",
+      "is",
+      "the",
+      "most",
+      "significant",
+      "discovery",
+      "of",
+      "the",
+      "century"
+    ],
     "explanation": "【最上級】the most + 形容詞 で「最も〜な」という最上級を作ります。significant（重要な・意義深い）や discovery（発見）が組み合わさることで、その段落や文章全体の核心となる主張（トピックセンテンス）であることが読み取れます。"
   },
   {
@@ -1807,8 +4015,34 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "新しい予算は前のもののおよそ2倍の規模だ。",
-    "words": ["as", "as", "budget", "is", "large", "new", "one", "previous", "roughly", "The", "the", "twice"],
-    "correctOrder": ["The", "new", "budget", "is", "roughly", "twice", "as", "large", "as", "the", "previous", "one"],
+    "words": [
+      "as",
+      "as",
+      "budget",
+      "is",
+      "large",
+      "new",
+      "one",
+      "previous",
+      "roughly",
+      "The",
+      "the",
+      "twice"
+    ],
+    "correctOrder": [
+      "The",
+      "new",
+      "budget",
+      "is",
+      "roughly",
+      "twice",
+      "as",
+      "large",
+      "as",
+      "the",
+      "previous",
+      "one"
+    ],
     "explanation": "【倍数表現】twice as large as 〜（〜の2倍の大きさ）という比較の構文です。budget（予算）、roughly（およそ）、previous（前の）といったビジネスや統計の長文でデータを比較・分析する際に不可欠な表現です。"
   },
   {
@@ -1818,8 +4052,30 @@ const quizData = [
     "difficulty": 1,
     "type": "sort",
     "questionJa": "私がマネージャーなら、その政策を実行するだろう。",
-    "words": ["I", "If", "I", "implement", "manager,", "policy", "the", "the", "were", "would"],
-    "correctOrder": ["If", "I", "were", "the", "manager,", "I", "would", "implement", "the", "policy"],
+    "words": [
+      "I",
+      "If",
+      "I",
+      "implement",
+      "manager,",
+      "policy",
+      "the",
+      "the",
+      "were",
+      "would"
+    ],
+    "correctOrder": [
+      "If",
+      "I",
+      "were",
+      "the",
+      "manager,",
+      "I",
+      "would",
+      "implement",
+      "the",
+      "policy"
+    ],
     "explanation": "【仮定法過去】現在の事実に反する仮定を表す If I were ~ の構文です。implement（〜を実行する、実施する）や policy（政策、方針）といったビジネス・社会系の頻出語彙と仮定法の組み合わせに慣れましょう。"
   },
   {
@@ -1830,7 +4086,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "If he [   ] the risk, he would not have invested.",
     "questionJa": "もしそのリスクを知っていたら、彼は投資しなかっただろう。",
-    "choices": ["had known", "knew", "knows", "has known"],
+    "choices": [
+      "had known",
+      "knew",
+      "knows",
+      "has known"
+    ],
     "correctAnswer": "had known",
     "explanation": "【仮定法過去完了】過去の事実に反する仮定を表します。帰結節（主節）が would not have invested（投資しなかっただろう）となっているため、条件節（If節）は had ＋過去分詞になります。invest（投資する）や risk（危険）という経済語彙を用いた論理展開です。"
   },
@@ -1841,8 +4102,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "もし私があなたの立場なら、その戦略を再考するだろう。",
-    "words": ["I", "I", "Were", "in", "position,", "reconsider", "strategy", "the", "would", "your"],
-    "correctOrder": ["Were", "I", "in", "your", "position,", "I", "would", "reconsider", "the", "strategy"],
+    "words": [
+      "I",
+      "I",
+      "Were",
+      "in",
+      "position,",
+      "reconsider",
+      "strategy",
+      "the",
+      "would",
+      "your"
+    ],
+    "correctOrder": [
+      "Were",
+      "I",
+      "in",
+      "your",
+      "position,",
+      "I",
+      "would",
+      "reconsider",
+      "the",
+      "strategy"
+    ],
     "explanation": "【倒置構文】If I were in your position の If が省略され、Were I という倒置が起きています。reconsider（再考する）や strategy（戦略）などの語彙を伴い、筆者が「別の選択肢」を提示する際の高度な表現です。"
   },
   {
@@ -1852,8 +4135,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼らの協力がなかったら、私たちの努力は失敗していただろう。",
-    "words": ["Without", "cooperation,", "effort", "failed", "have", "our", "their", "would"],
-    "correctOrder": ["Without", "their", "cooperation,", "our", "effort", "would", "have", "failed"],
+    "words": [
+      "Without",
+      "cooperation,",
+      "effort",
+      "failed",
+      "have",
+      "our",
+      "their",
+      "would"
+    ],
+    "correctOrder": [
+      "Without",
+      "their",
+      "cooperation,",
+      "our",
+      "effort",
+      "would",
+      "have",
+      "failed"
+    ],
     "explanation": "【without を用いた仮定法】Without 〜 で「（もし）〜がなかったら」という条件の代わりを果たします。cooperation（協力）や effort（努力）といった抽象名詞と仮定法のセットは、長文の結論や教訓を述べる際によく登場します。"
   },
   {
@@ -1864,7 +4165,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The client asked [   ] the product would arrive.",
     "questionJa": "クライアントはいつ製品が到着するのか尋ねた。",
-    "choices": ["when", "what", "which", "how"],
+    "choices": [
+      "when",
+      "what",
+      "which",
+      "how"
+    ],
     "correctAnswer": "when",
     "explanation": "【間接疑問文】ask の目的語として「いつ〜するのか」という名詞節を作る疑問詞 when を選びます。client（クライアント・顧客）や product（製品）など、ビジネスシーンを想定した長文で文の骨格を見抜く力が問われます。"
   },
@@ -1875,8 +4181,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "消費者だけでなく従業員も利益を得るだろう。",
-    "words": ["Not", "also", "benefit", "but", "consumers", "employees", "only", "will"],
-    "correctOrder": ["Not", "only", "consumers", "but", "also", "employees", "will", "benefit"],
+    "words": [
+      "Not",
+      "also",
+      "benefit",
+      "but",
+      "consumers",
+      "employees",
+      "only",
+      "will"
+    ],
+    "correctOrder": [
+      "Not",
+      "only",
+      "consumers",
+      "but",
+      "also",
+      "employees",
+      "will",
+      "benefit"
+    ],
     "explanation": "【相関接続詞】not only A but also B で「AだけでなくBも」という意味です。consumers（消費者たち）や employees（従業員たち）を対比させながら、全体として benefit（利益を得る）という結論を強調する論理構造です。"
   },
   {
@@ -1886,8 +4210,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "法律に違反する人々は処罰される。",
-    "words": ["Those", "be", "law", "punished", "the", "violate", "who", "will"],
-    "correctOrder": ["Those", "who", "violate", "the", "law", "will", "be", "punished"],
+    "words": [
+      "Those",
+      "be",
+      "law",
+      "punished",
+      "the",
+      "violate",
+      "who",
+      "will"
+    ],
+    "correctOrder": [
+      "Those",
+      "who",
+      "violate",
+      "the",
+      "law",
+      "will",
+      "be",
+      "punished"
+    ],
     "explanation": "【代名詞】Those who ~ は「〜する人々」という重要な表現です。violate（違反する）、law（法律）、punish（処罰する）といった社会的・法的なテーマの長文で、特定の集団に関する一般論を述べる際に多用されます。"
   },
   {
@@ -1898,7 +4240,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "[   ] she submitted the application, it was approved.",
     "questionJa": "彼女が申請書を提出するとすぐに、それは承認された。",
-    "choices": ["As soon as", "As far as", "As long as", "In case"],
+    "choices": [
+      "As soon as",
+      "As far as",
+      "As long as",
+      "In case"
+    ],
     "correctAnswer": "As soon as",
     "explanation": "【接続詞】As soon as S V で「SがVするとすぐに」という時の副詞節を作ります。submit（〜を提出する）、application（申請・応募）、approve（〜を承認する）といった一連のプロセスを示す語彙を繋ぐ論理マーカーです。"
   },
@@ -1909,8 +4256,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "予算は限られていたが、プロジェクトは成功した。",
-    "words": ["Although", "budget", "limited,", "project", "succeeded", "the", "the", "was"],
-    "correctOrder": ["Although", "the", "budget", "was", "limited,", "the", "project", "succeeded"],
+    "words": [
+      "Although",
+      "budget",
+      "limited,",
+      "project",
+      "succeeded",
+      "the",
+      "the",
+      "was"
+    ],
+    "correctOrder": [
+      "Although",
+      "the",
+      "budget",
+      "was",
+      "limited,",
+      "the",
+      "project",
+      "succeeded"
+    ],
     "explanation": "【接続詞】Although S V は「SはVするけれども」という譲歩（逆接に近い論理展開）を表します。budget（予算）が limited（限られている）というマイナス要素から、succeed（成功する）というプラスの結果を導き出す文章の要になります。"
   },
   {
@@ -1920,8 +4285,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "品質を改善しない限り、顧客は不満を言うだろう。",
-    "words": ["Unless", "complain", "customers", "improve", "quality,", "the", "we", "will"],
-    "correctOrder": ["Unless", "we", "improve", "the", "quality,", "customers", "will", "complain"],
+    "words": [
+      "Unless",
+      "complain",
+      "customers",
+      "improve",
+      "quality,",
+      "the",
+      "we",
+      "will"
+    ],
+    "correctOrder": [
+      "Unless",
+      "we",
+      "improve",
+      "the",
+      "quality,",
+      "customers",
+      "will",
+      "complain"
+    ],
     "explanation": "【接続詞】Unless は「〜しない限り」という否定条件を表します。improve（〜を改善する）、quality（品質）、complain（不満を言う・クレームをつける）という因果関係を、If we do not improve... と同じ意味で素早く処理しましょう。"
   },
   {
@@ -1931,8 +4314,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その理論が科学的な証拠に基づいていることは明らかだ。",
-    "words": ["based", "clear", "evidence", "is", "is", "It", "on", "scientific", "that", "the", "theory"],
-    "correctOrder": ["It", "is", "clear", "that", "the", "theory", "is", "based", "on", "scientific", "evidence"],
+    "words": [
+      "based",
+      "clear",
+      "evidence",
+      "is",
+      "is",
+      "It",
+      "on",
+      "scientific",
+      "that",
+      "the",
+      "theory"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "clear",
+      "that",
+      "the",
+      "theory",
+      "is",
+      "based",
+      "on",
+      "scientific",
+      "evidence"
+    ],
     "explanation": "【形式主語構文】It is clear that SV〜 で「（SV）であることは明らかだ」という構文です。theory（理論）や evidence（証拠）、be based on（〜に基づいている）といった学術論文で頻出する語彙を当てはめて処理しましょう。"
   },
   {
@@ -1942,8 +4349,34 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その現象はとても複雑だったので、専門家でさえ説明できなかった。",
-    "words": ["complex", "could", "even", "explain", "experts", "it", "not", "phenomenon", "so", "that", "The", "was"],
-    "correctOrder": ["The", "phenomenon", "was", "so", "complex", "that", "even", "experts", "could", "not", "explain", "it"],
+    "words": [
+      "complex",
+      "could",
+      "even",
+      "explain",
+      "experts",
+      "it",
+      "not",
+      "phenomenon",
+      "so",
+      "that",
+      "The",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "phenomenon",
+      "was",
+      "so",
+      "complex",
+      "that",
+      "even",
+      "experts",
+      "could",
+      "not",
+      "explain",
+      "it"
+    ],
     "explanation": "【結果の構文】so ~ that S V（とても〜なのでSはVだ）の構文です。phenomenon（現象）や complex（複雑な）、expert（専門家）などの語彙と組み合わされ、原因と結果の論理を構成します。"
   },
   {
@@ -1952,11 +4385,16 @@ const quizData = [
     "theme": "不定詞を用いた構文 (too ... to) ＋ 重要語彙",
     "difficulty": 2,
     "type": "choice",
-    "questionEn": "The budget was [   ] small to cover the new project.",
-    "questionJa": "その予算は小さすぎて、新しいプロジェクトをまかなうことはできなかった。",
-    "choices": ["too", "so", "very", "enough"],
+    "questionEn": "The budget was [   ] small to fund the new project.",
+    "questionJa": "その予算は小さすぎて、新しいプロジェクトに資金を出すことはできなかった。",
+    "choices": [
+      "too",
+      "so",
+      "very",
+      "enough"
+    ],
     "correctAnswer": "too",
-    "explanation": "【不定詞の重要構文】too ~ to do（〜すぎて…できない）という否定の意味を含む構文です。budget（予算）などのビジネス語彙を含む文でも、否定語(not)なしで否定のニュアンスを読み取る必要があります。"
+    "explanation": "【不定詞の重要構文】too ~ to do（〜すぎて…できない）という否定の意味を含む構文です。budget（予算）や fund（資金を出す）などの語彙を含む文でも、否定語 not なしで否定のニュアンスを読み取る必要があります。"
   },
   {
     "id": "U18_004",
@@ -1965,8 +4403,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その戦略の結果は、決して満足のいくものではなかった。",
-    "words": ["far", "from", "of", "outcome", "satisfactory", "strategy", "the", "The", "was"],
-    "correctOrder": ["The", "outcome", "of", "the", "strategy", "was", "far", "from", "satisfactory"],
+    "words": [
+      "far",
+      "from",
+      "of",
+      "outcome",
+      "satisfactory",
+      "strategy",
+      "the",
+      "The",
+      "was"
+    ],
+    "correctOrder": [
+      "The",
+      "outcome",
+      "of",
+      "the",
+      "strategy",
+      "was",
+      "far",
+      "from",
+      "satisfactory"
+    ],
     "explanation": "【強い否定表現】far from 〜 は「決して〜ない、〜には程遠い」という意味の重要構文です。outcome（結果）や strategy（戦略）といった語彙に対し、筆者がマイナスの評価を下していることを示す重要なサインです。"
   },
   {
@@ -1977,7 +4435,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "Consumers take [   ] for granted that the product is safe.",
     "questionJa": "消費者たちは、その製品が安全であることを当然だと思っている。",
-    "choices": ["it", "this", "that", "them"],
+    "choices": [
+      "it",
+      "this",
+      "that",
+      "them"
+    ],
     "correctAnswer": "it",
     "explanation": "【形式目的語】take it for granted that 〜 で「〜ということを当然だと思う」という重要熟語です。consumer（消費者）や product（製品）といった頻出語彙と絡め、it が指す内容（that以下）を正確に把握しましょう。"
   },
@@ -1988,8 +4451,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼は最もその規則に違反しそうにない人だ。",
-    "words": ["He", "is", "last", "person", "rule", "the", "the", "to", "violate"],
-    "correctOrder": ["He", "is", "the", "last", "person", "to", "violate", "the", "rule"],
+    "words": [
+      "He",
+      "is",
+      "last",
+      "person",
+      "rule",
+      "the",
+      "the",
+      "to",
+      "violate"
+    ],
+    "correctOrder": [
+      "He",
+      "is",
+      "the",
+      "last",
+      "person",
+      "to",
+      "violate",
+      "the",
+      "rule"
+    ],
     "explanation": "【強い否定表現】the last person to do（最も〜しそうにない人）という構文です。violate（違反する）などの単語と組み合わせることで、「彼は絶対に規則に違反しない」という強い意味になります。"
   },
   {
@@ -1999,8 +4482,34 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その方針が発表されるやいなや、激しい議論が起こった。",
-    "words": ["a", "announced", "been", "debate", "fierce", "had", "No", "occurred", "policy", "sooner", "than", "the"],
-    "correctOrder": ["No", "sooner", "had", "the", "policy", "been", "announced", "than", "a", "fierce", "debate", "occurred"],
+    "words": [
+      "a",
+      "announced",
+      "been",
+      "debate",
+      "fierce",
+      "had",
+      "No",
+      "occurred",
+      "policy",
+      "sooner",
+      "than",
+      "the"
+    ],
+    "correctOrder": [
+      "No",
+      "sooner",
+      "had",
+      "the",
+      "policy",
+      "been",
+      "announced",
+      "than",
+      "a",
+      "fierce",
+      "debate",
+      "occurred"
+    ],
     "explanation": "【倒置構文】No sooner had S V than ...（SがVするとすぐに…）の構文です。policy（方針）や announce（発表する）、debate（議論）などの重要語彙が倒置構文（疑問文の語順）に組み込まれても、落ち着いて構造を見抜きましょう。"
   },
   {
@@ -2010,8 +4519,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その機器が効率的であればあるほど、生産性は高くなる。",
-    "words": ["becomes", "efficient", "equipment", "higher", "is,", "more", "productivity", "The", "the", "the", "the"],
-    "correctOrder": ["The", "more", "efficient", "the", "equipment", "is,", "the", "higher", "the", "productivity", "becomes"],
+    "words": [
+      "becomes",
+      "efficient",
+      "equipment",
+      "higher",
+      "is,",
+      "more",
+      "productivity",
+      "The",
+      "the",
+      "the",
+      "the"
+    ],
+    "correctOrder": [
+      "The",
+      "more",
+      "efficient",
+      "the",
+      "equipment",
+      "is,",
+      "the",
+      "higher",
+      "the",
+      "productivity",
+      "becomes"
+    ],
     "explanation": "【比較構文】The 比較級 S V, the 比較級 S V の構文です。equipment（機器・設備）や efficient（効率的な）、productivity（生産性）といった産業・ビジネス系の重要語彙を用いた比例関係（〜すればするほど…）を表しています。"
   },
   {
@@ -2021,8 +4554,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "経営陣はできるだけ早くその構造を改革する必要がある。",
-    "words": ["as", "as", "management", "needs", "possible", "reform", "soon", "structure", "The", "the", "to"],
-    "correctOrder": ["The", "management", "needs", "to", "reform", "the", "structure", "as", "soon", "as", "possible"],
+    "words": [
+      "as",
+      "as",
+      "management",
+      "needs",
+      "possible",
+      "reform",
+      "soon",
+      "structure",
+      "The",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "The",
+      "management",
+      "needs",
+      "to",
+      "reform",
+      "the",
+      "structure",
+      "as",
+      "soon",
+      "as",
+      "possible"
+    ],
     "explanation": "【比較構文】as ~ as possible（できるだけ〜）という頻出表現です。management（経営陣・管理）や reform（改革する）、structure（構造）といった硬い語彙も、慣れ親しんだ比較の構文に落とし込んで理解しましょう。"
   },
   {
@@ -2033,7 +4590,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The discovery of the fossil was by no [   ] accidental.",
     "questionJa": "その化石の発見は決して偶然ではなかった。",
-    "choices": ["means", "ways", "methods", "accounts"],
+    "choices": [
+      "means",
+      "ways",
+      "methods",
+      "accounts"
+    ],
     "correctAnswer": "means",
     "explanation": "【強い否定】by no means（決して〜ない）という重要熟語です。discovery（発見）や fossil（化石）、accidental（偶然の）といった科学・歴史系の文章で、筆者が既存の常識や単なる偶然を強く否定する際によく用いられます。"
   },
@@ -2044,8 +4606,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "委員会はその物議を醸す提案を却下した。",
-    "words": ["The", "committee", "controversial", "down", "proposal", "the", "turned"],
-    "correctOrder": ["The", "committee", "turned", "down", "the", "controversial", "proposal"],
+    "words": [
+      "The",
+      "committee",
+      "controversial",
+      "down",
+      "proposal",
+      "the",
+      "turned"
+    ],
+    "correctOrder": [
+      "The",
+      "committee",
+      "turned",
+      "down",
+      "the",
+      "controversial",
+      "proposal"
+    ],
     "explanation": "【熟語】turn down は「〜を拒絶する、却下する」という長文頻出の熟語です。committee（委員会）、controversial（物議を醸す）、proposal（提案）といったハイレベルな語彙と組み合わさっても、動詞＋副詞の熟語のカタマリを素早く見抜きましょう。"
   },
   {
@@ -2055,8 +4633,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "この概念は現代の理論と共通点が多い。",
-    "words": ["a", "common", "concept", "has", "in", "lot", "modern", "theories", "This", "with"],
-    "correctOrder": ["This", "concept", "has", "a", "lot", "in", "common", "with", "modern", "theories"],
+    "words": [
+      "a",
+      "common",
+      "concept",
+      "has",
+      "in",
+      "lot",
+      "modern",
+      "theories",
+      "This",
+      "with"
+    ],
+    "correctOrder": [
+      "This",
+      "concept",
+      "has",
+      "a",
+      "lot",
+      "in",
+      "common",
+      "with",
+      "modern",
+      "theories"
+    ],
     "explanation": "【論理マーカー】have A in common with B（Bと共通してAを持つ）は比較・対比を示す重要な表現です。concept（概念）や modern theories（現代の理論）などの抽象的な語彙同士の関連性を、この熟語から正確に読み取ります。"
   },
   {
@@ -2067,7 +4667,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "We must evaluate the project [   ] long-term profit.",
     "questionJa": "私たちは長期的な利益の観点からそのプロジェクトを評価しなければならない。",
-    "choices": ["in terms of", "in spite of", "instead of", "because of"],
+    "choices": [
+      "in terms of",
+      "in spite of",
+      "instead of",
+      "because of"
+    ],
     "correctAnswer": "in terms of",
     "explanation": "【論理マーカー】in terms of 〜 は「〜の観点から、〜の基準で」という意味です。evaluate（評価する）や long-term profit（長期的な利益）といったビジネス・経済系語彙とともに、筆者が「どのような視点で論じているか」を示すサインとなります。"
   },
@@ -2078,8 +4683,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "個人だけでなく社会もこのシステムから利益を得るだろう。",
-    "words": ["as", "as", "benefit", "from", "individuals", "Society", "system", "the", "well", "will"],
-    "correctOrder": ["Society", "as", "well", "as", "individuals", "will", "benefit", "from", "the", "system"],
+    "words": [
+      "as",
+      "as",
+      "benefit",
+      "from",
+      "individuals",
+      "Society",
+      "system",
+      "the",
+      "well",
+      "will"
+    ],
+    "correctOrder": [
+      "Society",
+      "as",
+      "well",
+      "as",
+      "individuals",
+      "will",
+      "benefit",
+      "from",
+      "the",
+      "system"
+    ],
     "explanation": "【論理マーカー】A as well as B で「BだけでなくAも」という情報の追加・強調を表します。Society（社会）と individuals（個人）を対比しつつ、benefit（利益を得る）という結論を補強する論理展開です。"
   },
   {
@@ -2090,7 +4717,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "Global warming will [   ] severe consequences.",
     "questionJa": "地球温暖化は深刻な結果を引き起こすだろう。",
-    "choices": ["result in", "result from", "depend on", "consist of"],
+    "choices": [
+      "result in",
+      "result from",
+      "depend on",
+      "consist of"
+    ],
     "correctAnswer": "result in",
     "explanation": "【因果関係】result in 〜（〜という結果になる、〜を引き起こす）は「原因 result in 結果」の語順になります。global warming（地球温暖化）や severe consequence（深刻な結果）など、環境問題の長文で必ずと言っていいほど使われる表現です。"
   },
@@ -2101,8 +4733,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その厳しい規制は、企業が事業を拡大するのを妨げた。",
-    "words": ["business", "corporation", "expanding", "from", "its", "prevented", "regulations", "strict", "the", "The"],
-    "correctOrder": ["The", "strict", "regulations", "prevented", "the", "corporation", "from", "expanding", "its", "business"],
+    "words": [
+      "business",
+      "corporation",
+      "expanding",
+      "from",
+      "its",
+      "prevented",
+      "regulations",
+      "strict",
+      "the",
+      "The"
+    ],
+    "correctOrder": [
+      "The",
+      "strict",
+      "regulations",
+      "prevented",
+      "the",
+      "corporation",
+      "from",
+      "expanding",
+      "its",
+      "business"
+    ],
     "explanation": "【無生物主語】prevent A from ~ing（Aが〜するのを妨げる）の構文です。strict regulations（厳しい規制）が原因となり、corporation（企業）が expand（拡大する）できないという因果関係を、無生物主語の直訳から自然な日本語へと変換して理解しましょう。"
   },
   {
@@ -2112,8 +4766,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "そのビジネスの成功は消費者の需要次第だ。",
-    "words": ["business", "consumer", "demand", "depends", "of", "on", "success", "the", "The"],
-    "correctOrder": ["The", "success", "of", "the", "business", "depends", "on", "consumer", "demand"],
+    "words": [
+      "business",
+      "consumer",
+      "demand",
+      "depends",
+      "of",
+      "on",
+      "success",
+      "the",
+      "The"
+    ],
+    "correctOrder": [
+      "The",
+      "success",
+      "of",
+      "the",
+      "business",
+      "depends",
+      "on",
+      "consumer",
+      "demand"
+    ],
     "explanation": "【因果関係】depend on 〜 は「〜次第である、〜に依存する」という意味で、A depends on B で「Aという結果はBという条件・原因に左右される」ことを示します。consumer demand（消費者の需要）などの経済用語と合わせて覚えましょう。"
   },
   {
@@ -2124,7 +4798,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The conference was canceled [   ] a lack of funds.",
     "questionJa": "資金不足のためにその会議は中止された。",
-    "choices": ["due to", "because", "instead of", "prior to"],
+    "choices": [
+      "due to",
+      "because",
+      "instead of",
+      "prior to"
+    ],
     "correctAnswer": "due to",
     "explanation": "【群前置詞】due to 〜 は「〜が原因で、〜のために」という意味を表す前置詞のカタマリで、直後には名詞（a lack of funds：資金不足）が続きます。conference（会議）や cancel（中止する）などの語彙の背景にある理由を示すマーカーです。"
   },
@@ -2135,8 +4814,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "人工知能は現代の産業において極めて重要な役割を果たす。",
-    "words": ["a", "Artificial", "crucial", "in", "industry", "intelligence", "modern", "plays", "role"],
-    "correctOrder": ["Artificial", "intelligence", "plays", "a", "crucial", "role", "in", "modern", "industry"],
+    "words": [
+      "a",
+      "Artificial",
+      "crucial",
+      "in",
+      "industry",
+      "intelligence",
+      "modern",
+      "plays",
+      "role"
+    ],
+    "correctOrder": [
+      "Artificial",
+      "intelligence",
+      "plays",
+      "a",
+      "crucial",
+      "role",
+      "in",
+      "modern",
+      "industry"
+    ],
     "explanation": "【熟語】play a role in 〜 は「〜において役割を果たす」という表現です。crucial（極めて重要な）という形容詞を伴うことで、Artificial intelligence（人工知能）や modern industry（現代の産業）といったテーマの重要性を読者に強くアピールしています。"
   },
   {
@@ -2146,8 +4845,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その候補者は自身のキャンペーンを宣伝する機会を利用した。",
-    "words": ["advantage", "campaign", "candidate", "his", "of", "opportunity", "promote", "the", "The", "to", "took"],
-    "correctOrder": ["The", "candidate", "took", "advantage", "of", "the", "opportunity", "to", "promote", "his", "campaign"],
+    "words": [
+      "advantage",
+      "campaign",
+      "candidate",
+      "his",
+      "of",
+      "opportunity",
+      "promote",
+      "the",
+      "The",
+      "to",
+      "took"
+    ],
+    "correctOrder": [
+      "The",
+      "candidate",
+      "took",
+      "advantage",
+      "of",
+      "the",
+      "opportunity",
+      "to",
+      "promote",
+      "his",
+      "campaign"
+    ],
     "explanation": "【熟語】take advantage of 〜 は「〜（機会や状況）を利用する」という頻出熟語です。candidate（候補者）、opportunity（機会）、promote（宣伝する、促進する）といった語彙が連なり、to promote 以下が opportunity を修飾する形容詞的用法になっていることにも注目です。"
   },
   {
@@ -2156,10 +4879,34 @@ const quizData = [
     "theme": "形式目的語 (make it possible to) ＋ 重要語彙",
     "difficulty": 2,
     "type": "sort",
-    "questionJa": "その新しい技術は効率的なコミュニケーションを可能にした。",
-    "words": ["communicate", "efficiently", "it", "made", "new", "possible", "technology", "The", "to"],
-    "correctOrder": ["The", "new", "technology", "made", "it", "possible", "to", "communicate", "efficiently"],
-    "explanation": "【形式目的語】make it possible to do（〜することを可能にする）という重要構文です。it は形式目的語で、真の目的語は to communicate 以下になります。technology や efficient といった頻出語彙とセットで構文を把握しましょう。"
+    "questionJa": "その新しい技術は、私たちが効率的にコミュニケーションを取ることを可能にした。",
+    "words": [
+      "communicate",
+      "efficiently",
+      "for",
+      "it",
+      "made",
+      "new",
+      "possible",
+      "technology",
+      "The",
+      "to",
+      "us"
+    ],
+    "correctOrder": [
+      "The",
+      "new",
+      "technology",
+      "made",
+      "it",
+      "possible",
+      "for",
+      "us",
+      "to",
+      "communicate",
+      "efficiently"
+    ],
+    "explanation": "【形式目的語】make it possible for O to do で「Oが〜することを可能にする」という意味になります。it は形式目的語で、真の目的語は for us to communicate efficiently です。technology や efficiently といった語彙も確認しましょう。"
   },
   {
     "id": "U20_002",
@@ -2169,7 +4916,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The theory was [   ] abstract that ordinary people could not comprehend it.",
     "questionJa": "その理論はとても抽象的だったので、普通の人々には理解できなかった。",
-    "choices": ["so", "too", "very", "such"],
+    "choices": [
+      "so",
+      "too",
+      "very",
+      "such"
+    ],
     "correctAnswer": "so",
     "explanation": "【結果の構文】so ~ that ...（とても〜なので…だ）の構文です。abstract（抽象的な）や ordinary（普通の）、comprehend（理解する）といった少し難易度の高い語彙に対しても、so ~ that の骨格を見抜くことが精読の鍵です。"
   },
@@ -2180,8 +4932,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "正確な結果を得るために、彼らはその実験を実施した。",
-    "words": ["accurate", "conducted", "experiment", "in", "obtain", "order", "results", "the", "They", "to"],
-    "correctOrder": ["They", "conducted", "the", "experiment", "in", "order", "to", "obtain", "accurate", "results"],
+    "words": [
+      "accurate",
+      "conducted",
+      "experiment",
+      "in",
+      "obtain",
+      "order",
+      "results",
+      "the",
+      "They",
+      "to"
+    ],
+    "correctOrder": [
+      "They",
+      "conducted",
+      "the",
+      "experiment",
+      "in",
+      "order",
+      "to",
+      "obtain",
+      "accurate",
+      "results"
+    ],
     "explanation": "【目的の構文】in order to do で「〜するために」という目的を明確に表す副詞句を作ります。conduct an experiment（実験を実施する）や obtain accurate results（正確な結果を得る）は論文などの頻出表現です。"
   },
   {
@@ -2191,8 +4965,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "状況がどれほど困難であっても、私たちはそれを克服しなければならない。",
-    "words": ["difficult", "how", "is,", "it", "matter", "must", "No", "overcome", "situation", "the", "we"],
-    "correctOrder": ["No", "matter", "how", "difficult", "the", "situation", "is,", "we", "must", "overcome", "it"],
+    "words": [
+      "difficult",
+      "how",
+      "is,",
+      "it",
+      "matter",
+      "must",
+      "No",
+      "overcome",
+      "situation",
+      "the",
+      "we"
+    ],
+    "correctOrder": [
+      "No",
+      "matter",
+      "how",
+      "difficult",
+      "the",
+      "situation",
+      "is,",
+      "we",
+      "must",
+      "overcome",
+      "it"
+    ],
     "explanation": "【譲歩構文】No matter how + 形容詞/副詞 + S V ~（どんなに〜でも）という構文です。状況（situation）が困難（difficult）でも克服する（overcome）という逆接的な論理展開を導きます。"
   },
   {
@@ -2203,7 +5001,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "It was the government [   ] implemented the measure.",
     "questionJa": "その対策を実行したのは政府だった。",
-    "choices": ["that", "what", "which", "whom"],
+    "choices": [
+      "that",
+      "what",
+      "which",
+      "whom"
+    ],
     "correctAnswer": "that",
     "explanation": "【強調構文】It is/was ~ that ... で、~の部分（the government：政府）を強調しています。implement（〜を実行する）、measure（対策・手段）といった語彙と結びつき、誰がその行動を起こしたのかを特定する際に使われます。"
   },
@@ -2214,8 +5017,26 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "私はその著しい違いに気づかずにはいられなかった。",
-    "words": ["could", "difference", "help", "I", "not", "noticing", "significant", "the"],
-    "correctOrder": ["I", "could", "not", "help", "noticing", "the", "significant", "difference"],
+    "words": [
+      "could",
+      "difference",
+      "help",
+      "I",
+      "not",
+      "noticing",
+      "significant",
+      "the"
+    ],
+    "correctOrder": [
+      "I",
+      "could",
+      "not",
+      "help",
+      "noticing",
+      "the",
+      "significant",
+      "difference"
+    ],
     "explanation": "【動名詞の慣用表現】cannot help ~ing で「〜せずにはいられない」という意味になります。notice（〜に気づく）や significant difference（著しい違い）という表現と結びつき、筆者の強い感情や避けられない認識を表します。"
   },
   {
@@ -2225,8 +5046,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "インターネットのおかげで、私たちは膨大な情報にアクセスできる。",
-    "words": ["a", "access", "amount", "enables", "information", "internet", "of", "The", "to", "us", "vast"],
-    "correctOrder": ["The", "internet", "enables", "us", "to", "access", "a", "vast", "amount", "of", "information"],
+    "words": [
+      "a",
+      "access",
+      "amount",
+      "enables",
+      "information",
+      "internet",
+      "of",
+      "The",
+      "to",
+      "us",
+      "vast"
+    ],
+    "correctOrder": [
+      "The",
+      "internet",
+      "enables",
+      "us",
+      "to",
+      "access",
+      "a",
+      "vast",
+      "amount",
+      "of",
+      "information"
+    ],
     "explanation": "【無生物主語】enable O to do で「Oが〜することを可能にする」という意味です。直訳の「インターネットが私たちにアクセスすることを可能にする」から因果関係（原因→結果）を読み取る長文読解の必須構文です。"
   },
   {
@@ -2237,7 +5082,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "With the global economy [   ], many companies are suffering.",
     "questionJa": "世界経済が衰退している中で、多くの企業が苦境に立たされている。",
-    "choices": ["declining", "declined", "to decline", "decline"],
+    "choices": [
+      "declining",
+      "declined",
+      "to decline",
+      "decline"
+    ],
     "correctAnswer": "declining",
     "explanation": "【付帯状況のwith】with + O + ~ing/過去分詞 で「Oが〜している状態で」という同時進行の状況や背景を表します。the global economy（世界経済）が自ら decline（衰退する）するため、能動の関係を表す現在分詞（~ing）が正解です。"
   },
@@ -2248,8 +5098,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "市民がその決定に抗議するのももっともだ。",
-    "words": ["against", "Citizens", "decision", "may", "protest", "the", "well"],
-    "correctOrder": ["Citizens", "may", "well", "protest", "against", "the", "decision"],
+    "words": [
+      "against",
+      "Citizens",
+      "decision",
+      "may",
+      "protest",
+      "the",
+      "well"
+    ],
+    "correctOrder": [
+      "Citizens",
+      "may",
+      "well",
+      "protest",
+      "against",
+      "the",
+      "decision"
+    ],
     "explanation": "【助動詞の慣用表現】may well do で「〜するのももっともだ、たぶん〜するだろう」という意味になります。protest against（〜に抗議する）や decision（決定）といった政治・社会系の語彙とともに、筆者の推測や正当化の論理を読み取ります。"
   },
   {
@@ -2259,8 +5125,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "そのプロジェクトにはわずか1万ドルしか割り当てられなかった。",
-    "words": ["10,000", "allocated", "dollars", "more", "No", "project", "than", "the", "to", "was"],
-    "correctOrder": ["No", "more", "than", "10,000", "dollars", "was", "allocated", "to", "the", "project"],
+    "words": [
+      "10,000",
+      "allocated",
+      "dollars",
+      "more",
+      "No",
+      "project",
+      "than",
+      "the",
+      "to",
+      "was"
+    ],
+    "correctOrder": [
+      "No",
+      "more",
+      "than",
+      "10,000",
+      "dollars",
+      "was",
+      "allocated",
+      "to",
+      "the",
+      "project"
+    ],
     "explanation": "【比較の否定】no more than 〜 は「（数値を強調して）わずか〜、たった〜」という意味になります。allocate（割り当てる）や project（プロジェクト）といったビジネスシーンで、少ない予算や規模の小ささを強調する論理マーカーとして機能します。"
   },
   {
@@ -2270,8 +5158,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "健康が最優先事項であることは言うまでもない。",
-    "words": ["goes", "health", "is", "It", "priority", "saying", "that", "the", "top", "without"],
-    "correctOrder": ["It", "goes", "without", "saying", "that", "health", "is", "the", "top", "priority"],
+    "words": [
+      "goes",
+      "health",
+      "is",
+      "It",
+      "priority",
+      "saying",
+      "that",
+      "the",
+      "top",
+      "without"
+    ],
+    "correctOrder": [
+      "It",
+      "goes",
+      "without",
+      "saying",
+      "that",
+      "health",
+      "is",
+      "the",
+      "top",
+      "priority"
+    ],
     "explanation": "【重要構文】It goes without saying that ~ で「〜であることは言うまでもない」という頻出表現です。health（健康）や top priority（最優先事項）といった語彙と結びつき、筆者が「誰もが認める大前提」を提示する際に用いられます。"
   },
   {
@@ -2281,8 +5191,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その実験の結果を予測することはできない。",
-    "words": ["experiment", "is", "no", "of", "outcome", "predicting", "the", "the", "There"],
-    "correctOrder": ["There", "is", "no", "predicting", "the", "outcome", "of", "the", "experiment"],
+    "words": [
+      "experiment",
+      "is",
+      "no",
+      "of",
+      "outcome",
+      "predicting",
+      "the",
+      "the",
+      "There"
+    ],
+    "correctOrder": [
+      "There",
+      "is",
+      "no",
+      "predicting",
+      "the",
+      "outcome",
+      "of",
+      "the",
+      "experiment"
+    ],
     "explanation": "【動名詞】There is no ~ing で「〜することはできない（= It is impossible to ~）」という意味の重要構文です。predict（予測する）、outcome（結果）、experiment（実験）といった研究・科学系の文章でよく使われる語彙の組み合わせです。"
   },
   {
@@ -2292,8 +5222,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私たちは社会に貢献する労をいとわない。",
-    "words": ["are", "contribute", "society", "to", "to", "We", "willing"],
-    "correctOrder": ["We", "are", "willing", "to", "contribute", "to", "society"],
+    "words": [
+      "are",
+      "contribute",
+      "society",
+      "to",
+      "to",
+      "We",
+      "willing"
+    ],
+    "correctOrder": [
+      "We",
+      "are",
+      "willing",
+      "to",
+      "contribute",
+      "to",
+      "society"
+    ],
     "explanation": "【不定詞】be willing to do は「〜するのをいとわない、快く〜する」という前向きな意志を表します。contribute to society（社会に貢献する）は、企業の理念や社会問題を論じる長文で非常に頻出するコロケーション（連語）です。"
   },
   {
@@ -2304,7 +5250,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The new system is [   ] of handling complex tasks.",
     "questionJa": "その新しいシステムは複雑なタスクを処理する能力がある。",
-    "choices": ["capable", "possible", "able", "potential"],
+    "choices": [
+      "capable",
+      "possible",
+      "able",
+      "potential"
+    ],
     "correctAnswer": "capable",
     "explanation": "【形容詞の語法】「〜する能力がある」を表す際、be able to do（不定詞）に対して、be capable of ~ing（前置詞＋動名詞）を使います。handle（処理する・扱う）、complex（複雑な）といった語彙とセットで頻出します。"
   },
@@ -2315,9 +5266,29 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "医療スタッフは緊急事態に対処することに慣れている。",
-    "words": ["accustomed", "an", "are", "dealing", "emergency", "medical", "staff", "The", "to", "with"],
-    "correctOrder": ["The", "medical", "staff", "are", "accustomed", "to", "dealing", "with", "an", "emergency"],
-    "explanation": "【慣用表現】be accustomed to ~ing（〜することに慣れている）の to は前置詞なので、後ろに動名詞（dealing）が来ます。deal with（対処する）や emergency（緊急事態）といった語彙とともに、事実や現状を説明する文脈で読解のポイントになります。"
+    "words": [
+      "accustomed",
+      "are",
+      "dealing",
+      "emergencies",
+      "medical",
+      "staff",
+      "The",
+      "to",
+      "with"
+    ],
+    "correctOrder": [
+      "The",
+      "medical",
+      "staff",
+      "are",
+      "accustomed",
+      "to",
+      "dealing",
+      "with",
+      "emergencies"
+    ],
+    "explanation": "【慣用表現】be accustomed to ~ing（〜することに慣れている）の to は前置詞なので、後ろに動名詞（dealing）が来ます。deal with emergencies（緊急事態に対処する）という形で覚えておきましょう。"
   },
   {
     "id": "U21_006",
@@ -2326,8 +5297,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "これがいわゆる持続可能な農業だ。",
-    "words": ["agriculture", "called", "is", "is", "sustainable", "This", "what"],
-    "correctOrder": ["This", "is", "what", "is", "called", "sustainable", "agriculture"],
+    "words": [
+      "agriculture",
+      "called",
+      "is",
+      "is",
+      "sustainable",
+      "This",
+      "what"
+    ],
+    "correctOrder": [
+      "This",
+      "is",
+      "what",
+      "is",
+      "called",
+      "sustainable",
+      "agriculture"
+    ],
     "explanation": "【関係詞の慣用表現】what is called は「いわゆる〜」という意味で、専門用語や新しい概念を導入する際の論理マーカーとして機能します。sustainable（持続可能な）、agriculture（農業）という頻出テーマで確認しましょう。"
   },
   {
@@ -2337,8 +5324,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "重要なのは量ではなく質だ。",
-    "words": ["but", "important", "is", "is", "not", "quality", "quantity,", "What"],
-    "correctOrder": ["What", "is", "important", "is", "not", "quantity,", "but", "quality"],
+    "words": [
+      "but",
+      "important",
+      "is",
+      "is",
+      "not",
+      "quality",
+      "quantity,",
+      "What"
+    ],
+    "correctOrder": [
+      "What",
+      "is",
+      "important",
+      "is",
+      "not",
+      "quantity,",
+      "but",
+      "quality"
+    ],
     "explanation": "【相関接続詞】not A but B で「AではなくB」という強い対比を表します。筆者が本当に主張したいのはB（quality：質）の方であり、A（quantity：量）との対比構造を見抜くことが長文読解の要となります。"
   },
   {
@@ -2348,9 +5353,33 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼らがその提案を承認するかどうかは疑わしい。",
-    "words": ["approve", "doubtful", "is", "It", "or", "proposal", "not", "the", "they", "whether"],
-    "correctOrder": ["It", "is", "doubtful", "whether", "they", "approve", "the", "proposal", "or", "not"],
-    "explanation": "【名詞節】whether ~ or not で「〜するかどうか」という名詞のカタマリを作ります。It が形式主語、whether 以下が真主語です。doubtful（疑わしい）や approve（承認する）、proposal（提案）などの語彙と組み合わさります。"
+    "words": [
+      "approve",
+      "doubtful",
+      "is",
+      "It",
+      "or",
+      "proposal",
+      "not",
+      "the",
+      "they",
+      "whether",
+      "will"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "doubtful",
+      "whether",
+      "they",
+      "will",
+      "approve",
+      "the",
+      "proposal",
+      "or",
+      "not"
+    ],
+    "explanation": "【名詞節】whether ~ or not で「〜するかどうか」という名詞のカタマリを作ります。It が形式主語、whether 以下が真主語です。will approve とすることで、今後その提案を承認するかどうかを表しています。"
   },
   {
     "id": "U21_009",
@@ -2360,7 +5389,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "He would [   ] resign than compromise.",
     "questionJa": "彼は妥協するくらいならむしろ辞任したい。",
-    "choices": ["rather", "better", "prefer", "sooner"],
+    "choices": [
+      "rather",
+      "better",
+      "prefer",
+      "sooner"
+    ],
     "correctAnswer": "rather",
     "explanation": "【助動詞の慣用表現】would rather A than B で「BするくらいならむしろAしたい」という比較・選択を表します。resign（辞任する）と compromise（妥協する）というビジネスや政治の長文で対比されやすい語彙で構成されています。"
   },
@@ -2371,19 +5405,63 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "私たちは抜本的な対策を講じてもよい時期だ。",
-    "words": ["a", "fundamental", "high", "is", "It", "measure", "time", "took", "we"],
-    "correctOrder": ["It", "is", "high", "time", "we", "took", "a", "fundamental", "measure"],
-    "explanation": "【仮定法】It is high time + 仮定法過去形（ここでは took）で「（とっくに）〜してもよい時期だ」という意味になります。fundamental measure（抜本的な対策）を「早く取るべきだ」という筆者の強い主張や焦燥感を読み取ります。"
+    "words": [
+      "fundamental",
+      "high",
+      "is",
+      "It",
+      "measures",
+      "time",
+      "took",
+      "we"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "high",
+      "time",
+      "we",
+      "took",
+      "fundamental",
+      "measures"
+    ],
+    "explanation": "【仮定法】It is high time + 仮定法過去形（ここでは took）で「（とっくに）〜してもよい時期だ」という意味になります。take fundamental measures（抜本的な対策を講じる）という表現とともに覚えましょう。"
   },
-    {
+  {
     "id": "U22_001",
     "unit": "22. 語彙置き換え問題 (10) - 総合演習（構文・論理展開）",
     "theme": "譲歩の構文 (It is true that ~, but ...) ＋ 重要語彙",
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その理論は魅力的であるのは事実だが、非現実的だ。",
-    "words": ["attractive,", "but", "impractical", "is", "is", "is", "It", "it", "that", "the", "theory", "true"],
-    "correctOrder": ["It", "is", "true", "that", "the", "theory", "is", "attractive,", "but", "it", "is", "impractical"],
+    "words": [
+      "attractive,",
+      "but",
+      "impractical",
+      "is",
+      "is",
+      "is",
+      "It",
+      "it",
+      "that",
+      "the",
+      "theory",
+      "true"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "true",
+      "that",
+      "the",
+      "theory",
+      "is",
+      "attractive,",
+      "but",
+      "it",
+      "is",
+      "impractical"
+    ],
     "explanation": "【譲歩の構文】It is true that ~, but ... で「なるほど〜だが、しかし…」という論理展開を作ります。筆者の本当の主張は but の後ろ（impractical：非現実的だ）にあります。theory（理論）や attractive（魅力的な）といった語彙とセットで文脈を把握しましょう。"
   },
   {
@@ -2393,8 +5471,34 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼らはすべての学生がその講義に出席できるようにスケジュールを調整した。",
-    "words": ["adjusted", "all", "attend", "could", "lecture", "schedule", "so", "students", "that", "the", "the", "They"],
-    "correctOrder": ["They", "adjusted", "the", "schedule", "so", "that", "all", "students", "could", "attend", "the", "lecture"],
+    "words": [
+      "adjusted",
+      "all",
+      "attend",
+      "could",
+      "lecture",
+      "schedule",
+      "so",
+      "students",
+      "that",
+      "the",
+      "the",
+      "They"
+    ],
+    "correctOrder": [
+      "They",
+      "adjusted",
+      "the",
+      "schedule",
+      "so",
+      "that",
+      "all",
+      "students",
+      "could",
+      "attend",
+      "the",
+      "lecture"
+    ],
     "explanation": "【目的の構文】so that S can/could で「Sが〜できるように」という目的を表します。adjust（〜を調整する）や attend the lecture（講義に出席する）といった大学生活・ビジネス頻出のコロケーションに組み込まれる重要な構文です。"
   },
   {
@@ -2404,8 +5508,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "私たちがその結論に達したとたん、新たな問題が生じた。",
-    "words": ["a", "arose", "conclusion", "had", "Hardly", "new", "problem", "reached", "the", "we", "when"],
-    "correctOrder": ["Hardly", "had", "we", "reached", "the", "conclusion", "when", "a", "new", "problem", "arose"],
+    "words": [
+      "a",
+      "arose",
+      "conclusion",
+      "had",
+      "Hardly",
+      "new",
+      "problem",
+      "reached",
+      "the",
+      "we",
+      "when"
+    ],
+    "correctOrder": [
+      "Hardly",
+      "had",
+      "we",
+      "reached",
+      "the",
+      "conclusion",
+      "when",
+      "a",
+      "new",
+      "problem",
+      "arose"
+    ],
     "explanation": "【倒置・時間の前後関係】Hardly had S 過去分詞 when 過去形... で「〜したとたん…した」という意味になります。否定語（Hardly）が文頭に出るため had we reached と倒置が起きます。conclusion（結論）や arise (arose)（生じる）という語彙と論理マーカーを同時に処理しましょう。"
   },
   {
@@ -2416,7 +5544,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "The researcher worked hard for years, [   ] to fail in the end.",
     "questionJa": "その研究者は何年も懸命に働いたが、結局失敗に終わった。",
-    "choices": ["only", "never", "but", "so as"],
+    "choices": [
+      "only",
+      "never",
+      "but",
+      "so as"
+    ],
     "correctAnswer": "only",
     "explanation": "【不定詞（結果）】コンマ ＋ only to do で「（〜したが）結局…しただけだった」という期待外れの結果を表します。researcher（研究者）の長年の苦労が fail（失敗する）というマイナスの結末に至る、長文でよくある逆接的な展開です。"
   },
@@ -2426,10 +5559,40 @@ const quizData = [
     "theme": "強調構文の応用 (It is not until ~ that ...) ＋ 重要語彙",
     "difficulty": 3,
     "type": "sort",
-    "questionJa": "私たちが自然の価値を認識するのは、それを失って初めてのことだ。",
-    "words": ["is", "its", "It", "lose", "nature", "not", "realize", "that", "until", "value", "we", "we"],
-    "correctOrder": ["It", "is", "not", "until", "we", "lose", "nature", "that", "we", "realize", "its", "value"],
-    "explanation": "【強調構文の応用】It is not until ~ that ... で「〜して初めて…する」という重要構文です。「〜するまで…しない（not ~ until）」の until のカタマリを強調構文（It is ~ that）で挟んだ形です。realize（認識する）や value（価値）といった語彙と結びつき、筆者の啓発的なメッセージを伝えます。"
+    "questionJa": "私たちが自然環境の価値を認識するのは、それを失って初めてのことだ。",
+    "words": [
+      "environment",
+      "is",
+      "its",
+      "It",
+      "lose",
+      "natural",
+      "not",
+      "realize",
+      "that",
+      "the",
+      "until",
+      "value",
+      "we",
+      "we"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "not",
+      "until",
+      "we",
+      "lose",
+      "the",
+      "natural",
+      "environment",
+      "that",
+      "we",
+      "realize",
+      "its",
+      "value"
+    ],
+    "explanation": "【強調構文の応用】It is not until ~ that ... で「〜して初めて…する」という重要構文です。ここでは until we lose the natural environment が強調され、「自然環境を失って初めてその価値に気づく」という意味になります。"
   },
   {
     "id": "U22_006",
@@ -2438,8 +5601,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "経営陣はその経済状況を考慮に入れなければならない。",
-    "words": ["consideration", "economic", "into", "management", "must", "situation", "take", "The", "the"],
-    "correctOrder": ["The", "management", "must", "take", "the", "economic", "situation", "into", "consideration"],
+    "words": [
+      "consideration",
+      "economic",
+      "into",
+      "management",
+      "must",
+      "situation",
+      "take",
+      "The",
+      "the"
+    ],
+    "correctOrder": [
+      "The",
+      "management",
+      "must",
+      "take",
+      "the",
+      "economic",
+      "situation",
+      "into",
+      "consideration"
+    ],
     "explanation": "【重要熟語】take A into consideration（Aを考慮に入れる）という頻出熟語です。the economic situation（経済状況）という名詞のカタマリが A の位置に入ります。management（経営陣）などの語彙が含まれるビジネス長文で必須の表現です。"
   },
   {
@@ -2450,7 +5633,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "Reading is to the mind [   ] exercise is to the body.",
     "questionJa": "読書と精神の関係は、運動と身体の関係と同じだ。",
-    "choices": ["what", "that", "which", "how"],
+    "choices": [
+      "what",
+      "that",
+      "which",
+      "how"
+    ],
     "correctAnswer": "what",
     "explanation": "【関係代名詞の慣用表現】A is to B what C is to D で「AとBの関係は、CとDの関係と同じだ」という比喩を表す極めて重要な構文です。what 以下の馴染みのある事例（運動と身体）を引き合いに出し、読書（Reading）の重要性を説く論理展開を掴みましょう。"
   },
@@ -2461,8 +5649,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "結果がどうであれ、私たちはこの原則を維持しなければならない。",
-    "words": ["be,", "maintain", "may", "must", "principle", "result", "the", "this", "we", "Whatever"],
-    "correctOrder": ["Whatever", "the", "result", "may", "be,", "we", "must", "maintain", "this", "principle"],
+    "words": [
+      "be,",
+      "maintain",
+      "may",
+      "must",
+      "principle",
+      "result",
+      "the",
+      "this",
+      "we",
+      "Whatever"
+    ],
+    "correctOrder": [
+      "Whatever",
+      "the",
+      "result",
+      "may",
+      "be,",
+      "we",
+      "must",
+      "maintain",
+      "this",
+      "principle"
+    ],
     "explanation": "【譲歩の構文】Whatever S may be, で「Sが何であろうとも」という譲歩の副詞節を作ります。前半の譲歩に対して、主節の we must maintain this principle（この原則を維持しなければならない）という筆者の強い意志や結論が導かれます。"
   },
   {
@@ -2472,8 +5682,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "その新しい法律は市民から自由を奪った。",
-    "words": ["citizens", "deprived", "freedom", "law", "new", "of", "The", "their"],
-    "correctOrder": ["The", "new", "law", "deprived", "citizens", "of", "their", "freedom"],
+    "words": [
+      "citizens",
+      "deprived",
+      "freedom",
+      "law",
+      "new",
+      "of",
+      "The",
+      "their"
+    ],
+    "correctOrder": [
+      "The",
+      "new",
+      "law",
+      "deprived",
+      "citizens",
+      "of",
+      "their",
+      "freedom"
+    ],
     "explanation": "【無生物主語と語法】deprive A of B で「AからBを奪う」という意味になります。The new law（新しい法律）という無生物が主語になり、cause and effect（原因と結果）を表しています。citizen（市民）や freedom（自由）といった社会系テーマの頻出語彙です。"
   },
   {
@@ -2483,20 +5711,60 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼はまるでその出来事全体を目撃したかのように振る舞う。",
-    "words": ["as", "behaves", "entire", "event", "had", "He", "he", "if", "the", "witnessed"],
-    "correctOrder": ["He", "behaves", "as", "if", "he", "had", "witnessed", "the", "entire", "event"],
+    "words": [
+      "as",
+      "behaves",
+      "entire",
+      "event",
+      "had",
+      "He",
+      "he",
+      "if",
+      "the",
+      "witnessed"
+    ],
+    "correctOrder": [
+      "He",
+      "behaves",
+      "as",
+      "if",
+      "he",
+      "had",
+      "witnessed",
+      "the",
+      "entire",
+      "event"
+    ],
     "explanation": "【仮定法の構文】as if + 仮定法（まるで〜であるかのように）の構文です。主節の behaves（振る舞う：現在）よりも前の出来事（目撃した）を仮定しているため、仮定法過去完了（had witnessed）を用います。entire（全体の）や event（出来事）の意味も押さえておきましょう。"
   },
-    {
+  {
     "id": "U23_001",
     "unit": "23. 語彙置き換え問題 (11) - 総合演習（基本文法・構文の融合）",
     "theme": "動名詞の意味上の主語 ＋ 重要語彙",
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼がそのプロジェクトを放棄したことに私はがっかりした。",
-    "words": ["I", "abandoning", "at", "disappointed", "his", "project", "the", "was"],
-    "correctOrder": ["I", "was", "disappointed", "at", "his", "abandoning", "the", "project"],
-    "explanation": "【動名詞の意味上の主語】動名詞（abandoning）の動作の主体を明示する場合、その直前に所有格（his）または目的格を置きます。abandon（〜を放棄する）や disappointed（がっかりした）といった重要語彙とセットで文の構造を捉えましょう。"
+    "words": [
+      "I",
+      "abandoning",
+      "by",
+      "disappointed",
+      "his",
+      "project",
+      "the",
+      "was"
+    ],
+    "correctOrder": [
+      "I",
+      "was",
+      "disappointed",
+      "by",
+      "his",
+      "abandoning",
+      "the",
+      "project"
+    ],
+    "explanation": "【動名詞の意味上の主語】動名詞（abandoning）の動作の主体を明示する場合、その直前に所有格（his）または目的格を置きます。be disappointed by ~（〜にがっかりする）とあわせて構造を捉えましょう。"
   },
   {
     "id": "U23_002",
@@ -2505,8 +5773,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "他のすべての条件が等しければ、私はこの戦略を選ぶ。",
-    "words": ["I", "Other", "being", "choose", "equal,", "strategy", "things", "this", "will"],
-    "correctOrder": ["Other", "things", "being", "equal,", "I", "will", "choose", "this", "strategy"],
+    "words": [
+      "I",
+      "Other",
+      "being",
+      "choose",
+      "equal,",
+      "strategy",
+      "things",
+      "this",
+      "will"
+    ],
+    "correctOrder": [
+      "Other",
+      "things",
+      "being",
+      "equal,",
+      "I",
+      "will",
+      "choose",
+      "this",
+      "strategy"
+    ],
     "explanation": "【独立分詞構文】分詞の主語（Other things）が主節の主語（I）と異なる場合、分詞の前にそのまま主語を残します。「他の条件が同じなら」という長文や論文における条件設定の重要なサインです。strategy（戦略）も必須語彙です。"
   },
   {
@@ -2516,9 +5804,31 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼がその問題を解決できるという可能性は低い。",
-    "words": ["The", "can", "he", "is", "low", "possibility", "problem", "solve", "that", "the"],
-    "correctOrder": ["The", "possibility", "that", "he", "can", "solve", "the", "problem", "is", "low"],
-    "explanation": "【同格のthat】possibility（可能性）や fact（事実）などの抽象名詞の後に続く that 節は、「〜という」と内容を説明する同格の働きをします。関係代名詞の that（後ろが不完全な文）と異なり、後ろに完全な文（he can solve the problem）が続くのが特徴です。"
+    "words": [
+      "There",
+      "can",
+      "he",
+      "is",
+      "little",
+      "possibility",
+      "problem",
+      "solve",
+      "that",
+      "the"
+    ],
+    "correctOrder": [
+      "There",
+      "is",
+      "little",
+      "possibility",
+      "that",
+      "he",
+      "can",
+      "solve",
+      "the",
+      "problem"
+    ],
+    "explanation": "【同格の that】There is little possibility that ~ で「〜という可能性はほとんどない」という意味になります。possibility の内容を that 節が説明しており、後ろには完全な文（he can solve the problem）が続きます。"
   },
   {
     "id": "U23_004",
@@ -2527,9 +5837,33 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "このソフトウェアを使えば、多くの時間と労力を節約できるだろう。",
-    "words": ["This", "and", "effort", "much", "save", "software", "time", "will", "you"],
-    "correctOrder": ["This", "software", "will", "save", "you", "much", "time", "and", "effort"],
-    "explanation": "【無生物主語】save O1 O2 で「O1のO2（時間や労力）を省く」という意味になります。無生物（This software）が主語になることで、「これを使えば〜」という条件の論理（原因→結果）を自然に読み取れるようにしましょう。"
+    "words": [
+      "This",
+      "a",
+      "and",
+      "effort",
+      "lot",
+      "of",
+      "save",
+      "software",
+      "time",
+      "will",
+      "you"
+    ],
+    "correctOrder": [
+      "This",
+      "software",
+      "will",
+      "save",
+      "you",
+      "a",
+      "lot",
+      "of",
+      "time",
+      "and",
+      "effort"
+    ],
+    "explanation": "【無生物主語】save O1 O2 で「O1のO2（時間や労力）を省く」という意味になります。This software のような無生物が主語になることで、「これを使えば〜」という原因から結果への流れを自然に読み取れます。"
   },
   {
     "id": "U23_005",
@@ -2538,8 +5872,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼の経済的な支援がなければ、私たちは破産しているだろう。",
-    "words": ["But", "bankrupt", "be", "financial", "for", "his", "support,", "we", "would"],
-    "correctOrder": ["But", "for", "his", "financial", "support,", "we", "would", "be", "bankrupt"],
+    "words": [
+      "But",
+      "bankrupt",
+      "be",
+      "financial",
+      "for",
+      "his",
+      "support,",
+      "we",
+      "would"
+    ],
+    "correctOrder": [
+      "But",
+      "for",
+      "his",
+      "financial",
+      "support,",
+      "we",
+      "would",
+      "be",
+      "bankrupt"
+    ],
     "explanation": "【仮定法の慣用表現】But for 〜 は Without 〜 と同様に「もし〜がなければ」という仮定を表す重要表現です。financial（財政的な）や bankrupt（破産した）といった経済系・社会系のテーマで因果関係の逆転を述べる際に使われます。"
   },
   {
@@ -2550,7 +5904,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "I took an umbrella [   ] it rained.",
     "questionJa": "雨が降った場合に備えて、私は傘を持っていった。",
-    "choices": ["in case", "so that", "unless", "as long as"],
+    "choices": [
+      "in case",
+      "so that",
+      "unless",
+      "as long as"
+    ],
     "correctAnswer": "in case",
     "explanation": "【目的・条件の副詞節】in case S V は「SがVする場合に備えて（Vするといけないから）」という重要な接続詞の働きをします。前後の文脈から、不確実な事態に対する「備え」の論理マーカーとして機能します。"
   },
@@ -2561,8 +5920,34 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "新しいモデルは多くの点で古いものより優れている。",
-    "words": ["The", "in", "is", "many", "model", "new", "old", "one", "respects", "superior", "the", "to"],
-    "correctOrder": ["The", "new", "model", "is", "superior", "to", "the", "old", "one", "in", "many", "respects"],
+    "words": [
+      "The",
+      "in",
+      "is",
+      "many",
+      "model",
+      "new",
+      "old",
+      "one",
+      "respects",
+      "superior",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "The",
+      "new",
+      "model",
+      "is",
+      "superior",
+      "to",
+      "the",
+      "old",
+      "one",
+      "in",
+      "many",
+      "respects"
+    ],
     "explanation": "【比較の語法】superior to 〜 は「〜よりも優れている」という意味で、than ではなく to を用いるラテン語系の比較表現です。in many respects（多くの点で）の respect（点・事項）の意味にも注意して読解しましょう。"
   },
   {
@@ -2572,8 +5957,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼はその本を読んで初めて、真実に気づいた。",
-    "words": ["Not", "book", "did", "he", "he", "read", "realize", "the", "the", "truth", "until"],
-    "correctOrder": ["Not", "until", "he", "read", "the", "book", "did", "he", "realize", "the", "truth"],
+    "words": [
+      "Not",
+      "book",
+      "did",
+      "he",
+      "he",
+      "read",
+      "realize",
+      "the",
+      "the",
+      "truth",
+      "until"
+    ],
+    "correctOrder": [
+      "Not",
+      "until",
+      "he",
+      "read",
+      "the",
+      "book",
+      "did",
+      "he",
+      "realize",
+      "the",
+      "truth"
+    ],
     "explanation": "【否定語の倒置】Not until 〜（〜して初めて）という否定を含んだ副詞のカタマリが文頭に出たため、主節が did he realize という疑問文の語順（倒置）になっています。長文では筆者の「気づき」や「転換点」を示す重要なサインです。"
   },
   {
@@ -2583,8 +5992,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼がその申し出を拒否したのも不思議ではない。",
-    "words": ["It", "he", "is", "no", "offer", "rejected", "that", "the", "wonder"],
-    "correctOrder": ["It", "is", "no", "wonder", "that", "he", "rejected", "the", "offer"],
+    "words": [
+      "It",
+      "he",
+      "is",
+      "no",
+      "offer",
+      "rejected",
+      "that",
+      "the",
+      "wonder"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "no",
+      "wonder",
+      "that",
+      "he",
+      "rejected",
+      "the",
+      "offer"
+    ],
     "explanation": "【形式主語の慣用表現】It is no wonder that 〜 で「〜であるのも不思議ではない（当然だ）」という意味です。reject（拒否する）や offer（申し出）といった語彙に対する、筆者の評価や見解を示す表現として押さえておきましょう。"
   },
   {
@@ -2595,7 +6024,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "She makes [   ] a rule to review the day's events before bed.",
     "questionJa": "彼女は寝る前にその日の出来事を復習することにしている。",
-    "choices": ["it", "that", "them", "this"],
+    "choices": [
+      "it",
+      "that",
+      "them",
+      "this"
+    ],
     "correctAnswer": "it",
     "explanation": "【形式目的語の慣用表現】make it a rule to do で「〜することにしている（習慣にしている）」という意味になります。it は形式目的語で、真の目的語である to review 以下を指しています。review（復習する・見直す）も必須語彙です。"
   },
@@ -2606,8 +6040,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼はできるだけ多くの情報を集めた。",
-    "words": ["He", "as", "as", "gathered", "information", "much", "possible"],
-    "correctOrder": ["He", "gathered", "as", "much", "information", "as", "possible"],
+    "words": [
+      "He",
+      "as",
+      "as",
+      "gathered",
+      "information",
+      "much",
+      "possible"
+    ],
+    "correctOrder": [
+      "He",
+      "gathered",
+      "as",
+      "much",
+      "information",
+      "as",
+      "possible"
+    ],
     "explanation": "【比較の応用】as ~ as possible で「できるだけ〜」という意味です。information（情報）は不可算名詞なので many ではなく much が使われます。gather（集める）という頻出動詞とセットで処理しましょう。"
   },
   {
@@ -2617,8 +6067,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その問題は技術的というよりむしろ政治的だ。",
-    "words": ["The", "as", "is", "much", "not", "political", "problem", "so", "technical"],
-    "correctOrder": ["The", "problem", "is", "not", "so", "much", "technical", "as", "political"],
+    "words": [
+      "The",
+      "as",
+      "is",
+      "much",
+      "not",
+      "political",
+      "problem",
+      "so",
+      "technical"
+    ],
+    "correctOrder": [
+      "The",
+      "problem",
+      "is",
+      "not",
+      "so",
+      "much",
+      "technical",
+      "as",
+      "political"
+    ],
     "explanation": "【比較の応用】not so much A as B は「AというよりむしろB」という対比を表します。筆者の真の主張はB（political：政治的）にあります。technical（技術的な）との対比から、問題の本質を読み解くサインとなります。"
   },
   {
@@ -2628,8 +6098,28 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼は私が天才でないのと同じように天才ではない。",
-    "words": ["He", "I", "a", "am", "genius", "is", "more", "no", "than"],
-    "correctOrder": ["He", "is", "no", "more", "a", "genius", "than", "I", "am"],
+    "words": [
+      "He",
+      "I",
+      "a",
+      "am",
+      "genius",
+      "is",
+      "more",
+      "no",
+      "than"
+    ],
+    "correctOrder": [
+      "He",
+      "is",
+      "no",
+      "more",
+      "a",
+      "genius",
+      "than",
+      "I",
+      "am"
+    ],
     "explanation": "【比較の否定】A is no more B than C is D で「CがDでないように、AはBではない」という両者否定の構文です。一見肯定文に見えますが、強い否定のニュアンスを持っていることに注意が必要です。"
   },
   {
@@ -2639,8 +6129,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "水がなければ、いかなる生き物も生きられないだろう。",
-    "words": ["If", "could", "creature", "for", "it", "living", "no", "not", "survive", "water,", "were"],
-    "correctOrder": ["If", "it", "were", "not", "for", "water,", "no", "living", "creature", "could", "survive"],
+    "words": [
+      "If",
+      "could",
+      "creature",
+      "for",
+      "it",
+      "living",
+      "no",
+      "not",
+      "survive",
+      "water,",
+      "were"
+    ],
+    "correctOrder": [
+      "If",
+      "it",
+      "were",
+      "not",
+      "for",
+      "water,",
+      "no",
+      "living",
+      "creature",
+      "could",
+      "survive"
+    ],
     "explanation": "【仮定法過去】If it were not for 〜 は「（現在の事実として）もし〜がなければ」という重要表現です。Without 〜 や But for 〜 に書き換え可能。creature（生き物）や survive（生き残る）といった環境系の長文でよく使われます。"
   },
   {
@@ -2650,8 +6164,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼は腕を組んで私をじっと見た。",
-    "words": ["He", "arms", "at", "crossed", "his", "me", "stared", "with"],
-    "correctOrder": ["He", "stared", "at", "me", "with", "his", "arms", "crossed"],
+    "words": [
+      "He",
+      "arms",
+      "at",
+      "crossed",
+      "his",
+      "me",
+      "stared",
+      "with"
+    ],
+    "correctOrder": [
+      "He",
+      "stared",
+      "at",
+      "me",
+      "with",
+      "his",
+      "arms",
+      "crossed"
+    ],
     "explanation": "【付帯状況の with】with + O + 過去分詞/現在分詞 で「Oが〜した状態で」という意味になります。腕（arms）は「組まれる」ものなので過去分詞 crossed になります。stare at（〜をじっと見る）という動作の背景を描写しています。"
   },
   {
@@ -2662,7 +6194,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "It was the president [   ] made the final decision.",
     "questionJa": "最終決定を下したのは社長だった。",
-    "choices": ["that", "which", "whom", "what"],
+    "choices": [
+      "that",
+      "which",
+      "whom",
+      "what"
+    ],
     "correctAnswer": "that",
     "explanation": "【強調構文】It is(was) ~ that ... の形で「…なのは〜だ」と特定の要素（the president：社長）を強調します。make a decision（決定を下す）というコロケーションとあわせて、誰の責任・行動かを特定する文脈で重要です。"
   },
@@ -2673,8 +6210,26 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼らはその要件を満たすことは不可能だとわかった。",
-    "words": ["They", "found", "impossible", "it", "meet", "requirements", "the", "to"],
-    "correctOrder": ["They", "found", "it", "impossible", "to", "meet", "the", "requirements"],
+    "words": [
+      "They",
+      "found",
+      "impossible",
+      "it",
+      "meet",
+      "requirements",
+      "the",
+      "to"
+    ],
+    "correctOrder": [
+      "They",
+      "found",
+      "it",
+      "impossible",
+      "to",
+      "meet",
+      "the",
+      "requirements"
+    ],
     "explanation": "【形式目的語】find it C to do で「〜することがCだとわかる」という構文です。meet the requirements（要件を満たす）の meet が「会う」ではなく「満たす」という意味になる点に注意が必要です。"
   },
   {
@@ -2684,8 +6239,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その時になって初めて、私は状況の深刻さを理解した。",
-    "words": ["Only", "did", "gravity", "I", "of", "realize", "situation", "the", "the", "then"],
-    "correctOrder": ["Only", "then", "did", "I", "realize", "the", "gravity", "of", "the", "situation"],
+    "words": [
+      "Only",
+      "did",
+      "gravity",
+      "I",
+      "of",
+      "realize",
+      "situation",
+      "the",
+      "the",
+      "then"
+    ],
+    "correctOrder": [
+      "Only",
+      "then",
+      "did",
+      "I",
+      "realize",
+      "the",
+      "gravity",
+      "of",
+      "the",
+      "situation"
+    ],
     "explanation": "【倒置構文】Only then（その時になって初めて）のような限定を表す副詞句が文頭に出ると、主節は疑問文の語順（did I realize）に倒置されます。gravity（深刻さ・重大さ）や situation（状況）といった語彙と結びつき、文脈の大きな転換点を示します。"
   },
   {
@@ -2695,8 +6272,32 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "何をすべきかわからなかったので、私は教授にアドバイスを求めた。",
-    "words": ["Not", "I", "advice", "asked", "do,", "for", "knowing", "professor", "the", "to", "what"],
-    "correctOrder": ["Not", "knowing", "what", "to", "do,", "I", "asked", "the", "professor", "for", "advice"],
+    "words": [
+      "Not",
+      "I",
+      "advice",
+      "asked",
+      "do,",
+      "for",
+      "knowing",
+      "professor",
+      "the",
+      "to",
+      "what"
+    ],
+    "correctOrder": [
+      "Not",
+      "knowing",
+      "what",
+      "to",
+      "do,",
+      "I",
+      "asked",
+      "the",
+      "professor",
+      "for",
+      "advice"
+    ],
     "explanation": "【分詞構文の否定】分詞構文を否定する場合、Not は分詞（knowing）の直前に置きます。ask O for ~（Oに〜を求める）という語法も含まれており、Because I didn't know... の意味を簡潔に表現する長文の頻出スタイルです。"
   },
   {
@@ -2706,8 +6307,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼は10年前の彼ではない。",
-    "words": ["He", "ago", "he", "is", "not", "ten", "was", "what", "years"],
-    "correctOrder": ["He", "is", "not", "what", "he", "was", "ten", "years", "ago"],
+    "words": [
+      "He",
+      "ago",
+      "he",
+      "is",
+      "not",
+      "ten",
+      "was",
+      "what",
+      "years"
+    ],
+    "correctOrder": [
+      "He",
+      "is",
+      "not",
+      "what",
+      "he",
+      "was",
+      "ten",
+      "years",
+      "ago"
+    ],
     "explanation": "【関係代名詞の慣用表現】what S is（現在のS）や what S was（過去のS）という、人物や物事の状態・人格を表す表現です。時間の経過による変化を説明する文脈で非常によく使われます。"
   },
   {
@@ -2717,8 +6338,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私たちはその環境問題について真剣に議論してもよい頃だ。",
-    "words": ["It", "discussed", "environmental", "high", "is", "issue", "seriously", "the", "time", "we"],
-    "correctOrder": ["It", "is", "high", "time", "we", "discussed", "the", "environmental", "issue", "seriously"],
+    "words": [
+      "It",
+      "discussed",
+      "environmental",
+      "high",
+      "is",
+      "issue",
+      "seriously",
+      "the",
+      "time",
+      "we"
+    ],
+    "correctOrder": [
+      "It",
+      "is",
+      "high",
+      "time",
+      "we",
+      "discussed",
+      "the",
+      "environmental",
+      "issue",
+      "seriously"
+    ],
     "explanation": "【仮定法の慣用表現】It is high time S 過去形 で「（とっくに）〜してもよい頃だ」という意味になります。discuss（〜について議論する）は他動詞なので about を付けない点、また environmental issue（環境問題）という頻出テーマを同時に確認しましょう。"
   },
   {
@@ -2728,8 +6371,22 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私は彼の業績を称賛せずにはいられない。",
-    "words": ["I", "achievements", "admiring", "cannot", "help", "his"],
-    "correctOrder": ["I", "cannot", "help", "admiring", "his", "achievements"],
+    "words": [
+      "I",
+      "achievements",
+      "admiring",
+      "cannot",
+      "help",
+      "his"
+    ],
+    "correctOrder": [
+      "I",
+      "cannot",
+      "help",
+      "admiring",
+      "his",
+      "achievements"
+    ],
     "explanation": "【動名詞の慣用表現】cannot help ~ing で「〜せずにはいられない」という強い衝動や必然性を表します。admire（称賛する）や achievements（業績）などの語彙を伴って、筆者の強い肯定的な評価を示します。"
   },
   {
@@ -2740,7 +6397,12 @@ const quizData = [
     "type": "choice",
     "questionEn": "There is no [   ] what will happen in the future.",
     "questionJa": "将来何が起こるか予測することはできない。",
-    "choices": ["telling", "to tell", "tell", "told"],
+    "choices": [
+      "telling",
+      "to tell",
+      "tell",
+      "told"
+    ],
     "correctAnswer": "telling",
     "explanation": "【動名詞の慣用表現】There is no ~ing で「〜することはできない（= It is impossible to ~）」という意味になります。未来の不確実性を論じる文章で、筆者の結論としてよく用いられる決まり文句です。"
   },
@@ -2751,8 +6413,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "その規制は厳しすぎて、小さな企業は生き残れない。",
-    "words": ["The", "businesses", "for", "is", "regulation", "small", "strict", "survive", "to", "too"],
-    "correctOrder": ["The", "regulation", "is", "too", "strict", "for", "small", "businesses", "to", "survive"],
+    "words": [
+      "The",
+      "businesses",
+      "for",
+      "is",
+      "regulation",
+      "small",
+      "strict",
+      "survive",
+      "to",
+      "too"
+    ],
+    "correctOrder": [
+      "The",
+      "regulation",
+      "is",
+      "too",
+      "strict",
+      "for",
+      "small",
+      "businesses",
+      "to",
+      "survive"
+    ],
     "explanation": "【不定詞構文】too ~ to do（〜すぎて…できない）の不定詞の意味上の主語として for small businesses が挿入されています。regulation（規制）や strict（厳しい）、survive（生き残る）といったビジネス・社会系の頻出語彙と論理展開を結びつけましょう。"
   },
   {
@@ -2762,8 +6446,30 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "何が起ころうとも、私は原則を曲げない。",
-    "words": ["No", "I", "bend", "happens,", "matter", "my", "not", "principles", "what", "will"],
-    "correctOrder": ["No", "matter", "what", "happens,", "I", "will", "not", "bend", "my", "principles"],
+    "words": [
+      "No",
+      "I",
+      "bend",
+      "happens,",
+      "matter",
+      "my",
+      "not",
+      "principles",
+      "what",
+      "will"
+    ],
+    "correctOrder": [
+      "No",
+      "matter",
+      "what",
+      "happens,",
+      "I",
+      "will",
+      "not",
+      "bend",
+      "my",
+      "principles"
+    ],
     "explanation": "【譲歩の副詞節】No matter what 〜（何が〜しようとも）という表現で、Whatever と書き換え可能です。前半で譲歩を示しつつ、主節の I will not bend my principles（原則を曲げない）という筆者の揺るぎない意志を強調しています。"
   },
   {
@@ -2773,8 +6479,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "激しい嵐のために、彼らはフライトをキャンセルせざるを得なかった。",
-    "words": ["The", "cancel", "flight", "forced", "severe", "storm", "the", "them", "to"],
-    "correctOrder": ["The", "severe", "storm", "forced", "them", "to", "cancel", "the", "flight"],
+    "words": [
+      "The",
+      "cancel",
+      "flight",
+      "forced",
+      "severe",
+      "storm",
+      "the",
+      "them",
+      "to"
+    ],
+    "correctOrder": [
+      "The",
+      "severe",
+      "storm",
+      "forced",
+      "them",
+      "to",
+      "cancel",
+      "the",
+      "flight"
+    ],
     "explanation": "【無生物主語】force O to do で「Oに無理やり〜させる」という意味です。直訳の「激しい嵐が彼らにキャンセルさせた」から、「〜のために（原因）、…せざるを得なかった（結果）」と因果関係で捉えることが長文速読のコツです。"
   },
   {
@@ -2784,8 +6510,30 @@ const quizData = [
     "difficulty": 3,
     "type": "sort",
     "questionJa": "彼が罪を犯したという証拠は十分にない。",
-    "words": ["There", "committed", "crime", "enough", "evidence", "he", "is", "not", "that", "the"],
-    "correctOrder": ["There", "is", "not", "enough", "evidence", "that", "he", "committed", "the", "crime"],
+    "words": [
+      "There",
+      "committed",
+      "crime",
+      "enough",
+      "evidence",
+      "he",
+      "is",
+      "not",
+      "that",
+      "the"
+    ],
+    "correctOrder": [
+      "There",
+      "is",
+      "not",
+      "enough",
+      "evidence",
+      "that",
+      "he",
+      "committed",
+      "the",
+      "crime"
+    ],
     "explanation": "【同格の that】evidence（証拠）という名詞の内容を that 以下の完全な文（he committed the crime）で説明しています。commit a crime（罪を犯す）という重要語彙と併せて、抽象名詞＋that節の構造を見抜きましょう。"
   },
   {
@@ -2795,8 +6543,28 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "私が知る限り、その情報は正確だ。",
-    "words": ["As", "I", "accurate", "as", "far", "information", "is", "know,", "the"],
-    "correctOrder": ["As", "far", "as", "I", "know,", "the", "information", "is", "accurate"],
+    "words": [
+      "As",
+      "I",
+      "accurate",
+      "as",
+      "far",
+      "information",
+      "is",
+      "know,",
+      "the"
+    ],
+    "correctOrder": [
+      "As",
+      "far",
+      "as",
+      "I",
+      "know,",
+      "the",
+      "information",
+      "is",
+      "accurate"
+    ],
     "explanation": "【接続詞】As far as 〜 は「〜する範囲では・〜する限りでは」という意味で、情報や知識の制限を表します（As long asは時間・条件）。accurate（正確な）という情報の質を担保する際の前置きとして多用されます。"
   },
   {
@@ -2806,8 +6574,32 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼は奨学金を得たが、それは彼にとって大きな助けだった。",
-    "words": ["He", "a", "a", "got", "great", "help", "him", "scholarship,", "to", "was", "which"],
-    "correctOrder": ["He", "got", "a", "scholarship,", "which", "was", "a", "great", "help", "to", "him"],
+    "words": [
+      "He",
+      "a",
+      "a",
+      "got",
+      "great",
+      "help",
+      "him",
+      "scholarship,",
+      "to",
+      "was",
+      "which"
+    ],
+    "correctOrder": [
+      "He",
+      "got",
+      "a",
+      "scholarship,",
+      "which",
+      "was",
+      "a",
+      "great",
+      "help",
+      "to",
+      "him"
+    ],
     "explanation": "【非制限用法】コンマ（,）＋ which は、直前の名詞（scholarship：奨学金）や前文の内容を補足説明します。「そしてそれは〜」と前から訳し下ろすことで、長文の読むスピードを落とさずに情報を処理できます。"
   },
   {
@@ -2817,8 +6609,24 @@ const quizData = [
     "difficulty": 2,
     "type": "sort",
     "questionJa": "彼の提案は決して実行可能なものではない。",
-    "words": ["His", "by", "is", "means", "no", "practical", "proposal"],
-    "correctOrder": ["His", "proposal", "is", "by", "no", "means", "practical"],
+    "words": [
+      "His",
+      "by",
+      "is",
+      "means",
+      "no",
+      "practical",
+      "proposal"
+    ],
+    "correctOrder": [
+      "His",
+      "proposal",
+      "is",
+      "by",
+      "no",
+      "means",
+      "practical"
+    ],
     "explanation": "【強い否定】by no means は「決して〜ない」という強い否定を表します。proposal（提案）や practical（実用的な・実行可能な）といった語彙に対して、筆者が断固とした評価を下していることを示す、長文読解における非常に重要な論理マーカーです。"
   }
 ];
