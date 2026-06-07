@@ -1780,7 +1780,7 @@ const quizData = [
       "his",
       "wallet"
     ],
-    "explanation": "【話法】「Sに〜だと言う」は tell O that S V で表します。主節の動詞（told）が過去形のため、that節の中の時制も過去完了（had lost）に一致しています。"
+    "explanation": "【話法】「Sに〜だと言う」は tell O that S V で表します。この文では、財布をなくした出来事が「言った」時点より前に起きていることを明確にするため、that節で過去完了（had lost）を用いています。"
   },
   {
     "id": "U08_002",
@@ -2430,12 +2430,12 @@ const quizData = [
     "questionJa": "この書類には誤りがない。",
     "choices": [
       "from",
-      "of",
-      "with",
-      "without"
+      "on",
+      "at",
+      "in"
     ],
     "correctAnswer": "from",
-    "explanation": "【否定の重要表現】be free from 〜 で「（苦痛や誤りなど）好ましくないものがない」という意味を表します。not を使わずに否定の意味を持つため、document（書類）などの情報を正確に読み取る際に重要です。"
+    "explanation": "【否定の重要表現】be free from 〜 で「（苦痛や誤りなど）好ましくないものがない」という意味を表します。この問題では、選択肢の中で document is free from errors の形を作る from を選びます。"
   },
   {
     "id": "U10_009",
@@ -3032,22 +3032,20 @@ const quizData = [
     "type": "sort",
     "questionJa": "その研究者はデータを正確に分析した。",
     "words": [
-      "accurately",
-      "analyzed",
-      "data",
+      "The",
       "researcher",
+      "analyzed",
       "the",
-      "The"
+      "data accurately"
     ],
     "correctOrder": [
       "The",
       "researcher",
       "analyzed",
       "the",
-      "data",
-      "accurately"
+      "data accurately"
     ],
-    "explanation": "【第3文型】researcher（研究者）が主語、analyzed（分析した）が動詞、data（データ）が目的語のSVO構造です。副詞の accurately（正確に）が動詞を修飾する位置を正しく把握しましょう。"
+    "explanation": "【第3文型】researcher（研究者）が主語、analyzed（分析した）が動詞、data（データ）が目的語のSVO構造です。この問題では data accurately を1つのまとまりとして扱い、文末の様態副詞の位置を確認します。"
   },
   {
     "id": "U13_003",
@@ -3061,10 +3059,10 @@ const quizData = [
       "the students",
       "to the students",
       "for the students",
-      "students"
+      "of the students"
     ],
     "correctAnswer": "the students",
-    "explanation": "【第4文型】give O1 O2 で「O1（人）にO2（物）を与える」という構造になります。professor（教授）や assignment（課題・宿題）などの大学生活・長文頻出語彙と文型をセットで覚えましょう。"
+    "explanation": "【第4文型】give O1 O2 で「O1（人）にO2（物）を与える」という構造になります。この語順では、前置詞 to や for は不要です。professor（教授）や assignment（課題・宿題）などの語彙も確認しましょう。"
   },
   {
     "id": "U13_004",
@@ -3261,18 +3259,16 @@ const quizData = [
       "are",
       "consuming",
       "natural",
-      "rapidly",
-      "resources"
+      "resources rapidly"
     ],
     "correctOrder": [
       "We",
       "are",
       "consuming",
       "natural",
-      "resources",
-      "rapidly"
+      "resources rapidly"
     ],
-    "explanation": "【現在進行形】am/is/are + ~ing で「まさに今〜している」という動作の進行を表します。consume（消費する）や natural resources（天然資源）は環境問題などの長文で極めてよく出る単語なので、文の骨格と一緒に処理しましょう。"
+    "explanation": "【現在進行形】am/is/are + ~ing で「まさに今〜している」という動作の進行を表します。この問題では resources rapidly を1つのまとまりとして扱い、文末の様態副詞の位置を確認します。"
   },
   {
     "id": "U14_002",
@@ -3587,13 +3583,12 @@ const quizData = [
     "questionJa": "その新しい政策は経済を急速に成長させた。",
     "words": [
       "The",
-      "economy",
-      "grow",
-      "made",
       "new",
       "policy",
-      "rapidly",
-      "the"
+      "made",
+      "the",
+      "economy",
+      "grow rapidly"
     ],
     "correctOrder": [
       "The",
@@ -3602,10 +3597,9 @@ const quizData = [
       "made",
       "the",
       "economy",
-      "grow",
-      "rapidly"
+      "grow rapidly"
     ],
-    "explanation": "【原形不定詞】make O do で「Oを〜させる」という因果関係を表します。policy（政策）という無生物が主語になり、economy（経済）を grow（成長）させた、という論理展開を的確に読み取るための構造です。"
+    "explanation": "【原形不定詞】make O do で「Oを〜させる」という因果関係を表します。この問題では grow rapidly を1つのまとまりとして扱い、make O do の構造と文末の様態副詞の位置を確認します。"
   },
   {
     "id": "U15_005",
@@ -3786,7 +3780,7 @@ const quizData = [
       "are",
       "reliable"
     ],
-    "explanation": "【関係代名詞】that show the trend（その傾向を示す）が主語の The data を修飾しています。data はここでは複数扱いにし、動詞は show / are になります。trend（傾向）、reliable（信頼できる）といった語彙も確認しましょう。"
+    "explanation": "【関係代名詞】that show the trend（その傾向を示す）が主語の The data を修飾しています。ここでは data を複数扱いにし、動詞は show / are になります。実際の英語では data を単数扱いする用法もありますが、この問題では学校文法・学術的な複数扱いを確認します。"
   },
   {
     "id": "U16_002",
@@ -3863,7 +3857,7 @@ const quizData = [
       "communication",
       "skills"
     ],
-    "explanation": "【関係代名詞 what】What is required（要求されること）が文全体の主語（名詞のカタマリ）になっています。補語が communication skills のように複数扱いの場合、この文では are を用いています。"
+    "explanation": "【関係代名詞 what】What is required（要求されること）が文全体の主語（名詞のカタマリ）になっています。この文では、後ろの communication skills に合わせて主節の動詞を are にしています。"
   },
   {
     "id": "U16_005",
@@ -6238,18 +6232,18 @@ const quizData = [
     "theme": "否定・限定の副詞による倒置 ＋ 重要語彙",
     "difficulty": 3,
     "type": "sort",
-    "questionJa": "その時になって初めて、私は状況の深刻さを理解した。",
+    "questionJa": "その時になって初めて、私は状況がどれほど深刻かを理解した。",
     "words": [
       "Only",
+      "then",
       "did",
-      "gravity",
       "I",
-      "of",
       "realize",
+      "how",
+      "severe",
+      "the",
       "situation",
-      "the",
-      "the",
-      "then"
+      "was"
     ],
     "correctOrder": [
       "Only",
@@ -6257,13 +6251,13 @@ const quizData = [
       "did",
       "I",
       "realize",
+      "how",
+      "severe",
       "the",
-      "gravity",
-      "of",
-      "the",
-      "situation"
+      "situation",
+      "was"
     ],
-    "explanation": "【倒置構文】Only then（その時になって初めて）のような限定を表す副詞句が文頭に出ると、主節は疑問文の語順（did I realize）に倒置されます。gravity（深刻さ・重大さ）や situation（状況）といった語彙と結びつき、文脈の大きな転換点を示します。"
+    "explanation": "【倒置構文】Only then（その時になって初めて）のような限定を表す副詞句が文頭に出ると、主節は疑問文の語順（did I realize）に倒置されます。how severe the situation was（状況がどれほど深刻だったか）という名詞節が realize の目的語になっています。"
   },
   {
     "id": "U24_009",
