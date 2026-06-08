@@ -68,7 +68,7 @@
     }
 
     /* スタッツカード */
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 30px; }
     .stat-card {
       background: var(--card-bg); border: 1px solid #EAEAEA; border-radius: 12px;
       padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
@@ -249,7 +249,8 @@
     }
     .clear-icon { font-size: 4rem; margin-bottom: 15px; }
     .clear-text { font-size: 1.4rem; font-weight: bold; color: var(--primary); margin-bottom: 10px; }
-    .clear-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.5; }
+    .clear-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; }
+    .clear-rating { font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 24px; line-height: 1.5; }
 
 
 
@@ -342,6 +343,11 @@
           <span class="stat-value" id="dash-todays-count">-</span>
           <span class="stat-label">今日のタスク数</span>
         </div>
+        <div class="stat-card">
+          <span class="stat-icon">👑</span>
+          <span class="stat-value" id="dash-perfect-count">-</span>
+          <span class="stat-label">パーフェクト</span>
+        </div>
       </div>
 
       <section class="analytics-card" id="analytics-card" aria-labelledby="analytics-title">
@@ -433,9 +439,10 @@
     </div>
 
     <div id="all-clear-screen">
-      <div class="clear-icon">☕️</div>
-      <div class="clear-text">Session Complete</div>
-      <div class="clear-sub">今日のタスクはすべて完了しました。<br>また明日お会いしましょう。</div>
+      <div class="clear-icon" id="clear-icon">☕️</div>
+      <div class="clear-text" id="clear-text">Session Complete</div>
+      <div class="clear-sub" id="clear-sub">今日のタスクはすべて完了しました。<br>また明日お会いしましょう。</div>
+      <div class="clear-rating" id="clear-rating"></div>
       <button class="next-btn clear-return-btn" id="clear-return-btn" onclick="returnToDashboard()">ダッシュボードへ戻る</button>
     </div>
 
@@ -452,6 +459,7 @@
     const CURRENT_DECK_KEY = 'memoriaGrammaticaLite_current_deck_v1'; // JSONインポートした現在のデッキ
     const ACTIVE_SOURCE_KEY = 'memoriaGrammaticaLite_active_source_v1'; // 前回正常に使用したデータソース
     const PREFS_KEY = 'memoriaGrammaticaLite_prefs_v1'; // 学習者の表示・ペース設定
+    const ACHIEVEMENT_KEY = 'memoriaGrammaticaLite_achievements_v1'; // パーフェクトセッション等の達成記録
     const BACKUP_SCHEMA_VERSION = 1;
     const MAX_IMPORT_FILE_SIZE = 2 * 1024 * 1024;  // JSONインポートの上限（2MB）
     const MAX_BACKUP_FILE_SIZE = 5 * 1024 * 1024;  // バックアップ復元の上限（5MB）
@@ -1092,6 +1100,7 @@
       renderSimpleReport('loading', message);
       document.getElementById('dash-todays-count').innerText = '-';
       document.getElementById('dash-streak').innerText = '-';
+      document.getElementById('dash-perfect-count').innerText = '-';
       setStartButton('読み込み中...', true);
     }
 
@@ -1100,6 +1109,7 @@
       sessionMasterList = [];
       document.getElementById('dash-todays-count').innerText = 0;
       document.getElementById('dash-streak').innerText = computeStreak(getActivity());
+      renderAchievementStats();
       renderHeatmap();
       renderSimpleReport('error', message, details);
       setStartButton('読み込みに失敗しました', true);
@@ -1198,6 +1208,7 @@
           progress: loadStoredJSONOrNull(STORAGE_KEY) || {},
           activity: loadStoredJSONOrNull(ACTIVITY_KEY) || {},
           analytics: loadStoredJSONOrNull(ANALYTICS_KEY) || { schemaVersion: 1, cards: {} },
+          achievements: loadStoredJSONOrNull(ACHIEVEMENT_KEY) || { schemaVersion: 1, perfectSessionCount: 0, perfectSessionDates: {} },
           currentDeck: loadStoredJSONOrNull(CURRENT_DECK_KEY),
           activeSource: loadStoredJSONOrNull(ACTIVE_SOURCE_KEY),
           prefs: loadStoredJSONOrNull(PREFS_KEY) || {}
@@ -1259,6 +1270,7 @@
         restoreJSONKey(STORAGE_KEY, data.progress || {});
         restoreJSONKey(ACTIVITY_KEY, data.activity || {});
         restoreJSONKey(ANALYTICS_KEY, data.analytics || { schemaVersion: 1, cards: {} });
+        restoreJSONKey(ACHIEVEMENT_KEY, data.achievements || { schemaVersion: 1, perfectSessionCount: 0, perfectSessionDates: {} });
         restoreJSONKey(CURRENT_DECK_KEY, data.currentDeck || null);
         restoreJSONKey(ACTIVE_SOURCE_KEY, data.activeSource || null);
         restoreJSONKey(PREFS_KEY, data.prefs || {});
@@ -1302,6 +1314,8 @@
     let sessionQueue = [];       // 実際に処理する生きたキュー。要素は { q, lapses }
     // 弱点分析の初回回答は「同じカードの同日初回」として recordAnswerAnalytics 内で判定する。
     let hp = 3; let combo = 0;
+    let sessionMistakes = 0;
+    let sessionPerfectRecorded = false;
     let currentQuestion = null;
     let selectedWords = []; let remainingWords = [];
     let timerFrameId = null; let timerStartTime = 0; let autoAdvanceTimer;
@@ -1388,6 +1402,7 @@
       const activity = getActivity();
       document.getElementById('dash-todays-count').innerText = sessionMasterList.length;
       document.getElementById('dash-streak').innerText = computeStreak(activity);
+      renderAchievementStats();
       renderHeatmap();
       renderWeaknessAnalysis();
       renderNewCardPresets(effectiveNewCap, allowUserOverride);
@@ -1445,6 +1460,37 @@
       const activity = getActivity(); const key = studyDateKey(new Date());
       activity[key] = (activity[key] || 0) + 1;
       safeSaveJSON(ACTIVITY_KEY, activity);
+    }
+
+    // パーフェクトセッション（不正解・時間切れなしで完了）の達成記録
+    function getAchievements() {
+      const data = safeLoadJSON(ACHIEVEMENT_KEY, { schemaVersion: 1, perfectSessionCount: 0, perfectSessionDates: {} });
+      if (!data || typeof data !== 'object') return { schemaVersion: 1, perfectSessionCount: 0, perfectSessionDates: {} };
+      if (!data.perfectSessionDates || typeof data.perfectSessionDates !== 'object') data.perfectSessionDates = {};
+      data.perfectSessionCount = Math.max(0, Math.floor(Number(data.perfectSessionCount) || 0));
+      data.schemaVersion = data.schemaVersion || 1;
+      return data;
+    }
+
+    function saveAchievements(data) {
+      return safeSaveJSON(ACHIEVEMENT_KEY, data);
+    }
+
+    function recordPerfectSession() {
+      if (sessionPerfectRecorded) return false;
+      const data = getAchievements();
+      const key = studyDateKey(new Date());
+      data.perfectSessionCount = (Number(data.perfectSessionCount) || 0) + 1;
+      data.perfectSessionDates[key] = (Number(data.perfectSessionDates[key]) || 0) + 1;
+      sessionPerfectRecorded = true;
+      return saveAchievements(data);
+    }
+
+    function renderAchievementStats() {
+      const el = document.getElementById('dash-perfect-count');
+      if (!el) return;
+      const data = getAchievements();
+      el.innerText = data.perfectSessionCount || 0;
     }
     // 現在の学習日（未学習なら前の学習日）から遡って連続学習日数を数える
     function computeStreak(activity) {
@@ -1744,6 +1790,8 @@
       document.getElementById('all-clear-screen').style.display = 'none';
       document.getElementById('game-screen').style.display = 'flex';
       hp = 3; combo = 0;
+      sessionMistakes = 0;
+      sessionPerfectRecorded = false;
       updateHeader();
       loadQuestion();
     }
@@ -1776,6 +1824,10 @@
       progressBar.style.width = '100%';
       document.getElementById('result-next-btn').innerText = '次へ進む';
       document.getElementById('result-rest-btn').innerText = '記録して休憩する';
+      document.getElementById('clear-icon').innerText = '☕️';
+      document.getElementById('clear-text').innerText = 'Session Complete';
+      document.getElementById('clear-sub').innerHTML = '今日のタスクはすべて完了しました。<br>また明日お会いしましょう。';
+      document.getElementById('clear-rating').innerText = '';
     }
 
     function getTimeLimitForQuestion(question) {
@@ -1803,9 +1855,34 @@
 
     function showAllClearScreen() {
       resetResultUI();
+
+      const isPerfect = sessionMistakes === 0;
+      const icon = document.getElementById('clear-icon');
+      const title = document.getElementById('clear-text');
+      const sub = document.getElementById('clear-sub');
+      const rating = document.getElementById('clear-rating');
+
+      if (isPerfect) {
+        recordPerfectSession();
+        icon.innerText = '👑';
+        title.innerText = 'Perfect Session!';
+        sub.innerHTML = 'ノーダメージで今日の学習を完了しました。<br>すばらしい集中力です。';
+        rating.innerText = '⭐⭐⭐ Perfect!';
+      } else if (sessionMistakes <= 2) {
+        icon.innerText = '🌟';
+        title.innerText = 'Great Job!';
+        sub.innerHTML = '今日のタスクはすべて完了しました。<br>最後までよく集中できました。';
+        rating.innerText = '⭐⭐ Great!';
+      } else {
+        icon.innerText = '☕️';
+        title.innerText = 'Session Complete';
+        sub.innerHTML = '今日のタスクはすべて完了しました。<br>ひと休みして、また続けていきましょう。';
+        rating.innerText = '⭐ Good effort!';
+      }
+
       document.getElementById('game-screen').style.display = 'none';
       document.getElementById('all-clear-screen').style.display = 'flex';
-      announceToScreenReader('学習が完了しました。');
+      announceToScreenReader(isPerfect ? 'パーフェクトセッションです。ノーダメージで学習が完了しました。' : '学習が完了しました。');
       focusElementById('clear-return-btn');
     }
 
@@ -1999,6 +2076,7 @@
       if (isAnswerLocked) return;
       isAnswerLocked = true;
       cancelTimer();
+      sessionMistakes += 1;
       hp--; combo = 0; updateHeader();
       currentSm2Score = 1;                        // SM-2に素直：失敗は grade 1（lapse）
       const nextDays = finalizeAnswer(currentSm2Score);
