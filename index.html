@@ -218,6 +218,8 @@
     .skip-btn { background: var(--primary); color: #FFF; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
     .hard-btn { background: transparent; color: var(--combo); border: 1px solid var(--combo); padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
     .pause-btn { background: transparent; color: var(--primary); border: 1px solid var(--primary); padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+    .rest-btn { background: transparent; color: var(--text-muted); border: 1px solid #CBD5E0; padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
+    .rest-btn:active { transform: translateY(1px); }
 
     #result-modal {
       display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -324,7 +326,7 @@
 
       <div class="pace-card" id="pace-card">
         <h3>学習ペース（1日の新規カード）</h3>
-        <p class="pace-help">復習は毎日すべて出題されます。ここで選ぶのは「新しく導入する枚数」だけです。0 にすると新規を止めて復習のみにできます。</p>
+        <p class="pace-help">復習は毎日すべて出題されます。ここで選ぶのは「新しく導入する枚数」だけです。0 にすると新規を止めて復習のみにできます。学習日は午前4時に切り替わります。</p>
         <div class="pace-presets" id="pace-presets" role="group" aria-label="1日の新規カード数"></div>
         <p class="pace-status" id="pace-status"></p>
       </div>
@@ -380,7 +382,7 @@
       <header>
         <div class="hp-hearts" id="hp-display" aria-label="残りHP 3">❤️❤️❤️</div>
         <div class="combo-streak" id="combo-display"></div>
-        <button type="button" class="exit-session-btn" onclick="interruptSession()">中断して戻る</button>
+        <button type="button" class="exit-session-btn" onclick="interruptSession()">記録して中断</button>
       </header>
       <div class="timer-container"><div class="timer-bar" id="timer-bar"></div></div>
       
@@ -414,6 +416,7 @@
         <button class="skip-btn" id="correct-skip-btn" onclick="skipToNext()">次へ進む</button>
         <button class="hard-btn" id="correct-hard-btn" onclick="markHard()">難しかった（短めに復習）</button>
         <button class="pause-btn" id="correct-pause-btn" onclick="cancelAutoAdvance()">解説を確認する</button>
+        <button class="rest-btn" id="correct-rest-btn" onclick="saveGoodAndPause()">Goodで記録して休憩</button>
       </div>
     </div>
 
@@ -425,6 +428,7 @@
         <div class="correct-reveal" id="correct-reveal"></div>
         <div class="explanation-text" id="explanation-text"></div>
         <button class="next-btn" id="result-next-btn" onclick="nextQuestion()">次へ進む</button>
+        <button class="rest-btn" id="result-rest-btn" onclick="pauseAfterResult()">記録して休憩する</button>
       </div>
     </div>
 
@@ -441,7 +445,7 @@
 
   <script>
     // Memoria Grammatica Lite v1：学生配布用。AI生成・任意URL読込は搭載しない。
-    // Release candidate: 配布前必須修正と弱点分析（初回正答率・単元/テーマ別集計・バックアップ）反映済み。
+    // Final candidate: 午前4時を学習日の境界として、復習・新規枠・ストリーク・弱点分析を統一。
     const STORAGE_KEY = 'memoriaGrammaticaLite_progress_v1';
     const ACTIVITY_KEY = 'memoriaGrammaticaLite_activity_v1';   // 学習日ごとのレビュー回数（ストリーク・ヒートマップ用）
     const ANALYTICS_KEY = 'memoriaGrammaticaLite_analytics_v1'; // 問題別・単元別の弱点分析用累積データ
@@ -460,12 +464,13 @@
     const HARD_FACTOR = 1.2;       // Hard 時の間隔倍率（Good の EF 倍率より大幅に小さく、短めに復習するための係数）
     const AUTO_ADVANCE_MS = 4000;  // 正解トーストが自動で次へ進むまでの猶予（ms）
     const CHOICE_TIME_LIMIT = 15000;
-    const SORT_BASE_TIME = 3000;
-    const SORT_TIME_PER_WORD = 2000;
-    const SORT_MAX_TIME = 30000;      // 外部デッキで長い並べ替え問題が来ても、ゲームテンポを保つための上限
+    const SORT_BASE_TIME = 5000;
+    const SORT_TIME_PER_WORD = 2500;
+    const SORT_MAX_TIME = 45000;      // 長い並べ替え問題でも焦りすぎないよう、最大45秒まで許容
+    const STUDY_DAY_START_HOUR = 4;  // 学習日の切り替わり時刻。0:00〜3:59は前日の学習として扱う
 
     // ====================================================
-    // 1日あたりの新規カード導入数（復習=due は対象外＝常に全件）
+    // 1学習日あたりの新規カード導入数（復習=due は対象外＝常に全件）
     // ====================================================
     const NEW_CARDS_PER_DAY = 20;             // 既定の新規導入上限/日
     const MAX_USER_NEW_CARDS_PER_DAY = 40;    // 学生プリセット値の物理クランプ（教師デッキ値は対象外）
@@ -650,14 +655,14 @@
     }
 
     // choice 問題の英文を安全に描画する（innerHTML に生データを入れない）
-    // questionEn に [   ] が無い場合は、データ不備として警告しつつ末尾にブランクを補う。
+    // questionEn に空所 [ ] が無い場合は、データ不備として警告しつつ末尾にブランクを補う。
+    const BLANK_PATTERN = /\[\s*\]/;   // [ ] 内の空白数の差・(NFKC正規化後の)全角を許容
     function renderSentenceWithBlank(container, sentence) {
       container.innerHTML = '';
-      const placeholder = '[   ]';
       const safeSentence = String(sentence || '');
 
-      if (!safeSentence.includes(placeholder)) {
-        console.warn('choice問題の questionEn に [   ] がありません:', currentQuestion?.id);
+      if (!BLANK_PATTERN.test(safeSentence)) {
+        console.warn('choice問題の questionEn に空所 [ ] がありません:', currentQuestion?.id);
         if (safeSentence) container.appendChild(document.createTextNode(safeSentence + ' '));
         const blank = document.createElement('span');
         blank.className = 'blank';
@@ -665,7 +670,7 @@
         return;
       }
 
-      const parts = safeSentence.split(placeholder);
+      const parts = safeSentence.split(BLANK_PATTERN);
       parts.forEach((part, index) => {
         container.appendChild(document.createTextNode(part));
         if (index < parts.length - 1) {
@@ -836,8 +841,8 @@
       if (q.type === 'choice') {
         if (typeof q.questionEn !== 'string' || !q.questionEn.trim()) {
           errors.push(`${label}: questionEn 欠落`);
-        } else if (!q.questionEn.includes('[   ]')) {
-          warnings.push(`${label}: questionEn に [   ] がないため、表示時に末尾へブランクを補います`);
+        } else if (!BLANK_PATTERN.test(q.questionEn)) {
+          warnings.push(`${label}: questionEn に空所 [ ] がないため、表示時に末尾へブランクを補います`);
         }
 
         if (!Array.isArray(q.choices) || q.choices.length < 2) errors.push(`${label}: choices 不正`);
@@ -1213,7 +1218,8 @@
     }
 
     function exportBackup() {
-      const stamp = dateKey(new Date()).replaceAll('-', '');
+      // バックアップ名は学習日ではなく、実際のカレンダー日付を使う。
+      const stamp = calendarDateKey(new Date()).replaceAll('-', '');
       downloadJSON(`memoria-grammatica-lite-backup-${stamp}.json`, makeBackupPayload());
       renderSimpleReport('', 'バックアップJSONを書き出しました。');
     }
@@ -1351,7 +1357,7 @@
 
       const savedData = safeLoadJSON(STORAGE_KEY);
       const now = Date.now();
-      const todayKey = dateKey(new Date());
+      const todayKey = studyDateKey(new Date());
 
       // 新規上限の決定：ユーザー設定 → 教師デッキ設定 → 既定値。
       // 教師値(newCardsPerDay)は権限として尊重し、物理上限(=問題数)だけでクランプする。
@@ -1397,31 +1403,63 @@
       updateDeckControls();
     }
 
-    // 学習アクティビティ（日付 → その日のレビュー回数）
-    function dateKey(d) {
-      const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), day = String(d.getDate()).padStart(2, '0');
+    // ----------------------------------------------------
+    // 日付管理：実際のカレンダー日付と、午前4時境界の学習日を分離する
+    // ----------------------------------------------------
+    function formatLocalDateKey(d) {
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
       return `${y}-${m}-${day}`;
     }
+
+    // バックアップ名など、実際の日付を表示したい用途に使う。
+    function calendarDateKey(d = new Date()) {
+      return formatLocalDateKey(new Date(d));
+    }
+
+    // 0:00〜3:59を前日の学習として扱うための基準日時を返す。
+    function getStudyDayReference(d = new Date()) {
+      const adjusted = new Date(d);
+      adjusted.setHours(adjusted.getHours() - STUDY_DAY_START_HOUR);
+      return adjusted;
+    }
+
+    // 新規枠・ストリーク・ヒートマップ・弱点分析で共通して使う学習日キー。
+    function studyDateKey(d = new Date()) {
+      return formatLocalDateKey(getStudyDayReference(d));
+    }
+
+    // Good / Hard の次回復習を「指定学習日の午前4時」に設定する。
+    function getNextStudyDayReviewTime(intervalDays, from = new Date()) {
+      const days = Math.max(0, Math.floor(Number(intervalDays) || 0));
+      const nextDate = getStudyDayReference(from);
+      nextDate.setDate(nextDate.getDate() + days);
+      nextDate.setHours(STUDY_DAY_START_HOUR, 0, 0, 0);
+      return nextDate.getTime();
+    }
+
+    // 学習アクティビティ（学習日 → その日のレビュー回数）
     function getActivity() { return safeLoadJSON(ACTIVITY_KEY); }
     function recordActivity() {                       // 採点1回ごとに当日のレビュー数を加算
-      const activity = getActivity(); const key = dateKey(new Date());
+      const activity = getActivity(); const key = studyDateKey(new Date());
       activity[key] = (activity[key] || 0) + 1;
       safeSaveJSON(ACTIVITY_KEY, activity);
     }
-    // 今日（未学習なら昨日）から遡って連続学習日数を数える
+    // 現在の学習日（未学習なら前の学習日）から遡って連続学習日数を数える
     function computeStreak(activity) {
       let streak = 0; const d = new Date();
-      if (!activity[dateKey(d)]) d.setDate(d.getDate() - 1); // 今日まだ学習していなければ昨日から起算
-      while (activity[dateKey(d)]) { streak++; d.setDate(d.getDate() - 1); }
+      if (!activity[studyDateKey(d)]) d.setDate(d.getDate() - 1); // 現在の学習日に未学習なら前日から起算
+      while (activity[studyDateKey(d)]) { streak++; d.setDate(d.getDate() - 1); }
       return streak;
     }
-    // 直近28日のヒートマップを実データで描画
+    // 直近28学習日のヒートマップを実データで描画
     function renderHeatmap() {
       const grid = document.getElementById('heatmap-grid'); const activity = getActivity();
       grid.innerHTML = ''; const today = new Date();
-      for (let i = 27; i >= 0; i--) {                 // 古い順 → 今日が最後
+      for (let i = 27; i >= 0; i--) {                 // 古い順 → 現在の学習日が最後
         const d = new Date(today); d.setDate(today.getDate() - i);
-        const key = dateKey(d); const count = activity[key] || 0;
+        const key = studyDateKey(d); const count = activity[key] || 0;
         const cell = document.createElement('div'); cell.className = 'heat-cell';
         if (count >= 10) cell.classList.add('lvl-4');
         else if (count >= 6) cell.classList.add('lvl-3');
@@ -1474,7 +1512,7 @@
 
       Object.assign(record, meta);
       record.questionJa = String(question.questionJa || '');
-      const today = dateKey(new Date());
+      const today = studyDateKey(new Date());
       const isFirstAttemptToday = record.lastFirstAttemptDate !== today;
       record.totalAttempts = Math.max(0, Number(record.totalAttempts) || 0) + 1;
       record.correctCount = Math.max(0, Number(record.correctCount) || 0) + (score >= 2 ? 1 : 0);
@@ -1653,8 +1691,9 @@
       });
       if (status) {
         const userSet = getUserNewCardCap() !== null;
+        const capNote = effectiveCap > QUIZ.length ? `（このデッキは全${QUIZ.length}問のため最大${QUIZ.length}枚）` : '';
         status.textContent = allowUserOverride
-          ? `現在の設定: 1日 ${effectiveCap} 枚${userSet ? '' : '（既定）'}`
+          ? `現在の設定: 1日 ${effectiveCap} 枚${userSet ? '' : '（既定）'}${capNote}`
           : `このデッキは教師設定で固定されています（1日 ${effectiveCap} 枚）。`;
       }
     }
@@ -1673,8 +1712,21 @@
     }
 
     async function interruptSession() {
-      const ok = confirm('学習を中断してダッシュボードへ戻りますか？\n採点済みの進捗は保存されています。未回答の問題は次回も出題されます。');
+      const ok = confirm(
+        '学習をいったん中断しますか？\n\n' +
+        '採点済みの記録は保存されています。\n' +
+        'まだ答えていない問題は、次回も出題されます。'
+      );
       if (!ok) return;
+      await returnToDashboard();
+    }
+
+    // 結果表示後に、採点済みの記録を残したまま休憩する。
+    // セッション中の一時キューは破棄し、次回は保存済み進捗から今日のタスクを再構築する。
+    async function pauseAfterResult() {
+      if (isAnswerLocked && currentQuestion && currentNextReviewDays === null) {
+        finalizeAnswer(currentSm2Score);
+      }
       await returnToDashboard();
     }
 
@@ -1723,6 +1775,7 @@
       progressBar.style.transition = 'none';
       progressBar.style.width = '100%';
       document.getElementById('result-next-btn').innerText = '次へ進む';
+      document.getElementById('result-rest-btn').innerText = '記録して休憩する';
     }
 
     function getTimeLimitForQuestion(question) {
@@ -1898,12 +1951,14 @@
       } else if (score === 2) {
         // Hard：合格扱い。repetitions は進めるが、間隔は Good より短くする。
         // 連続Hardで1日のまま停滞しないよう、2回目以降は最低でも interval + 1 を保証する。
-        if (record.repetitions === 0) nextIntervalDays = 1;
-        else {
+        if (record.repetitions === 0) {
+          nextIntervalDays = 1;
+          record.repetitions = 2;   // 固定6日シードを飛ばし、次のGoodはEF駆動でHardを反映させる
+        } else {
           const grownByFactor = Math.round(record.interval * HARD_FACTOR);
           nextIntervalDays = Math.max(1, record.interval + 1, grownByFactor);
+          record.repetitions += 1;
         }
-        record.repetitions += 1;
       } else {
         // Re-learn（失敗）：連続成功回数をリセットし、保存上も「今すぐ due」にする
         // これにより、失敗直後にリロードしても翌日まで消えず、今日中の再出題と整合する
@@ -1917,14 +1972,14 @@
 
       record.interval = nextIntervalDays;
       if (score === 1) {
+        // Re-learn は今日中の再出題を優先し、保存上も即時 due にする。
         record.nextReviewTime = Date.now();
       } else {
-        const nextDate = new Date();
-        nextDate.setDate(nextDate.getDate() + nextIntervalDays);
-        record.nextReviewTime = nextDate.getTime();
+        // Good / Hard は、回答時刻ではなく午前4時境界の学習日単位で予定を設定する。
+        record.nextReviewTime = getNextStudyDayReviewTime(nextIntervalDays);
       }
 
-      if (isNewRecord && !record.firstSeenDate) record.firstSeenDate = dateKey(new Date());
+      if (isNewRecord && !record.firstSeenDate) record.firstSeenDate = studyDateKey(new Date());
       savedData[progressKey] = record;
       safeSaveJSON(STORAGE_KEY, savedData);
       recordActivity();                                 // 学習アクティビティを記録
@@ -1970,7 +2025,7 @@
 
       const toast = document.getElementById('correct-toast'); const progressBar = document.getElementById('toast-progress-bar');
       toast.classList.remove('hidden'); progressBar.style.transition = 'none'; progressBar.style.width = '100%';
-      announceToScreenReader('正解です。次へ進む、難しかった、解説を確認する、から選べます。');
+      announceToScreenReader('正解です。次へ進む、難しかった、解説を確認する、Goodで記録して休憩、から選べます。');
       focusElementById('correct-skip-btn');
       setTimeout(() => { progressBar.style.transition = `width ${AUTO_ADVANCE_MS}ms linear`; progressBar.style.width = '0%'; }, 50);
       autoAdvanceTimer = setTimeout(() => { skipToNext(); }, AUTO_ADVANCE_MS);
@@ -1991,6 +2046,17 @@
       clearTimeout(autoAdvanceTimer); toast.classList.add('hidden');
       const nextDays = finalizeAnswer(currentSm2Score);
       showModal(true, currentSm2Score, currentQuestion.explanation, null, nextDays);
+    }
+
+    // 正解トースト中に急用が入った場合、Good として保存してダッシュボードへ戻る。
+    async function saveGoodAndPause() {
+      const toast = document.getElementById('correct-toast');
+      if (toast.classList.contains('hidden')) return;
+      clearTimeout(autoAdvanceTimer);
+      toast.classList.add('hidden');
+      currentSm2Score = 3;
+      finalizeAnswer(currentSm2Score);
+      await returnToDashboard();
     }
 
     function updateHeader() {
@@ -2033,11 +2099,13 @@
         nextReviewBadge.style.display = 'inline-block';
         const scoreLabels = { 1: "Re-learn", 2: "Hard", 3: "Good", 4: "Easy" };
         badge.innerText = `評価: ${scoreLabels[sm2Score]}`;
-        nextReviewBadge.innerText = (sm2Score >= 2) ? `次回復習: 約 ${nextDays} 日後` : `次回復習: 今日中に再出題`;
+        nextReviewBadge.innerText = (sm2Score >= 2)
+          ? (nextDays === 1 ? '次回復習: 次の学習日' : `次回復習: 約 ${nextDays} 学習日後`)
+          : '次回復習: 今日中に再出題';
       }
 
       const announcement = isRecoveryBreak
-        ? `ひと休み。正解は ${getCorrectAnswerText()} です。HPを回復して続けられます。`
+        ? `ひと休み。正解は ${getCorrectAnswerText()} です。HPを回復して続けるか、記録して休憩できます。`
         : (isCorrect
           ? `正解です。評価は ${sm2Score === 2 ? 'Hard' : 'Good'} です。`
           : `${failTitle || '不正解'} 正解は ${getCorrectAnswerText()} です。`);
@@ -2050,42 +2118,32 @@
     // ----------------------------------------------------
     function nextQuestion() {
       document.getElementById('result-modal').style.display = 'none';
-      const needsHpRecovery = hp <= 0;
 
       // いま採点し終えたカード（キュー先頭）を取り出す。
-      // HPが0でも、正解済みカードを含む当日セット全体は再構築しない。
       const finished = sessionQueue.shift();
-      if (!finished) {
-        if (needsHpRecovery) {
-          hp = 3; combo = 0;
-          updateHeader();
-        }
-        loadQuestion();
-        return;
-      }
 
       // 失敗（score 1 = 不正解/時間切れ）のみセッション内で再出題する。
       // Hard(2) 以上は合格扱いで将来の復習にスケジュールされるため、当日の再出題はしない。
       // 直前リピートを避けるため他カードを数枚挟み、lapses 上限で打ち切る（無限ループ防止）。
-      if (currentSm2Score === 1 && finished.lapses < MAX_SESSION_LAPSES) {
+      if (finished && currentSm2Score === 1 && finished.lapses < MAX_SESSION_LAPSES) {
         finished.lapses += 1;
         const pos = Math.min(REINSERT_GAP, sessionQueue.length); // 末尾を超えない位置
         sessionQueue.splice(pos, 0, finished);
       }
 
-      // HPが0になった場合は、残りキューを維持したままHPとコンボだけを回復する。
-      if (needsHpRecovery) {
+      // HPが0なら、残りキューを維持したままHPとコンボだけ回復する。
+      // （次へ進むボタンの文言は loadQuestion → resetResultUI が設定するため、ここでは触れない）
+      if (hp <= 0) {
         hp = 3; combo = 0;
-        document.getElementById('result-next-btn').innerText = "次へ進む";
         updateHeader();
       }
 
-      // キューが空ならセッション完了
+      // 完了判定は1か所に集約する。
       if (sessionQueue.length === 0) {
         showAllClearScreen();
-      } else {
-        loadQuestion();
+        return;
       }
+      loadQuestion();
     }
 
 
