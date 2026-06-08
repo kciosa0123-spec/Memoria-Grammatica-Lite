@@ -307,7 +307,7 @@
         <p>大学基本英文法・構文を、少しずつ確実に。</p>
       </div>
 
-      <div id="data-report" class="data-report hidden"></div>
+      <div id="data-report" class="data-report hidden" aria-live="polite"></div>
 
 
       <div class="deck-tools" id="deck-tools">
@@ -330,6 +330,13 @@
         <p class="pace-help">復習は毎日すべて出題されます。ここで選ぶのは「新しく導入する枚数」だけです。0 にすると新規を止めて復習のみにできます。学習日は午前4時に切り替わります。</p>
         <div class="pace-presets" id="pace-presets" role="group" aria-label="1日の新規カード数"></div>
         <p class="pace-status" id="pace-status"></p>
+      </div>
+
+      <div class="pace-card" id="timer-card">
+        <h3>制限時間</h3>
+        <p class="pace-help">読む速度や操作に合わせて、問題の制限時間を調整できます。「なし」にすると時間切れによる失敗は発生しません。</p>
+        <div class="pace-presets" id="timer-presets" role="group" aria-label="制限時間設定"></div>
+        <p class="pace-status" id="timer-status"></p>
       </div>
 
       <div class="stats-grid">
@@ -470,11 +477,19 @@
     const REINSERT_GAP = 3;        // 失敗カードを再投入するまでに挟む他カード数（スペーシング）
     const MAX_SESSION_LAPSES = 3;  // 1セッションで同一カードを再投入する上限（無限ループ防止）
     const HARD_FACTOR = 1.2;       // Hard 時の間隔倍率（Good の EF 倍率より大幅に小さく、短めに復習するための係数）
-    const AUTO_ADVANCE_MS = 4000;  // 正解トーストが自動で次へ進むまでの猶予（ms）
+    const AUTO_ADVANCE_MS = 6000;  // 正解トーストが自動で次へ進むまでの猶予（ms）。操作に余裕を持たせるため6秒
     const CHOICE_TIME_LIMIT = 15000;
+    const CHOICE_RELAXED_TIME_LIMIT = 30000;
     const SORT_BASE_TIME = 5000;
     const SORT_TIME_PER_WORD = 2500;
     const SORT_MAX_TIME = 45000;      // 長い並べ替え問題でも焦りすぎないよう、最大45秒まで許容
+    const SORT_RELAXED_FACTOR = 1.7;
+    const SORT_RELAXED_MAX_TIME = 90000;
+    const TIMER_MODE_PRESETS = [
+      { value: 'standard', label: '標準' },
+      { value: 'relaxed', label: 'ゆっくり' },
+      { value: 'off', label: 'なし' }
+    ];
     const STUDY_DAY_START_HOUR = 4;  // 学習日の切り替わり時刻。0:00〜3:59は前日の学習として扱う
 
     // ====================================================
@@ -635,6 +650,18 @@
     function setUserNewCardCap(value) {
       const prefs = getPrefs();
       prefs.newCardsPerDay = Math.max(0, Math.min(MAX_USER_NEW_CARDS_PER_DAY, Math.floor(Number(value) || 0)));
+      safeSaveJSON(PREFS_KEY, prefs);
+    }
+
+    function getTimerMode() {
+      const mode = String(getPrefs().timerMode || 'standard');
+      return TIMER_MODE_PRESETS.some(item => item.value === mode) ? mode : 'standard';
+    }
+
+    function setTimerMode(mode) {
+      const nextMode = TIMER_MODE_PRESETS.some(item => item.value === mode) ? mode : 'standard';
+      const prefs = getPrefs();
+      prefs.timerMode = nextMode;
       safeSaveJSON(PREFS_KEY, prefs);
     }
 
@@ -1406,6 +1433,7 @@
       renderHeatmap();
       renderWeaknessAnalysis();
       renderNewCardPresets(effectiveNewCap, allowUserOverride);
+      renderTimerModeSettings();
 
       if (QUIZ.length === 0) {
         setStartButton('有効な問題がありません', true);
@@ -1744,6 +1772,32 @@
       }
     }
 
+    // 制限時間設定を描画する。時間切れが負担になる利用者向けに「ゆっくり」「なし」を選べる。
+    function renderTimerModeSettings() {
+      const wrap = document.getElementById('timer-presets');
+      const status = document.getElementById('timer-status');
+      if (!wrap) return;
+      const mode = getTimerMode();
+      wrap.innerHTML = '';
+      TIMER_MODE_PRESETS.forEach(item => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pace-btn';
+        btn.textContent = item.label;
+        btn.setAttribute('aria-pressed', item.value === mode ? 'true' : 'false');
+        btn.onclick = () => { setTimerMode(item.value); renderTimerModeSettings(); };
+        wrap.appendChild(btn);
+      });
+      if (status) {
+        const messageMap = {
+          standard: '現在の設定: 標準（choice 15秒、sortはタイル数に応じて最大45秒）',
+          relaxed: '現在の設定: ゆっくり（choice 30秒、sortは標準より長め）',
+          off: '現在の設定: なし（時間切れによる失敗は発生しません）'
+        };
+        status.textContent = messageMap[mode] || messageMap.standard;
+      }
+    }
+
     // マスターリストから生きたキューを生成（lapses をリセット）
     function buildSessionQueue() {
       sessionQueue = sessionMasterList.map(q => ({ q, lapses: 0 }));
@@ -1770,6 +1824,8 @@
     // 結果表示後に、採点済みの記録を残したまま休憩する。
     // セッション中の一時キューは破棄し、次回は保存済み進捗から今日のタスクを再構築する。
     async function pauseAfterResult() {
+      // 通常は result-modal 表示前に finalizeAnswer 済み。
+      // 未保存状態で呼ばれた場合に備えた保険として残す。
       if (isAnswerLocked && currentQuestion && currentNextReviewDays === null) {
         finalizeAnswer(currentSm2Score);
       }
@@ -1816,6 +1872,8 @@
       const reveal = document.getElementById('correct-reveal');
       const progressBar = document.getElementById('toast-progress-bar');
 
+      deactivateDialogTrap(modal, false);
+      deactivateDialogTrap(toast, false);
       modal.style.display = 'none';
       toast.classList.add('hidden');
       reveal.style.display = 'none';
@@ -1831,11 +1889,17 @@
     }
 
     function getTimeLimitForQuestion(question) {
+      const mode = getTimerMode();
+      if (mode === 'off') return null;
+
       if (question.type === 'sort') {
         const wordCount = Array.isArray(question.words) ? question.words.length : 0;
-        return Math.min(SORT_MAX_TIME, SORT_BASE_TIME + wordCount * SORT_TIME_PER_WORD);
+        const baseLimit = Math.min(SORT_MAX_TIME, SORT_BASE_TIME + wordCount * SORT_TIME_PER_WORD);
+        return mode === 'relaxed'
+          ? Math.min(SORT_RELAXED_MAX_TIME, Math.round(baseLimit * SORT_RELAXED_FACTOR))
+          : baseLimit;
       }
-      return CHOICE_TIME_LIMIT;
+      return mode === 'relaxed' ? CHOICE_RELAXED_TIME_LIMIT : CHOICE_TIME_LIMIT;
     }
 
 
@@ -1851,6 +1915,89 @@
       if (el && typeof el.focus === 'function') {
         setTimeout(() => el.focus({ preventScroll: true }), 0);
       }
+    }
+
+    let activeDialogTrap = null;
+    let focusBeforeDialog = null;
+
+    function getFocusableElements(container) {
+      if (!container) return [];
+      const selector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      return Array.from(container.querySelectorAll(selector))
+        .filter(el => !el.disabled && el.offsetParent !== null && el.getAttribute('aria-hidden') !== 'true');
+    }
+
+    function activateDialogTrap(dialog) {
+      if (!dialog) return;
+      if (activeDialogTrap !== dialog) focusBeforeDialog = document.activeElement;
+      activeDialogTrap = dialog;
+    }
+
+    function deactivateDialogTrap(dialog, restoreFocus = false) {
+      if (activeDialogTrap !== dialog) return;
+      activeDialogTrap = null;
+      const restoreTarget = focusBeforeDialog;
+      focusBeforeDialog = null;
+      if (restoreFocus && restoreTarget && typeof restoreTarget.focus === 'function' && document.contains(restoreTarget)) {
+        setTimeout(() => restoreTarget.focus({ preventScroll: true }), 0);
+      }
+    }
+
+    function trapTabWithinDialog(event) {
+      if (!activeDialogTrap || event.key !== 'Tab') return false;
+      const focusables = getFocusableElements(activeDialogTrap);
+      if (focusables.length === 0) {
+        event.preventDefault();
+        return true;
+      }
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+        return true;
+      }
+      if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+        return true;
+      }
+      return false;
+    }
+
+    function prefersReducedMotion() {
+      return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    }
+
+    function shouldAutoAdvance() {
+      // OSやブラウザで「動きを減らす」設定が有効な場合は、正解後も自動で進めない。
+      return !prefersReducedMotion();
+    }
+
+    function isInteractiveKeyTarget(target) {
+      if (!target) return false;
+      const tag = target.tagName;
+      return target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(tag);
+    }
+
+    function isGameVisible() {
+      const game = document.getElementById('game-screen');
+      return game && game.style.display !== 'none';
+    }
+
+    function isCorrectToastOpen() {
+      const toast = document.getElementById('correct-toast');
+      return toast && !toast.classList.contains('hidden');
+    }
+
+    function isResultModalOpen() {
+      const modal = document.getElementById('result-modal');
+      return modal && modal.style.display === 'flex';
+    }
+
+    function isAllClearOpen() {
+      const clear = document.getElementById('all-clear-screen');
+      return clear && clear.style.display === 'flex';
     }
 
     function showAllClearScreen() {
@@ -1895,6 +2042,7 @@
       }
 
       currentQuestion = sessionQueue[0].q;   // 先頭をピーク（取り出しは採点後に nextQuestion で実施）
+      currentSm2Score = 3;
       currentNextReviewDays = null;
       isAnswerLocked = false;
       timeLimit = getTimeLimitForQuestion(currentQuestion);
@@ -1919,10 +2067,20 @@
     function startTimer() {
       cancelTimer();
       const timerBar = document.getElementById('timer-bar');
+      timerBar.style.width = "100%";
+
+      if (timeLimit === null) {
+        timeLeft = null;
+        timerStartTime = 0;
+        timerBar.style.backgroundColor = "#CBD5E0";
+        timerBar.setAttribute('aria-label', '制限時間なし');
+        return;
+      }
+
       timerStartTime = performance.now();
       timeLeft = timeLimit;
-      timerBar.style.width = "100%";
       timerBar.style.backgroundColor = "var(--correct)";
+      timerBar.setAttribute('aria-label', '制限時間');
 
       function tick(now) {
         if (isAnswerLocked) {
@@ -1991,8 +2149,10 @@
       const sentenceDiv = document.getElementById('choice-sentence'); const grid = document.getElementById('choice-grid');
       renderSentenceWithBlank(sentenceDiv, currentQuestion.questionEn);
       grid.innerHTML = '';
-      currentQuestion.choices.forEach(choice => {
+      currentQuestion.choices.forEach((choice, index) => {
         const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'choice-btn'; btn.innerText = choice;
+        btn.setAttribute('aria-label', `選択肢 ${index + 1}: ${choice}`);
+        btn.title = `${index + 1}: ${choice}`;
         btn.onclick = () => checkChoiceAnswer(choice); grid.appendChild(btn);
       });
     }
@@ -2013,10 +2173,10 @@
       record.interval = Number.isFinite(Number(record.interval)) ? Math.max(0, Math.round(Number(record.interval))) : 0;
       record.repetitions = Number.isFinite(Number(record.repetitions)) ? Math.max(0, Math.floor(Number(record.repetitions))) : 0;
 
-      // アプリの 1–4 評価を SM-2 の品質 q(0–5) へ対応づける。
+      // アプリの 1–4 評価を SM-2 の品質 quality(0–5) へ対応づける。
       // Lite v1の通常操作では 1:Re-learn / 2:手動Hard / 3:Good を使用し、Easyは自動判定しない。
       // 1:Re-learn→2 / 2:Hard→3 / 3:Good→4 / 4:Easy→5
-      const q = { 1: 2, 2: 3, 3: 4, 4: 5 }[score];
+      const quality = { 1: 2, 2: 3, 3: 4, 4: 5 }[score];
 
       let nextIntervalDays;
       if (score >= 3) {
@@ -2043,8 +2203,8 @@
         nextIntervalDays = 0;
       }
 
-      // EF 更新（毎回）：EF += 0.1 - (5-q)(0.08 + (5-q)·0.02)、下限 1.3
-      record.easeFactor += 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02);
+      // EF 更新（毎回）：EF += 0.1 - (5-quality)(0.08 + (5-quality)·0.02)、下限 1.3
+      record.easeFactor += 0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02);
       if (record.easeFactor < 1.3) record.easeFactor = 1.3;
 
       record.interval = nextIntervalDays;
@@ -2103,16 +2263,30 @@
 
       const toast = document.getElementById('correct-toast'); const progressBar = document.getElementById('toast-progress-bar');
       toast.classList.remove('hidden'); progressBar.style.transition = 'none'; progressBar.style.width = '100%';
-      announceToScreenReader('正解です。次へ進む、難しかった、解説を確認する、Goodで記録して休憩、から選べます。');
+      activateDialogTrap(toast);
       focusElementById('correct-skip-btn');
-      setTimeout(() => { progressBar.style.transition = `width ${AUTO_ADVANCE_MS}ms linear`; progressBar.style.width = '0%'; }, 50);
-      autoAdvanceTimer = setTimeout(() => { skipToNext(); }, AUTO_ADVANCE_MS);
+
+      if (shouldAutoAdvance()) {
+        announceToScreenReader('正解です。6秒後に自動で次へ進みます。次へ進む、難しかった、解説を確認する、Goodで記録して休憩、から選べます。');
+        setTimeout(() => {
+          if (!toast.classList.contains('hidden')) {
+            progressBar.style.transition = `width ${AUTO_ADVANCE_MS}ms linear`;
+            progressBar.style.width = '0%';
+          }
+        }, 50);
+        autoAdvanceTimer = setTimeout(() => { skipToNext(); }, AUTO_ADVANCE_MS);
+      } else {
+        announceToScreenReader('正解です。自動進行は無効です。次へ進む、難しかった、解説を確認する、Goodで記録して休憩、から選べます。');
+        autoAdvanceTimer = null;
+      }
     }
 
     function skipToNext() {
       const toast = document.getElementById('correct-toast');
       if (toast.classList.contains('hidden')) return;   // 二重発火ガード（タップとタイマーの競合）
-      clearTimeout(autoAdvanceTimer); toast.classList.add('hidden');
+      clearTimeout(autoAdvanceTimer);
+      deactivateDialogTrap(toast, false);
+      toast.classList.add('hidden');
       finalizeAnswer(currentSm2Score);
       nextQuestion();
     }
@@ -2121,7 +2295,9 @@
     function cancelAutoAdvance() {
       const toast = document.getElementById('correct-toast');
       if (toast.classList.contains('hidden')) return;
-      clearTimeout(autoAdvanceTimer); toast.classList.add('hidden');
+      clearTimeout(autoAdvanceTimer);
+      deactivateDialogTrap(toast, false);
+      toast.classList.add('hidden');
       const nextDays = finalizeAnswer(currentSm2Score);
       showModal(true, currentSm2Score, currentQuestion.explanation, null, nextDays);
     }
@@ -2131,6 +2307,7 @@
       const toast = document.getElementById('correct-toast');
       if (toast.classList.contains('hidden')) return;
       clearTimeout(autoAdvanceTimer);
+      deactivateDialogTrap(toast, false);
       toast.classList.add('hidden');
       currentSm2Score = 3;
       finalizeAnswer(currentSm2Score);
@@ -2150,6 +2327,7 @@
       const badge = document.getElementById('sm2-badge'); const nextReviewBadge = document.getElementById('next-review-badge');
       const text = document.getElementById('explanation-text'); const reveal = document.getElementById('correct-reveal');
       modal.style.display = 'flex'; text.innerText = explanation || '';
+      activateDialogTrap(modal);
 
       const isRecoveryBreak = hp <= 0;
       document.getElementById('result-next-btn').innerText = isRecoveryBreak ? "HPを回復して続ける" : "次へ進む";
@@ -2195,7 +2373,9 @@
     // 出題キューの進行（セッション内再出題ロジックの中核）
     // ----------------------------------------------------
     function nextQuestion() {
-      document.getElementById('result-modal').style.display = 'none';
+      const resultModal = document.getElementById('result-modal');
+      deactivateDialogTrap(resultModal, false);
+      resultModal.style.display = 'none';
 
       // いま採点し終えたカード（キュー先頭）を取り出す。
       const finished = sessionQueue.shift();
@@ -2225,9 +2405,75 @@
     }
 
 
+    function handleChoiceShortcut(index) {
+      if (!currentQuestion || currentQuestion.type !== 'choice' || isAnswerLocked) return;
+      const choice = Array.isArray(currentQuestion.choices) ? currentQuestion.choices[index] : null;
+      if (choice === undefined || choice === null) return;
+      checkChoiceAnswer(choice);
+    }
+
+    function handleGlobalKeydown(event) {
+      if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey) return;
+      const key = event.key;
+      if (key === 'Tab' && trapTabWithinDialog(event)) return;
+      if (isInteractiveKeyTarget(event.target)) return;
+
+      const isAdvanceKey = key === 'Enter' || key === ' ';
+
+      if (isCorrectToastOpen()) {
+        if (isAdvanceKey) {
+          event.preventDefault();
+          skipToNext();
+        }
+        return;
+      }
+
+      if (isResultModalOpen()) {
+        if (isAdvanceKey) {
+          event.preventDefault();
+          nextQuestion();
+        }
+        return;
+      }
+
+      if (isAllClearOpen()) {
+        if (isAdvanceKey) {
+          event.preventDefault();
+          returnToDashboard();
+        }
+        return;
+      }
+
+      if (!isGameVisible() || isAnswerLocked || !currentQuestion) return;
+
+      if (currentQuestion.type === 'choice' && /^[1-4]$/.test(key)) {
+        event.preventDefault();
+        handleChoiceShortcut(Number(key) - 1);
+        return;
+      }
+
+      if (currentQuestion.type === 'sort') {
+        if (key === 'Enter') {
+          if (remainingWords.length === 0 && selectedWords.length > 0) {
+            event.preventDefault();
+            checkSortAnswer();
+          }
+          return;
+        }
+        if (key === 'Backspace') {
+          if (selectedWords.length > 0) {
+            event.preventDefault();
+            undoLastWord();
+          }
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleGlobalKeydown);
+
     // タブを裏に回していた時間はタイマーに含めない。
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden || isAnswerLocked || timerFrameId === null) return;
+      if (document.hidden || isAnswerLocked || timerFrameId === null || timeLimit === null) return;
       timerStartTime = performance.now() - (timeLimit - timeLeft);
     });
 
