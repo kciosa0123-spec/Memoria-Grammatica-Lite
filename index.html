@@ -286,6 +286,7 @@
     .pace-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #FFF; }
     .pace-btn:disabled { color: #A0AEC0; background: #F1F5F9; cursor: not-allowed; }
     .pace-status { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 10px 0 0; }
+    .shortcut-hint { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 8px 0 0; text-align: center; }
 
     .sr-only {
       position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -335,6 +336,7 @@
       <div class="pace-card" id="timer-card">
         <h3>制限時間</h3>
         <p class="pace-help">読む速度や操作に合わせて、問題の制限時間を調整できます。「なし」にすると時間切れによる失敗は発生しません。</p>
+        <p class="shortcut-hint">PCでは、1〜4キーで選択、Enterで確定・次へ、Backspaceで並べ替えを1語戻せます。</p>
         <div class="pace-presets" id="timer-presets" role="group" aria-label="制限時間設定"></div>
         <p class="pace-status" id="timer-status"></p>
       </div>
@@ -405,15 +407,16 @@
         <div class="sort-area" id="mode-sort">
           <div class="answer-slots" id="answer-slots"></div>
           <div class="sort-controls">
-            <button class="ctrl-btn" onclick="undoLastWord()">↶ 戻す</button>
+            <button class="ctrl-btn" onclick="undoLastWord()">↶ 戻す (BS)</button>
             <button class="ctrl-btn" onclick="resetSort()">🗑️ リセット</button>
           </div>
           <div class="word-bank" id="word-bank"></div>
-          <button id="check-sort-btn" class="check-btn hidden" onclick="checkSortAnswer()">解答を確定</button>
+          <button id="check-sort-btn" class="check-btn hidden" onclick="checkSortAnswer()">解答を確定 (Enter)</button>
         </div>
 
         <div class="choice-area" id="mode-choice">
           <div class="sentence-blank" id="choice-sentence"></div>
+          <p class="shortcut-hint">PCでは 1〜4 キーでも選択できます。</p>
           <div class="choice-grid" id="choice-grid"></div>
         </div>
       </main>
@@ -426,7 +429,7 @@
       <div class="toast-title" id="correct-toast-title">Excellent.</div>
       <div class="toast-progress-bg"><div class="toast-progress-bar" id="toast-progress-bar"></div></div>
       <div class="toast-actions">
-        <button class="skip-btn" id="correct-skip-btn" onclick="skipToNext()">次へ進む</button>
+        <button class="skip-btn" id="correct-skip-btn" onclick="skipToNext()">次へ進む (Enter)</button>
         <button class="hard-btn" id="correct-hard-btn" onclick="markHard()">難しかった（短めに復習）</button>
         <button class="pause-btn" id="correct-pause-btn" onclick="cancelAutoAdvance()">解説を確認する</button>
         <button class="rest-btn" id="correct-rest-btn" onclick="saveGoodAndPause()">Goodで記録して休憩</button>
@@ -440,7 +443,7 @@
         <div class="next-review-badge" id="next-review-badge"></div>
         <div class="correct-reveal" id="correct-reveal"></div>
         <div class="explanation-text" id="explanation-text"></div>
-        <button class="next-btn" id="result-next-btn" onclick="nextQuestion()">次へ進む</button>
+        <button class="next-btn" id="result-next-btn" onclick="nextQuestion()">次へ進む (Enter)</button>
         <button class="rest-btn" id="result-rest-btn" onclick="pauseAfterResult()">記録して休憩する</button>
       </div>
     </div>
@@ -450,7 +453,7 @@
       <div class="clear-text" id="clear-text">Session Complete</div>
       <div class="clear-sub" id="clear-sub">今日のタスクはすべて完了しました。<br>また明日お会いしましょう。</div>
       <div class="clear-rating" id="clear-rating"></div>
-      <button class="next-btn clear-return-btn" id="clear-return-btn" onclick="returnToDashboard()">ダッシュボードへ戻る</button>
+      <button class="next-btn clear-return-btn" id="clear-return-btn" onclick="returnToDashboard()">ダッシュボードへ戻る (Enter)</button>
     </div>
 
   </div>
@@ -1880,7 +1883,7 @@
       reveal.innerText = '';
       progressBar.style.transition = 'none';
       progressBar.style.width = '100%';
-      document.getElementById('result-next-btn').innerText = '次へ進む';
+      document.getElementById('result-next-btn').innerText = '次へ進む (Enter)';
       document.getElementById('result-rest-btn').innerText = '記録して休憩する';
       document.getElementById('clear-icon').innerText = '☕️';
       document.getElementById('clear-text').innerText = 'Session Complete';
@@ -2330,7 +2333,7 @@
       activateDialogTrap(modal);
 
       const isRecoveryBreak = hp <= 0;
-      document.getElementById('result-next-btn').innerText = isRecoveryBreak ? "HPを回復して続ける" : "次へ進む";
+      document.getElementById('result-next-btn').innerText = isRecoveryBreak ? "HPを回復して続ける (Enter)" : "次へ進む (Enter)";
 
       title.innerText = isRecoveryBreak ? "ひと休み" : (isCorrect ? "Excellent." : (failTitle || "Incorrect."));
       title.className = isRecoveryBreak
@@ -2414,6 +2417,8 @@
 
     function handleGlobalKeydown(event) {
       if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey) return;
+      // 日本語IMEの変換中は、Enterなどをアプリ操作として拾わない。
+      if (event.isComposing || event.keyCode === 229) return;
       const key = event.key;
       if (key === 'Tab' && trapTabWithinDialog(event)) return;
       if (isInteractiveKeyTarget(event.target)) return;
