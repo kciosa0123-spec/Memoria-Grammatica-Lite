@@ -1348,6 +1348,7 @@
     let sessionPerfectRecorded = false;
     let currentQuestion = null;
     let selectedWords = []; let remainingWords = [];
+    let currentChoices = [];               // choice問題の表示順（出題ごとにシャッフル）
     let timerFrameId = null; let timerStartTime = 0; let autoAdvanceTimer;
     let timeLimit = 15000; let timeLeft = 15000;
     let currentSm2Score = 3;
@@ -1815,12 +1816,20 @@
     }
 
     async function interruptSession() {
+      // confirm はJS実行を止めるが実時間(performance.now)は進むため、
+      // ダイアログ表示前の残り時間を控えておき、キャンセル時に基準時刻を補正する。
+      const frozenTimeLeft = timeLeft;
       const ok = confirm(
         '学習をいったん中断しますか？\n\n' +
         '採点済みの記録は保存されています。\n' +
         'まだ答えていない問題は、次回も出題されます。'
       );
-      if (!ok) return;
+      if (!ok) {
+        if (!isAnswerLocked && timerFrameId !== null && timeLimit !== null && frozenTimeLeft !== null) {
+          timerStartTime = performance.now() - (timeLimit - frozenTimeLeft);
+        }
+        return;
+      }
       await returnToDashboard();
     }
 
@@ -2152,7 +2161,9 @@
       const sentenceDiv = document.getElementById('choice-sentence'); const grid = document.getElementById('choice-grid');
       renderSentenceWithBlank(sentenceDiv, currentQuestion.questionEn);
       grid.innerHTML = '';
-      currentQuestion.choices.forEach((choice, index) => {
+      // 正解の位置を固定しない。出題のたびにシャッフルする（判定は文字列比較なので進捗に影響しない）。
+      currentChoices = shuffleArray(currentQuestion.choices);
+      currentChoices.forEach((choice, index) => {
         const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'choice-btn'; btn.innerText = choice;
         btn.setAttribute('aria-label', `選択肢 ${index + 1}: ${choice}`);
         btn.title = `${index + 1}: ${choice}`;
@@ -2410,7 +2421,7 @@
 
     function handleChoiceShortcut(index) {
       if (!currentQuestion || currentQuestion.type !== 'choice' || isAnswerLocked) return;
-      const choice = Array.isArray(currentQuestion.choices) ? currentQuestion.choices[index] : null;
+      const choice = Array.isArray(currentChoices) ? currentChoices[index] : null;
       if (choice === undefined || choice === null) return;
       checkChoiceAnswer(choice);
     }
