@@ -470,7 +470,7 @@ const quizData = [
       "gone",
       "home"
     ],
-    "explanation": "【過去完了】「到着した（過去）」よりも前に「帰宅していた」という「過去よりさらに前の出来事（大過去）」を表すため、had + 過去分詞 を使います。長文の中で複数の過去の出来事が登場した際、時間的な前後関係を整理する強力なサインとなります。"
+    "explanation": "【過去完了】「到着した（過去）」よりも前に「帰宅していた」という「過去よりさらに前の出来事（大過去）」を表すため、had + 過去分詞 を使います。長文の中で複数の過去の出来事が登場した際、時間的な前後関係を整理する強力なサインとなります。なお、already は had と過去分詞の間に置くのが基本の語順です。"
   },
   {
     "id": "U02_010",
@@ -3299,7 +3299,7 @@ const quizData = [
       "police",
       "arrived"
     ],
-    "explanation": "【過去完了形】「警察が到着した（過去）」よりも前に「容疑者が逃亡していた」という過去の前後関係を示すため、had + 過去分詞（大過去）を用います。suspect（容疑者）や escape（逃亡する）といった語彙と時制のズレに注意して文脈を読み解きましょう。"
+    "explanation": "【過去完了形】「警察が到着した（過去）」よりも前に「容疑者が逃亡していた」という過去の前後関係を示すため、had + 過去分詞（大過去）を用います。suspect（容疑者）や escape（逃亡する）といった語彙と時制のズレに注意して文脈を読み解きましょう。なお、already は had と過去分詞の間に置くのが基本の語順です。"
   },
   {
     "id": "U14_003",
@@ -3607,8 +3607,8 @@ const quizData = [
     "theme": "原形不定詞（知覚動詞）＋ 重要語彙",
     "difficulty": 2,
     "type": "choice",
-    "questionEn": "The researcher noticed the temperature [   ] suddenly.",
-    "questionJa": "その研究者は温度が突然下がるのに気づいた。",
+    "questionEn": "The researcher watched the temperature [   ] suddenly.",
+    "questionJa": "その研究者は温度が突然下がるのをじっと見ていた。",
     "choices": [
       "drop",
       "to drop",
@@ -3616,7 +3616,7 @@ const quizData = [
       "drops"
     ],
     "correctAnswer": "drop",
-    "explanation": "【原形不定詞】notice O do（Oが〜するのに気づく）という知覚動詞の構文では、to のない原形不定詞を用います。researcher（研究者）や temperature（温度）といった理系・実験系の長文で登場する基本構造です。"
+    "explanation": "【原形不定詞】watch O do（Oが〜するのをじっと見る）という知覚動詞の構文では、to のない原形不定詞を用います。notice / see / hear なども同じ型をとります。researcher（研究者）や temperature（温度）といった理系・実験系の長文で登場する基本構造です。"
   },
   {
     "id": "U15_006",
@@ -5352,9 +5352,7 @@ const quizData = [
       "doubtful",
       "is",
       "It",
-      "or",
       "proposal",
-      "not",
       "the",
       "they",
       "whether",
@@ -5369,11 +5367,9 @@ const quizData = [
       "will",
       "approve",
       "the",
-      "proposal",
-      "or",
-      "not"
+      "proposal"
     ],
-    "explanation": "【名詞節】whether ~ or not で「〜するかどうか」という名詞のカタマリを作ります。It が形式主語、whether 以下が真主語です。will approve とすることで、今後その提案を承認するかどうかを表しています。"
+    "explanation": "【名詞節】whether ~ で「〜するかどうか」という名詞のカタマリを作ります。It が形式主語、whether 以下が真主語です。will approve とすることで、今後その提案を承認するかどうかを表しています。なお、whether or not ~ / whether ~ or not のように or not を添える形も可能です。"
   },
   {
     "id": "U21_009",
@@ -5387,7 +5383,7 @@ const quizData = [
       "rather",
       "better",
       "prefer",
-      "sooner"
+      "more"
     ],
     "correctAnswer": "rather",
     "explanation": "【助動詞の慣用表現】would rather A than B で「BするくらいならむしろAしたい」という比較・選択を表します。resign（辞任する）と compromise（妥協する）というビジネスや政治の長文で対比されやすい語彙で構成されています。"
@@ -5857,7 +5853,7 @@ const quizData = [
       "and",
       "effort"
     ],
-    "explanation": "【無生物主語】save O1 O2 で「O1のO2（時間や労力）を省く」という意味になります。This software のような無生物が主語になることで、「これを使えば〜」という原因から結果への流れを自然に読み取れます。"
+    "explanation": "【無生物主語】save O1 O2 で「O1のO2（時間や労力）を省く」という意味になります。This software のような無生物が主語になることで、「これを使えば〜」という原因から結果への流れを自然に読み取れます。なお、time and effort（時間と労力）は、この順序で用いるのが自然な決まった組み合わせです。"
   },
   {
     "id": "U23_005",
